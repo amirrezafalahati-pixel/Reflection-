@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Next Step</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at center, #202020 0%, #0d0d0d 55%, #050505 100%);
+            color: #e8e4d8;
+            font-family: Georgia, "Times New Roman", serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .page {
+            width: min(90%, 720px);
+            text-align: center;
+            padding: 50px 25px;
+            position: relative;
+        }
+
+        .symbol {
+            font-size: 25px;
+            letter-spacing: 12px;
+            opacity: 0.45;
+            margin-bottom: 35px;
+        }
+
+        .title {
+            font-size: clamp(32px, 8vw, 64px);
+            letter-spacing: 7px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .line {
+            width: 90px;
+            height: 1px;
+            background: #aaa69b;
+            margin: 28px auto;
+            opacity: 0.6;
+        }
+
+        .subtitle {
+            font-size: clamp(16px, 4vw, 21px);
+            line-height: 2;
+            color: #bdb9af;
+            font-style: italic;
+            direction: ltr;
+        }
+
+        .question {
+            margin-top: 50px;
+            font-size: 17px;
+            line-height: 2;
+            color: #d2cec4;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 13px 34px;
+            background: transparent;
+            border: 1px solid #77736b;
+            color: #e8e4d8;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            font-family: inherit;
+        }
+
+        button:hover {
+            background: #e8e4d8;
+            color: #111;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .reveal {
+            animation: appear 1.2s ease forwards;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .next-text {
+            margin-top: 35px;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .pdf-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 38px;
+            border: 1px solid #aaa69b;
+            color: #e8e4d8;
+            text-decoration: none;
+            transition: all 0.35s ease;
+        }
+
+        .pdf-button:hover {
+            background: #e8e4d8;
+            color: #111;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 18px;
+            width: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #66635d;
+            letter-spacing: 2px;
+            direction: ltr;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="page">
+
+        <div class="symbol">
+            ϟ △ ⊙ ∴ □
+        </div>
+
+        <h1 class="title">
+            THE NEXT STEP
+        </h1>
+
+        <div class="line"></div>
+
+        <div class="subtitle">
+            Some things are not meant to be seen at first.
+        </div>
+
+        <div class="question">
+            هر رمز، تنها یک پاسخ ندارد.<br>
+            گاهی برای رسیدن به حقیقت، باید از خودِ سؤال عبور کرد.
+        </div>
+
+        <button onclick="revealNext()">
+            ادامه
+        </button>
+
+        <section id="next" class="hidden">
+
+            <div class="next-text">
+                شاید آنچه اکنون می‌بینید،
+                تنها آغاز ماجرا باشد.
+                <br><br>
+                <strong>مرحله بعد را باز کنید.</strong>
+            </div>
+
+            <a class="pdf-button"
+               href="reflection.pdf"
+               target="_blank">
+                مشاهده رفلکشن
+            </a>
+
+        </section>
+
+    </main>
+
+    <div class="footer">
+        THINK · QUESTION · REFLECT
+    </div>
+
+    <script>
+        function revealNext() {
+
+            const next = document.getElementById("next");
+
+            next.classList.remove("hidden");
+            next.classList.add("reveal");
+
+        }
+    </script>
+
+</body>
+</html>
