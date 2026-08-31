@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Group 8A · Reflection</title>
 
@@ -14,69 +17,73 @@
 }
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
 
     background:
         radial-gradient(
             circle at top,
-            #20242a 0%,
-            #0b0d10 70%
+            #20252b,
+            #090b0e 70%
         );
 
     color: #e8e5dc;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    font-family: Georgia, serif;
 
-    padding: 35px 18px;
+    padding: 30px 18px;
+
 }
 
 .container {
-    width: 100%;
-    max-width: 1050px;
+
+    max-width: 1250px;
+
     margin: auto;
+
 }
 
 .back {
-    color: #73777b;
+
+    color: #696e73;
+
     text-decoration: none;
 
     font-family: Arial, sans-serif;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 2px;
 
-    transition: .3s;
-}
-
-.back:hover {
-    color: #d5d2ca;
 }
 
 .header {
+
     text-align: center;
 
     padding:
-        65px
+        55px
         0
-        45px;
+        40px;
+
 }
 
 .label {
+
     font-family: Arial, sans-serif;
 
     font-size: 9px;
 
     letter-spacing: 5px;
 
-    color: #656a70;
+    color: #666b70;
+
 }
 
 h1 {
+
     margin:
         18px
         0
@@ -84,38 +91,68 @@ h1 {
 
     font-size:
         clamp(
-            42px,
-            8vw,
-            70px
+            40px,
+            7vw,
+            68px
         );
 
     font-weight: normal;
 
-    letter-spacing: 6px;
+    letter-spacing: 5px;
+
 }
 
 .subtitle {
-    color: #9c9b96;
+
+    color: #999a96;
 
     font-style: italic;
 
-    line-height: 1.8;
 }
 
-.document {
+.content {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(280px, .75fr);
+
+    gap: 20px;
+
+}
+
+.panel {
 
     border:
         1px solid
-        #3e4348;
+        #3d4247;
 
     background:
         #111317;
 
     overflow: hidden;
 
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,.35);
+}
+
+.panel-label {
+
+    padding:
+        14px
+        18px;
+
+    border-bottom:
+        1px solid
+        #30353a;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #70757a;
+
 }
 
 iframe {
@@ -124,32 +161,102 @@ iframe {
 
     width: 100%;
 
-    height: 850px;
+    height: 820px;
 
     border: none;
 
     background: white;
+
+}
+
+.audio {
+
+    padding:
+        28px
+        24px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .025
+        );
+
+}
+
+.audio h2 {
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+
+}
+
+.audio p {
+
+    color: #92938f;
+
+    font-style: italic;
+
+    line-height: 1.8;
+
+}
+
+audio {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+}
+
+.coming {
+
+    padding-top: 18px;
+
+    color: #64696e;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    line-height: 1.7;
+
 }
 
 .footer {
 
     text-align: center;
 
-    margin-top: 30px;
+    margin-top: 35px;
 
-    color: #555b60;
+    color: #4f555a;
 
     font-family: Arial, sans-serif;
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 3px;
+
 }
 
-@media(max-width:700px) {
+@media(max-width:850px) {
+
+    .content {
+
+        grid-template-columns: 1fr;
+
+    }
 
     iframe {
+
         height: 650px;
+
     }
 
 }
@@ -158,13 +265,16 @@ iframe {
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
+
 <a
-    href="index.html"
-    class="back">
+href="index.html"
+class="back">
 
 ← REFLECTION ARCHIVE
 
@@ -174,25 +284,73 @@ iframe {
 <div class="header">
 
 <div class="label">
+
 FILE 08A
+
 </div>
 
 <h1>
+
 GROUP 8A
+
 </h1>
 
 <div class="subtitle">
+
 Reflection
-</div>
 
 </div>
 
+</div>
 
-<div class="document">
+
+<div class="content">
+
+
+<div class="panel">
+
+<div class="panel-label">
+
+REFLECTION · 08A
+
+</div>
 
 <iframe
-    src="Reflection%208a.pdf">
+src="Reflection%208a.pdf">
 </iframe>
+
+</div>
+
+
+<div class="panel audio">
+
+<div class="panel-label">
+
+LISTENING ARCHIVE
+
+</div>
+
+<h2>
+
+AUDIO REFLECTION
+
+</h2>
+
+<p>
+
+The reflection will also be available
+through another voice.
+
+</p>
+
+<div class="coming">
+
+AUDIO RECORDING · COMING SOON
+
+</div>
+
+</div>
+
 
 </div>
 
@@ -203,7 +361,10 @@ GROUP 08A · REFLECTION
 
 </div>
 
+
 </div>
 
+
 </body>
+
 </html>
