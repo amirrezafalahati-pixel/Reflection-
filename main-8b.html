@@ -4,9 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Main Reflection 8B</title>
 
@@ -17,105 +15,80 @@ content="width=device-width, initial-scale=1.0">
 }
 
 body {
-
     margin: 0;
-
     min-height: 100vh;
 
     background:
         radial-gradient(
-            circle at top,
-            #1d2228,
-            #090b0e 72%
+            circle at 50% 5%,
+            #20252b 0%,
+            #090b0e 65%,
+            #050608 100%
         );
 
     color: #e8e5dc;
+    font-family: Georgia, "Times New Roman", serif;
 
-    font-family: Georgia, serif;
-
-    padding: 32px 18px;
-
+    padding: 28px 18px;
 }
 
 .container {
-
     width: 100%;
-
     max-width: 1250px;
-
     margin: auto;
-
 }
 
-.back {
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
 
+.nav a {
     color: #696e73;
-
     text-decoration: none;
 
     font-family: Arial, sans-serif;
-
     font-size: 9px;
-
     letter-spacing: 2px;
 
+    transition: .3s;
+}
+
+.nav a:hover {
+    color: #d8d5ce;
 }
 
 .header {
-
     text-align: center;
-
-    padding:
-        55px
-        0
-        40px;
-
+    padding: 60px 0 42px;
 }
 
 .label {
-
     font-family: Arial, sans-serif;
-
     font-size: 9px;
-
     letter-spacing: 5px;
-
     color: #666b70;
-
 }
 
 h1 {
-
-    margin:
-        18px
-        0
-        12px;
+    margin: 18px 0 12px;
 
     font-size:
-        clamp(
-            38px,
-            7vw,
-            65px
-        );
+        clamp(38px, 7vw, 65px);
 
     font-weight: normal;
-
     letter-spacing: 5px;
-
 }
 
 .subtitle {
-
     color: #999a96;
-
     font-style: italic;
-
     line-height: 1.8;
-
 }
 
 .content {
-
     display: grid;
 
     grid-template-columns:
@@ -125,173 +98,177 @@ h1 {
     gap: 20px;
 
     align-items: start;
-
 }
 
-.pdf-panel {
-
-    border:
-        1px solid
-        #3d4247;
-
-    background:
-        #111317;
-
+.panel {
+    border: 1px solid #3d4247;
+    background: #111317;
     overflow: hidden;
-
 }
 
 .panel-label {
-
-    padding:
-        14px
-        18px;
+    padding: 14px 18px;
 
     border-bottom:
-        1px solid
-        #30353a;
+        1px solid #30353a;
 
     font-family: Arial, sans-serif;
 
     font-size: 9px;
-
     letter-spacing: 3px;
 
     color: #70757a;
-
 }
 
 iframe {
-
     display: block;
 
     width: 100%;
-
     height: 820px;
 
     border: none;
-
     background: white;
-
 }
 
 .audio-panel {
-
-    border:
-        1px solid
-        #3d4247;
+    padding: 30px 25px;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            .025
-        );
-
-    padding:
-        28px
-        24px;
+        rgba(255,255,255,.025);
 
     position: sticky;
-
     top: 20px;
-
 }
 
 .audio-panel h2 {
+    margin: 12px 0 14px;
 
-    margin:
-        0
-        0
-        14px;
-
-    font-size: 25px;
-
+    font-size: 27px;
     font-weight: normal;
 
     letter-spacing: 2px;
-
 }
 
 .audio-description {
-
     color: #92938f;
 
     font-style: italic;
-
     line-height: 1.8;
 
     font-size: 15px;
 
     margin-bottom: 25px;
-
 }
 
 audio {
+    display: block;
 
     width: 100%;
+    height: 44px;
 
-    height: 42px;
+    margin-top: 20px;
+}
 
+.download {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    padding: 11px 17px;
+
+    border:
+        1px solid #4d5257;
+
+    color: #c9c6bf;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+    letter-spacing: 2px;
+
+    transition: .3s;
+}
+
+.download:hover {
+    background: #ddd9d0;
+    color: #101214;
 }
 
 .audio-note {
-
-    margin-top: 18px;
+    margin-top: 22px;
 
     padding-top: 18px;
 
     border-top:
-        1px solid
-        #30353a;
+        1px solid #30353a;
 
     color: #686d72;
 
     font-family: Arial, sans-serif;
 
     font-size: 8px;
-
     letter-spacing: 2px;
 
-    line-height: 1.7;
-
+    line-height: 1.8;
 }
 
-.footer {
+.bottom-nav {
+    display: flex;
 
-    text-align: center;
+    justify-content: space-between;
+    align-items: center;
 
-    margin-top: 35px;
+    margin-top: 30px;
+}
 
-    color: #4f555a;
+.bottom-nav a {
+    color: #646a70;
+
+    text-decoration: none;
 
     font-family: Arial, sans-serif;
 
     font-size: 8px;
+    letter-spacing: 2px;
 
+    transition: .3s;
+}
+
+.bottom-nav a:hover {
+    color: #ddd9d0;
+}
+
+.footer {
+    text-align: center;
+
+    margin-top: 40px;
+
+    color: #454b50;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
     letter-spacing: 3px;
-
 }
 
 @media(max-width:850px) {
 
     .content {
-
         grid-template-columns: 1fr;
-
     }
 
     .audio-panel {
-
         position: static;
-
     }
 
     iframe {
-
         height: 650px;
+    }
 
+    .nav {
+        flex-wrap: wrap;
     }
 
 }
@@ -303,113 +280,136 @@ audio {
 
 <body>
 
-
 <div class="container">
 
 
-<a
-href="8b.html"
-class="back">
+    <div class="nav">
 
-← GROUP 8B
+        <a href="8b.html">
+            ← GROUP 8B
+        </a>
 
-</a>
+        <a href="index.html">
+            REFLECTION ARCHIVE
+        </a>
+
+    </div>
 
 
-<div class="header">
+    <div class="header">
 
-<div class="label">
+        <div class="label">
+            FILE 08B · MAIN REFLECTION
+        </div>
 
-FILE 08B · MAIN REFLECTION
+        <h1>
+            MAIN REFLECTION
+        </h1>
+
+        <div class="subtitle">
+            Read it. Hear it. Reflect.
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+
+        <!-- PDF -->
+
+        <div class="panel">
+
+            <div class="panel-label">
+                REFLECTION · 08B
+            </div>
+
+            <iframe
+                src="Main%20Reflection%208b%20Open.pdf">
+            </iframe>
+
+        </div>
+
+
+        <!-- AUDIO -->
+
+        <div class="panel audio-panel">
+
+            <div class="panel-label">
+                THE VOICE BEHIND THE REFLECTION
+            </div>
+
+            <h2>
+                Listen differently.
+            </h2>
+
+            <div class="audio-description">
+
+                Some things read differently
+                when they are heard.
+
+            </div>
+
+
+            <audio
+                controls
+                preload="metadata">
+
+                <source
+                    src="reflection-8b-voice.mp3?v=1"
+                    type="audio/mpeg">
+
+                Your browser does not support
+                audio playback.
+
+            </audio>
+
+
+            <a
+                class="download"
+                href="reflection-8b-voice.mp3?v=1"
+                download>
+
+                DOWNLOAD AUDIO
+
+            </a>
+
+
+            <div class="audio-note">
+
+                THE SAME REFLECTION ·
+                ANOTHER VOICE ·
+                ANOTHER WAY OF SEEING
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="bottom-nav">
+
+        <a href="challenge.html">
+            ← BACK TO THE CHALLENGE
+        </a>
+
+        <a href="8b.html">
+            GROUP 8B →
+        </a>
+
+    </div>
+
+
+    <div class="footer">
+
+        READ · LISTEN · REFLECT
+
+    </div>
+
 
 </div>
-
-<h1>
-
-MAIN REFLECTION
-
-</h1>
-
-<div class="subtitle">
-
-Read it. Hear it. Reflect.
-
-</div>
-
-</div>
-
-
-<div class="content">
-
-
-<div class="pdf-panel">
-
-<div class="panel-label">
-
-REFLECTION · 08B
-
-</div>
-
-<iframe
-src="Main%20Reflection%208b.pdf">
-</iframe>
-
-</div>
-
-
-<div class="audio-panel">
-
-<div class="panel-label">
-
-LISTENING ARCHIVE
-
-</div>
-
-<h2>
-
-Reflection 8b
-
-</h2>
-
-<div class="audio-description">
-
-The same reflection,
-experienced through another voice.
-
-</div>
-
-<audio controls>
-
-<source
-src="reflection-8b-voice.mp3"
-type="audio/mpeg">
-
-Your browser does not support
-audio playback.
-
-</audio>
-
-<div class="audio-note">
-
-READ · LISTEN · REFLECT
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="footer">
-
-GROUP 08B · MAIN REFLECTION
-
-</div>
-
-
-</div>
-
 
 </body>
 
