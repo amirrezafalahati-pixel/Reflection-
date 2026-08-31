@@ -1,244 +1,525 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Challenge</title>
+<title>The Next Step</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
+
     background:
-        radial-gradient(circle at center, #171b20 0%, #07090b 72%);
+
+        radial-gradient(
+            circle at 50% 20%,
+            #1b2026 0%,
+            #0a0c0f 55%,
+            #060709 100%
+        );
+
     color: #e6e3db;
+
     font-family: Georgia, serif;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
+
+    justify-content: center;
+
     padding: 30px 18px;
+
 }
 
 .container {
+
     width: 100%;
-    max-width: 700px;
+
+    max-width: 680px;
+
     text-align: center;
+
 }
+
+
+/* TOP */
 
 .top {
+
     font-family: Arial, sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 5px;
-    color: #5f6469;
-    margin-bottom: 30px;
+
+    color: #555b61;
+
+    margin-bottom: 38px;
+
 }
 
+
+/* TITLE */
+
 h1 {
-    font-size: clamp(40px, 9vw, 70px);
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            42px,
+            9vw,
+            72px
+        );
+
     font-weight: normal;
-    letter-spacing: 7px;
-    margin: 0 0 20px;
+
+    letter-spacing: 6px;
+
 }
 
 .line {
-    width: 80px;
+
+    width: 65px;
+
     height: 1px;
-    background: #45494e;
-    margin: 25px auto;
+
+    background: #474c51;
+
+    margin: 28px auto;
+
 }
 
-.message {
-    max-width: 570px;
+
+/* INTRO */
+
+.intro {
+
+    max-width: 560px;
+
     margin: auto;
-    color: #9c9b96;
+
+    color: #999a96;
+
     font-style: italic;
-    font-size: 16px;
+
     line-height: 1.9;
+
+    font-size: 16px;
+
 }
 
-.box {
-    margin: 45px auto 0;
-    max-width: 420px;
+
+/* INPUT AREA */
+
+.challenge-box {
+
+    max-width: 430px;
+
+    margin:
+        45px
+        auto
+        0;
+
 }
 
 input {
+
     width: 100%;
-    padding: 15px;
-    background: #0b0d10;
-    border: 1px solid #4b5055;
+
+    padding: 16px;
+
+    background:
+        rgba(0,0,0,.25);
+
+    border:
+        1px solid
+        #41464b;
+
     color: #e8e5dc;
+
     text-align: center;
+
     font-family: Georgia, serif;
+
     font-size: 16px;
+
     outline: none;
+
+    transition: .3s;
+
 }
 
 input:focus {
+
     border-color: #85898d;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,255,255,.035);
+
 }
 
 button {
-    margin-top: 15px;
+
     width: 100%;
-    padding: 14px;
+
+    margin-top: 13px;
+
+    padding: 15px;
+
     background: transparent;
-    border: 1px solid #555a5f;
-    color: #ddd9d0;
+
+    border:
+        1px solid
+        #555a5f;
+
+    color: #d8d5cd;
+
     font-family: Arial, sans-serif;
+
     font-size: 10px;
+
     letter-spacing: 3px;
+
     cursor: pointer;
+
+    transition: .3s;
+
 }
 
 button:hover {
-    background: #ddd9d0;
-    color: #101214;
+
+    background: #d8d5cd;
+
+    color: #0b0d10;
+
 }
+
+
+/* STATUS */
 
 .status {
-    margin-top: 18px;
+
     min-height: 20px;
-    color: #777;
+
+    margin-top: 18px;
+
+    color: #666b70;
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
+
+    font-size: 9px;
+
     letter-spacing: 1px;
+
 }
+
+
+/* HINT */
 
 .hint {
+
     display: none;
-    margin: 18px auto 0;
-    padding: 18px;
-    border: 1px solid #30353a;
-    color: #8d908f;
+
+    margin:
+        22px
+        auto
+        0;
+
+    padding: 21px;
+
+    border:
+        1px solid
+        #30353a;
+
+    background:
+        rgba(255,255,255,.018);
+
+    color: #9a9b97;
+
     font-style: italic;
-    line-height: 1.7;
+
+    line-height: 1.8;
+
     max-width: 500px;
+
+    animation:
+        reveal .6s ease;
+
 }
 
+.hint-title {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #777d82;
+
+}
+
+
+/* SUCCESS */
+
 .success {
+
     display: none;
-    margin-top: 35px;
+
+    margin-top: 38px;
+
+    animation:
+        reveal .8s ease;
+
 }
 
 .success-title {
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: #8d9296;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: #8e9397;
+
 }
 
-.success-key {
-    margin: 15px 0;
-    font-size: 19px;
-    letter-spacing: 2px;
+.success-message {
+
+    margin-top: 15px;
+
+    color: #aaa9a3;
+
+    font-style: italic;
+
 }
 
 .success a {
+
     display: inline-block;
-    margin-top: 15px;
-    padding: 13px 25px;
-    border: 1px solid #676c71;
-    color: #e6e3db;
+
+    margin-top: 25px;
+
+    padding:
+        14px
+        28px;
+
+    border:
+        1px solid
+        #64696e;
+
+    color: #e5e2da;
+
     text-decoration: none;
+
     font-family: Arial, sans-serif;
+
     font-size: 10px;
+
     letter-spacing: 2px;
+
+    transition: .3s;
+
 }
 
-.scenario {
-    margin-top: 45px;
+.success a:hover {
+
+    background: #e5e2da;
+
+    color: #0b0d10;
+
 }
 
-.scenario a {
-    color: #555b60;
+
+/* LINKS */
+
+.navigation {
+
+    margin-top: 48px;
+
+}
+
+.navigation a {
+
+    color: #50565b;
+
     text-decoration: none;
+
     font-family: Arial, sans-serif;
+
     font-size: 9px;
-    letter-spacing: 3px;
+
+    letter-spacing: 2px;
+
 }
 
-.scenario a:hover {
-    color: #9b9e9f;
+.navigation a:hover {
+
+    color: #9a9d9f;
+
 }
+
+
+@keyframes reveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
+
 <div class="top">
-FILE 08B · ACCESS POINT
+
+FILE 08B · THE CHALLENGE
+
 </div>
 
-<h1>THE CHALLENGE</h1>
+
+<h1>
+
+THE NEXT STEP
+
+</h1>
+
 
 <div class="line"></div>
 
-<div class="message">
 
-The answer may already be somewhere in the story.
+<div class="intro">
+
+A key may open a door.
+
+<br>
+
+But not every key opens
+the right one.
 
 <br><br>
 
-Read. Observe. Reconsider.
-
-<br><br>
-
-When you think you have found the key,
-follow it.
+Read what came before.
+Observe what was overlooked.
+Then decide what deserves to be called
+the answer.
 
 </div>
 
-<div class="box">
+
+<div class="challenge-box">
+
 
 <input
-type="text"
-id="key"
-placeholder="Enter the key..."
-autocomplete="off"
+    id="key"
+    type="text"
+    placeholder="Enter what you found..."
+    autocomplete="off"
 >
 
-<button onclick="checkKey()">
-UNLOCK
+
+<button
+    onclick="checkKey()">
+
+CONTINUE
+
 </button>
 
-<div class="status" id="status"></div>
 
-<div class="hint" id="hint"></div>
+<div
+    id="status"
+    class="status">
+</div>
+
+
+<div
+    id="hint"
+    class="hint">
 
 </div>
 
-<div class="success" id="success">
+
+</div>
+
+
+<div
+    id="success"
+    class="success">
 
 <div class="success-title">
+
 ACCESS GRANTED
+
 </div>
 
-<div class="success-key">
+<div class="success-message">
+
 The final key was found.
+
 </div>
 
-<a href="Main%20Reflection%208b.pdf" target="_blank">
-OPEN THE REFLECTION →
+<a
+    href="Main%20Reflection%208b.pdf"
+    target="_blank">
+
+OPEN MAIN REFLECTION →
+
 </a>
 
 </div>
 
-<div class="scenario">
+
+<div class="navigation">
 
 <a href="scenario.html">
+
 ← RETURN TO THE SCENARIO
+
 </a>
 
 </div>
 
+
 </div>
+
 
 <script>
 
@@ -247,34 +528,50 @@ let attempts = 0;
 const finalKey =
 "understanding is not the final stop";
 
+
 const hints = {
 
-2: "You may have already seen the clue.",
+2:
+"You may have already seen the clue.",
 
-3: "Do not assume the first answer is the final one.",
+3:
+"Do not assume the first answer is the final one.",
 
-4: "Sometimes the way forward begins by looking back.",
+4:
+"Sometimes the way forward begins by looking back.",
 
-5: "What you found may only be pointing toward another.",
+5:
+"What you found may only be pointing toward another.",
 
-6: "The first key is not the final key.",
+6:
+"The first key is not the final key.",
 
-7: "Return to what came before."
+7:
+"Return to what came before."
+
 };
+
 
 function checkKey() {
 
     const input =
-    document.getElementById("key").value.trim();
+        document
+        .getElementById("key")
+        .value
+        .trim();
 
     const status =
-    document.getElementById("status");
+        document
+        .getElementById("status");
 
     const hint =
-    document.getElementById("hint");
+        document
+        .getElementById("hint");
 
     const success =
-    document.getElementById("success");
+        document
+        .getElementById("success");
+
 
     if (input === finalKey) {
 
@@ -282,27 +579,44 @@ function checkKey() {
 
         hint.style.display = "none";
 
-        success.style.display = "block";
+        success.style.display =
+            "block";
 
-        document.getElementById("key").style.display = "none";
+        document
+            .getElementById("key")
+            .style.display = "none";
 
-        document.querySelector("button").style.display = "none";
+        document
+            .querySelector("button")
+            .style.display = "none";
 
         return;
     }
 
+
     attempts++;
 
-    status.innerHTML =
-    "Incorrect key · Attempt " + attempts;
 
-    if (attempts >= 2 && attempts <= 7) {
+    status.innerHTML =
+        "The key does not fit · Attempt "
+        + attempts;
+
+
+    if (
+        attempts >= 2 &&
+        attempts <= 7
+    ) {
 
         hint.innerHTML =
-        "<strong>HINT</strong><br><br>" +
-        hints[attempts];
 
-        hint.style.display = "block";
+            '<span class="hint-title">' +
+            'A SMALLER CLUE' +
+            '</span>' +
+
+            hints[attempts];
+
+        hint.style.display =
+            "block";
 
     }
 
