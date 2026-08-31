@@ -1,380 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Group 8B</title>
+<title>Group 8A</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    min-height: 100vh;
-
-    background:
-        radial-gradient(circle at top, #1d2228, #090b0e 70%);
-
+    background: #0c0e11;
     color: #e8e5dc;
-    font-family: Georgia, serif;
-
+    font-family: Georgia, "Times New Roman", serif;
     padding: 35px 18px;
 }
 
 .container {
-    max-width: 950px;
+    max-width: 1000px;
     margin: auto;
 }
 
 .back {
     font-family: Arial, sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 2px;
-
     color: #777;
     text-decoration: none;
 }
 
 .header {
     text-align: center;
-
-    padding: 60px 0 45px;
+    padding: 55px 0 35px;
 }
 
 .label {
     font-family: Arial, sans-serif;
-
-    font-size: 10px;
-    letter-spacing: 5px;
-
-    color: #666b70;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #70757a;
 }
 
 h1 {
-    font-size: clamp(40px, 8vw, 70px);
-
+    font-size: clamp(35px, 7vw, 60px);
     font-weight: normal;
-
-    letter-spacing: 6px;
-
-    margin: 18px 0;
+    letter-spacing: 5px;
+    margin: 15px 0;
 }
 
-.quote {
-    max-width: 600px;
-
-    margin: auto;
-
-    color: #aaa9a3;
-
+.subtitle {
+    color: #999994;
     font-style: italic;
-
-    line-height: 1.8;
 }
 
-.options {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 20px;
+.document {
+    border: 1px solid #3d4146;
+    overflow: hidden;
 }
 
-.option {
-
-    padding: 38px 25px;
-
-    border: 1px solid #3f4449;
-
-    background:
-        rgba(255,255,255,.025);
-
-    text-decoration: none;
-
-    color: inherit;
-
-    transition: .3s;
+iframe {
+    width: 100%;
+    height: 750px;
+    border: 0;
+    background: white;
 }
 
-.option:hover {
-
-    transform:
-        translateY(-4px);
-
-    border-color:
-        #85888b;
-}
-
-.option h2 {
-
-    font-size: 20px;
-
-    font-weight: normal;
-
-    letter-spacing: 2px;
-}
-
-.option p {
-
-    color: #969792;
-
-    font-style: italic;
-
-    line-height: 1.7;
-}
-
-.enter {
-
-    display: inline-block;
-
-    margin-top: 15px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    color: #bbb;
-}
-
-
-/* AUDIO */
-
-.audio-section {
-
-    margin-top: 45px;
-
-    padding: 35px 25px;
-
-    border-top: 1px solid #30353a;
-
-    border-bottom: 1px solid #30353a;
-
+.audio {
+    margin-top: 25px;
+    padding: 30px;
+    border: 1px solid #3d4146;
     text-align: center;
 }
 
-.audio-label {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    color: #666b70;
-
-    margin-bottom: 12px;
-}
-
-.audio-section h2 {
-
-    font-size: 22px;
-
+.audio h2 {
     font-weight: normal;
-
     letter-spacing: 2px;
-
-    margin: 10px 0 12px;
 }
 
-.audio-section p {
-
-    color: #858783;
-
+.audio p {
+    color: #92928d;
     font-style: italic;
-
-    line-height: 1.7;
-
-    margin-bottom: 22px;
 }
 
 audio {
-
     width: 100%;
-
-    max-width: 600px;
-
-    height: 42px;
-}
-
-.audio-note {
-
-    margin-top: 14px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    color: #555b60;
-}
-
-
-/* DIRECT ACCESS */
-
-.direct {
-
-    margin-top: 50px;
-
-    text-align: center;
-}
-
-.direct a {
-
-    color: #555b60;
-
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-}
-
-.direct a:hover {
-
-    color: #9a9c9e;
-}
-
-
-@media(max-width:700px) {
-
-    .options {
-
-        grid-template-columns:
-            1fr;
-    }
-
+    max-width: 650px;
+    margin-top: 15px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<a href="index.html" class="back">
-← ARCHIVE
-</a>
-
+<a href="index.html" class="back">← ARCHIVE</a>
 
 <div class="header">
 
-<div class="label">
-FILE 08B
-</div>
+<div class="label">FILE 08A</div>
 
-<h1>GROUP 8B</h1>
+<h1>GROUP 8A</h1>
 
-<div class="quote">
-
-What you see is not necessarily the whole truth.
-
+<div class="subtitle">
+Reflection
 </div>
 
 </div>
 
+<div class="document">
 
-<div class="options">
+<iframe src="Reflection%208a.pdf"></iframe>
 
+</div>
 
-<a class="option"
-   href="scenario.html">
+<div class="audio">
 
-<h2>
-THE SCENARIO
-</h2>
+<h2>AUDIO REFLECTION</h2>
 
 <p>
-Read the beginning.
+Some things are better heard than read.
 </p>
 
-<div class="enter">
-OPEN →
-</div>
-
-</a>
-
-
-<a class="option"
-   href="challenge.html">
-
-<h2>
-THE CHALLENGE
-</h2>
-
-<p>
-Follow what is hidden.
-</p>
-
-<div class="enter">
-ENTER →
-</div>
-
-</a>
-
-
-</div>
-
-
-<!-- AUDIO SECTION -->
-
-<div class="audio-section">
-
-<div class="audio-label">
-LISTENING ARCHIVE
-</div>
-
-<h2>
-AUDIO REFLECTION
-</h2>
-
-<p>
-The reflection can also be experienced
-through another voice.
-</p>
-
-<audio controls>
-
-<source
-src="Reflection%208b%20voice.mp3"
-type="audio/mpeg">
-
+<audio controls preload="metadata">
+<source src="Reflection%208a%20voice.mp3" type="audio/mpeg">
 Your browser does not support audio playback.
-
 </audio>
 
-<div class="audio-note">
-
-THE RECORDING WILL APPEAR HERE
-
 </div>
-
-</div>
-
-
-<div class="direct">
-
-<a href="access.html">
-
-NOT EVERY PATH REQUIRES A KEY · DIRECT ACCESS
-
-</a>
-
-</div>
-
 
 </div>
 
