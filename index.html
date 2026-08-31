@@ -1,199 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Reflection Archive</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
+
     background:
-        radial-gradient(circle at top, #20242a 0%, #0d0f12 55%, #08090b 100%);
-    color: #e8e5dc;
-    font-family: Georgia, "Times New Roman", serif;
+        radial-gradient(
+            circle at 50% 10%,
+            #20252b 0%,
+            #0a0c0f 65%,
+            #060708 100%
+        );
+
+    color: #e7e4dc;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    padding: 35px 18px;
+
+    padding: 30px 18px;
+
 }
 
 .container {
+
     width: 100%;
-    max-width: 900px;
+
+    max-width: 1000px;
+
     text-align: center;
+
 }
 
-.eyebrow {
+.label {
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 5px;
-    color: #777c82;
-    text-transform: uppercase;
-    margin-bottom: 28px;
+
+    font-size: 9px;
+
+    letter-spacing: 6px;
+
+    color: #646a70;
+
+    margin-bottom: 25px;
+
 }
 
 h1 {
-    font-size: clamp(38px, 8vw, 72px);
+
+    font-size:
+        clamp(
+            44px,
+            9vw,
+            78px
+        );
+
     font-weight: normal;
-    letter-spacing: 6px;
+
+    letter-spacing: 7px;
+
     margin: 0;
+
 }
 
 .intro {
-    max-width: 650px;
-    margin: 25px auto 60px;
-    color: #aaa9a3;
-    font-size: 17px;
-    line-height: 1.8;
+
+    max-width: 600px;
+
+    margin:
+        25px
+        auto
+        55px;
+
+    color: #92948f;
+
     font-style: italic;
+
+    line-height: 1.9;
+
 }
 
 .groups {
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 20px;
+
 }
 
 .card {
-    padding: 45px 28px;
-    border: 1px solid #42464b;
-    background: rgba(255,255,255,0.025);
-    transition: .35s ease;
+
+    border:
+        1px solid
+        #3d4247;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .025
+        );
+
+    padding: 45px 25px;
+
+    text-decoration: none;
+
+    color: #e4e1d9;
+
+    transition:
+        .35s ease;
+
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: #8b8d8e;
-    background: rgba(255,255,255,0.055);
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        #73787d;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .045
+        );
+
 }
 
-.card-number {
+.card-label {
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
+
+    font-size: 9px;
+
     letter-spacing: 4px;
-    color: #656a70;
-    margin-bottom: 18px;
+
+    color: #686e73;
+
 }
 
 .card h2 {
-    font-size: 25px;
+
+    font-size: 34px;
+
     font-weight: normal;
-    letter-spacing: 3px;
-    margin: 0 0 15px;
+
+    letter-spacing: 4px;
+
+    margin:
+        18px
+        0
+        12px;
+
 }
 
 .card p {
-    color: #9d9c97;
+
+    color: #858883;
+
     font-style: italic;
+
     line-height: 1.7;
-    min-height: 55px;
+
+    margin: 0;
+
 }
 
-.button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 28px;
-    border: 1px solid #666a6e;
-    text-decoration: none;
-    color: #e8e5dc;
+.arrow {
+
+    display: block;
+
+    margin-top: 28px;
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    transition: .3s;
-}
 
-.button:hover {
-    background: #e8e5dc;
-    color: #111;
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #71767b;
+
 }
 
 .footer {
-    margin-top: 60px;
+
+    margin-top: 55px;
+
+    color: #474d52;
+
     font-family: Arial, sans-serif;
-    font-size: 9px;
+
+    font-size: 8px;
+
     letter-spacing: 4px;
-    color: #4e5358;
+
 }
 
 @media(max-width:700px) {
+
     .groups {
+
         grid-template-columns: 1fr;
+
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<div class="eyebrow">
-Reflection Archive
+
+<div class="label">
+
+REFLECTION ARCHIVE
+
 </div>
 
-<h1>Two Perspectives</h1>
+
+<h1>
+
+TWO PERSPECTIVES
+
+</h1>
+
 
 <div class="intro">
-Two reflections. Two paths.
-<br>
-One journey beyond what is first seen.
+
+Two reflections.
+Two ways of seeing.
+One archive.
+
 </div>
+
 
 <div class="groups">
 
-<div class="card">
 
-<div class="card-number">
-FILE 08A
+<a
+href="8a.html"
+class="card">
+
+<div class="card-label">
+
+GROUP 08A
+
 </div>
 
-<h2>GROUP 8A</h2>
+<h2>
+
+8A
+
+</h2>
 
 <p>
-A reflection shaped through observation,
-questions and interpretation.
+
+Reflection
+
 </p>
 
-<a href="8a.html" class="button">
+<span class="arrow">
+
 ENTER →
+
+</span>
+
 </a>
 
+
+<a
+href="8b.html"
+class="card">
+
+<div class="card-label">
+
+GROUP 08B
+
 </div>
 
+<h2>
 
-<div class="card">
+8B
 
-<div class="card-number">
-FILE 08B
-</div>
-
-<h2>GROUP 8B</h2>
+</h2>
 
 <p>
-Some things are easier to find
-when you stop looking at the obvious.
+
+Reflection · Scenario · Challenge
+
 </p>
 
-<a href="8b.html" class="button">
+<span class="arrow">
+
 ENTER →
+
+</span>
+
 </a>
 
-</div>
 
 </div>
+
 
 <div class="footer">
-LOOK CLOSER · THINK DEEPER
-</div>
+
+READ · QUESTION · RETHINK
 
 </div>
+
+
+</div>
+
 
 </body>
+
 </html>
