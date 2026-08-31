@@ -1,110 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Scenario</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>The Scenario · 8B</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
+
     margin: 0;
-    background: #0b0d10;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #1c2127,
+            #080a0d 75%
+        );
+
     color: #e8e5dc;
+
     font-family: Georgia, serif;
-    padding: 35px 18px;
+
+    padding: 30px 18px;
+
 }
 
 .container {
-    max-width: 1000px;
+
+    max-width: 1050px;
+
     margin: auto;
+
 }
 
 .back {
-    color: #777;
+
+    color: #666c71;
+
     text-decoration: none;
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
+
+    font-size: 9px;
+
     letter-spacing: 2px;
+
 }
 
 .header {
+
     text-align: center;
-    padding: 60px 0 35px;
+
+    padding:
+        55px
+        0
+        40px;
+
 }
 
 .label {
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
+
+    font-size: 9px;
+
     letter-spacing: 5px;
-    color: #666b70;
+
+    color: #666c71;
+
 }
 
 h1 {
-    font-size: clamp(38px, 8vw, 65px);
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            68px
+        );
+
     font-weight: normal;
+
     letter-spacing: 5px;
-    margin: 15px 0;
+
+    margin:
+        18px
+        0
+        12px;
+
 }
 
 .subtitle {
-    color: #9a9994;
+
+    color: #999a96;
+
     font-style: italic;
+
 }
 
-.document {
-    border: 1px solid #3e4247;
-    overflow: hidden;
+.pdf {
+
+    border:
+        1px solid
+        #3d4247;
+
+    background: #111317;
+
+}
+
+.panel-label {
+
+    padding:
+        14px
+        18px;
+
+    border-bottom:
+        1px solid
+        #30353a;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #70757a;
+
 }
 
 iframe {
+
+    display: block;
+
     width: 100%;
-    height: 800px;
-    border: 0;
+
+    height: 820px;
+
+    border: none;
+
     background: white;
+
 }
 
-.hint {
+.next {
+
     text-align: center;
-    padding: 35px 15px;
-    color: #686d72;
-    font-style: italic;
-    line-height: 1.8;
+
+    margin-top: 28px;
+
 }
+
+.next a {
+
+    display: inline-block;
+
+    padding:
+        14px
+        25px;
+
+    border:
+        1px solid
+        #555a5f;
+
+    color: #ddd9d1;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .3s;
+
+}
+
+.next a:hover {
+
+    background: #ddd9d1;
+
+    color: #101214;
+
+}
+
+@media(max-width:700px) {
+
+    iframe {
+
+        height: 650px;
+
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<a href="8b.html" class="back">← GROUP 8B</a>
+
+<a
+href="8b.html"
+class="back">
+
+← GROUP 8B
+
+</a>
+
 
 <div class="header">
 
-<div class="label">FILE 08B</div>
+<div class="label">
 
-<h1>THE SCENARIO</h1>
+FILE 08B · THE BEGINNING
+
+</div>
+
+<h1>
+
+THE SCENARIO
+
+</h1>
 
 <div class="subtitle">
-Before looking for the answer, read the story.
-</div>
 
-</div>
-
-<div class="document">
-
-<iframe src="Reflection%208b.pdf"></iframe>
-
-</div>
-
-<div class="hint">
-
-Some clues become visible only after you know what to look for.
+Before the answer,
+there was a story.
 
 </div>
 
 </div>
+
+
+<div class="pdf">
+
+<div class="panel-label">
+
+SCENARIO · REFLECTION 8B
+
+</div>
+
+<iframe
+src="Reflection%208b.pdf">
+</iframe>
+
+</div>
+
+
+<div class="next">
+
+<a
+href="challenge.html">
+
+FOLLOW THE TRAIL →
+
+</a>
+
+</div>
+
+
+</div>
+
 
 </body>
+
 </html>
