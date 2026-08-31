@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Next Step</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>The Challenge · 8B</title>
 
 <style>
 
@@ -20,12 +23,10 @@ body {
     min-height: 100vh;
 
     background:
-
         radial-gradient(
             circle at 50% 20%,
-            #1b2026 0%,
-            #0a0c0f 55%,
-            #060709 100%
+            #1b2026,
+            #080a0d 70%
         );
 
     color: #e6e3db;
@@ -52,9 +53,6 @@ body {
 
 }
 
-
-/* TOP */
-
 .top {
 
     font-family: Arial, sans-serif;
@@ -68,9 +66,6 @@ body {
     margin-bottom: 38px;
 
 }
-
-
-/* TITLE */
 
 h1 {
 
@@ -101,9 +96,6 @@ h1 {
 
 }
 
-
-/* INTRO */
-
 .intro {
 
     max-width: 560px;
@@ -119,9 +111,6 @@ h1 {
     font-size: 16px;
 
 }
-
-
-/* INPUT AREA */
 
 .challenge-box {
 
@@ -141,7 +130,12 @@ input {
     padding: 16px;
 
     background:
-        rgba(0,0,0,.25);
+        rgba(
+            0,
+            0,
+            0,
+            .25
+        );
 
     border:
         1px solid
@@ -157,17 +151,11 @@ input {
 
     outline: none;
 
-    transition: .3s;
-
 }
 
 input:focus {
 
     border-color: #85898d;
-
-    box-shadow:
-        0 0 20px
-        rgba(255,255,255,.035);
 
 }
 
@@ -207,9 +195,6 @@ button:hover {
 
 }
 
-
-/* STATUS */
-
 .status {
 
     min-height: 20px;
@@ -225,9 +210,6 @@ button:hover {
     letter-spacing: 1px;
 
 }
-
-
-/* HINT */
 
 .hint {
 
@@ -245,15 +227,18 @@ button:hover {
         #30353a;
 
     background:
-        rgba(255,255,255,.018);
+        rgba(
+            255,
+            255,
+            255,
+            .018
+        );
 
     color: #9a9b97;
 
     font-style: italic;
 
     line-height: 1.8;
-
-    max-width: 500px;
 
     animation:
         reveal .6s ease;
@@ -275,9 +260,6 @@ button:hover {
     color: #777d82;
 
 }
-
-
-/* SUCCESS */
 
 .success {
 
@@ -348,35 +330,59 @@ button:hover {
 
 }
 
+.alternative {
 
-/* LINKS */
+    margin-top: 50px;
 
-.navigation {
+    padding-top: 22px;
 
-    margin-top: 48px;
+    border-top:
+        1px solid
+        #252a2f;
 
 }
 
-.navigation a {
+.alternative a {
 
-    color: #50565b;
+    color: #4e5459;
 
     text-decoration: none;
 
     font-family: Arial, sans-serif;
 
-    font-size: 9px;
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition: .3s;
+
+}
+
+.alternative a:hover {
+
+    color: #969a9d;
+
+}
+
+.navigation {
+
+    margin-top: 25px;
+
+}
+
+.navigation a {
+
+    color: #454b50;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
 
     letter-spacing: 2px;
 
 }
-
-.navigation a:hover {
-
-    color: #9a9d9f;
-
-}
-
 
 @keyframes reveal {
 
@@ -404,7 +410,9 @@ button:hover {
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
@@ -439,8 +447,8 @@ the right one.
 
 Read what came before.
 Observe what was overlooked.
-Then decide what deserves to be called
-the answer.
+Then decide what deserves
+to be called the answer.
 
 </div>
 
@@ -449,15 +457,15 @@ the answer.
 
 
 <input
-    id="key"
-    type="text"
-    placeholder="Enter what you found..."
-    autocomplete="off"
+id="key"
+type="text"
+placeholder="Enter what you found..."
+autocomplete="off"
 >
 
 
 <button
-    onclick="checkKey()">
+onclick="checkKey()">
 
 CONTINUE
 
@@ -465,15 +473,14 @@ CONTINUE
 
 
 <div
-    id="status"
-    class="status">
+id="status"
+class="status">
 </div>
 
 
 <div
-    id="hint"
-    class="hint">
-
+id="hint"
+class="hint">
 </div>
 
 
@@ -481,8 +488,8 @@ CONTINUE
 
 
 <div
-    id="success"
-    class="success">
+id="success"
+class="success">
 
 <div class="success-title">
 
@@ -497,8 +504,7 @@ The final key was found.
 </div>
 
 <a
-    href="Main%20Reflection%208b.pdf"
-    target="_blank">
+href="main-8b.html">
 
 OPEN MAIN REFLECTION →
 
@@ -507,9 +513,22 @@ OPEN MAIN REFLECTION →
 </div>
 
 
+<div class="alternative">
+
+<a
+href="access.html">
+
+A DIFFERENT WAY THROUGH
+
+</a>
+
+</div>
+
+
 <div class="navigation">
 
-<a href="scenario.html">
+<a
+href="scenario.html">
 
 ← RETURN TO THE SCENARIO
 
@@ -532,7 +551,7 @@ const finalKey =
 const hints = {
 
 2:
-"You may have already seen the clue.",
+"The clue may already be hiding in what you found.",
 
 3:
 "Do not assume the first answer is the final one.",
@@ -573,24 +592,30 @@ function checkKey() {
         .getElementById("success");
 
 
-    if (input === finalKey) {
+    if (
+        input === finalKey
+    ) {
 
         status.innerHTML = "";
 
-        hint.style.display = "none";
+        hint.style.display =
+            "none";
 
         success.style.display =
             "block";
 
         document
             .getElementById("key")
-            .style.display = "none";
+            .style.display =
+            "none";
 
         document
             .querySelector("button")
-            .style.display = "none";
+            .style.display =
+            "none";
 
         return;
+
     }
 
 
@@ -624,5 +649,7 @@ function checkKey() {
 
 </script>
 
+
 </body>
+
 </html>
