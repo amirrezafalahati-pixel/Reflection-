@@ -1,208 +1,566 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Group 8B</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
+
     background:
-        radial-gradient(circle at top, #1d2228, #090b0e 70%);
-    color: #e8e5dc;
+        radial-gradient(
+            circle at 50% 15%,
+            #20252b,
+            #090b0e 68%
+        );
+
+    color: #e7e4dc;
+
     font-family: Georgia, serif;
-    padding: 35px 18px;
+
+    padding: 30px 18px;
+
 }
 
 .container {
-    max-width: 950px;
+
+    width: 100%;
+
+    max-width: 900px;
+
     margin: auto;
+
 }
 
 .back {
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: #777;
+
+    color: #646a70;
+
     text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
 }
 
 .header {
+
     text-align: center;
-    padding: 60px 0 45px;
+
+    padding:
+        60px
+        0
+        45px;
+
 }
 
 .label {
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
+
+    font-size: 9px;
+
     letter-spacing: 5px;
-    color: #666b70;
+
+    color: #666c71;
+
 }
 
 h1 {
-    font-size: clamp(40px, 8vw, 70px);
+
+    margin:
+        18px
+        0
+        15px;
+
+    font-size:
+        clamp(
+            46px,
+            9vw,
+            76px
+        );
+
     font-weight: normal;
-    letter-spacing: 6px;
-    margin: 18px 0;
+
+    letter-spacing: 7px;
+
 }
 
 .quote {
+
     max-width: 600px;
+
     margin: auto;
-    color: #aaa9a3;
+
+    color: #989994;
+
     font-style: italic;
-    line-height: 1.8;
+
+    line-height: 1.9;
+
+}
+
+.line {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: #464b50;
+
+    margin:
+        30px
+        auto;
+
 }
 
 .options {
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 18px;
+
 }
 
-.option {
-    padding: 38px 25px;
-    border: 1px solid #3f4449;
-    background: rgba(255,255,255,.025);
+.card {
+
+    min-height: 210px;
+
+    border:
+        1px solid
+        #3b4045;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .025
+        );
+
+    padding: 30px 25px;
+
     text-decoration: none;
-    color: inherit;
-    transition: .3s;
+
+    color: #e5e2da;
+
+    transition: .35s;
+
 }
 
-.option:hover {
-    transform: translateY(-4px);
-    border-color: #85888b;
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        #70757a;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .045
+        );
+
 }
 
-.option h2 {
-    font-size: 20px;
+.card-label {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: #676d72;
+
+}
+
+.card h2 {
+
+    margin:
+        18px
+        0
+        12px;
+
+    font-size: 27px;
+
     font-weight: normal;
+
     letter-spacing: 2px;
+
 }
 
-.option p {
-    color: #969792;
+.card p {
+
+    margin: 0;
+
+    color: #858883;
+
     font-style: italic;
+
     line-height: 1.7;
+
 }
 
-.enter {
-    display: inline-block;
-    margin-top: 15px;
+.arrow {
+
+    display: block;
+
+    margin-top: 22px;
+
     font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: #bbb;
-}
 
-.direct {
-    margin-top: 55px;
-    text-align: center;
-}
+    font-size: 8px;
 
-.direct a {
-    color: #555b60;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-    font-size: 9px;
     letter-spacing: 3px;
+
+    color: #74797e;
+
 }
 
-.direct a:hover {
-    color: #9a9c9e;
+.audio-section {
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border:
+        1px solid
+        #30353a;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .018
+        );
+
+}
+
+.audio-label {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: #62686d;
+
+}
+
+.audio-section h2 {
+
+    margin:
+        12px
+        0;
+
+    font-size: 22px;
+
+    font-weight: normal;
+
+}
+
+.audio-section p {
+
+    color: #858883;
+
+    font-style: italic;
+
+}
+
+.audio-button {
+
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding:
+        13px
+        23px;
+
+    border:
+        1px solid
+        #555a5f;
+
+    color: #dcd9d1;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition: .3s;
+
+}
+
+.audio-button:hover {
+
+    background: #ddd9d0;
+
+    color: #101214;
+
+}
+
+.alternative {
+
+    margin-top: 45px;
+
+    text-align: center;
+
+}
+
+.alternative a {
+
+    color: #4f555a;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    transition: .3s;
+
+}
+
+.alternative a:hover {
+
+    color: #9b9e9f;
+
+}
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 45px;
+
+    color: #454b50;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
 }
 
 @media(max-width:700px) {
+
     .options {
+
         grid-template-columns: 1fr;
+
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<a href="index.html" class="back">← ARCHIVE</a>
+
+<a
+href="index.html"
+class="back">
+
+← REFLECTION ARCHIVE
+
+</a>
+
 
 <div class="header">
 
-<div class="label">FILE 08B</div>
+<div class="label">
 
-<h1>GROUP 8B</h1>
+FILE 08B
+
+</div>
+
+<h1>
+
+GROUP 8B
+
+</h1>
 
 <div class="quote">
-What you see is not necessarily the whole truth.
-</div>
+
+“What you see is not necessarily
+the whole truth.”
 
 </div>
+
+<div class="line"></div>
+
+</div>
+
 
 <div class="options">
 
-<a class="option" href="scenario.html">
 
-<h2>THE SCENARIO</h2>
+<a
+href="scenario.html"
+class="card">
 
-<p>
-Read the beginning.
-</p>
+<div class="card-label">
 
-<div class="enter">
-OPEN →
+THE BEGINNING
+
 </div>
 
-</a>
+<h2>
 
+THE SCENARIO
 
-<a class="option" href="challenge.html">
-
-<h2>THE CHALLENGE</h2>
+</h2>
 
 <p>
-Follow what is hidden.
+
+Read what came before.
+Some answers are hidden
+inside the story.
+
 </p>
 
-<div class="enter">
+<span class="arrow">
+
 ENTER →
-</div>
+
+</span>
 
 </a>
 
 
-<a class="option" href="#audio">
+<a
+href="challenge.html"
+class="card">
 
-<h2>AUDIO REFLECTION</h2>
+<div class="card-label">
+
+THE HIDDEN PATH
+
+</div>
+
+<h2>
+
+THE CHALLENGE
+
+</h2>
 
 <p>
-Listen to the reflection.
+
+Follow the clues.
+Not everything revealed
+is the final answer.
+
 </p>
 
-<div class="enter">
-LISTEN ↓
+<span class="arrow">
+
+ENTER →
+
+</span>
+
+</a>
+
+
 </div>
+
+
+<div class="audio-section">
+
+<div class="audio-label">
+
+LISTENING ARCHIVE
+
+</div>
+
+<h2>
+
+AUDIO REFLECTION
+
+</h2>
+
+<p>
+
+The reflection can also be experienced
+through another voice.
+
+</p>
+
+<a
+href="main-8b.html"
+class="audio-button">
+
+LISTEN TO THE REFLECTION →
 
 </a>
 
 </div>
 
 
-<div class="direct">
+<div class="alternative">
 
-<a href="access.html">
-NOT EVERY PATH REQUIRES A KEY · DIRECT ACCESS
+<a
+href="access.html">
+
+A DIFFERENT WAY THROUGH
+
 </a>
 
 </div>
 
+
+<div class="footer">
+
+READ · QUESTION · RETHINK
+
 </div>
+
+
+</div>
+
 
 </body>
+
 </html>
