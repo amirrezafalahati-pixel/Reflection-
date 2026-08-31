@@ -17,7 +17,7 @@ body {
     background:
         radial-gradient(circle at center, #171b20 0%, #07090b 72%);
     color: #e6e3db;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Georgia, serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,30 +26,30 @@ body {
 
 .container {
     width: 100%;
-    max-width: 760px;
+    max-width: 700px;
     text-align: center;
 }
 
 .top {
     font-family: Arial, sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 5px;
     color: #5f6469;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 h1 {
-    font-size: clamp(42px, 9vw, 75px);
+    font-size: clamp(40px, 9vw, 70px);
     font-weight: normal;
     letter-spacing: 7px;
-    margin: 0 0 25px;
+    margin: 0 0 20px;
 }
 
 .line {
     width: 80px;
     height: 1px;
     background: #45494e;
-    margin: 30px auto;
+    margin: 25px auto;
 }
 
 .message {
@@ -57,48 +57,114 @@ h1 {
     margin: auto;
     color: #9c9b96;
     font-style: italic;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.9;
 }
 
-.actions {
-    margin-top: 55px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+.box {
+    margin: 45px auto 0;
+    max-width: 420px;
 }
 
-.button {
-    width: min(360px, 100%);
-    padding: 15px 20px;
-    border: 1px solid #4d5257;
-    color: #dcd9d1;
-    text-decoration: none;
+input {
+    width: 100%;
+    padding: 15px;
+    background: #0b0d10;
+    border: 1px solid #4b5055;
+    color: #e8e5dc;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #85898d;
+}
+
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    border: 1px solid #555a5f;
+    color: #ddd9d0;
     font-family: Arial, sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 3px;
-    transition: .3s;
+    cursor: pointer;
 }
 
-.button:hover {
-    background: #e5e2da;
+button:hover {
+    background: #ddd9d0;
     color: #101214;
 }
 
-.secondary {
-    border-color: #292d31;
-    color: #73777b;
+.status {
+    margin-top: 18px;
+    min-height: 20px;
+    color: #777;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
 }
 
-.footer {
-    margin-top: 65px;
+.hint {
+    display: none;
+    margin: 18px auto 0;
+    padding: 18px;
+    border: 1px solid #30353a;
+    color: #8d908f;
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.success {
+    display: none;
+    margin-top: 35px;
+}
+
+.success-title {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8d9296;
+}
+
+.success-key {
+    margin: 15px 0;
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+.success a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 13px 25px;
+    border: 1px solid #676c71;
+    color: #e6e3db;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.scenario {
+    margin-top: 45px;
+}
+
+.scenario a {
+    color: #555b60;
+    text-decoration: none;
     font-family: Arial, sans-serif;
     font-size: 9px;
-    letter-spacing: 4px;
-    color: #3f4449;
+    letter-spacing: 3px;
 }
 
+.scenario a:hover {
+    color: #9b9e9f;
+}
 </style>
 </head>
 
@@ -129,35 +195,120 @@ follow it.
 
 </div>
 
-<div class="actions">
+<div class="box">
 
-<a
-class="button"
-href="scenario.html">
-OPEN THE SCENARIO
-</a>
+<input
+type="text"
+id="key"
+placeholder="Enter the key..."
+autocomplete="off"
+>
 
-<a
-class="button"
-href="Main%20Reflection%208b.pdf"
-target="_blank">
-UNLOCK THE REFLECTION
-</a>
+<button onclick="checkKey()">
+UNLOCK
+</button>
 
-<a
-class="button secondary"
-href="Main%20Reflection%208b%20Open.pdf"
-target="_blank">
-CONTINUE
+<div class="status" id="status"></div>
+
+<div class="hint" id="hint"></div>
+
+</div>
+
+<div class="success" id="success">
+
+<div class="success-title">
+ACCESS GRANTED
+</div>
+
+<div class="success-key">
+The final key was found.
+</div>
+
+<a href="Main%20Reflection%208b.pdf" target="_blank">
+OPEN THE REFLECTION →
 </a>
 
 </div>
 
-<div class="footer">
-LOOK CLOSER · THINK DEEPER
+<div class="scenario">
+
+<a href="scenario.html">
+← RETURN TO THE SCENARIO
+</a>
+
 </div>
 
 </div>
+
+<script>
+
+let attempts = 0;
+
+const finalKey =
+"understanding is not the final stop";
+
+const hints = {
+
+2: "You may have already seen the clue.",
+
+3: "Do not assume the first answer is the final one.",
+
+4: "Sometimes the way forward begins by looking back.",
+
+5: "What you found may only be pointing toward another.",
+
+6: "The first key is not the final key.",
+
+7: "Return to what came before."
+};
+
+function checkKey() {
+
+    const input =
+    document.getElementById("key").value.trim();
+
+    const status =
+    document.getElementById("status");
+
+    const hint =
+    document.getElementById("hint");
+
+    const success =
+    document.getElementById("success");
+
+    if (input === finalKey) {
+
+        status.innerHTML = "";
+
+        hint.style.display = "none";
+
+        success.style.display = "block";
+
+        document.getElementById("key").style.display = "none";
+
+        document.querySelector("button").style.display = "none";
+
+        return;
+    }
+
+    attempts++;
+
+    status.innerHTML =
+    "Incorrect key · Attempt " + attempts;
+
+    if (attempts >= 2 && attempts <= 7) {
+
+        hint.innerHTML =
+        "<strong>HINT</strong><br><br>" +
+        hints[attempts];
+
+        hint.style.display = "block";
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
