@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reflection Room</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at top, #20242b, #090a0d 65%);
+    color: #e8e5dc;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+    padding: 80px 0;
+}
+
+.header {
+    max-width: 750px;
+    margin-bottom: 60px;
+}
+
+.label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: .5;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+h1 {
+    font-size: clamp(38px, 6vw, 70px);
+    font-weight: 400;
+    margin: 0 0 20px;
+}
+
+.intro {
+    color: #aaa;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.4fr .8fr;
+    gap: 25px;
+}
+
+.card {
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.035);
+    padding: 28px;
+}
+
+.card h2 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.card p {
+    color: #999;
+    line-height: 1.7;
+}
+
+iframe {
+    width: 100%;
+    height: 650px;
+    border: none;
+    background: white;
+}
+
+audio {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.download {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 11px 18px;
+    border: 1px solid rgba(255,255,255,.2);
+    color: #ddd;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.download:hover {
+    background: rgba(255,255,255,.08);
+}
+
+@media(max-width: 800px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    iframe {
+        height: 560px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="label">
+            After the answer
+        </div>
+
+        <h1>The Reflection Room</h1>
+
+        <p class="intro">
+            You found what was hidden.
+            Now there is nothing left to decode.
+            Only something left to read — and perhaps, to hear differently.
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="label">
+                Main Reflection
+            </div>
+
+            <h2>What was behind the code</h2>
+
+            <p>
+                The reflection is now open.
+                Take your time with it.
+            </p>
+
+            <iframe
+                src="Main Reflection 8b Open.pdf">
+            </iframe>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="label">
+                Voice
+            </div>
+
+            <h2>The voice behind the reflection</h2>
+
+            <p>
+                Some things read differently
+                when they are heard.
+            </p>
+
+            <audio controls preload="metadata">
+                <source
+                    src="reflection-8b-voice.mp3"
+                    type="audio/mpeg">
+                Your browser does not support audio playback.
+            </audio>
+
+            <a
+                class="download"
+                href="reflection-8b-voice.mp3"
+                download>
+                DOWNLOAD AUDIO
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
