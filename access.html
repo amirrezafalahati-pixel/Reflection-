@@ -4,235 +4,129 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>A Different Way Through</title>
+<title>A Different Way In</title>
 
 <style>
 
-* {
-    box-sizing: border-box;
-}
-
 body {
-
     margin: 0;
-
     min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #181c21,
-            #080a0d 72%
-        );
-
-    color: #e7e4dc;
-
-    font-family: Georgia, serif;
-
     display: flex;
-
-    align-items: center;
-
     justify-content: center;
-
+    align-items: center;
+    background: #08090b;
+    color: #e8e5dc;
+    font-family: Georgia, "Times New Roman", serif;
     text-align: center;
-
-    padding: 25px;
-
 }
 
 .container {
-
-    max-width: 620px;
-
+    width: min(680px, 90%);
 }
 
 .label {
-
     font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 5px;
-
-    color: #60656a;
-
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: .45;
+    margin-bottom: 25px;
 }
 
 h1 {
-
-    font-size:
-        clamp(
-            38px,
-            8vw,
-            62px
-        );
-
-    font-weight: normal;
-
-    letter-spacing: 4px;
-
-    margin:
-        20px
-        0
-        28px;
-
-}
-
-.line {
-
-    width: 55px;
-
-    height: 1px;
-
-    background: #454a4f;
-
-    margin:
-        0
-        auto
-        30px;
-
+    font-weight: 400;
+    font-size: clamp(35px, 6vw, 58px);
+    margin-bottom: 25px;
 }
 
 p {
-
-    color: #999a96;
-
-    font-style: italic;
-
+    color: #999;
     line-height: 1.9;
-
 }
 
-.button {
+.warning {
+    margin-top: 35px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.03);
+}
 
+.buttons {
+    margin-top: 30px;
+}
+
+a {
     display: inline-block;
-
-    margin-top: 28px;
-
-    padding:
-        14px
-        28px;
-
-    border:
-        1px solid
-        #555a5f;
-
-    color: #ddd9d0;
-
+    margin: 7px;
+    padding: 13px 22px;
     text-decoration: none;
-
     font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    transition: .3s;
-
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
-.button:hover {
-
-    background: #ddd9d0;
-
-    color: #101214;
-
+.primary {
+    background: #e8e5dc;
+    color: #111;
 }
 
-.back {
-
-    display: block;
-
-    margin-top: 38px;
-
-    color: #4f555a;
-
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-}
-
-.back:hover {
-
-    color: #9a9d9f;
-
+.secondary {
+    border: 1px solid rgba(255,255,255,.2);
+    color: #ccc;
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
+    <div class="label">
+        AN ALTERNATIVE PATH
+    </div>
 
-<div class="label">
+    <h1>A different way in.</h1>
 
-GROUP 08B
+    <p>
+        There is another way to reach the reflection.
+        But every shortcut changes the experience.
+    </p>
 
-</div>
+    <div class="warning">
 
+        <p>
+            This path takes you directly to what lies behind the code.
+            You will skip the search, the clues,
+            and the moment of discovery.
+        </p>
 
-<h1>
+        <p>
+            If you want to experience the challenge as intended,
+            go back and follow the clues.
+        </p>
 
-A DIFFERENT WAY THROUGH
+    </div>
 
-</h1>
+    <div class="buttons">
 
+        <a
+            class="primary"
+            href="reflection-room.html">
+            CONTINUE DIRECTLY
+        </a>
 
-<div class="line"></div>
+        <a
+            class="secondary"
+            href="challenge.html">
+            RETURN TO THE CHALLENGE
+        </a>
 
-
-<p>
-
-Not every reader will choose
-to follow the trail.
-
-</p>
-
-
-<p>
-
-If you would rather encounter
-the reflection directly,
-the door remains open.
-
-</p>
-
-
-<a
-class="button"
-href="open-8b.html">
-
-OPEN THE REFLECTION
-
-</a>
-
-
-<a
-href="8b.html"
-class="back">
-
-← RETURN TO GROUP 8B
-
-</a>
-
+    </div>
 
 </div>
-
 
 </body>
 
