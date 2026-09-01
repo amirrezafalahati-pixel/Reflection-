@@ -1,321 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Main Reflection 8B</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
 
 body{
-
     margin:0;
-
-    min-height:100vh;
-
-    background:
-        radial-gradient(circle at top,#1d2228,#090b0e 72%);
-
-    color:#e8e5dc;
-
-    font-family:Georgia,serif;
-
-    padding:32px 18px;
+    background:#090909;
+    color:#eee;
+    font-family:Georgia,"Times New Roman",serif;
 }
 
-.container{
-
-    width:100%;
-
-    max-width:1250px;
-
+.page{
+    width:min(1150px,94%);
     margin:auto;
+    padding:45px 0 65px;
 }
 
-.back{
-
-    color:#696e73;
-
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-}
-
-.header{
-
+header{
     text-align:center;
-
-    padding:55px 0 40px;
+    margin-bottom:38px;
 }
 
-.label{
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:5px;
-
-    color:#666b70;
+.eyebrow{
+    color:#777;
+    font-size:.75rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
 }
 
 h1{
-
-    margin:18px 0 12px;
-
-    font-size:clamp(38px,7vw,65px);
-
+    font-size:clamp(2rem,5vw,3.4rem);
     font-weight:normal;
-
-    letter-spacing:5px;
+    margin:12px 0;
 }
 
 .subtitle{
-
-    color:#999a96;
-
-    font-style:italic;
+    color:#aaa;
+    line-height:1.8;
+    max-width:650px;
+    margin:15px auto;
 }
 
-.content{
+.line{
+    width:75px;
+    height:1px;
+    background:#555;
+    margin:22px auto;
+}
 
+.grid{
     display:grid;
-
-    grid-template-columns:
-        minmax(0,1.65fr)
-        minmax(300px,.75fr);
-
-    gap:20px;
-
-    align-items:start;
+    grid-template-columns:1.35fr .65fr;
+    gap:24px;
 }
 
 .panel{
-
-    border:1px solid #3d4247;
-
-    background:#111317;
-
-    overflow:hidden;
-}
-
-.panel-label{
-
-    padding:14px 18px;
-
-    border-bottom:1px solid #30353a;
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    color:#70757a;
-}
-
-iframe{
-
-    display:block;
-
-    width:100%;
-
-    height:820px;
-
-    border:none;
-
-    background:white;
-}
-
-.audio-panel{
-
-    padding:28px 24px;
-
+    border:1px solid rgba(255,255,255,.12);
     background:rgba(255,255,255,.025);
 }
 
-.audio-panel h2{
-
-    font-size:24px;
-
-    font-weight:normal;
-
-    letter-spacing:2px;
+.pdf-panel{
+    min-height:680px;
 }
 
-.audio-panel p{
+.pdf-panel iframe{
+    width:100%;
+    height:680px;
+    border:none;
+    background:#fff;
+}
 
-    color:#92938f;
+.voice-panel{
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+}
 
-    font-style:italic;
+.voice-panel h2{
+    font-weight:normal;
+    margin-top:0;
+}
 
-    line-height:1.8;
+.voice-panel p{
+    color:#aaa;
+    line-height:1.85;
+}
+
+.audio-wrap{
+    margin-top:20px;
+    padding:20px 0;
 }
 
 audio{
-
     width:100%;
-
-    margin-top:20px;
 }
 
 .download{
-
-    display:inline-block;
-
-    margin-top:18px;
-
-    padding:11px 18px;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    color:#ddd;
-
+    display:flex;
+    width:100%;
+    min-height:50px;
+    align-items:center;
+    justify-content:center;
     text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:10px;
-
-    letter-spacing:1px;
+    color:#ddd;
+    border:1px solid rgba(255,255,255,.16);
+    margin-top:20px;
+    transition:.25s;
 }
 
 .download:hover{
-
-    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.45);
+    background:rgba(255,255,255,.05);
 }
 
-.footer{
+.archive-link{
+    margin-top:12px;
+    display:flex;
+    width:100%;
+    min-height:48px;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:#999;
+    border:1px solid rgba(255,255,255,.1);
+    transition:.25s;
+}
 
-    text-align:center;
+.archive-link:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,.35);
+}
 
-    margin-top:35px;
+.navigation{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:30px;
+}
 
-    color:#4f555a;
+.navigation a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:46px;
+    padding:10px 22px;
+    color:#aaa;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.12);
+    transition:.25s;
+}
 
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:3px;
+.navigation a:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,.4);
+    background:rgba(255,255,255,.04);
 }
 
 @media(max-width:850px){
 
-    .content{
-
+    .grid{
         grid-template-columns:1fr;
     }
 
-    iframe{
-
-        height:650px;
+    .pdf-panel{
+        min-height:620px;
     }
 
+    .pdf-panel iframe{
+        height:620px;
+    }
 }
-
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-<a href="8b.html" class="back">
-← GROUP 8B
-</a>
+<header>
 
+<div class="eyebrow">Reflection 8B</div>
 
-<div class="header">
+<h1>Main Reflection</h1>
 
-<div class="label">
-FILE 08B
-</div>
+<div class="line"></div>
 
-<h1>
-MAIN REFLECTION
-</h1>
+<p class="subtitle">
+The search is over.
+What remains is not another code —
+but the reflection behind it.
+</p>
 
-<div class="subtitle">
-The reflection, without the lock.
-</div>
-
-</div>
+</header>
 
 
-<div class="content">
+<section class="grid">
 
-
-<div class="panel">
-
-<div class="panel-label">
-REFLECTION · 08B
-</div>
+<div class="panel pdf-panel">
 
 <iframe
-src="Main%20Reflection%208b%20Open.pdf">
+src="Main%20Reflection%208b%20Open.pdf"
+title="Main Reflection 8B">
 </iframe>
 
 </div>
 
 
-<div class="panel audio-panel">
+<div class="panel voice-panel">
 
-<div class="panel-label">
-LISTENING ARCHIVE
-</div>
-
-<h2>
-THE OTHER VOICE
-</h2>
+<h2>Reflection Voice</h2>
 
 <p>
-
-The same reflection,
-through another voice.
-
+The reflection can also be experienced in another form.
+Listen while reading, or return to the words afterward.
 </p>
 
+<div class="audio-wrap">
+
 <audio controls preload="metadata">
-
-<source
-src="reflection-8b-voice.mp3"
-type="audio/mpeg">
-
-Your browser does not support audio playback.
-
+<source src="reflection-8b-voice.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
 </audio>
 
+</div>
 
 <a
 class="download"
 href="reflection-8b-voice.mp3"
-download>
+download="Reflection 8b voice.mp3">
+Download Reflection Voice
+</a>
 
-DOWNLOAD AUDIO
-
+<a
+class="archive-link"
+href="reflection-room.html">
+Open Listening Archive →
 </a>
 
 </div>
 
+</section>
 
-</div>
 
+<div class="navigation">
 
-<div class="footer">
+<a href="8b.html">← Back to Reflection 8B</a>
 
-READ · LISTEN · RETHINK
+<a href="index.html">Back to Archive</a>
 
 </div>
 
