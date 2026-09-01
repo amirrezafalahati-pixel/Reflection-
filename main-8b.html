@@ -15,7 +15,9 @@
 }
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
 
     background:
@@ -27,68 +29,108 @@ body {
         );
 
     color: #e8e5dc;
-    font-family: Georgia, "Times New Roman", serif;
 
-    padding: 28px 18px;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    padding:
+        28px 18px;
 }
 
 .container {
+
     width: 100%;
+
     max-width: 1250px;
+
     margin: auto;
 }
 
+
+/* NAV */
+
 .nav {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 15px;
 }
 
 .nav a {
+
     color: #696e73;
+
     text-decoration: none;
 
     font-family: Arial, sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 2px;
 
     transition: .3s;
 }
 
 .nav a:hover {
+
     color: #d8d5ce;
 }
 
+
+/* HEADER */
+
 .header {
+
     text-align: center;
-    padding: 60px 0 42px;
+
+    padding:
+        60px 0 42px;
 }
 
 .label {
+
     font-family: Arial, sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 5px;
+
     color: #666b70;
 }
 
 h1 {
-    margin: 18px 0 12px;
+
+    margin:
+        18px 0 12px;
 
     font-size:
         clamp(38px, 7vw, 65px);
 
     font-weight: normal;
+
     letter-spacing: 5px;
 }
 
 .subtitle {
+
     color: #999a96;
+
     font-style: italic;
+
     line-height: 1.8;
 }
 
+
+/* CONTENT */
+
 .content {
+
     display: grid;
 
     grid-template-columns:
@@ -100,59 +142,89 @@ h1 {
     align-items: start;
 }
 
+
+/* PANELS */
+
 .panel {
-    border: 1px solid #3d4247;
-    background: #111317;
+
+    border:
+        1px solid
+        #3d4247;
+
+    background:
+        #111317;
+
     overflow: hidden;
 }
 
 .panel-label {
-    padding: 14px 18px;
+
+    padding:
+        14px 18px;
 
     border-bottom:
-        1px solid #30353a;
+        1px solid
+        #30353a;
 
     font-family: Arial, sans-serif;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
     color: #70757a;
 }
 
+
+/* PDF */
+
 iframe {
+
     display: block;
 
     width: 100%;
+
     height: 820px;
 
     border: none;
+
     background: white;
 }
 
+
+/* AUDIO */
+
 .audio-panel {
-    padding: 30px 25px;
+
+    padding:
+        30px 25px;
 
     background:
         rgba(255,255,255,.025);
 
     position: sticky;
+
     top: 20px;
 }
 
 .audio-panel h2 {
-    margin: 12px 0 14px;
+
+    margin:
+        12px 0 14px;
 
     font-size: 27px;
+
     font-weight: normal;
 
     letter-spacing: 2px;
 }
 
 .audio-description {
+
     color: #92938f;
 
     font-style: italic;
+
     line-height: 1.8;
 
     font-size: 15px;
@@ -160,24 +232,35 @@ iframe {
     margin-bottom: 25px;
 }
 
+
+/* PLAYER */
+
 audio {
+
     display: block;
 
     width: 100%;
+
     height: 44px;
 
     margin-top: 20px;
 }
 
+
+/* DOWNLOAD */
+
 .download {
+
     display: inline-block;
 
     margin-top: 18px;
 
-    padding: 11px 17px;
+    padding:
+        11px 17px;
 
     border:
-        1px solid #4d5257;
+        1px solid
+        #4d5257;
 
     color: #c9c6bf;
 
@@ -186,44 +269,61 @@ audio {
     font-family: Arial, sans-serif;
 
     font-size: 8px;
+
     letter-spacing: 2px;
 
     transition: .3s;
 }
 
 .download:hover {
+
     background: #ddd9d0;
+
     color: #101214;
 }
 
+
+/* NOTE */
+
 .audio-note {
+
     margin-top: 22px;
 
     padding-top: 18px;
 
     border-top:
-        1px solid #30353a;
+        1px solid
+        #30353a;
 
     color: #686d72;
 
     font-family: Arial, sans-serif;
 
     font-size: 8px;
+
     letter-spacing: 2px;
 
     line-height: 1.8;
 }
 
+
+/* BOTTOM NAV */
+
 .bottom-nav {
+
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
     margin-top: 30px;
+
+    gap: 20px;
 }
 
 .bottom-nav a {
+
     color: #646a70;
 
     text-decoration: none;
@@ -231,16 +331,22 @@ audio {
     font-family: Arial, sans-serif;
 
     font-size: 8px;
+
     letter-spacing: 2px;
 
     transition: .3s;
 }
 
 .bottom-nav a:hover {
+
     color: #ddd9d0;
 }
 
+
+/* FOOTER */
+
 .footer {
+
     text-align: center;
 
     margin-top: 40px;
@@ -250,25 +356,37 @@ audio {
     font-family: Arial, sans-serif;
 
     font-size: 8px;
+
     letter-spacing: 3px;
 }
+
+
+/* MOBILE */
 
 @media(max-width:850px) {
 
     .content {
+
         grid-template-columns: 1fr;
     }
 
     .audio-panel {
+
         position: static;
     }
 
     iframe {
+
         height: 650px;
     }
 
-    .nav {
-        flex-wrap: wrap;
+    .bottom-nav {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        text-align: center;
     }
 
 }
@@ -279,6 +397,7 @@ audio {
 
 
 <body>
+
 
 <div class="container">
 
@@ -339,9 +458,11 @@ audio {
                 THE VOICE BEHIND THE REFLECTION
             </div>
 
+
             <h2>
                 Listen differently.
             </h2>
+
 
             <div class="audio-description">
 
@@ -367,7 +488,7 @@ audio {
 
             <a
                 class="download"
-                href="reflection-8b-voice.mp3?v=1"
+                href="reflection-8b-voice.mp3"
                 download>
 
                 DOWNLOAD AUDIO
@@ -383,6 +504,7 @@ audio {
 
             </div>
 
+
         </div>
 
 
@@ -391,13 +513,20 @@ audio {
 
     <div class="bottom-nav">
 
+
         <a href="challenge.html">
+
             ← BACK TO THE CHALLENGE
+
         </a>
 
+
         <a href="8b.html">
+
             GROUP 8B →
+
         </a>
+
 
     </div>
 
@@ -410,6 +539,7 @@ audio {
 
 
 </div>
+
 
 </body>
 
