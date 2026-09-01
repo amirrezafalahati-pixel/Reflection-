@@ -1,218 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflection 08B</title>
 
-<title>Group 08B · Reflection Archive</title>
-
-<link rel="stylesheet" href="site.css">
-
+    <link rel="stylesheet" href="site.css">
 </head>
 
 <body>
 
 <main class="page">
 
-    <div class="kicker">
-        REFLECTION ARCHIVE · GROUP 08B
-    </div>
+    <header class="archive-header">
 
-    <h1 class="title">
-        One more layer.
-    </h1>
+        <div class="eyebrow">
+            Reflection Archive · Group 08B
+        </div>
 
-    <p class="subtitle">
-        This reflection is deliberately not presented all at once.
-        Follow the trail, question what you see,
-        and discover what lies beneath the first answer.
-    </p>
+        <h1>
+            One more layer.
+        </h1>
 
-    <div class="rule"></div>
+        <p class="subtitle">
+            This reflection does not reveal itself immediately.
+            Follow the trail before opening the final room.
+        </p>
+
+    </header>
 
 
     <div class="section-label">
-        FOLLOW THE TRAIL
+        The Trail
     </div>
 
 
-    <section class="cards">
+    <section class="archive-stack">
 
 
-        <a
-            class="card"
-            href="scenario.html"
-        >
+        <!-- STEP 01 -->
 
-            <div class="card-number">
-                01 · SCENARIO
+        <a href="scenario.html" class="archive-row">
+
+            <div class="row-number">
+                01
             </div>
 
-            <div class="card-title">
-                The Beginning
-            </div>
+            <div class="row-content">
 
-            <div class="card-description">
-                Before the reflection, there is a story.
-                Read carefully. Some details are not there by accident.
-            </div>
+                <h3>
+                    The Scenario
+                </h3>
 
-            <div class="meta-row">
-
-                <span class="meta">
-                    CLUES
-                </span>
-
-                <span class="meta">
-                    SCENARIO
-                </span>
+                <p>
+                    Enter the story. Read carefully.
+                    Some details are instructions.
+                </p>
 
             </div>
 
-            <div class="card-arrow">
-                →
+            <div class="row-action">
+                Open →
             </div>
 
         </a>
 
 
-        <a
-            class="card"
-            href="challenge.html"
-        >
+        <!-- STEP 02 -->
 
-            <div class="card-number">
-                02 · CHALLENGE
+        <a href="challenge.html" class="archive-row">
+
+            <div class="row-number">
+                02
             </div>
 
-            <div class="card-title">
-                The Hidden Layer
-            </div>
+            <div class="row-content">
 
-            <div class="card-description">
-                The first answer is only a direction.
-                Look back, reconsider what you have already seen,
-                and uncover the final entry.
-            </div>
+                <h3>
+                    The Challenge
+                </h3>
 
-            <div class="meta-row">
-
-                <span class="meta">
-                    ENIGMA
-                </span>
-
-                <span class="meta">
-                    ACCESS
-                </span>
+                <p>
+                    Follow what the scenario leaves behind.
+                </p>
 
             </div>
 
-            <div class="card-arrow">
-                →
+            <div class="row-action">
+                Continue →
             </div>
 
         </a>
+
 
     </section>
 
 
+    <div class="section-label">
+        Final Room
+    </div>
+
+
     <section
-        class="listening-card"
+        id="listeningCard"
+        class="listening-card locked"
     >
 
-        <a
-            id="listeningLink"
-            class="listening-link"
-            href="challenge.html"
-        ></a>
+        <div class="listening-head">
 
-
-        <div class="listening-content">
-
-            <div
-                class="icon-box"
-                id="listeningIcon"
-            >
-
-                <!-- LOCK -->
+            <div class="listening-icon" id="lockIcon">
 
                 <svg
-                    id="lockSvg"
                     viewBox="0 0 24 24"
-                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                 >
-
-                    <rect
-                        x="5"
-                        y="10"
-                        width="14"
-                        height="10"
-                        rx="1.5"
-                    />
-
-                    <path
-                        d="M8 10V7a4 4 0 0 1 8 0v3"
-                    />
-
+                    <rect x="5" y="10" width="14" height="10" rx="2"/>
+                    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
                 </svg>
 
             </div>
 
-
-            <div>
-
-                <div class="listening-title">
-                    Listening Archive
-                </div>
-
-                <div
-                    id="listeningStatus"
-                    class="listening-status"
-                >
-                    LISTENING ARCHIVE · LOCKED
-                </div>
-
-                <div
-                    id="listeningDescription"
-                    class="listening-description"
-                >
-                    Complete the challenge to enter
-                    the reflection archive.
-                </div>
-
+            <div class="status" id="archiveStatus">
+                Listening Archive · Locked
             </div>
+
+        </div>
+
+
+        <h2>
+            The Listening Archive
+        </h2>
+
+        <p id="archiveDescription">
+            The final reflection is waiting here.
+            Complete the challenge to enter.
+        </p>
+
+
+        <div class="actions">
+
+            <a
+                id="archiveButton"
+                href="challenge.html"
+                class="btn primary"
+            >
+                Solve the Challenge →
+            </a>
 
         </div>
 
     </section>
 
 
-    <div class="alternative">
+    <div class="section-label">
+        Alternate Route
+    </div>
 
-        <div class="alternative-label">
-            ALTERNATIVE ROUTE
+
+    <section class="direct-box">
+
+        <div class="warning-label">
+            Direct Access
         </div>
 
-        <a
-            class="secondary"
-            href="access-confirm.html"
-        >
-            DIRECT ACCESS →
-        </a>
+        <h2>
+            Already have access?
+        </h2>
 
-    </div>
+        <p>
+            You may enter the final room directly.
+            This route intentionally bypasses the scenario
+            and the discovery process.
+        </p>
+
+        <div class="actions">
+
+            <a
+                href="access-confirm.html"
+                class="btn secondary"
+            >
+                Enter Directly →
+            </a>
+
+        </div>
+
+    </section>
 
 
     <nav class="bottom-nav">
 
         <a href="index.html">
-            ← BACK TO ARCHIVE
+            ← Archive
         </a>
 
-        <span>
-            GROUP 08B · ACTIVE FILE
-        </span>
+        <a href="8a.html">
+            View 08A
+        </a>
 
     </nav>
 
@@ -222,77 +210,58 @@
 <script>
 
 const unlocked =
-    localStorage.getItem(
-        "reflection8bUnlocked"
-    ) === "true";
+    localStorage.getItem("reflection8bUnlocked") === "true";
 
+const card =
+    document.getElementById("listeningCard");
 
-const link =
-    document.getElementById(
-        "listeningLink"
-    );
-
-const icon =
-    document.getElementById(
-        "listeningIcon"
-    );
+const button =
+    document.getElementById("archiveButton");
 
 const status =
-    document.getElementById(
-        "listeningStatus"
-    );
+    document.getElementById("archiveStatus");
 
 const description =
-    document.getElementById(
-        "listeningDescription"
-    );
+    document.getElementById("archiveDescription");
+
+const icon =
+    document.getElementById("lockIcon");
 
 
-function setUnlocked(){
+if (unlocked) {
 
-    link.href =
-        "reflection-room.html";
-
+    card.classList.remove("locked");
 
     status.textContent =
-        "LISTENING ARCHIVE · UNLOCKED";
+        "Listening Archive · Unlocked";
 
+    status.classList.add("unlocked");
 
     description.textContent =
-        "The reflection is open. Read it and listen to it together.";
+        "The reflection is now open. Read the document and listen to the accompanying voice recording together.";
+
+    button.href =
+        "reflection-room.html";
+
+    button.textContent =
+        "Enter the Listening Archive →";
 
 
     icon.innerHTML = `
-
         <svg
             viewBox="0 0 24 24"
-            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
         >
-
-            <rect
-                x="5"
-                y="10"
-                width="14"
-                height="10"
-                rx="1.5"
-            />
-
-            <path
-                d="M8 10V7a4 4 0 0 1 7.3-2.2"
-            />
-
-            <path
-                d="M16 5l2 2-2 2"
-            />
-
+            <rect x="5" y="10" width="14" height="10" rx="2"/>
+            <path d="M8 10V7a4 4 0 0 1 8 0"/>
+            <path d="M9 15l2 2 4-4"/>
         </svg>
-
     `;
-}
 
-
-if(unlocked){
-    setUnlocked();
 }
 
 </script>
