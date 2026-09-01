@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Group 8B</title>
+<title>Reflection 8B</title>
 
 <style>
 *{
@@ -16,333 +15,326 @@ body{
     margin:0;
     min-height:100vh;
     background:
-        radial-gradient(circle at 50% 15%,#20252b,#090b0e 68%);
-    color:#e7e4dc;
-    font-family:Georgia,serif;
-    padding:30px 18px;
+        radial-gradient(circle at top,#222 0%,#111 50%,#070707 100%);
+    color:#eee;
+    font-family:Georgia,"Times New Roman",serif;
 }
 
-.container{
-    width:100%;
-    max-width:900px;
+.page{
+    width:min(1050px,92%);
     margin:auto;
+    padding:55px 0 70px;
 }
 
-.back{
-    color:#646a70;
-    text-decoration:none;
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:2px;
-}
-
-.header{
+header{
     text-align:center;
-    padding:60px 0 45px;
+    margin-bottom:55px;
 }
 
-.label{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:5px;
-    color:#666c71;
+.eyebrow{
+    color:#777;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.75rem;
 }
 
 h1{
-    margin:18px 0 15px;
-    font-size:clamp(46px,9vw,76px);
     font-weight:normal;
-    letter-spacing:7px;
+    letter-spacing:.05em;
+    margin:14px 0;
+    font-size:clamp(2rem,5vw,3.5rem);
 }
 
-.quote{
-    max-width:600px;
-    margin:auto;
-    color:#989994;
-    font-style:italic;
-    line-height:1.9;
+.subtitle{
+    color:#aaa;
+    line-height:1.8;
+    max-width:650px;
+    margin:15px auto 0;
 }
 
 .line{
-    width:55px;
+    width:80px;
     height:1px;
-    background:#464b50;
-    margin:30px auto;
+    background:#555;
+    margin:25px auto;
 }
 
-.options{
+.grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
 }
 
 .card{
-    min-height:210px;
-    border:1px solid #3b4045;
+    position:relative;
+    min-height:245px;
+    padding:32px;
+    border:1px solid rgba(255,255,255,.11);
     background:rgba(255,255,255,.025);
-    padding:30px 25px;
-    text-decoration:none;
-    color:#e5e2da;
-    transition:.35s;
+    transition:.25s ease;
+    overflow:hidden;
 }
 
 .card:hover{
-    transform:translateY(-5px);
-    border-color:#70757a;
-    background:rgba(255,255,255,.045);
-}
-
-.card-label{
-    font-family:Arial,sans-serif;
-    font-size:8px;
-    letter-spacing:4px;
-    color:#676d72;
+    border-color:rgba(255,255,255,.38);
+    transform:translateY(-3px);
 }
 
 .card h2{
-    margin:18px 0 12px;
-    font-size:27px;
+    margin:0 0 15px;
     font-weight:normal;
-    letter-spacing:2px;
+    font-size:1.55rem;
 }
 
 .card p{
-    margin:0;
-    color:#858883;
-    font-style:italic;
-    line-height:1.7;
+    color:#aaa;
+    line-height:1.85;
 }
 
-.arrow{
-    display:block;
-    margin-top:22px;
-    font-family:Arial,sans-serif;
-    font-size:8px;
-    letter-spacing:3px;
-    color:#74797e;
+.full-link{
+    position:absolute;
+    inset:0;
+    z-index:1;
 }
 
-.audio-section{
-    margin-top:25px;
-    padding:25px;
-    border:1px solid #30353a;
-    background:rgba(255,255,255,.018);
+.card-content{
+    position:relative;
+    z-index:2;
+    pointer-events:none;
 }
 
-.audio-label{
-    font-family:Arial,sans-serif;
-    font-size:8px;
-    letter-spacing:4px;
-    color:#62686d;
+.tag{
+    display:inline-block;
+    margin-top:15px;
+    color:#d6d6d6;
+    font-size:.85rem;
+    letter-spacing:.08em;
 }
 
-.audio-section h2{
-    margin:12px 0;
-    font-size:22px;
-    font-weight:normal;
-}
-
-.audio-section p{
-    color:#858883;
-    font-style:italic;
-    line-height:1.7;
+.challenge{
+    background:
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.07),transparent 35%),
+        rgba(255,255,255,.025);
 }
 
 .locked{
-    opacity:.48;
-    position:relative;
+    cursor:pointer;
 }
 
 .lock-icon{
-    font-size:26px;
-    margin-bottom:10px;
-    opacity:.8;
+    font-size:3rem;
+    margin-bottom:15px;
+    filter:grayscale(1);
 }
 
-.audio-locked-note{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:2px;
-    color:#686e73;
-    margin-top:15px;
+.locked::after{
+    content:"LOCKED";
+    position:absolute;
+    top:18px;
+    right:18px;
+    font-size:.68rem;
+    letter-spacing:.18em;
+    color:#777;
+    border:1px solid rgba(255,255,255,.12);
+    padding:6px 9px;
 }
 
-.alternative{
-    margin-top:42px;
+.unlocked::after{
+    content:"UNLOCKED";
+    position:absolute;
+    top:18px;
+    right:18px;
+    font-size:.68rem;
+    letter-spacing:.18em;
+    color:#a7a7a7;
+    border:1px solid rgba(255,255,255,.22);
+    padding:6px 9px;
+}
+
+.direct-note{
+    grid-column:1/-1;
     text-align:center;
+    padding:10px 15px 0;
 }
 
-.alternative a{
-    color:#60666b;
+.direct-link{
+    display:inline-flex;
+    min-height:48px;
+    align-items:center;
+    justify-content:center;
+    padding:12px 25px;
+    color:#aaa;
     text-decoration:none;
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:3px;
-    transition:.3s;
+    border:1px solid rgba(255,255,255,.12);
+    transition:.25s;
 }
 
-.alternative a:hover{
-    color:#b0b2b2;
+.direct-link:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,.4);
+    background:rgba(255,255,255,.04);
 }
 
-.footer{
-    text-align:center;
+.back{
     margin-top:45px;
-    color:#454b50;
-    font-family:Arial,sans-serif;
-    font-size:8px;
-    letter-spacing:3px;
+    text-align:center;
+}
+
+.back a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:46px;
+    padding:10px 22px;
+    text-decoration:none;
+    color:#aaa;
+    border:1px solid rgba(255,255,255,.12);
+    transition:.25s;
+}
+
+.back a:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,.4);
+    background:rgba(255,255,255,.04);
 }
 
 @media(max-width:700px){
-
-    .options{
+    .grid{
         grid-template-columns:1fr;
+    }
+
+    .direct-note{
+        grid-column:auto;
+    }
+
+    .card{
+        min-height:220px;
     }
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-<a href="index.html" class="back">
-← REFLECTION ARCHIVE
-</a>
+<header>
+<div class="eyebrow">Reflection Archive</div>
 
-<div class="header">
-
-<div class="label">
-FILE 08B
-</div>
-
-<h1>GROUP 8B</h1>
-
-<div class="quote">
-“What you see is not necessarily the whole truth.”
-</div>
+<h1>Reflection 8B</h1>
 
 <div class="line"></div>
 
-</div>
+<p class="subtitle">
+Not every path begins with an answer.
+Some begin with a question —
+and some answers only appear after looking back.
+</p>
+</header>
 
-<div class="options">
+<section class="grid">
 
-<a href="scenario.html" class="card">
+<article class="card">
+<a class="full-link" href="scenario.html" aria-label="Open Scenario"></a>
 
-<div class="card-label">
-THE BEGINNING
-</div>
-
-<h2>THE SCENARIO</h2>
+<div class="card-content">
+<h2>The Scenario</h2>
 
 <p>
-Read what came before.
-Some answers are hidden
-inside the story.
+Before the reflection, there is a scene.
+Four voices. One machine.
+A question that refuses to disappear.
 </p>
 
-<span class="arrow">
-ENTER →
-</span>
-
-</a>
-
-
-<a href="challenge.html" class="card">
-
-<div class="card-label">
-THE HIDDEN PATH
+<span class="tag">BEGIN HERE →</span>
 </div>
+</article>
 
-<h2>THE CHALLENGE</h2>
+
+<article class="card challenge">
+<a class="full-link" href="challenge.html" aria-label="Open Challenge"></a>
+
+<div class="card-content">
+<h2>The Challenge</h2>
 
 <p>
-Follow the clues.
-Not everything revealed
-is the final answer.
+The story left more than one trace behind.
+Some things are written to be read.
+Others are written to be noticed.
 </p>
 
-<span class="arrow">
-ENTER →
-</span>
-
-</a>
-
+<span class="tag">FOLLOW THE CLUES →</span>
 </div>
+</article>
 
 
-<div class="audio-section locked" id="lockedAudio">
+<article class="card locked" id="voiceCard">
 
-<div class="audio-label">
-LISTENING ARCHIVE
-</div>
+<div class="card-content">
+<div class="lock-icon" id="lockIcon">🔒</div>
 
-<div class="lock-icon">
-⌾
-</div>
+<h2>Listening Archive</h2>
 
-<h2>THE VOICE OF THE REFLECTION</h2>
-
-<p>
-Some things are heard differently
-after the hidden path has been crossed.
+<p id="voiceText">
+A voice remains behind the reflection.
+For now, it waits.
 </p>
 
-<div class="audio-locked-note">
-LOCKED · COMPLETE THE EXPERIENCE TO UNLOCK
+<span class="tag" id="voiceTag">LOCKED UNTIL ACCESS IS GRANTED</span>
 </div>
+</article>
 
-</div>
+</section>
 
 
-<div class="audio-section" id="unlockedAudio" style="display:none;">
+<div class="direct-note">
 
-<div class="audio-label">
-LISTENING ARCHIVE
-</div>
-
-<h2>THE VOICE OF THE REFLECTION</h2>
-
-<p>
-The reflection can now be experienced
-through another voice.
+<p style="color:#777;line-height:1.8;">
+If time is limited or you prefer not to follow the challenge,
+another route remains available.
 </p>
 
-<a href="reflection-room.html" class="arrow">
-OPEN LISTENING ROOM →
+<a class="direct-link" href="access-confirm.html">
+A DIFFERENT WAY FORWARD →
 </a>
 
 </div>
 
 
-<div class="alternative">
-
-<a href="access.html">
-A DIFFERENT WAY THROUGH
-</a>
-
-</div>
-
-
-<div class="footer">
-READ · QUESTION · RETHINK
+<div class="back">
+<a href="index.html">← Back to Archive</a>
 </div>
 
 </div>
+
 
 <script>
+const unlocked = localStorage.getItem('reflection8bUnlocked') === 'true';
 
-if(
-    sessionStorage.getItem("reflection8bUnlocked") === "true" ||
-    localStorage.getItem("reflection8bUnlocked") === "true"
-){
-    document.getElementById("lockedAudio").style.display="none";
-    document.getElementById("unlockedAudio").style.display="block";
+const voiceCard = document.getElementById('voiceCard');
+const voiceText = document.getElementById('voiceText');
+const voiceTag = document.getElementById('voiceTag');
+const lockIcon = document.getElementById('lockIcon');
+
+if(unlocked){
+    voiceCard.classList.remove('locked');
+    voiceCard.classList.add('unlocked');
+
+    lockIcon.textContent = '🔓';
+
+    voiceText.textContent =
+        'The written reflection can now be heard in another form.';
+
+    voiceTag.textContent = 'OPEN LISTENING ARCHIVE →';
+
+    voiceCard.addEventListener('click',()=>{
+        window.location.href='reflection-room.html';
+    });
+}else{
+    voiceCard.addEventListener('click',()=>{
+        alert('This archive is still locked. Complete the challenge or choose direct access first.');
+    });
 }
-
 </script>
 
 </body>
