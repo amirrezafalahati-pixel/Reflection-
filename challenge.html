@@ -1,69 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Challenge · Group 08B</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="site.css">
+    <title>Challenge · Reflection 08B</title>
+
+    <link rel="stylesheet" href="site.css">
 
 </head>
 
+
 <body>
+
 
 <main class="page-narrow">
 
-
-    <section id="challengePage">
-
-        <div class="kicker">
-            REFLECTION 08B · FOLLOW THE TRAIL
-        </div>
-
-        <h1 class="title">
-            The Hidden Layer.
-        </h1>
-
-        <p class="subtitle">
-            You have followed the story this far.
-            But the first answer is only a direction.
-            Something you have already seen is waiting
-            to be reconsidered.
-        </p>
-
-        <div class="rule"></div>
+    <div class="challenge-shell">
 
 
-        <div class="challenge">
+        <header class="archive-header">
 
-            <div class="challenge-label">
-                FINAL ENTRY
+            <div class="eyebrow">
+                Reflection 08B · Follow the Trail
             </div>
 
-            <div class="question">
-                What is the password?
-            </div>
+            <h1>
+                Look back.
+            </h1>
 
+            <p class="subtitle">
+                The message you found is not the final answer.
+                It is an instruction.
+            </p>
+
+        </header>
+
+
+        <section class="challenge-box">
+
+            <label for="answer">
+                Enter the final password
+            </label>
 
             <input
                 id="answer"
-                class="input"
+                class="challenge-input"
                 type="text"
                 autocomplete="off"
                 spellcheck="false"
-                placeholder="Enter the answer..."
+                placeholder="type the answer here..."
             >
 
 
-            <button
-                id="verify"
-                class="verify"
-                onclick="checkAnswer()"
-            >
-                VERIFY ANSWER
-            </button>
+            <div class="challenge-actions">
+
+                <button
+                    id="verify"
+                    class="btn primary"
+                >
+                    Verify →
+                </button>
+
+                <a
+                    href="scenario.html"
+                    class="btn secondary"
+                >
+                    Revisit Scenario
+                </a>
+
+            </div>
 
 
             <div
@@ -71,111 +83,79 @@
                 class="message"
             ></div>
 
-
-            <div
-                id="hint"
-                class="hint"
-            ></div>
+        </section>
 
 
-            <div class="help">
+        <section
+            id="hintArea"
+            class="hint-area"
+        >
 
-                <button
-                    id="helpButton"
-                    class="help-button"
-                    onclick="showHelp()"
-                >
-                    NEED SOME HELP?
-                </button>
-
-                <div
-                    id="helpText"
-                    class="help-text"
-                ></div>
-
+            <div class="section-label">
+                Automatic Hints
             </div>
 
-        </div>
+        </section>
+
+
+        <section class="help-box">
+
+            <button id="helpButton">
+                Need Some Help?
+            </button>
+
+            <div id="helpArea"></div>
+
+        </section>
 
 
         <nav class="bottom-nav">
 
             <a href="8b.html">
-                ← BACK TO GROUP 08B
+                ← Group 08B
             </a>
 
-            <span>
-                FILE · 08B
-            </span>
+            <a href="scenario.html">
+                ← Scenario
+            </a>
 
         </nav>
 
-    </section>
-
-
-    <section
-        id="successPage"
-        class="success"
-    >
-
-        <div class="success-inner">
-
-            <div class="success-icon">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-
-                    <path d="M5 12.5l4 4 10-10"/>
-
-                </svg>
-
-            </div>
-
-
-            <div class="success-label">
-                ACCESS GRANTED
-            </div>
-
-
-            <h2 class="success-title">
-                You found what was hidden.
-            </h2>
-
-
-            <p class="success-description">
-                The trail is complete.
-                What was encrypted can now be read —
-                and heard.
-            </p>
-
-
-            <a
-                class="primary"
-                href="reflection-room.html"
-            >
-                ENTER THE LISTENING ARCHIVE →
-            </a>
-
-        </div>
-
-    </section>
+    </div>
 
 </main>
 
 
 <script>
 
-const PASSWORD =
+const FINAL_PASSWORD =
     "understanding is not the final stop";
 
+
+const answerInput =
+    document.getElementById("answer");
+
+const verifyButton =
+    document.getElementById("verify");
+
+const message =
+    document.getElementById("message");
+
+const hintArea =
+    document.getElementById("hintArea");
+
+const helpButton =
+    document.getElementById("helpButton");
+
+const helpArea =
+    document.getElementById("helpArea");
+
+
 let attempts = 0;
+let helpIndex = 0;
 
-let helpStep = 0;
 
-
-const autoHints = [
+const automaticHints = [
 
     "The answer is not the rune message itself. The rune message points somewhere else.",
 
@@ -192,7 +172,7 @@ const autoHints = [
 ];
 
 
-const helpMessages = [
+const progressiveHelp = [
 
     "Return to the scenario. The clues are part of the story, not separate from it.",
 
@@ -209,154 +189,237 @@ const helpMessages = [
 ];
 
 
-function checkAnswer(){
+function normalize(value) {
 
-    const input =
-        document.getElementById("answer");
+    return value
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ");
 
-    const message =
-        document.getElementById("message");
+}
+
+
+function showHint() {
+
+    const index =
+        Math.min(
+            attempts - 1,
+            automaticHints.length - 1
+        );
+
+    if (index < 0) {
+        return;
+    }
+
+    const existing =
+        document.getElementById("hint-" + index);
+
+    if (existing) {
+        return;
+    }
 
     const hint =
-        document.getElementById("hint");
+        document.createElement("div");
 
+    hint.className = "hint";
+    hint.id = "hint-" + index;
+
+    hint.textContent =
+        automaticHints[index];
+
+    hintArea.appendChild(hint);
+
+}
+
+
+function showHelp() {
+
+    if (
+        helpIndex >= progressiveHelp.length
+    ) {
+        helpButton.disabled = true;
+        helpButton.textContent =
+            "No More Help Available";
+        return;
+    }
+
+
+    const help =
+        document.createElement("div");
+
+    help.className = "hint";
+
+    help.textContent =
+        progressiveHelp[helpIndex];
+
+    helpArea.appendChild(help);
+
+    helpIndex++;
+
+
+    if (
+        helpIndex < progressiveHelp.length
+    ) {
+
+        helpButton.textContent =
+            "Need More Help?";
+
+    } else {
+
+        helpButton.disabled = true;
+
+        helpButton.textContent =
+            "No More Help Available";
+
+    }
+
+}
+
+
+function grantAccess() {
+
+    localStorage.setItem(
+        "reflection8bUnlocked",
+        "true"
+    );
+
+    document.body.innerHTML = `
+
+        <main class="page">
+
+            <section class="success-screen">
+
+                <div class="success-inner">
+
+                    <div class="success-mark">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path
+                                d="M5 12.5l4 4L19 7"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="eyebrow">
+                        Reflection 08B · Access
+                    </div>
+
+
+                    <h1>
+                        Access Granted.
+                    </h1>
+
+
+                    <p>
+                        You found the password.
+                        The final reflection is now available.
+                    </p>
+
+
+                    <a
+                        href="reflection-room.html"
+                        class="btn primary"
+                    >
+                        Enter the Listening Archive →
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    `;
+
+}
+
+
+function verify() {
 
     const value =
-        input.value
-        .trim()
-        .toLowerCase();
+        normalize(answerInput.value);
+
+
+    if (!value) {
+
+        message.className =
+            "message error";
+
+        message.textContent =
+            "Enter the password first.";
+
+        return;
+
+    }
+
+
+    if (value === FINAL_PASSWORD) {
+
+        message.className =
+            "message success";
+
+        message.textContent =
+            "Correct.";
+
+        setTimeout(
+            grantAccess,
+            450
+        );
+
+        return;
+
+    }
 
 
     attempts++;
 
-
-    if(value === PASSWORD){
-
-        localStorage.setItem(
-            "reflection8bUnlocked",
-            "true"
-        );
-
-
-        document.getElementById(
-            "challengePage"
-        ).style.display =
-            "none";
-
-
-        document.getElementById(
-            "successPage"
-        ).style.display =
-            "flex";
-
-
-        return;
-    }
-
+    message.className =
+        "message error";
 
     message.textContent =
-        "Not quite. The trail continues.";
+        "Not quite. Look carefully at what you have already seen.";
 
-
-    hint.style.display =
-        "block";
-
-
-    let index = 0;
-
-
-    if(attempts >= 15){
-
-        index = 5;
-
-    }else if(attempts >= 10){
-
-        index = 4;
-
-    }else if(attempts >= 7){
-
-        index = 3;
-
-    }else if(attempts >= 4){
-
-        index = 2;
-
-    }else if(attempts >= 2){
-
-        index = 1;
-
-    }
-
-
-    hint.textContent =
-        autoHints[index];
+    showHint();
 
 }
 
 
-function showHelp(){
-
-    const text =
-        document.getElementById("helpText");
-
-    const button =
-        document.getElementById("helpButton");
+verifyButton.addEventListener(
+    "click",
+    verify
+);
 
 
-    if(helpStep >= helpMessages.length){
-        return;
-    }
+answerInput.addEventListener(
+    "keydown",
+    function(event) {
 
-
-    text.style.display =
-        "block";
-
-
-    text.textContent =
-        helpMessages[helpStep];
-
-
-    helpStep++;
-
-
-    if(helpStep < helpMessages.length){
-
-        button.textContent =
-            "NEED MORE HELP?";
-
-    }else{
-
-        button.textContent =
-            "ALL HINTS REVEALED";
-
-        button.disabled =
-            true;
-
-        button.style.opacity =
-            ".4";
-
-        button.style.cursor =
-            "default";
-
-    }
-
-}
-
-
-document
-    .getElementById("answer")
-    .addEventListener(
-        "keydown",
-        function(event){
-
-            if(event.key === "Enter"){
-                checkAnswer();
-            }
-
+        if (event.key === "Enter") {
+            verify();
         }
-    );
+
+    }
+);
+
+
+helpButton.addEventListener(
+    "click",
+    showHelp
+);
 
 </script>
+
 
 </body>
 </html>
