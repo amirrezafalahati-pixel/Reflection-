@@ -7,440 +7,21 @@
 
 <title>Listening Archive · Group 08B</title>
 
-<style>
-
-:root{
-    --bg:#11110f;
-    --panel:#191916;
-    --panel2:#1d1d19;
-
-    --line:#353530;
-    --line-soft:#292925;
-
-    --text:#eeeae1;
-    --muted:#aaa79e;
-    --dim:#77756d;
-
-    --accent:#d6d0c2;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    min-height:100vh;
-
-    background:
-        radial-gradient(circle at 50% -10%, #282824 0%, transparent 38%),
-        linear-gradient(180deg,#11110f,#0e0e0c);
-
-    color:var(--text);
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.035;
-
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 3px,
-            rgba(255,255,255,.4) 4px
-        );
-}
-
-.page{
-    width:min(1380px,94%);
-    margin:auto;
-
-    padding:52px 0 42px;
-}
-
-
-/* ---------- HEADER ---------- */
-
-.top-label{
-    font-size:10px;
-    letter-spacing:4px;
-    color:var(--dim);
-}
-
-h1{
-    margin:18px 0 10px;
-
-    font-family:Georgia,"Times New Roman",serif;
-    font-weight:normal;
-
-    font-size:clamp(40px,6vw,66px);
-}
-
-.subtitle{
-    max-width:720px;
-
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.8;
-}
-
-.header-line{
-    height:1px;
-    background:var(--line);
-
-    margin:38px 0 28px;
-}
-
-
-/* ---------- MAIN READING AREA ---------- */
-
-.reading-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        310px;
-
-    gap:22px;
-
-    align-items:start;
-}
-
-
-/* ---------- PDF ---------- */
-
-.pdf-panel{
-
-    border:1px solid var(--line);
-    background:#0b0b0a;
-
-    overflow:hidden;
-}
-
-.panel-head{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:15px 18px;
-
-    border-bottom:1px solid var(--line);
-
-    background:var(--panel);
-}
-
-.panel-title{
-
-    font-size:10px;
-    letter-spacing:3px;
-    color:var(--muted);
-}
-
-.panel-meta{
-
-    font-size:9px;
-    letter-spacing:2px;
-    color:var(--dim);
-}
-
-.pdf-frame{
-
-    width:100%;
-    height:calc(100vh - 210px);
-
-    min-height:650px;
-
-    border:0;
-    display:block;
-
-    background:#fff;
-}
-
-
-/* ---------- AUDIO ---------- */
-
-.audio-column{
-    position:sticky;
-    top:24px;
-}
-
-.audio-panel{
-
-    border:1px solid var(--line);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
-
-    padding:26px;
-}
-
-.audio-symbol{
-
-    width:58px;
-    height:58px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:1px solid var(--line);
-
-    font-size:22px;
-
-    margin-bottom:24px;
-}
-
-.audio-label{
-
-    font-size:10px;
-    letter-spacing:3px;
-    color:var(--dim);
-}
-
-.audio-title{
-
-    margin-top:13px;
-
-    font-family:Georgia,"Times New Roman",serif;
-
-    font-size:29px;
-    line-height:1.25;
-}
-
-.audio-description{
-
-    margin-top:13px;
-
-    color:var(--muted);
-
-    font-size:12px;
-    line-height:1.8;
-}
-
-audio{
-
-    width:100%;
-    margin-top:25px;
-}
-
-.audio-tip{
-
-    margin-top:20px;
-
-    padding-top:20px;
-
-    border-top:1px solid var(--line-soft);
-
-    color:var(--dim);
-
-    font-size:11px;
-    line-height:1.7;
-}
-
-.download{
-
-    display:block;
-
-    margin-top:18px;
-
-    padding:14px;
-
-    text-align:center;
-
-    border:1px solid var(--line);
-
-    color:var(--muted);
-
-    text-decoration:none;
-
-    font-size:9px;
-    letter-spacing:2px;
-
-    transition:.25s;
-}
-
-.download:hover{
-
-    color:var(--text);
-    border-color:#66645d;
-}
-
-
-/* ---------- FOOTER ---------- */
-
-.bottom-nav{
-
-    margin-top:30px;
-
-    padding-top:22px;
-
-    border-top:1px solid var(--line-soft);
-
-    display:flex;
-    justify-content:space-between;
-}
-
-.bottom-nav a{
-
-    color:var(--muted);
-
-    text-decoration:none;
-
-    font-size:10px;
-    letter-spacing:2px;
-
-    transition:.2s;
-}
-
-.bottom-nav a:hover{
-    color:var(--text);
-}
-
-
-/* ---------- LOCK SCREEN ---------- */
-
-.lock-screen{
-
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    width:min(650px,92%);
-    margin:auto;
-}
-
-.lock-inner{
-    width:100%;
-}
-
-.lock-icon{
-    font-size:48px;
-    margin-bottom:28px;
-}
-
-.lock-label{
-    font-size:10px;
-    letter-spacing:4px;
-    color:var(--dim);
-}
-
-.lock-screen h2{
-
-    margin:18px 0;
-
-    font-family:Georgia,"Times New Roman",serif;
-
-    font-size:52px;
-    font-weight:normal;
-}
-
-.lock-screen p{
-
-    color:var(--muted);
-
-    font-size:14px;
-    line-height:1.8;
-}
-
-.lock-button{
-
-    display:block;
-
-    margin-top:30px;
-
-    padding:17px;
-
-    border:1px solid var(--line);
-
-    color:var(--muted);
-
-    text-decoration:none;
-
-    font-size:10px;
-    letter-spacing:3px;
-}
-
-
-/* ---------- MOBILE ---------- */
-
-@media(max-width:900px){
-
-    .reading-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .audio-column{
-
-        position:relative;
-        top:auto;
-        order:-1;
-    }
-
-    .pdf-frame{
-
-        height:75vh;
-        min-height:550px;
-    }
-
-    .audio-panel{
-
-        padding:22px;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .page{
-        width:94%;
-        padding-top:36px;
-    }
-
-    .pdf-frame{
-        height:70vh;
-        min-height:500px;
-    }
-
-    .bottom-nav{
-        flex-direction:column;
-        gap:18px;
-    }
-
-}
-
-</style>
+<link rel="stylesheet" href="site.css">
 
 </head>
 
-
 <body>
 
-<div id="lockedScreen" class="lock-screen">
 
-    <div class="lock-inner">
+<div
+    id="lockedScreen"
+    class="lock-screen"
+>
 
-        <div class="lock-icon">
+    <div>
+
+        <div class="lock-symbol">
             🔒
         </div>
 
@@ -448,9 +29,11 @@ audio{
             REFLECTION 08B
         </div>
 
-        <h2>Reflection Locked</h2>
+        <h1 class="lock-title">
+            Reflection Locked.
+        </h1>
 
-        <p>
+        <p class="lock-description">
             This archive is part of the discovery path.
             Complete the challenge before entering it.
         </p>
@@ -469,54 +52,52 @@ audio{
 
 <main
     id="reflectionContent"
-    class="page"
+    class="wide-page"
     style="display:none;"
 >
 
-    <div class="top-label">
+    <div class="archive-kicker">
         REFLECTION 08B · LISTENING ARCHIVE
     </div>
 
-    <h1>The Reflection Room</h1>
+    <h1 class="archive-title">
+        The Reflection Room.
+    </h1>
 
-    <p class="subtitle">
+    <p class="archive-subtitle">
         Read it. Listen to it. Rethink it.
         The written reflection and its voice are presented together
         so the argument can be followed without leaving the page.
     </p>
 
-    <div class="header-line"></div>
+    <div class="archive-line"></div>
 
 
     <section class="reading-grid">
 
 
-        <!-- PDF -->
+        <div class="document-panel">
 
-        <div class="pdf-panel">
+            <div class="document-header">
 
-            <div class="panel-head">
-
-                <div class="panel-title">
+                <div class="document-header-title">
                     MAIN REFLECTION
                 </div>
 
-                <div class="panel-meta">
+                <div class="document-header-meta">
                     GROUP 08B · PDF
                 </div>
 
             </div>
 
             <iframe
-                class="pdf-frame"
+                class="document-frame"
                 src="Main%20Reflection%208b%20Open.pdf"
                 title="Group 08B Main Reflection"
             ></iframe>
 
         </div>
 
-
-        <!-- AUDIO -->
 
         <aside class="audio-column">
 
@@ -536,29 +117,35 @@ audio{
 
                 <div class="audio-description">
                     The reflection is available as a voice recording.
-                    Keep this panel open while reading the PDF beside it.
+                    Keep this panel beside the document and follow
+                    the written reflection while listening.
                 </div>
 
                 <audio
+                    class="audio-player"
                     controls
                     preload="metadata"
                 >
+
                     <source
-                        src="reflection-8b-voice.mp3?v=3"
+                        src="reflection-8b-voice.mp3?v=4"
                         type="audio/mpeg"
                     >
 
                     Your browser does not support audio playback.
+
                 </audio>
 
-                <div class="audio-tip">
+
+                <div class="audio-note">
                     Recommended:
-                    start the recording, then read the reflection
+                    start the recording and read the reflection
                     alongside it.
                 </div>
 
+
                 <a
-                    class="download"
+                    class="download-button"
                     href="reflection-8b-voice.mp3"
                     download
                 >
@@ -589,16 +176,13 @@ audio{
 
 <script>
 
-function unlock(){
-
-    return localStorage.getItem(
+const unlocked =
+    localStorage.getItem(
         "reflection8bUnlocked"
     ) === "true";
 
-}
 
-
-if(unlock()){
+if(unlocked){
 
     document.getElementById(
         "lockedScreen"
