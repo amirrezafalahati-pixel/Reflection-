@@ -1,188 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Reflection Archive</title>
 
-<style>
-*{
-    box-sizing:border-box;
-}
+<link rel="stylesheet" href="site.css">
 
-body{
-    margin:0;
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 50% 8%,#20252b 0%,#0a0c0f 60%,#050607 100%);
-    color:#e7e4dc;
-    font-family:Georgia,"Times New Roman",serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:30px 18px;
-}
-
-.container{
-    width:100%;
-    max-width:1000px;
-    text-align:center;
-}
-
-.label{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:6px;
-    color:#646a70;
-    margin-bottom:25px;
-}
-
-h1{
-    font-size:clamp(44px,9vw,78px);
-    font-weight:normal;
-    letter-spacing:7px;
-    margin:0;
-}
-
-.intro{
-    max-width:600px;
-    margin:25px auto 55px;
-    color:#92948f;
-    font-style:italic;
-    line-height:1.9;
-}
-
-.groups{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-}
-
-.card{
-    border:1px solid #3d4247;
-    background:rgba(255,255,255,.025);
-    padding:45px 25px;
-    text-decoration:none;
-    color:#e4e1d9;
-    transition:.35s ease;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#73787d;
-    background:rgba(255,255,255,.045);
-}
-
-.card-label{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:4px;
-    color:#686e73;
-}
-
-.card h2{
-    font-size:34px;
-    font-weight:normal;
-    letter-spacing:4px;
-    margin:18px 0 12px;
-}
-
-.card p{
-    color:#858883;
-    font-style:italic;
-    line-height:1.7;
-    margin:0;
-}
-
-.arrow{
-    display:block;
-    margin-top:28px;
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:3px;
-    color:#71767b;
-}
-
-.footer{
-    margin-top:55px;
-    color:#474d52;
-    font-family:Arial,sans-serif;
-    font-size:8px;
-    letter-spacing:4px;
-}
-
-@media(max-width:700px){
-    .groups{
-        grid-template-columns:1fr;
-    }
-}
-</style>
 </head>
 
 <body>
 
-<div class="container">
+<main class="archive-page">
 
-<div class="label">
-REFLECTION ARCHIVE
-</div>
+    <div class="archive-kicker">
+        ACADEMIC REFLECTION · ARCHIVE
+    </div>
 
-<h1>TWO PERSPECTIVES</h1>
+    <h1 class="archive-title">
+        Two Perspectives.
+    </h1>
 
-<div class="intro">
-Two reflections.<br>
-Two ways of seeing.<br>
-One archive.
-</div>
+    <p class="archive-subtitle">
+        Two reflections. Two ways of looking.
+        One archive built around a simple question:
+        how much of what we see is actually the whole truth?
+    </p>
 
-<div class="groups">
-
-<a href="8a.html" class="card">
-
-<div class="card-label">
-GROUP 08A
-</div>
-
-<h2>8A</h2>
-
-<p>
-A reflection in its own voice.
-</p>
-
-<span class="arrow">
-ENTER →
-</span>
-
-</a>
+    <div class="archive-line"></div>
 
 
-<a href="8b.html" class="card">
+    <div class="section-label">
+        REFLECTION FILES
+    </div>
 
-<div class="card-label">
-GROUP 08B
-</div>
 
-<h2>8B</h2>
+    <section class="archive-grid">
 
-<p>
-A reflection with a story,
-a hidden path, and something to discover.
-</p>
 
-<span class="arrow">
-ENTER →
-</span>
+        <a
+            class="archive-card"
+            href="8a.html"
+        >
 
-</a>
+            <div class="archive-number">
+                GROUP · 08A
+            </div>
 
-</div>
+            <div class="archive-card-title">
+                Perspective A
+            </div>
 
-<div class="footer">
-READ · QUESTION · RETHINK
-</div>
+            <div class="archive-card-description">
+                Open the reflection and enter the first
+                perspective of the archive.
+            </div>
 
-</div>
+            <div class="meta-row">
+                <span class="meta">
+                    REFLECTION
+                </span>
+
+                <span class="meta">
+                    PDF
+                </span>
+            </div>
+
+            <div class="archive-arrow">
+                →
+            </div>
+
+        </a>
+
+
+        <a
+            class="archive-card"
+            href="8b.html"
+        >
+
+            <div class="archive-number">
+                GROUP · 08B
+            </div>
+
+            <div class="archive-card-title">
+                Perspective B
+            </div>
+
+            <div class="archive-card-description">
+                This file is not revealed at once.
+                Follow the clues before entering the reflection.
+            </div>
+
+            <div class="meta-row">
+                <span class="meta">
+                    PUZZLE
+                </span>
+
+                <span class="meta">
+                    REFLECTION
+                </span>
+            </div>
+
+            <div class="archive-arrow">
+                →
+            </div>
+
+        </a>
+
+    </section>
+
+
+    <div class="bottom-nav">
+
+        <span>
+            REFLECTION ARCHIVE
+        </span>
+
+        <span>
+            08A · 08B
+        </span>
+
+    </div>
+
+</main>
 
 </body>
 </html>
