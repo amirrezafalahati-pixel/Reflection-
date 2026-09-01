@@ -1,711 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Group 8B · Reflection</title>
+<title>Reflection 8B</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
 
 body{
-
     margin:0;
-
     min-height:100vh;
-
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            #22272d 0%,
-            #0b0d10 58%,
-            #050608 100%
-        );
-
-    color:#e8e5dc;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    padding:30px 18px;
-
+        radial-gradient(circle at top,#222 0%,#111 50%,#070707 100%);
+    color:#eee;
+    font-family:Georgia,"Times New Roman",serif;
 }
 
-.container{
-
-    width:100%;
-
-    max-width:1000px;
-
+.page{
+    width:min(1050px,92%);
     margin:auto;
-
+    padding:55px 0 70px;
 }
 
-
-/* NAV */
-
-.nav{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:15px;
-
-}
-
-.nav a{
-
-    color:#666c71;
-
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    transition:.3s;
-
-}
-
-.nav a:hover{
-
-    color:#ddd9d0;
-
-}
-
-
-/* HEADER */
-
-.header{
-
+header{
     text-align:center;
-
-    padding:70px 0 55px;
-
+    margin-bottom:55px;
 }
 
-.label{
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:5px;
-
-    color:#6d7277;
-
+.eyebrow{
+    color:#777;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.75rem;
 }
 
 h1{
-
-    margin:18px 0 15px;
-
-    font-size:clamp(45px,9vw,78px);
-
     font-weight:normal;
-
-    letter-spacing:7px;
-
+    letter-spacing:.05em;
+    margin:14px 0;
+    font-size:clamp(2rem,5vw,3.5rem);
 }
 
 .subtitle{
-
-    color:#999a96;
-
-    font-style:italic;
-
+    color:#aaa;
     line-height:1.8;
-
+    max-width:650px;
+    margin:15px auto 0;
 }
 
+.line{
+    width:80px;
+    height:1px;
+    background:#555;
+    margin:25px auto;
+}
 
-/* CARDS */
-
-.cards{
-
+.grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
-    gap:18px;
-
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
 }
 
 .card{
-
     position:relative;
-
-    min-height:260px;
-
-    padding:35px 30px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    background:rgba(255,255,255,.035);
-
+    min-height:245px;
+    padding:32px;
+    border:1px solid rgba(255,255,255,.11);
+    background:rgba(255,255,255,.025);
+    transition:.25s ease;
     overflow:hidden;
-
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease;
-
-    text-decoration:none;
-
-    color:inherit;
-
-    display:block;
-
 }
 
 .card:hover{
-
-    transform:translateY(-4px);
-
-    border-color:rgba(255,255,255,.25);
-
-}
-
-.card-label{
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:3px;
-
-    color:#686e73;
-
-    margin-bottom:22px;
-
+    border-color:rgba(255,255,255,.38);
+    transform:translateY(-3px);
 }
 
 .card h2{
-
-    font-size:30px;
-
-    font-weight:normal;
-
     margin:0 0 15px;
-
+    font-weight:normal;
+    font-size:1.55rem;
 }
 
 .card p{
-
-    color:#979893;
-
-    line-height:1.8;
-
-    margin-bottom:28px;
-
-}
-
-.card-link{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-height:40px;
-
-    padding:11px 16px;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    color:#d7d4cc;
-
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-}
-
-
-/* LISTENING */
-
-.audio-card{
-
-    grid-column:1 / -1;
-
-    min-height:210px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:30px;
-
-}
-
-.audio-info{
-
-    flex:1;
-
-}
-
-.audio-icon{
-
-    width:62px;
-
-    height:62px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:25px;
-
-    margin-bottom:22px;
-
-    color:#b8b5ad;
-
-}
-
-
-/* LOCK */
-
-.audio-card.locked{
-
-    cursor:not-allowed;
-
-    opacity:.70;
-
-}
-
-.audio-card.locked:hover{
-
-    transform:none;
-
-    border-color:rgba(255,255,255,.12);
-
-}
-
-.lock-mark{
-
-    font-family:Arial,sans-serif;
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    color:#686d72;
-
-    margin-bottom:15px;
-
-}
-
-.lock-message{
-
-    color:#72777b;
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:1px;
-
-    line-height:1.8;
-
-}
-
-
-/* UNLOCKED */
-
-.audio-card.unlocked{
-
-    border-color:rgba(220,216,205,.35);
-
-    animation:unlockGlow 1.4s ease;
-
-}
-
-.audio-card.unlocked .lock-mark{
-
-    color:#d8d5cd;
-
-}
-
-@keyframes unlockGlow{
-
-    0%{
-
-        box-shadow:
-            0 0 0 rgba(255,255,255,0);
-
-    }
-
-    50%{
-
-        box-shadow:
-            0 0 35px rgba(255,255,255,.12);
-
-    }
-
-    100%{
-
-        box-shadow:
-            0 0 0 rgba(255,255,255,0);
-
-    }
-
-}
-
-
-/* FOOTER */
-
-.footer{
-
-    text-align:center;
-
-    margin-top:45px;
-
-    color:#454a4f;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-}
-
-
-/* DIRECT ACCESS */
-
-.direct{
-
-    text-align:center;
-
-    margin-top:28px;
-
-}
-
-.direct a{
-
-    color:#595f64;
-
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    transition:.3s;
-
-}
-
-.direct a:hover{
-
     color:#aaa;
-
+    line-height:1.85;
 }
 
+.full-link{
+    position:absolute;
+    inset:0;
+    z-index:1;
+}
 
-/* MOBILE */
+.card-content{
+    position:relative;
+    z-index:2;
+    pointer-events:none;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:15px;
+    color:#d6d6d6;
+    font-size:.85rem;
+    letter-spacing:.08em;
+}
+
+.challenge{
+    background:
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.07),transparent 35%),
+        rgba(255,255,255,.025);
+}
+
+.locked{
+    cursor:pointer;
+}
+
+.lock-icon{
+    font-size:3rem;
+    margin-bottom:15px;
+    filter:grayscale(1);
+}
+
+.locked::after{
+    content:"LOCKED";
+    position:absolute;
+    top:18px;
+    right:18px;
+    font-size:.68rem;
+    letter-spacing:.18em;
+    color:#777;
+    border:1px solid rgba(255,255,255,.12);
+    padding:6px 9px;
+}
+
+.unlocked::after{
+    content:"UNLOCKED";
+    position:absolute;
+    top:18px;
+    right:18px;
+    font-size:.68rem;
+    letter-spacing:.18em;
+    color:#a7a7a7;
+    border:1px solid rgba(255,255,255,.22);
+    padding:6px 9px;
+}
+
+.direct-note{
+    grid-column:1/-1;
+    text-align:center;
+    padding:10px 15px 0;
+}
+
+.direct-link{
+    display:inline-flex;
+    min-height:48px;
+    align-items:center;
+    justify-content:center;
+    padding:12px 25px;
+    color:#aaa;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.12);
+    transition:.25s;
+}
+
+.direct-link:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,.4);
+    background:rgba(255,255,255,.04);
+}
+
+.back{
+    margin-top:45px;
+    text-align:center;
+}
+
+.back a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:46px;
+    padding:10px 22px;
+    text-decoration:none;
+    color:#aaa;
+    border:1px solid rgba(255,255,255,.12);
+    transition:.25s;
+}
+
+.back a:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,.4);
+    background:rgba(255,255,255,.04);
+}
 
 @media(max-width:700px){
-
-    .cards{
-
+    .grid{
         grid-template-columns:1fr;
-
     }
 
-    .audio-card{
-
+    .direct-note{
         grid-column:auto;
-
-        display:block;
-
     }
 
-    .audio-icon{
-
-        margin-bottom:25px;
-
+    .card{
+        min-height:220px;
     }
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-<div class="container">
+<div class="page">
+
+<header>
+<div class="eyebrow">Reflection Archive</div>
+
+<h1>Reflection 8B</h1>
+
+<div class="line"></div>
+
+<p class="subtitle">
+Not every path begins with an answer.
+Some begin with a question —
+and some answers only appear after looking back.
+</p>
+</header>
+
+<section class="grid">
+
+<article class="card">
+<a class="full-link" href="scenario.html" aria-label="Open Scenario"></a>
+
+<div class="card-content">
+<h2>The Scenario</h2>
+
+<p>
+Before the reflection, there is a scene.
+Four voices. One machine.
+A question that refuses to disappear.
+</p>
+
+<span class="tag">BEGIN HERE →</span>
+</div>
+</article>
 
 
-    <div class="nav">
+<article class="card challenge">
+<a class="full-link" href="challenge.html" aria-label="Open Challenge"></a>
 
-        <a href="index.html">
-            ← ARCHIVE
-        </a>
+<div class="card-content">
+<h2>The Challenge</h2>
 
-        <a href="8a.html">
-            GROUP 8A →
-        </a>
+<p>
+The story left more than one trace behind.
+Some things are written to be read.
+Others are written to be noticed.
+</p>
 
-    </div>
-
-
-    <div class="header">
-
-        <div class="label">
-            GROUP 08B
-        </div>
-
-        <h1>
-            Reflection
-        </h1>
-
-        <div class="subtitle">
-            Another way of seeing.
-        </div>
-
-    </div>
+<span class="tag">FOLLOW THE CLUES →</span>
+</div>
+</article>
 
 
-    <div class="cards">
+<article class="card locked" id="voiceCard">
+
+<div class="card-content">
+<div class="lock-icon" id="lockIcon">🔒</div>
+
+<h2>Listening Archive</h2>
+
+<p id="voiceText">
+A voice remains behind the reflection.
+For now, it waits.
+</p>
+
+<span class="tag" id="voiceTag">LOCKED UNTIL ACCESS IS GRANTED</span>
+</div>
+</article>
+
+</section>
 
 
-        <!-- SCENARIO -->
+<div class="direct-note">
 
-        <a
-            class="card"
-            href="scenario.html">
+<p style="color:#777;line-height:1.8;">
+If time is limited or you prefer not to follow the challenge,
+another route remains available.
+</p>
 
-            <div class="card-label">
-                01 · BEGIN
-            </div>
+<a class="direct-link" href="access-confirm.html">
+A DIFFERENT WAY FORWARD →
+</a>
 
-            <h2>
-                The Scenario
-            </h2>
-
-            <p>
-                A conversation between logic,
-                skepticism, intuition and
-                critical thought.
-            </p>
-
-            <span class="card-link">
-                ENTER SCENARIO →
-            </span>
-
-        </a>
+</div>
 
 
-        <!-- CHALLENGE -->
-
-        <a
-            class="card"
-            href="challenge.html">
-
-            <div class="card-label">
-                02 · SEARCH
-            </div>
-
-            <h2>
-                The Challenge
-            </h2>
-
-            <p>
-                A small test of attention.
-                The answer is closer than
-                it first appears.
-            </p>
-
-            <span class="card-link">
-                ENTER CHALLENGE →
-            </span>
-
-        </a>
-
-
-        <!-- LISTENING -->
-
-        <div
-            class="card audio-card locked"
-            id="audioCard"
-            onclick="handleAudioClick()">
-
-            <div class="audio-info">
-
-                <div
-                    class="audio-icon"
-                    id="audioIcon">
-
-                    🔒
-
-                </div>
-
-                <div
-                    class="lock-mark"
-                    id="audioLabel">
-
-                    LISTENING ARCHIVE · LOCKED
-
-                </div>
-
-                <h2 id="audioTitle">
-                    The Reflection Voice
-                </h2>
-
-                <p id="audioText">
-
-                    This room opens only after
-                    the path has been completed.
-
-                    <br><br>
-
-                    Solve the challenge first.
-
-                </p>
-
-                <span
-                    class="card-link"
-                    id="audioButton">
-
-                    COMPLETE THE PATH →
-
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="direct">
-
-        <a href="access.html">
-            DIRECT ACCESS · SKIP THE CHALLENGE
-        </a>
-
-    </div>
-
-
-    <div class="footer">
-
-        READ · QUESTION · RETHINK
-
-    </div>
+<div class="back">
+<a href="index.html">← Back to Archive</a>
+</div>
 
 </div>
 
 
 <script>
+const unlocked = localStorage.getItem('reflection8bUnlocked') === 'true';
 
-function updateAudioState(){
+const voiceCard = document.getElementById('voiceCard');
+const voiceText = document.getElementById('voiceText');
+const voiceTag = document.getElementById('voiceTag');
+const lockIcon = document.getElementById('lockIcon');
 
-    const unlocked =
-        localStorage.getItem(
-            "reflection8bUnlocked"
-        ) === "true";
+if(unlocked){
+    voiceCard.classList.remove('locked');
+    voiceCard.classList.add('unlocked');
 
+    lockIcon.textContent = '🔓';
 
-    const card =
-        document.getElementById("audioCard");
+    voiceText.textContent =
+        'The written reflection can now be heard in another form.';
 
-    const icon =
-        document.getElementById("audioIcon");
+    voiceTag.textContent = 'OPEN LISTENING ARCHIVE →';
 
-    const label =
-        document.getElementById("audioLabel");
-
-    const title =
-        document.getElementById("audioTitle");
-
-    const text =
-        document.getElementById("audioText");
-
-    const button =
-        document.getElementById("audioButton");
-
-
-    if(unlocked){
-
-        card.classList.remove("locked");
-
-        card.classList.add("unlocked");
-
-        icon.innerHTML = "◉";
-
-        label.innerHTML =
-            "LISTENING ARCHIVE · UNLOCKED";
-
-        title.innerHTML =
-            "The Reflection Voice";
-
-        text.innerHTML =
-            "The reflection is now open to read and hear — in one room.";
-
-        button.innerHTML =
-            "ENTER REFLECTION ROOM →";
-
-        card.onclick = function(){
-
-            window.location.href =
-                "reflection-room.html";
-
-        };
-
-    }
-
+    voiceCard.addEventListener('click',()=>{
+        window.location.href='reflection-room.html';
+    });
+}else{
+    voiceCard.addEventListener('click',()=>{
+        alert('This archive is still locked. Complete the challenge or choose direct access first.');
+    });
 }
-
-
-/* If locked */
-
-function handleAudioClick(){
-
-    const unlocked =
-        localStorage.getItem(
-            "reflection8bUnlocked"
-        ) === "true";
-
-
-    if(!unlocked){
-
-        window.location.href =
-            "challenge.html";
-
-    }
-
-}
-
-
-updateAudioState();
-
 </script>
 
 </body>
