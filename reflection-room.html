@@ -1,629 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-<title>The Reflection Room · 8B</title>
+<title>Listening Archive</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
 
 body{
-
     margin:0;
-
     min-height:100vh;
-
     background:
-        radial-gradient(
-            circle at top,
-            #22272d,
-            #080a0c 65%,
-            #040506 100%
-        );
-
-    color:#e8e5dc;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    padding:25px 18px;
-
+        radial-gradient(circle at top,#1d1d1d 0%,#0b0b0b 58%,#050505 100%);
+    color:#eee;
+    font-family:Georgia,"Times New Roman",serif;
 }
 
-.container{
-
-    width:100%;
-
-    max-width:1200px;
-
+.page{
+    width:min(780px,92%);
     margin:auto;
-
-}
-
-
-/* NAV */
-
-.nav{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:10px;
-
-    margin-bottom:35px;
-
-}
-
-.nav a{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-height:46px;
-
-    border:1px solid rgba(255,255,255,.10);
-
-    color:#777c81;
-
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    background:rgba(255,255,255,.025);
-
-    transition:.3s;
-
-}
-
-.nav a:hover{
-
-    color:#eeeae0;
-
-    border-color:rgba(255,255,255,.25);
-
-}
-
-
-/* HEADER */
-
-.header{
-
+    padding:65px 0;
     text-align:center;
-
-    padding:35px 0 45px;
-
 }
 
-.label{
+.icon{
+    font-size:3.3rem;
+    margin-bottom:18px;
+}
 
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:5px;
-
-    color:#6d7277;
-
+.eyebrow{
+    color:#777;
+    font-size:.74rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
 }
 
 h1{
-
-    margin:18px 0 15px;
-
-    font-size:clamp(40px,7vw,70px);
-
+    font-size:clamp(2rem,6vw,3.7rem);
     font-weight:normal;
-
-    letter-spacing:3px;
-
+    margin:15px 0;
 }
 
-.subtitle{
-
-    color:#999a96;
-
-    font-style:italic;
-
+.line{
+    width:75px;
+    height:1px;
+    background:#555;
+    margin:25px auto;
 }
 
-
-/* CONTENT */
-
-.content{
-
-    display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        330px;
-
-    gap:20px;
-
+.intro{
+    max-width:600px;
+    color:#aaa;
+    line-height:1.9;
+    margin:auto;
 }
 
-
-/* PDF */
-
-.pdf-panel{
-
+.archive-box{
+    margin-top:45px;
+    padding:35px 28px;
     border:1px solid rgba(255,255,255,.12);
-
-    background:#111315;
-
-    min-height:720px;
-
-    overflow:hidden;
-
+    background:rgba(255,255,255,.025);
 }
 
-.pdf-panel iframe{
-
-    width:100%;
-
-    height:720px;
-
-    border:none;
-
-    display:block;
-
-}
-
-
-/* AUDIO */
-
-.audio-panel{
-
-    border:1px solid rgba(255,255,255,.12);
-
-    background:rgba(255,255,255,.035);
-
-    padding:30px;
-
-    height:max-content;
-
-    position:sticky;
-
-    top:20px;
-
-}
-
-.audio-label{
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:4px;
-
-    color:#6d7277;
-
-    margin-bottom:20px;
-
-}
-
-.audio-panel h2{
-
-    font-size:28px;
-
+.archive-box h2{
     font-weight:normal;
-
-    margin:0 0 15px;
-
+    margin-top:0;
 }
 
-.audio-panel p{
-
-    color:#969791;
-
-    line-height:1.8;
-
-    font-size:14px;
-
+.archive-box p{
+    color:#aaa;
+    line-height:1.85;
 }
 
 audio{
-
     width:100%;
-
-    margin-top:25px;
-
+    margin:25px 0 12px;
 }
 
 .download{
-
     display:flex;
-
+    width:100%;
+    min-height:52px;
     align-items:center;
-
     justify-content:center;
-
-    min-height:48px;
-
-    margin-top:14px;
-
-    border:1px solid rgba(255,255,255,.18);
-
-    color:#d7d4cc;
-
     text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    transition:.3s;
-
+    color:#ddd;
+    border:1px solid rgba(255,255,255,.16);
+    transition:.25s;
 }
 
 .download:hover{
-
-    background:#e8e5dc;
-
-    color:#111;
-
+    border-color:rgba(255,255,255,.45);
+    background:rgba(255,255,255,.05);
 }
 
-
-/* FOOTER */
-
-.footer{
-
-    text-align:center;
-
-    padding:45px 0 20px;
-
-    color:#454a4f;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-}
-
-
-/* LOCK SCREEN */
-
-.lock-screen{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:100;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    padding:25px;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #1b2025,
-            #050607 75%
-        );
-
-}
-
-.lock-content{
-
-    max-width:600px;
-
-}
-
-.lock-icon{
-
-    font-size:45px;
-
-    margin-bottom:25px;
-
-    opacity:.7;
-
-}
-
-.lock-content h2{
-
-    font-size:42px;
-
-    font-weight:normal;
-
-    margin:0 0 20px;
-
-}
-
-.lock-content p{
-
-    color:#999;
-
-    line-height:1.9;
-
-}
-
-.lock-button{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-width:220px;
-
-    min-height:50px;
-
+.note{
     margin-top:28px;
+    color:#666;
+    font-size:.88rem;
+    line-height:1.8;
+}
 
-    padding:12px 25px;
+.navigation{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:35px;
+}
 
-    background:#e8e5dc;
-
-    color:#111;
-
+.navigation a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:46px;
+    padding:10px 22px;
     text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
+    color:#aaa;
+    border:1px solid rgba(255,255,255,.12);
+    transition:.25s;
 }
 
-
-/* MOBILE */
-
-@media(max-width:850px){
-
-    .content{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .audio-panel{
-
-        position:static;
-
-    }
-
+.navigation a:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,.4);
+    background:rgba(255,255,255,.04);
 }
-
-@media(max-width:600px){
-
-    .nav{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .pdf-panel{
-
-        min-height:600px;
-
-    }
-
-    .pdf-panel iframe{
-
-        height:600px;
-
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<div class="page">
 
-<div
-    class="lock-screen"
-    id="lockScreen">
+<div class="icon">🎧</div>
 
-    <div class="lock-content">
+<div class="eyebrow">Unlocked Archive</div>
 
-        <div class="lock-icon">
-            🔒
-        </div>
+<h1>Listening Archive</h1>
 
-        <h2>
-            Reflection Locked
-        </h2>
+<div class="line"></div>
 
-        <p>
-
-            This room belongs to the completed path.
-
-            <br>
-
-            Follow the trail first,
-            or choose direct access.
-
-        </p>
-
-        <a
-            class="lock-button"
-            href="8b.html">
-
-            RETURN TO GROUP 8B
-
-        </a>
-
-    </div>
-
-</div>
+<p class="intro">
+The written reflection has another rhythm when heard aloud.
+Here, the words are allowed to unfold in time.
+</p>
 
 
-<div class="container">
+<section class="archive-box">
+
+<h2>Reflection 8B — Voice</h2>
+
+<p>
+A recorded reading of the main reflection.
+You may listen here, or keep a copy for later.
+</p>
+
+<audio controls preload="metadata">
+
+<source
+src="reflection-8b-voice.mp3"
+type="audio/mpeg">
+
+Your browser does not support the audio element.
+
+</audio>
+
+<a
+class="download"
+href="reflection-8b-voice.mp3"
+download="Reflection 8b voice.mp3">
+Download the Voice Archive
+</a>
+
+</section>
 
 
-    <div class="nav">
-
-        <a href="index.html">
-            ← ARCHIVE
-        </a>
-
-        <a href="8b.html">
-            ← GROUP 8B
-        </a>
-
-        <a href="challenge.html">
-            ← CHALLENGE
-        </a>
-
-    </div>
+<p class="note">
+Unlocked through the challenge — or through a conscious choice to take another route.
+</p>
 
 
-    <div class="header">
+<div class="navigation">
 
-        <div class="label">
-            GROUP 08B · FINAL ROOM
-        </div>
+<a href="main-8b.html">← Back to Main Reflection</a>
 
-        <h1>
-            The Reflection Room
-        </h1>
+<a href="8b.html">Back to Reflection 8B</a>
 
-        <div class="subtitle">
-            Read · Listen · Reflect
-        </div>
-
-    </div>
-
-
-    <div class="content">
-
-
-        <!-- PDF -->
-
-        <div class="pdf-panel">
-
-            <iframe
-                src="Main%20Reflection%208b%20Open.pdf"
-                title="Main Reflection 8B">
-
-            </iframe>
-
-        </div>
-
-
-        <!-- AUDIO -->
-
-        <div class="audio-panel">
-
-            <div class="audio-label">
-                REFLECTION VOICE
-            </div>
-
-            <h2>
-                Listen
-            </h2>
-
-            <p>
-
-                The written reflection
-                is presented alongside
-                its spoken version.
-
-                <br><br>
-
-                Read it.
-
-                Listen to it.
-
-                Then decide what remains
-                after the first impression.
-
-            </p>
-
-
-            <audio
-                controls
-                preload="metadata">
-
-                <source
-                    src="reflection-8b-voice.mp3?v=2"
-                    type="audio/mpeg">
-
-                Your browser does not support
-                audio playback.
-
-            </audio>
-
-
-            <a
-                class="download"
-                href="reflection-8b-voice.mp3?v=2"
-                download>
-
-                DOWNLOAD AUDIO
-
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer">
-
-        WHAT WE SEE IS NOT ALWAYS THE WHOLE TRUTH.
-
-    </div>
+<a href="index.html">Back to Archive</a>
 
 </div>
 
-
-<script>
-
-const unlocked =
-    localStorage.getItem(
-        "reflection8bUnlocked"
-    ) === "true";
-
-
-if(!unlocked){
-
-    document
-        .getElementById("lockScreen")
-        .style.display = "flex";
-
-}
-
-</script>
+</div>
 
 </body>
 </html>
