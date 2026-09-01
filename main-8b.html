@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -10,383 +9,217 @@
 
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
+body{
 
-    margin: 0;
+    margin:0;
 
-    min-height: 100vh;
+    min-height:100vh;
 
     background:
-        radial-gradient(
-            circle at 50% 5%,
-            #20252b 0%,
-            #090b0e 65%,
-            #050608 100%
-        );
+        radial-gradient(circle at top,#1d2228,#090b0e 72%);
 
-    color: #e8e5dc;
+    color:#e8e5dc;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    font-family:Georgia,serif;
 
-    padding:
-        28px 18px;
+    padding:32px 18px;
 }
 
-.container {
+.container{
 
-    width: 100%;
+    width:100%;
 
-    max-width: 1250px;
+    max-width:1250px;
 
-    margin: auto;
+    margin:auto;
 }
 
+.back{
 
-/* NAV */
+    color:#696e73;
 
-.nav {
+    text-decoration:none;
 
-    display: flex;
+    font-family:Arial,sans-serif;
 
-    justify-content: space-between;
+    font-size:9px;
 
-    align-items: center;
-
-    gap: 15px;
+    letter-spacing:2px;
 }
 
-.nav a {
+.header{
 
-    color: #696e73;
+    text-align:center;
 
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    transition: .3s;
+    padding:55px 0 40px;
 }
 
-.nav a:hover {
+.label{
 
-    color: #d8d5ce;
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:#666b70;
 }
 
+h1{
 
-/* HEADER */
+    margin:18px 0 12px;
 
-.header {
+    font-size:clamp(38px,7vw,65px);
 
-    text-align: center;
+    font-weight:normal;
 
-    padding:
-        60px 0 42px;
+    letter-spacing:5px;
 }
 
-.label {
+.subtitle{
 
-    font-family: Arial, sans-serif;
+    color:#999a96;
 
-    font-size: 9px;
-
-    letter-spacing: 5px;
-
-    color: #666b70;
+    font-style:italic;
 }
 
-h1 {
+.content{
 
-    margin:
-        18px 0 12px;
-
-    font-size:
-        clamp(38px, 7vw, 65px);
-
-    font-weight: normal;
-
-    letter-spacing: 5px;
-}
-
-.subtitle {
-
-    color: #999a96;
-
-    font-style: italic;
-
-    line-height: 1.8;
-}
-
-
-/* CONTENT */
-
-.content {
-
-    display: grid;
+    display:grid;
 
     grid-template-columns:
-        minmax(0, 1.65fr)
-        minmax(300px, .75fr);
+        minmax(0,1.65fr)
+        minmax(300px,.75fr);
 
-    gap: 20px;
+    gap:20px;
 
-    align-items: start;
+    align-items:start;
 }
 
+.panel{
 
-/* PANELS */
+    border:1px solid #3d4247;
 
-.panel {
+    background:#111317;
 
-    border:
-        1px solid
-        #3d4247;
-
-    background:
-        #111317;
-
-    overflow: hidden;
+    overflow:hidden;
 }
 
-.panel-label {
+.panel-label{
 
-    padding:
-        14px 18px;
+    padding:14px 18px;
 
-    border-bottom:
-        1px solid
-        #30353a;
+    border-bottom:1px solid #30353a;
 
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
-    font-size: 9px;
+    font-size:9px;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    color: #70757a;
+    color:#70757a;
 }
 
+iframe{
 
-/* PDF */
+    display:block;
 
-iframe {
+    width:100%;
 
-    display: block;
+    height:820px;
 
-    width: 100%;
+    border:none;
 
-    height: 820px;
-
-    border: none;
-
-    background: white;
+    background:white;
 }
 
+.audio-panel{
 
-/* AUDIO */
+    padding:28px 24px;
 
-.audio-panel {
-
-    padding:
-        30px 25px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    position: sticky;
-
-    top: 20px;
+    background:rgba(255,255,255,.025);
 }
 
-.audio-panel h2 {
+.audio-panel h2{
 
-    margin:
-        12px 0 14px;
+    font-size:24px;
 
-    font-size: 27px;
+    font-weight:normal;
 
-    font-weight: normal;
-
-    letter-spacing: 2px;
+    letter-spacing:2px;
 }
 
-.audio-description {
+.audio-panel p{
 
-    color: #92938f;
+    color:#92938f;
 
-    font-style: italic;
+    font-style:italic;
 
-    line-height: 1.8;
-
-    font-size: 15px;
-
-    margin-bottom: 25px;
+    line-height:1.8;
 }
 
+audio{
 
-/* PLAYER */
+    width:100%;
 
-audio {
-
-    display: block;
-
-    width: 100%;
-
-    height: 44px;
-
-    margin-top: 20px;
+    margin-top:20px;
 }
 
+.download{
 
-/* DOWNLOAD */
+    display:inline-block;
 
-.download {
+    margin-top:18px;
 
-    display: inline-block;
+    padding:11px 18px;
 
-    margin-top: 18px;
+    border:1px solid rgba(255,255,255,.2);
 
-    padding:
-        11px 17px;
+    color:#ddd;
 
-    border:
-        1px solid
-        #4d5257;
+    text-decoration:none;
 
-    color: #c9c6bf;
+    font-family:Arial,sans-serif;
 
-    text-decoration: none;
+    font-size:10px;
 
-    font-family: Arial, sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    transition: .3s;
+    letter-spacing:1px;
 }
 
-.download:hover {
+.download:hover{
 
-    background: #ddd9d0;
-
-    color: #101214;
+    background:rgba(255,255,255,.08);
 }
 
+.footer{
 
-/* NOTE */
+    text-align:center;
 
-.audio-note {
+    margin-top:35px;
 
-    margin-top: 22px;
+    color:#4f555a;
 
-    padding-top: 18px;
+    font-family:Arial,sans-serif;
 
-    border-top:
-        1px solid
-        #30353a;
+    font-size:8px;
 
-    color: #686d72;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    line-height: 1.8;
+    letter-spacing:3px;
 }
 
+@media(max-width:850px){
 
-/* BOTTOM NAV */
+    .content{
 
-.bottom-nav {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-top: 30px;
-
-    gap: 20px;
-}
-
-.bottom-nav a {
-
-    color: #646a70;
-
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    transition: .3s;
-}
-
-.bottom-nav a:hover {
-
-    color: #ddd9d0;
-}
-
-
-/* FOOTER */
-
-.footer {
-
-    text-align: center;
-
-    margin-top: 40px;
-
-    color: #454b50;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-}
-
-
-/* MOBILE */
-
-@media(max-width:850px) {
-
-    .content {
-
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 
-    .audio-panel {
+    iframe{
 
-        position: static;
-    }
-
-    iframe {
-
-        height: 650px;
-    }
-
-    .bottom-nav {
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        text-align: center;
+        height:650px;
     }
 
 }
@@ -395,152 +228,98 @@ audio {
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
-
-    <div class="nav">
-
-        <a href="8b.html">
-            ← GROUP 8B
-        </a>
-
-        <a href="index.html">
-            REFLECTION ARCHIVE
-        </a>
-
-    </div>
+<a href="8b.html" class="back">
+← GROUP 8B
+</a>
 
 
-    <div class="header">
+<div class="header">
 
-        <div class="label">
-            FILE 08B · MAIN REFLECTION
-        </div>
+<div class="label">
+FILE 08B
+</div>
 
-        <h1>
-            MAIN REFLECTION
-        </h1>
+<h1>
+MAIN REFLECTION
+</h1>
 
-        <div class="subtitle">
-            Read it. Hear it. Reflect.
-        </div>
+<div class="subtitle">
+The reflection, without the lock.
+</div>
 
-    </div>
-
-
-    <div class="content">
+</div>
 
 
-        <!-- PDF -->
-
-        <div class="panel">
-
-            <div class="panel-label">
-                REFLECTION · 08B
-            </div>
-
-            <iframe
-                src="Main%20Reflection%208b%20Open.pdf">
-            </iframe>
-
-        </div>
+<div class="content">
 
 
-        <!-- AUDIO -->
+<div class="panel">
 
-        <div class="panel audio-panel">
+<div class="panel-label">
+REFLECTION · 08B
+</div>
 
-            <div class="panel-label">
-                THE VOICE BEHIND THE REFLECTION
-            </div>
+<iframe
+src="Main%20Reflection%208b%20Open.pdf">
+</iframe>
 
-
-            <h2>
-                Listen differently.
-            </h2>
-
-
-            <div class="audio-description">
-
-                Some things read differently
-                when they are heard.
-
-            </div>
+</div>
 
 
-            <audio
-                controls
-                preload="metadata">
+<div class="panel audio-panel">
 
-                <source
-                    src="reflection-8b-voice.mp3?v=1"
-                    type="audio/mpeg">
+<div class="panel-label">
+LISTENING ARCHIVE
+</div>
 
-                Your browser does not support
-                audio playback.
+<h2>
+THE OTHER VOICE
+</h2>
 
-            </audio>
+<p>
 
+The same reflection,
+through another voice.
 
-            <a
-                class="download"
-                href="reflection-8b-voice.mp3"
-                download>
+</p>
 
-                DOWNLOAD AUDIO
+<audio controls preload="metadata">
 
-            </a>
+<source
+src="reflection-8b-voice.mp3"
+type="audio/mpeg">
 
+Your browser does not support audio playback.
 
-            <div class="audio-note">
-
-                THE SAME REFLECTION ·
-                ANOTHER VOICE ·
-                ANOTHER WAY OF SEEING
-
-            </div>
+</audio>
 
 
-        </div>
+<a
+class="download"
+href="reflection-8b-voice.mp3"
+download>
 
+DOWNLOAD AUDIO
 
-    </div>
+</a>
 
-
-    <div class="bottom-nav">
-
-
-        <a href="challenge.html">
-
-            ← BACK TO THE CHALLENGE
-
-        </a>
-
-
-        <a href="8b.html">
-
-            GROUP 8B →
-
-        </a>
-
-
-    </div>
-
-
-    <div class="footer">
-
-        READ · LISTEN · REFLECT
-
-    </div>
+</div>
 
 
 </div>
 
 
-</body>
+<div class="footer">
 
+READ · LISTEN · RETHINK
+
+</div>
+
+</div>
+
+</body>
 </html>
