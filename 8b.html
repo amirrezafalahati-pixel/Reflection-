@@ -1,347 +1,710 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Group 8B</title>
+<title>Group 8B · Reflection</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
 
 body{
+
     margin:0;
+
     min-height:100vh;
+
     background:
-        radial-gradient(circle at 50% 15%,#20252b,#090b0e 68%);
-    color:#e7e4dc;
-    font-family:Georgia,serif;
+        radial-gradient(
+            circle at 50% 0%,
+            #22272d 0%,
+            #0b0d10 58%,
+            #050608 100%
+        );
+
+    color:#e8e5dc;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     padding:30px 18px;
+
 }
 
 .container{
+
     width:100%;
-    max-width:900px;
+
+    max-width:1000px;
+
     margin:auto;
+
 }
 
-.back{
-    color:#646a70;
-    text-decoration:none;
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:2px;
+
+/* NAV */
+
+.nav{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
 }
+
+.nav a{
+
+    color:#666c71;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+
+}
+
+.nav a:hover{
+
+    color:#ddd9d0;
+
+}
+
+
+/* HEADER */
 
 .header{
+
     text-align:center;
-    padding:60px 0 45px;
+
+    padding:70px 0 55px;
+
 }
 
 .label{
+
     font-family:Arial,sans-serif;
+
     font-size:9px;
+
     letter-spacing:5px;
-    color:#666c71;
+
+    color:#6d7277;
+
 }
 
 h1{
+
     margin:18px 0 15px;
-    font-size:clamp(46px,9vw,76px);
+
+    font-size:clamp(45px,9vw,78px);
+
     font-weight:normal;
+
     letter-spacing:7px;
+
 }
 
-.quote{
-    max-width:600px;
-    margin:auto;
-    color:#989994;
+.subtitle{
+
+    color:#999a96;
+
     font-style:italic;
-    line-height:1.9;
+
+    line-height:1.8;
+
 }
 
-.line{
-    width:55px;
-    height:1px;
-    background:#464b50;
-    margin:30px auto;
-}
 
-.options{
+/* CARDS */
+
+.cards{
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
     gap:18px;
+
 }
 
 .card{
-    min-height:210px;
-    border:1px solid #3b4045;
-    background:rgba(255,255,255,.025);
-    padding:30px 25px;
+
+    position:relative;
+
+    min-height:260px;
+
+    padding:35px 30px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.035);
+
+    overflow:hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease;
+
     text-decoration:none;
-    color:#e5e2da;
-    transition:.35s;
+
+    color:inherit;
+
+    display:block;
+
 }
 
 .card:hover{
-    transform:translateY(-5px);
-    border-color:#70757a;
-    background:rgba(255,255,255,.045);
+
+    transform:translateY(-4px);
+
+    border-color:rgba(255,255,255,.25);
+
 }
 
 .card-label{
+
     font-family:Arial,sans-serif;
+
     font-size:8px;
-    letter-spacing:4px;
-    color:#676d72;
+
+    letter-spacing:3px;
+
+    color:#686e73;
+
+    margin-bottom:22px;
+
 }
 
 .card h2{
-    margin:18px 0 12px;
-    font-size:27px;
+
+    font-size:30px;
+
     font-weight:normal;
-    letter-spacing:2px;
+
+    margin:0 0 15px;
+
 }
 
 .card p{
-    margin:0;
-    color:#858883;
-    font-style:italic;
-    line-height:1.7;
+
+    color:#979893;
+
+    line-height:1.8;
+
+    margin-bottom:28px;
+
 }
 
-.arrow{
-    display:block;
-    margin-top:22px;
-    font-family:Arial,sans-serif;
-    font-size:8px;
-    letter-spacing:3px;
-    color:#74797e;
-}
+.card-link{
 
-.audio-section{
-    margin-top:25px;
-    padding:25px;
-    border:1px solid #30353a;
-    background:rgba(255,255,255,.018);
-}
+    display:inline-flex;
 
-.audio-label{
-    font-family:Arial,sans-serif;
-    font-size:8px;
-    letter-spacing:4px;
-    color:#62686d;
-}
+    align-items:center;
 
-.audio-section h2{
-    margin:12px 0;
-    font-size:22px;
-    font-weight:normal;
-}
+    justify-content:center;
 
-.audio-section p{
-    color:#858883;
-    font-style:italic;
-    line-height:1.7;
-}
+    min-height:40px;
 
-.locked{
-    opacity:.48;
-    position:relative;
-}
+    padding:11px 16px;
 
-.lock-icon{
-    font-size:26px;
-    margin-bottom:10px;
-    opacity:.8;
-}
+    border:1px solid rgba(255,255,255,.2);
 
-.audio-locked-note{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:2px;
-    color:#686e73;
-    margin-top:15px;
-}
+    color:#d7d4cc;
 
-.alternative{
-    margin-top:42px;
-    text-align:center;
-}
-
-.alternative a{
-    color:#60666b;
     text-decoration:none;
+
     font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:3px;
-    transition:.3s;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
 }
 
-.alternative a:hover{
-    color:#b0b2b2;
+
+/* LISTENING */
+
+.audio-card{
+
+    grid-column:1 / -1;
+
+    min-height:210px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
 }
+
+.audio-info{
+
+    flex:1;
+
+}
+
+.audio-icon{
+
+    width:62px;
+
+    height:62px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:25px;
+
+    margin-bottom:22px;
+
+    color:#b8b5ad;
+
+}
+
+
+/* LOCK */
+
+.audio-card.locked{
+
+    cursor:not-allowed;
+
+    opacity:.70;
+
+}
+
+.audio-card.locked:hover{
+
+    transform:none;
+
+    border-color:rgba(255,255,255,.12);
+
+}
+
+.lock-mark{
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#686d72;
+
+    margin-bottom:15px;
+
+}
+
+.lock-message{
+
+    color:#72777b;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:1px;
+
+    line-height:1.8;
+
+}
+
+
+/* UNLOCKED */
+
+.audio-card.unlocked{
+
+    border-color:rgba(220,216,205,.35);
+
+    animation:unlockGlow 1.4s ease;
+
+}
+
+.audio-card.unlocked .lock-mark{
+
+    color:#d8d5cd;
+
+}
+
+@keyframes unlockGlow{
+
+    0%{
+
+        box-shadow:
+            0 0 0 rgba(255,255,255,0);
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 0 35px rgba(255,255,255,.12);
+
+    }
+
+    100%{
+
+        box-shadow:
+            0 0 0 rgba(255,255,255,0);
+
+    }
+
+}
+
+
+/* FOOTER */
 
 .footer{
+
     text-align:center;
+
     margin-top:45px;
-    color:#454b50;
+
+    color:#454a4f;
+
     font-family:Arial,sans-serif;
+
     font-size:8px;
-    letter-spacing:3px;
+
+    letter-spacing:2px;
+
 }
+
+
+/* DIRECT ACCESS */
+
+.direct{
+
+    text-align:center;
+
+    margin-top:28px;
+
+}
+
+.direct a{
+
+    color:#595f64;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+
+}
+
+.direct a:hover{
+
+    color:#aaa;
+
+}
+
+
+/* MOBILE */
 
 @media(max-width:700px){
 
-    .options{
+    .cards{
+
         grid-template-columns:1fr;
+
     }
+
+    .audio-card{
+
+        grid-column:auto;
+
+        display:block;
+
+    }
+
+    .audio-icon{
+
+        margin-bottom:25px;
+
+    }
+
 }
+
 </style>
 
 </head>
+
 
 <body>
 
 <div class="container">
 
-<a href="index.html" class="back">
-← REFLECTION ARCHIVE
-</a>
 
-<div class="header">
+    <div class="nav">
 
-<div class="label">
-FILE 08B
+        <a href="index.html">
+            ← ARCHIVE
+        </a>
+
+        <a href="8a.html">
+            GROUP 8A →
+        </a>
+
+    </div>
+
+
+    <div class="header">
+
+        <div class="label">
+            GROUP 08B
+        </div>
+
+        <h1>
+            Reflection
+        </h1>
+
+        <div class="subtitle">
+            Another way of seeing.
+        </div>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <!-- SCENARIO -->
+
+        <a
+            class="card"
+            href="scenario.html">
+
+            <div class="card-label">
+                01 · BEGIN
+            </div>
+
+            <h2>
+                The Scenario
+            </h2>
+
+            <p>
+                A conversation between logic,
+                skepticism, intuition and
+                critical thought.
+            </p>
+
+            <span class="card-link">
+                ENTER SCENARIO →
+            </span>
+
+        </a>
+
+
+        <!-- CHALLENGE -->
+
+        <a
+            class="card"
+            href="challenge.html">
+
+            <div class="card-label">
+                02 · SEARCH
+            </div>
+
+            <h2>
+                The Challenge
+            </h2>
+
+            <p>
+                A small test of attention.
+                The answer is closer than
+                it first appears.
+            </p>
+
+            <span class="card-link">
+                ENTER CHALLENGE →
+            </span>
+
+        </a>
+
+
+        <!-- LISTENING -->
+
+        <div
+            class="card audio-card locked"
+            id="audioCard"
+            onclick="handleAudioClick()">
+
+            <div class="audio-info">
+
+                <div
+                    class="audio-icon"
+                    id="audioIcon">
+
+                    🔒
+
+                </div>
+
+                <div
+                    class="lock-mark"
+                    id="audioLabel">
+
+                    LISTENING ARCHIVE · LOCKED
+
+                </div>
+
+                <h2 id="audioTitle">
+                    The Reflection Voice
+                </h2>
+
+                <p id="audioText">
+
+                    This room opens only after
+                    the path has been completed.
+
+                    <br><br>
+
+                    Solve the challenge first.
+
+                </p>
+
+                <span
+                    class="card-link"
+                    id="audioButton">
+
+                    COMPLETE THE PATH →
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="direct">
+
+        <a href="access.html">
+            DIRECT ACCESS · SKIP THE CHALLENGE
+        </a>
+
+    </div>
+
+
+    <div class="footer">
+
+        READ · QUESTION · RETHINK
+
+    </div>
+
 </div>
 
-<h1>GROUP 8B</h1>
-
-<div class="quote">
-“What you see is not necessarily the whole truth.”
-</div>
-
-<div class="line"></div>
-
-</div>
-
-<div class="options">
-
-<a href="scenario.html" class="card">
-
-<div class="card-label">
-THE BEGINNING
-</div>
-
-<h2>THE SCENARIO</h2>
-
-<p>
-Read what came before.
-Some answers are hidden
-inside the story.
-</p>
-
-<span class="arrow">
-ENTER →
-</span>
-
-</a>
-
-
-<a href="challenge.html" class="card">
-
-<div class="card-label">
-THE HIDDEN PATH
-</div>
-
-<h2>THE CHALLENGE</h2>
-
-<p>
-Follow the clues.
-Not everything revealed
-is the final answer.
-</p>
-
-<span class="arrow">
-ENTER →
-</span>
-
-</a>
-
-</div>
-
-
-<div class="audio-section locked" id="lockedAudio">
-
-<div class="audio-label">
-LISTENING ARCHIVE
-</div>
-
-<div class="lock-icon">
-⌾
-</div>
-
-<h2>THE VOICE OF THE REFLECTION</h2>
-
-<p>
-Some things are heard differently
-after the hidden path has been crossed.
-</p>
-
-<div class="audio-locked-note">
-LOCKED · COMPLETE THE EXPERIENCE TO UNLOCK
-</div>
-
-</div>
-
-
-<div class="audio-section" id="unlockedAudio" style="display:none;">
-
-<div class="audio-label">
-LISTENING ARCHIVE
-</div>
-
-<h2>THE VOICE OF THE REFLECTION</h2>
-
-<p>
-The reflection can now be experienced
-through another voice.
-</p>
-
-<a href="reflection-room.html" class="arrow">
-OPEN LISTENING ROOM →
-</a>
-
-</div>
-
-
-<div class="alternative">
-
-<a href="access.html">
-A DIFFERENT WAY THROUGH
-</a>
-
-</div>
-
-
-<div class="footer">
-READ · QUESTION · RETHINK
-</div>
-
-</div>
 
 <script>
 
-if(
-    sessionStorage.getItem("reflection8bUnlocked") === "true" ||
-    localStorage.getItem("reflection8bUnlocked") === "true"
-){
-    document.getElementById("lockedAudio").style.display="none";
-    document.getElementById("unlockedAudio").style.display="block";
+function updateAudioState(){
+
+    const unlocked =
+        localStorage.getItem(
+            "reflection8bUnlocked"
+        ) === "true";
+
+
+    const card =
+        document.getElementById("audioCard");
+
+    const icon =
+        document.getElementById("audioIcon");
+
+    const label =
+        document.getElementById("audioLabel");
+
+    const title =
+        document.getElementById("audioTitle");
+
+    const text =
+        document.getElementById("audioText");
+
+    const button =
+        document.getElementById("audioButton");
+
+
+    if(unlocked){
+
+        card.classList.remove("locked");
+
+        card.classList.add("unlocked");
+
+        icon.innerHTML = "◉";
+
+        label.innerHTML =
+            "LISTENING ARCHIVE · UNLOCKED";
+
+        title.innerHTML =
+            "The Reflection Voice";
+
+        text.innerHTML =
+            "The reflection is now open to read and hear — in one room.";
+
+        button.innerHTML =
+            "ENTER REFLECTION ROOM →";
+
+        card.onclick = function(){
+
+            window.location.href =
+                "reflection-room.html";
+
+        };
+
+    }
+
 }
+
+
+/* If locked */
+
+function handleAudioClick(){
+
+    const unlocked =
+        localStorage.getItem(
+            "reflection8bUnlocked"
+        ) === "true";
+
+
+    if(!unlocked){
+
+        window.location.href =
+            "challenge.html";
+
+    }
+
+}
+
+
+updateAudioState();
 
 </script>
 
