@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Different Way Forward</title>
+<title>Direct Access · Group 08B</title>
 
 <style>
+
+:root{
+    --bg:#11110f;
+    --line:#353530;
+    --line-soft:#292925;
+
+    --text:#eeeae1;
+    --muted:#aaa79e;
+    --dim:#77756d;
+
+    --accent:#d6d0c2;
+}
 
 *{
     box-sizing:border-box;
@@ -18,299 +29,163 @@ body{
     margin:0;
     min-height:100vh;
 
+    background:
+        radial-gradient(circle at 50% -10%, #282824 0%, transparent 38%),
+        linear-gradient(180deg,#11110f,#0e0e0c);
+
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+
     display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:25px;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            #24272a 0%,
-            #121416 45%,
-            #08090a 100%
-        );
-
-    color:#e9e6de;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
 }
 
 .container{
-
-    width:min(700px,100%);
-
-    padding:50px 35px;
-
+    width:min(650px,92%);
     text-align:center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    background:
-        rgba(255,255,255,.025);
 }
 
 .symbol{
-
-    font-size:38px;
-
-    opacity:.7;
-
-    margin-bottom:20px;
+    font-size:42px;
+    margin-bottom:24px;
 }
 
-.eyebrow{
-
-    color:#74797c;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
+.label{
+    font-size:10px;
     letter-spacing:4px;
+    color:var(--dim);
 }
 
 h1{
-
     margin:18px 0;
 
-    font-size:
-        clamp(36px,7vw,58px);
-
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(38px,7vw,60px);
     font-weight:normal;
 }
 
-.divider{
-
-    width:70px;
-    height:1px;
-
-    background:
-        rgba(255,255,255,.23);
-
-    margin:25px auto;
-}
-
-.intro{
-
-    color:#aaa9a3;
-
+.text{
+    color:var(--muted);
+    font-size:14px;
     line-height:1.9;
-
-    max-width:560px;
-
-    margin:auto;
 }
 
 .warning{
+    margin:30px 0;
 
-    margin-top:35px;
+    padding:20px;
 
-    padding:22px;
+    border:1px solid var(--line);
 
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    background:
-        rgba(0,0,0,.17);
-
-    color:#aaa;
-
-    line-height:1.85;
-
-    font-size:14px;
-}
-
-.warning strong{
-
-    color:#e0ddd5;
-
-    font-weight:normal;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
 }
 
 .actions{
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:12px;
-
-    margin-top:30px;
+    gap:10px;
 }
 
-.btn{
+.action{
+    display:block;
 
-    display:flex;
+    padding:17px;
 
-    align-items:center;
+    border:1px solid var(--line);
 
-    justify-content:center;
-
-    min-height:52px;
-
-    padding:12px 20px;
-
+    color:var(--muted);
     text-decoration:none;
 
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    color:#aaa;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
+    font-size:10px;
+    letter-spacing:3px;
 
     transition:.25s;
 }
 
-.btn:hover{
-
-    color:#eee;
-
-    border-color:
-        rgba(255,255,255,.35);
-
-    background:
-        rgba(255,255,255,.04);
-
-    transform:translateY(-2px);
+.action:hover{
+    border-color:#66645d;
+    color:var(--text);
 }
 
-.primary{
-
-    background:
-        rgba(255,255,255,.07);
-
-    color:#ddd;
+.action.primary{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#171714;
 }
 
-.note{
-
-    margin-top:25px;
-
-    color:#555b5f;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:1px;
-
-    line-height:1.7;
+.action.primary:hover{
+    background:#eeeae1;
 }
 
-@media(max-width:600px){
+.back{
+    margin-top:32px;
+}
 
-    .container{
-        padding:40px 22px;
-    }
-
-    .actions{
-        grid-template-columns:1fr;
-    }
-
+.back a{
+    color:var(--dim);
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:2px;
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
 <main class="container">
 
-
     <div class="symbol">
-        ⌁
+        ◌
     </div>
 
-
-    <div class="eyebrow">
-        AN ALTERNATIVE PATH
+    <div class="label">
+        ALTERNATIVE ROUTE
     </div>
 
+    <h1>Direct Access</h1>
 
-    <h1>
-        A Different Way Forward
-    </h1>
-
-
-    <div class="divider"></div>
-
-
-    <p class="intro">
-
-        You are about to enter the reflection
-        without completing the challenge.
-
+    <p class="text">
+        You can enter the reflection without completing
+        the challenge. But doing so means skipping the clues,
+        the coded message, and the discovery process.
     </p>
 
-
     <div class="warning">
-
-        <strong>
-            This choice skips the discovery experience.
-        </strong>
-
-        <br><br>
-
-        The scenario, clues, search,
-        and final challenge were designed
-        to be part of the reflection itself.
-
-        <br><br>
-
-        If you want to experience the complete path,
-        return to the challenge.
-
+        This route is intentionally secondary.
+        If this is your first visit, returning to the challenge
+        is the recommended way to experience Group 08B.
     </div>
-
 
     <div class="actions">
 
         <a
-            class="btn"
-            href="challenge.html">
-
+            class="action"
+            href="challenge.html"
+        >
             RETURN TO CHALLENGE
-
         </a>
-
 
         <a
-            class="btn primary"
+            class="action primary"
             href="reflection-room.html"
-            onclick="unlockDirectAccess()">
-
+            onclick="unlockDirectAccess()"
+        >
             ENTER DIRECTLY
-
         </a>
 
     </div>
 
+    <div class="back">
 
-    <div class="note">
-
-        You are choosing to skip the trail —
-        not to change the destination.
+        <a href="8b.html">
+            ← BACK TO GROUP 08B
+        </a>
 
     </div>
-
 
 </main>
 
@@ -329,5 +204,4 @@ function unlockDirectAccess(){
 </script>
 
 </body>
-
 </html>
