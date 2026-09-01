@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Group 08A · Reflection</title>
+<title>Group 08B · Reflection Archive</title>
 
 <link rel="stylesheet" href="site.css">
 
@@ -13,46 +13,195 @@
 
 <body>
 
-<main class="page-wide">
+<main class="page">
 
     <div class="kicker">
-        REFLECTION ARCHIVE · GROUP 08A
+        REFLECTION ARCHIVE · GROUP 08B
     </div>
 
     <h1 class="title">
-        Perspective A.
+        One more layer.
     </h1>
 
     <p class="subtitle">
-        The first reflection in the archive.
-        Read the document as it is presented,
-        then consider the perspective behind it.
+        This reflection is deliberately not presented all at once.
+        Follow the trail, question what you see,
+        and discover what lies beneath the first answer.
     </p>
 
     <div class="rule"></div>
 
 
-    <section class="document">
+    <div class="section-label">
+        FOLLOW THE TRAIL
+    </div>
 
-        <div class="document-head">
 
-            <div class="document-name">
-                REFLECTION 08A
+    <section class="cards">
+
+
+        <a
+            class="card"
+            href="scenario.html"
+        >
+
+            <div class="card-number">
+                01 · SCENARIO
             </div>
 
-            <div class="document-info">
-                PDF · OPEN DOCUMENT
+            <div class="card-title">
+                The Beginning
+            </div>
+
+            <div class="card-description">
+                Before the reflection, there is a story.
+                Read carefully. Some details are not there by accident.
+            </div>
+
+            <div class="meta-row">
+
+                <span class="meta">
+                    CLUES
+                </span>
+
+                <span class="meta">
+                    SCENARIO
+                </span>
+
+            </div>
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+        <a
+            class="card"
+            href="challenge.html"
+        >
+
+            <div class="card-number">
+                02 · CHALLENGE
+            </div>
+
+            <div class="card-title">
+                The Hidden Layer
+            </div>
+
+            <div class="card-description">
+                The first answer is only a direction.
+                Look back, reconsider what you have already seen,
+                and uncover the final entry.
+            </div>
+
+            <div class="meta-row">
+
+                <span class="meta">
+                    ENIGMA
+                </span>
+
+                <span class="meta">
+                    ACCESS
+                </span>
+
+            </div>
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+    </section>
+
+
+    <section
+        class="listening-card"
+    >
+
+        <a
+            id="listeningLink"
+            class="listening-link"
+            href="challenge.html"
+        ></a>
+
+
+        <div class="listening-content">
+
+            <div
+                class="icon-box"
+                id="listeningIcon"
+            >
+
+                <!-- LOCK -->
+
+                <svg
+                    id="lockSvg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <rect
+                        x="5"
+                        y="10"
+                        width="14"
+                        height="10"
+                        rx="1.5"
+                    />
+
+                    <path
+                        d="M8 10V7a4 4 0 0 1 8 0v3"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <div class="listening-title">
+                    Listening Archive
+                </div>
+
+                <div
+                    id="listeningStatus"
+                    class="listening-status"
+                >
+                    LISTENING ARCHIVE · LOCKED
+                </div>
+
+                <div
+                    id="listeningDescription"
+                    class="listening-description"
+                >
+                    Complete the challenge to enter
+                    the reflection archive.
+                </div>
+
             </div>
 
         </div>
 
-        <iframe
-            class="pdf"
-            src="Reflection%208a.pdf"
-            title="Group 08A Reflection"
-        ></iframe>
-
     </section>
+
+
+    <div class="alternative">
+
+        <div class="alternative-label">
+            ALTERNATIVE ROUTE
+        </div>
+
+        <a
+            class="secondary"
+            href="access-confirm.html"
+        >
+            DIRECT ACCESS →
+        </a>
+
+    </div>
 
 
     <nav class="bottom-nav">
@@ -61,13 +210,92 @@
             ← BACK TO ARCHIVE
         </a>
 
-        <a href="8b.html">
-            VIEW GROUP 08B →
-        </a>
+        <span>
+            GROUP 08B · ACTIVE FILE
+        </span>
 
     </nav>
 
 </main>
+
+
+<script>
+
+const unlocked =
+    localStorage.getItem(
+        "reflection8bUnlocked"
+    ) === "true";
+
+
+const link =
+    document.getElementById(
+        "listeningLink"
+    );
+
+const icon =
+    document.getElementById(
+        "listeningIcon"
+    );
+
+const status =
+    document.getElementById(
+        "listeningStatus"
+    );
+
+const description =
+    document.getElementById(
+        "listeningDescription"
+    );
+
+
+function setUnlocked(){
+
+    link.href =
+        "reflection-room.html";
+
+
+    status.textContent =
+        "LISTENING ARCHIVE · UNLOCKED";
+
+
+    description.textContent =
+        "The reflection is open. Read it and listen to it together.";
+
+
+    icon.innerHTML = `
+
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+
+            <rect
+                x="5"
+                y="10"
+                width="14"
+                height="10"
+                rx="1.5"
+            />
+
+            <path
+                d="M8 10V7a4 4 0 0 1 7.3-2.2"
+            />
+
+            <path
+                d="M16 5l2 2-2 2"
+            />
+
+        </svg>
+
+    `;
+}
+
+
+if(unlocked){
+    setUnlocked();
+}
+
+</script>
 
 </body>
 </html>
