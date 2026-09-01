@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Challenge</title>
+<title>Reflection 8B</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -14,478 +17,662 @@
 body{
     margin:0;
     min-height:100vh;
+
     background:
-        radial-gradient(circle at top,#202020 0%,#0d0d0d 52%,#050505 100%);
-    color:#eee;
-    font-family:Georgia,"Times New Roman",serif;
+        radial-gradient(
+            circle at 50% 0%,
+            #24272a 0%,
+            #121416 42%,
+            #08090a 100%
+        );
+
+    color:#e9e6de;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 .page{
-    width:min(800px,92%);
+    width:min(1050px,92%);
     margin:auto;
-    padding:60px 0 70px;
-    text-align:center;
+    padding:42px 0 65px;
 }
 
-.symbol{
-    font-size:2.8rem;
-    opacity:.7;
-    margin-bottom:15px;
+
+/* TOP */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topbar a{
+    color:#777b7e;
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.topbar a:hover{
+    color:#e7e4dc;
+}
+
+
+/* HEADER */
+
+.header{
+    text-align:center;
+
+    padding:72px 0 55px;
 }
 
 .eyebrow{
-    color:#777;
-    letter-spacing:.2em;
-    font-size:.72rem;
-    text-transform:uppercase;
+    color:#73777a;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+    letter-spacing:4px;
 }
 
 h1{
+    margin:17px 0 14px;
+
+    font-size:
+        clamp(44px,7vw,72px);
+
     font-weight:normal;
-    font-size:clamp(2rem,6vw,3.6rem);
-    margin:14px 0;
+
+    letter-spacing:3px;
 }
 
-.line{
-    width:75px;
+.divider{
+    width:70px;
     height:1px;
-    background:#555;
-    margin:24px auto;
+
+    margin:25px auto;
+
+    background:rgba(255,255,255,.25);
 }
 
-.intro{
-    max-width:630px;
+.subtitle{
+    max-width:620px;
+
     margin:auto;
-    color:#aaa;
+
+    color:#a5a5a0;
+
     line-height:1.9;
+
+    font-style:italic;
 }
 
-.challenge-box{
-    margin-top:45px;
-    padding:35px 25px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.025);
+
+/* CARDS */
+
+.cards{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:18px;
 }
 
-.question{
-    font-size:1.15rem;
-    line-height:1.8;
-    margin-bottom:22px;
+.card{
+    position:relative;
+
+    min-height:250px;
+
+    padding:31px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow:hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
 }
 
-input{
-    width:min(560px,100%);
-    padding:16px 18px;
-    background:#0c0c0c;
-    border:1px solid rgba(255,255,255,.18);
-    color:#eee;
-    outline:none;
-    font-family:inherit;
-    font-size:1rem;
+.card:hover{
+    transform:translateY(-3px);
+
+    border-color:
+        rgba(255,255,255,.27);
+
+    background:
+        rgba(255,255,255,.035);
 }
 
-input:focus{
-    border-color:rgba(255,255,255,.5);
-}
+.card-link{
+    position:absolute;
 
-button{
-    font-family:inherit;
-}
-
-.submit{
-    margin-top:15px;
-    min-height:52px;
-    padding:12px 27px;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(255,255,255,.07);
-    color:#eee;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.submit:hover{
-    background:rgba(255,255,255,.13);
-    transform:translateY(-1px);
-}
-
-.message{
-    min-height:26px;
-    margin-top:18px;
-    color:#aaa;
-    line-height:1.7;
-}
-
-.hint-box,
-.help-box{
-    display:none;
-    margin-top:22px;
-    padding:18px;
-    text-align:left;
-    border-left:2px solid rgba(255,255,255,.28);
-    background:rgba(255,255,255,.025);
-    color:#aaa;
-    line-height:1.8;
-}
-
-.hint-title,
-.help-title{
-    color:#ddd;
-    margin-bottom:8px;
-    font-size:.8rem;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-}
-
-.utility{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px;
-    margin-top:30px;
-}
-
-.utility button,
-.utility a{
-    min-height:45px;
-    padding:10px 19px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    font-family:inherit;
-    color:#aaa;
-    background:transparent;
-    border:1px solid rgba(255,255,255,.12);
-    cursor:pointer;
-    transition:.25s;
-}
-
-.utility button:hover,
-.utility a:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.4);
-    background:rgba(255,255,255,.04);
-}
-
-.access{
-    margin-top:38px;
-    padding-top:25px;
-    border-top:1px solid rgba(255,255,255,.08);
-}
-
-.access p{
-    color:#777;
-    line-height:1.8;
-    margin:0 0 14px;
-}
-
-.access a{
-    display:inline-flex;
-    min-height:48px;
-    align-items:center;
-    justify-content:center;
-    padding:12px 23px;
-    color:#aaa;
-    text-decoration:none;
-    border:1px solid rgba(255,255,255,.16);
-    transition:.25s;
-}
-
-.access a:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.45);
-    background:rgba(255,255,255,.05);
-}
-
-.success-screen{
-    display:none;
-    position:fixed;
     inset:0;
-    z-index:100;
-    background:#050505;
+
+    z-index:1;
+}
+
+.card-content{
+    position:relative;
+
+    z-index:2;
+
+    pointer-events:none;
+}
+
+.card-number{
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:#666b6e;
+
+    margin-bottom:23px;
+}
+
+.card h2{
+    margin:0 0 15px;
+
+    font-size:29px;
+
+    font-weight:normal;
+}
+
+.card p{
+    color:#9b9c98;
+
+    line-height:1.85;
+
+    max-width:450px;
+}
+
+.card-action{
+    display:inline-block;
+
+    margin-top:14px;
+
+    color:#d6d3ca;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+}
+
+
+/* LISTENING */
+
+.listening{
+    grid-column:1/-1;
+
+    min-height:205px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+}
+
+.lock-visual{
+    width:70px;
+    height:70px;
+
+    flex-shrink:0;
+
+    display:flex;
+
     align-items:center;
     justify-content:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(0,0,0,.18);
+
+    font-size:27px;
+
+    filter:grayscale(1);
+}
+
+.listening.locked{
+    cursor:pointer;
+}
+
+.listening.locked:hover{
+    transform:none;
+
+    border-color:
+        rgba(255,255,255,.2);
+}
+
+.status{
+    margin-bottom:13px;
+
+    color:#666b6f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+}
+
+.listening.unlocked{
+    cursor:pointer;
+
+    border-color:
+        rgba(255,255,255,.24);
+}
+
+.listening.unlocked .status{
+    color:#c9c6bd;
+}
+
+.listening.unlocked .lock-visual{
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+
+/* DIRECT */
+
+.direct{
     text-align:center;
-    padding:25px;
+
+    margin-top:32px;
 }
 
-.success-content{
-    animation:appear 1.2s ease forwards;
-}
+.direct p{
+    color:#666b6e;
 
-.success-symbol{
-    font-size:4rem;
-    margin-bottom:20px;
-}
+    font-family:Arial,sans-serif;
 
-.success-content h2{
-    font-weight:normal;
-    font-size:clamp(2rem,6vw,4rem);
-    margin:0 0 20px;
-}
+    font-size:8px;
 
-.success-content p{
-    color:#aaa;
+    letter-spacing:.7px;
+
     line-height:1.8;
-    max-width:500px;
-    margin:auto;
+
+    margin-bottom:13px;
 }
 
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.direct a{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:45px;
+
+    padding:10px 20px;
+
+    color:#85898b;
+
+    text-decoration:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
 }
 
-@media(max-width:600px){
-    .page{
-        padding-top:45px;
-    }
+.direct a:hover{
+    color:#eeeae1;
 
-    .challenge-box{
-        padding:28px 16px;
-    }
+    border-color:
+        rgba(255,255,255,.25);
 
-    .utility{
-        flex-direction:column;
-    }
-
-    .utility button,
-    .utility a{
-        width:100%;
-    }
+    background:
+        rgba(255,255,255,.03);
 }
+
+
+/* BOTTOM */
+
+.bottom{
+    text-align:center;
+
+    margin-top:38px;
+}
+
+.bottom a{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:45px;
+
+    padding:10px 20px;
+
+    color:#777b7e;
+
+    text-decoration:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.bottom a:hover{
+    color:#eeeae1;
+
+    border-color:
+        rgba(255,255,255,.22);
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .listening{
+        grid-column:auto;
+
+        display:block;
+    }
+
+    .lock-visual{
+        margin-bottom:22px;
+    }
+
+    .topbar{
+        gap:15px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
 <div class="page">
 
-<div class="symbol">⌁</div>
 
-<div class="eyebrow">Reflection 8B</div>
+    <div class="topbar">
 
-<h1>The Challenge</h1>
+        <a href="index.html">
+            ← ARCHIVE
+        </a>
 
-<div class="line"></div>
+        <a href="8a.html">
+            GROUP 8A →
+        </a>
 
-<p class="intro">
-The answer may not be hidden where you first expect it.
-Some clues only make sense after another clue has been understood.
-</p>
-
-
-<section class="challenge-box">
-
-<div class="question">
-Enter the final key.
-</div>
-
-<input
-type="text"
-id="answer"
-autocomplete="off"
-autocapitalize="none"
-spellcheck="false"
-placeholder="the key..."
->
-
-<br>
-
-<button class="submit" onclick="checkAnswer()">
-Try the Key
-</button>
-
-<div class="message" id="message"></div>
-
-<div class="hint-box" id="hintBox">
-<div class="hint-title">Hint</div>
-<div id="hintText"></div>
-</div>
-
-<div class="help-box" id="helpBox">
-<div class="help-title">A Little More Help</div>
-<div id="helpText"></div>
-</div>
-
-<div class="utility">
-
-<button id="helpButton" onclick="nextHelp()">
-Need some help?
-</button>
-
-</div>
-
-</section>
+    </div>
 
 
-<section class="access">
+    <header class="header">
 
-<p>
-Still curious about what lies beyond the challenge?
-A different route is available — but it will reveal what the puzzle was meant to protect.
-</p>
+        <div class="eyebrow">
+            REFLECTION ARCHIVE · GROUP 08B
+        </div>
 
-<a href="access-confirm.html">
-A Different Way Forward →
-</a>
+        <h1>
+            Reflection
+        </h1>
 
-</section>
+        <div class="divider"></div>
 
+        <div class="subtitle">
+            Another way of seeing.
+        </div>
 
-<div class="utility" style="margin-top:28px;">
-
-<a href="scenario.html">
-← Back to the Scenario
-</a>
-
-</div>
-
-</div>
+    </header>
 
 
-<div class="success-screen" id="successScreen">
+    <section class="cards">
 
-<div class="success-content">
 
-<div class="success-symbol">✦</div>
+        <!-- SCENARIO -->
 
-<h2>The pattern changes.</h2>
+        <article class="card">
 
-<p>
-The final stop was never the answer.
-It was only the moment to look again.
-</p>
+            <a
+                class="card-link"
+                href="scenario.html"
+                aria-label="Open The Scenario">
+            </a>
 
-</div>
+            <div class="card-content">
+
+                <div class="card-number">
+                    01 · BEGIN
+                </div>
+
+                <h2>
+                    The Scenario
+                </h2>
+
+                <p>
+                    Four voices gather around a question:
+                    logic, skepticism, intuition,
+                    and critical thought.
+                </p>
+
+                <span class="card-action">
+                    ENTER THE SCENARIO →
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- CHALLENGE -->
+
+        <article class="card">
+
+            <a
+                class="card-link"
+                href="challenge.html"
+                aria-label="Open The Challenge">
+            </a>
+
+            <div class="card-content">
+
+                <div class="card-number">
+                    02 · DISCOVER
+                </div>
+
+                <h2>
+                    The Challenge
+                </h2>
+
+                <p>
+                    The scenario leaves a trail.
+                    Follow it carefully and discover
+                    what waits beyond the obvious.
+                </p>
+
+                <span class="card-action">
+                    FOLLOW THE TRAIL →
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- LISTENING -->
+
+        <article
+            class="card listening locked"
+            id="listeningCard">
+
+            <div
+                class="lock-visual"
+                id="lockVisual">
+                🔒
+            </div>
+
+            <div class="card-content">
+
+                <div
+                    class="status"
+                    id="listeningStatus">
+                    LISTENING ARCHIVE · LOCKED
+                </div>
+
+                <h2>
+                    The Reflection Voice
+                </h2>
+
+                <p id="listeningText">
+                    The voice waits beyond the path.
+                    Complete the challenge to unlock it.
+                </p>
+
+                <span
+                    class="card-action"
+                    id="listeningAction">
+                    COMPLETE THE PATH →
+                </span>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <div class="direct">
+
+        <p>
+            Prefer another route? You can enter directly,
+            but the discovery will be skipped.
+        </p>
+
+        <a href="access-confirm.html">
+            A DIFFERENT WAY FORWARD →
+        </a>
+
+    </div>
+
+
+    <div class="bottom">
+
+        <a href="index.html">
+            ← BACK TO ARCHIVE
+        </a>
+
+    </div>
 
 </div>
 
 
 <script>
-let attempts = 0;
-let helpStep = 0;
 
-const finalAnswer = "understanding is not the final stop";
+const unlocked =
+    localStorage.getItem(
+        "reflection8bUnlocked"
+    ) === "true";
 
-const answerInput = document.getElementById("answer");
-const message = document.getElementById("message");
-const hintBox = document.getElementById("hintBox");
-const hintText = document.getElementById("hintText");
-const helpBox = document.getElementById("helpBox");
-const helpText = document.getElementById("helpText");
-const helpButton = document.getElementById("helpButton");
 
-const helps = [
-    "Return to the scenario. The clues are part of the story, not separate from it.",
-    "The strange symbols near the end are not the final destination. They tell you to reconsider your direction.",
-    "A decoded message asks you to look back. Take that instruction literally.",
-    "Look again at the earlier coded line in the scenario.",
-    "The first coded sentence can be read with a very simple shift: each letter has moved forward by two places.",
-    "The answer is a complete English sentence, and the final PDF password is written entirely in lowercase."
-];
+const card =
+    document.getElementById(
+        "listeningCard"
+    );
 
-function normalize(text){
-    return text
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g," ");
+const visual =
+    document.getElementById(
+        "lockVisual"
+    );
+
+const status =
+    document.getElementById(
+        "listeningStatus"
+    );
+
+const text =
+    document.getElementById(
+        "listeningText"
+    );
+
+const action =
+    document.getElementById(
+        "listeningAction"
+    );
+
+
+if(unlocked){
+
+    card.classList.remove("locked");
+
+    card.classList.add("unlocked");
+
+    visual.textContent = "🔓";
+
+    status.textContent =
+        "LISTENING ARCHIVE · UNLOCKED";
+
+    text.textContent =
+        "The written reflection can now be read and heard together.";
+
+    action.textContent =
+        "ENTER THE REFLECTION ROOM →";
+
+    card.onclick = function(){
+
+        window.location.href =
+            "reflection-room.html";
+
+    };
+
+}else{
+
+    card.onclick = function(){
+
+        window.location.href =
+            "challenge.html";
+
+    };
+
 }
 
-function checkAnswer(){
-
-    const value = normalize(answerInput.value);
-
-    if(value === finalAnswer){
-
-        localStorage.setItem("reflection8bUnlocked","true");
-
-        document.getElementById("successScreen").style.display="flex";
-
-        setTimeout(()=>{
-            window.location.href="main-8b.html";
-        },4200);
-
-        return;
-    }
-
-    attempts++;
-
-    message.textContent = "Not this one. The answer may be somewhere you have already passed.";
-
-    showHint();
-
-    answerInput.select();
-}
-
-
-function showHint(){
-
-    hintBox.style.display="block";
-
-    if(attempts === 1){
-
-        hintText.textContent =
-        "The answer is not the rune message itself. That message points somewhere else.";
-
-    }else if(attempts < 4){
-
-        hintText.textContent =
-        "One of the messages in the scenario tells you to reconsider something earlier.";
-
-    }else if(attempts < 8){
-
-        hintText.textContent =
-        "The clue that says “look back” is a bridge, not the final key.";
-
-    }else if(attempts < 15){
-
-        hintText.textContent =
-        "Go back to the earlier coded English line. Its letters have been shifted.";
-
-    }else{
-
-        hintText.innerHTML =
-        "You have looked long enough. Here is part of the final key:<br><br><strong>understanding is not the ...</strong>";
-    }
-}
-
-
-function nextHelp(){
-
-    helpBox.style.display="block";
-
-    helpText.textContent = helps[helpStep];
-
-    helpStep++;
-
-    if(helpStep < helps.length){
-
-        helpButton.textContent = "Need a little more help?";
-
-    }else{
-
-        helpButton.textContent = "That is all the help available.";
-        helpButton.disabled = true;
-        helpButton.style.opacity = ".45";
-        helpButton.style.cursor = "default";
-    }
-}
-
-
-answerInput.addEventListener("keydown",function(event){
-
-    if(event.key === "Enter"){
-        checkAnswer();
-    }
-
-});
 </script>
 
 </body>
