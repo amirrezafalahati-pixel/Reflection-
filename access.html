@@ -1,28 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-    <meta
-        http-equiv="refresh"
-        content="0; url=access-confirm.html"
-    >
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>A Different Way In</title>
 
-    <title>Reflection 08B</title>
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at top,#20242b,#08090b 70%);
+
+    color:#e8e5dc;
+
+    font-family:Georgia,"Times New Roman",serif;
+
+    text-align:center;
+
+    padding:30px 18px;
+}
+
+.container{
+    width:min(680px,92%);
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:65px;
+}
+
+.nav a{
+    color:#666c71;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.nav a:hover{
+    color:#ddd9d0;
+}
+
+.label{
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    opacity:.45;
+
+    margin-bottom:25px;
+}
+
+h1{
+    font-weight:400;
+
+    font-size:clamp(35px,6vw,58px);
+
+    margin-bottom:25px;
+}
+
+.intro{
+    color:#999;
+
+    line-height:1.9;
+}
+
+.warning{
+
+    margin-top:35px;
+
+    padding:27px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.03);
+}
+
+.warning p{
+
+    color:#999;
+
+    line-height:1.8;
+}
+
+.warning strong{
+    color:#d7d4cc;
+}
+
+.buttons{
+
+    margin-top:30px;
+}
+
+.buttons a{
+
+    display:inline-block;
+
+    margin:7px;
+
+    padding:13px 22px;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.primary{
+
+    background:#e8e5dc;
+
+    color:#111;
+}
+
+.primary:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.secondary{
+
+    border:1px solid rgba(255,255,255,.2);
+
+    color:#ccc;
+}
+
+.secondary:hover{
+
+    background:rgba(255,255,255,.08);
+}
+
+.note{
+
+    margin-top:28px;
+
+    color:#565c61;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    line-height:1.8;
+}
+
+</style>
 
 </head>
 
 <body>
 
-    <script>
-        window.location.replace("access-confirm.html");
-    </script>
+<div class="container">
+
+<div class="nav">
+
+<a href="8b.html">
+← GROUP 8B
+</a>
+
+<a href="challenge.html">
+RETURN TO CHALLENGE
+</a>
+
+</div>
+
+
+<div class="label">
+AN ALTERNATIVE PATH
+</div>
+
+
+<h1>
+A different way in.
+</h1>
+
+
+<p class="intro">
+
+There is another way to reach
+what lies behind the code.
+
+But every shortcut changes
+the experience.
+
+</p>
+
+
+<div class="warning">
+
+<p>
+
+This path takes you directly
+to the reflection.
+
+You will skip the search,
+the clues, and the moment
+of discovery.
+
+</p>
+
+
+<p>
+
+<strong>
+If you want to experience
+the challenge as intended,
+return to the trail.
+</strong>
+
+</p>
+
+</div>
+
+
+<div class="buttons">
+
+<a
+class="primary"
+href="main-8b.html"
+onclick="unlockDirectAccess()">
+
+CONTINUE DIRECTLY
+
+</a>
+
+
+<a
+class="secondary"
+href="challenge.html">
+
+RETURN TO THE CHALLENGE
+
+</a>
+
+</div>
+
+
+<div class="note">
+
+YOU ARE CHOOSING THE SHORTER PATH.
+
+</div>
+
+</div>
+
+
+<script>
+
+function unlockDirectAccess(){
+
+    sessionStorage.setItem(
+        "reflection8bUnlocked",
+        "true"
+    );
+
+    localStorage.setItem(
+        "reflection8bUnlocked",
+        "true"
+    );
+
+}
+
+</script>
 
 </body>
-
 </html>
