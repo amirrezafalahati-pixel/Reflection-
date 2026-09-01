@@ -16,30 +16,53 @@
 
 <div
     id="lockedScreen"
-    class="lock-screen"
+    class="lock"
 >
 
-    <div>
+    <div class="lock-inner">
 
-        <div class="lock-symbol">
-            🔒
+        <div class="lock-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+
+                <rect
+                    x="5"
+                    y="10"
+                    width="14"
+                    height="10"
+                    rx="1.5"
+                />
+
+                <path
+                    d="M8 10V7a4 4 0 0 1 8 0v3"
+                />
+
+            </svg>
+
         </div>
 
-        <div class="lock-label">
+
+        <div class="kicker">
             REFLECTION 08B
         </div>
+
 
         <h1 class="lock-title">
             Reflection Locked.
         </h1>
+
 
         <p class="lock-description">
             This archive is part of the discovery path.
             Complete the challenge before entering it.
         </p>
 
+
         <a
-            class="lock-button"
+            class="secondary"
             href="8b.html"
         >
             RETURN TO GROUP 08B
@@ -50,48 +73,55 @@
 </div>
 
 
+
 <main
     id="reflectionContent"
-    class="wide-page"
+    class="page-wide"
     style="display:none;"
 >
 
-    <div class="archive-kicker">
+    <div class="kicker">
         REFLECTION 08B · LISTENING ARCHIVE
     </div>
 
-    <h1 class="archive-title">
+
+    <h1 class="title">
         The Reflection Room.
     </h1>
 
-    <p class="archive-subtitle">
+
+    <p class="subtitle">
         Read it. Listen to it. Rethink it.
         The written reflection and its voice are presented together
-        so the argument can be followed without leaving the page.
+        so the reflection can be experienced as one piece.
     </p>
 
-    <div class="archive-line"></div>
+
+    <div class="rule"></div>
 
 
     <section class="reading-grid">
 
 
-        <div class="document-panel">
+        <!-- PDF -->
 
-            <div class="document-header">
+        <div class="document">
 
-                <div class="document-header-title">
+            <div class="document-head">
+
+                <div class="document-name">
                     MAIN REFLECTION
                 </div>
 
-                <div class="document-header-meta">
+                <div class="document-info">
                     GROUP 08B · PDF
                 </div>
 
             </div>
 
+
             <iframe
-                class="document-frame"
+                class="pdf"
                 src="Main%20Reflection%208b%20Open.pdf"
                 title="Group 08B Main Reflection"
             ></iframe>
@@ -99,27 +129,53 @@
         </div>
 
 
+        <!-- AUDIO -->
+
         <aside class="audio-column">
 
             <div class="audio-panel">
 
-                <div class="audio-symbol">
-                    ♪
+
+                <div class="audio-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M4 9v6h4l5 4V5L8 9H4z"
+                        />
+
+                        <path
+                            d="M16 9.5a4 4 0 0 1 0 5"
+                        />
+
+                        <path
+                            d="M18.5 7a7 7 0 0 1 0 10"
+                        />
+
+                    </svg>
+
                 </div>
+
 
                 <div class="audio-label">
                     VOICE ARCHIVE
                 </div>
 
+
                 <div class="audio-title">
                     Listen while you read.
                 </div>
+
 
                 <div class="audio-description">
                     The reflection is available as a voice recording.
                     Keep this panel beside the document and follow
                     the written reflection while listening.
                 </div>
+
 
                 <audio
                     class="audio-player"
@@ -128,7 +184,7 @@
                 >
 
                     <source
-                        src="reflection-8b-voice.mp3?v=4"
+                        src="reflection-8b-voice.mp3?v=5"
                         type="audio/mpeg"
                     >
 
@@ -145,7 +201,7 @@
 
 
                 <a
-                    class="download-button"
+                    class="download"
                     href="reflection-8b-voice.mp3"
                     download
                 >
@@ -186,11 +242,14 @@ if(unlocked){
 
     document.getElementById(
         "lockedScreen"
-    ).style.display = "none";
+    ).style.display =
+        "none";
+
 
     document.getElementById(
         "reflectionContent"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 
 }
 
