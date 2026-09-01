@@ -1,158 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Listening Archive · Group 08B</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="site.css">
+    <title>The Listening Archive · Reflection 08B</title>
+
+    <link rel="stylesheet" href="site.css">
 
 </head>
+
 
 <body>
 
 
-<div
-    id="lockedScreen"
-    class="lock"
->
+<div id="lockedView">
 
-    <div class="lock-inner">
+    <main class="page">
 
-        <div class="lock-icon">
+        <section class="lock-screen">
 
-            <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
+            <div class="lock-inner">
 
-                <rect
-                    x="5"
-                    y="10"
-                    width="14"
-                    height="10"
-                    rx="1.5"
-                />
-
-                <path
-                    d="M8 10V7a4 4 0 0 1 8 0v3"
-                />
-
-            </svg>
-
-        </div>
-
-
-        <div class="kicker">
-            REFLECTION 08B
-        </div>
-
-
-        <h1 class="lock-title">
-            Reflection Locked.
-        </h1>
-
-
-        <p class="lock-description">
-            This archive is part of the discovery path.
-            Complete the challenge before entering it.
-        </p>
-
-
-        <a
-            class="secondary"
-            href="8b.html"
-        >
-            RETURN TO GROUP 08B
-        </a>
-
-    </div>
-
-</div>
-
-
-
-<main
-    id="reflectionContent"
-    class="page-wide"
-    style="display:none;"
->
-
-    <div class="kicker">
-        REFLECTION 08B · LISTENING ARCHIVE
-    </div>
-
-
-    <h1 class="title">
-        The Reflection Room.
-    </h1>
-
-
-    <p class="subtitle">
-        Read it. Listen to it. Rethink it.
-        The written reflection and its voice are presented together
-        so the reflection can be experienced as one piece.
-    </p>
-
-
-    <div class="rule"></div>
-
-
-    <section class="reading-grid">
-
-
-        <!-- PDF -->
-
-        <div class="document">
-
-            <div class="document-head">
-
-                <div class="document-name">
-                    MAIN REFLECTION
-                </div>
-
-                <div class="document-info">
-                    GROUP 08B · PDF
-                </div>
-
-            </div>
-
-
-            <iframe
-                class="pdf"
-                src="Main%20Reflection%208b%20Open.pdf"
-                title="Group 08B Main Reflection"
-            ></iframe>
-
-        </div>
-
-
-        <!-- AUDIO -->
-
-        <aside class="audio-column">
-
-            <div class="audio-panel">
-
-
-                <div class="audio-icon">
+                <div class="lock-icon">
 
                     <svg
                         viewBox="0 0 24 24"
-                        aria-hidden="true"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
                     >
 
-                        <path
-                            d="M4 9v6h4l5 4V5L8 9H4z"
+                        <rect
+                            x="5"
+                            y="10"
+                            width="14"
+                            height="10"
+                            rx="2"
                         />
 
                         <path
-                            d="M16 9.5a4 4 0 0 1 0 5"
-                        />
-
-                        <path
-                            d="M18.5 7a7 7 0 0 1 0 10"
+                            d="M8 10V7a4 4 0 0 1 8 0v3"
                         />
 
                     </svg>
@@ -160,100 +56,212 @@
                 </div>
 
 
-                <div class="audio-label">
-                    VOICE ARCHIVE
+                <div class="eyebrow">
+                    Reflection 08B · Restricted
                 </div>
 
 
-                <div class="audio-title">
-                    Listen while you read.
-                </div>
+                <h1>
+                    Archive Locked.
+                </h1>
 
 
-                <div class="audio-description">
-                    The reflection is available as a voice recording.
-                    Keep this panel beside the document and follow
-                    the written reflection while listening.
-                </div>
-
-
-                <audio
-                    class="audio-player"
-                    controls
-                    preload="metadata"
-                >
-
-                    <source
-                        src="reflection-8b-voice.mp3?v=5"
-                        type="audio/mpeg"
-                    >
-
-                    Your browser does not support audio playback.
-
-                </audio>
-
-
-                <div class="audio-note">
-                    Recommended:
-                    start the recording and read the reflection
-                    alongside it.
-                </div>
+                <p>
+                    This room becomes available after
+                    completing the challenge.
+                </p>
 
 
                 <a
-                    class="download"
-                    href="reflection-8b-voice.mp3"
-                    download
+                    href="8b.html"
+                    class="btn secondary"
                 >
-                    DOWNLOAD VOICE RECORDING
+                    Return to Group 08B
                 </a>
 
             </div>
 
-        </aside>
+        </section>
 
-    </section>
+    </main>
+
+</div>
 
 
-    <nav class="bottom-nav">
 
-        <a href="8b.html">
-            ← BACK TO GROUP 08B
-        </a>
+<div id="openView" style="display:none;">
 
-        <a href="index.html">
-            BACK TO ARCHIVE
-        </a>
+    <main class="page-wide">
 
-    </nav>
 
-</main>
+        <header class="reading-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    Reflection 08B · Listening Archive
+                </div>
+
+                <h1>
+                    The Reflection Room.
+                </h1>
+
+                <p>
+                    Read the reflection while listening to its
+                    accompanying voice recording.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <section class="reading-grid">
+
+
+            <!-- PDF -->
+
+            <div>
+
+                <iframe
+                    class="pdf-frame"
+                    src="Main%20Reflection%208b%20Open.pdf"
+                    title="Main Reflection 08B"
+                ></iframe>
+
+            </div>
+
+
+            <!-- AUDIO -->
+
+            <aside class="audio-column">
+
+                <div class="audio-panel">
+
+
+                    <div class="audio-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path
+                                d="M4 10v4"
+                            />
+
+                            <path
+                                d="M8 7v10"
+                            />
+
+                            <path
+                                d="M12 4v16"
+                            />
+
+                            <path
+                                d="M16 7v10"
+                            />
+
+                            <path
+                                d="M20 10v4"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <h2>
+                        Voice Reflection
+                    </h2>
+
+
+                    <p>
+                        Listen while following the reflection
+                        on the page.
+                    </p>
+
+
+                    <audio
+                        controls
+                        preload="metadata"
+                    >
+
+                        <source
+                            src="reflection-8b-voice.mp3?v=5"
+                            type="audio/mpeg"
+                        >
+
+                        Your browser does not support audio playback.
+
+                    </audio>
+
+
+                    <div class="audio-meta">
+                        Reflection 08B · Voice Recording
+                    </div>
+
+
+                    <a
+                        class="download"
+                        href="reflection-8b-voice.mp3"
+                        download
+                    >
+                        Download Audio →
+                    </a>
+
+                </div>
+
+            </aside>
+
+
+        </section>
+
+
+        <nav class="bottom-nav">
+
+            <a href="8b.html">
+                ← Group 08B
+            </a>
+
+            <a href="index.html">
+                Archive
+            </a>
+
+        </nav>
+
+
+    </main>
+
+</div>
+
 
 
 <script>
 
 const unlocked =
-    localStorage.getItem(
-        "reflection8bUnlocked"
-    ) === "true";
+    localStorage.getItem("reflection8bUnlocked")
+    === "true";
 
 
-if(unlocked){
+if (unlocked) {
 
-    document.getElementById(
-        "lockedScreen"
-    ).style.display =
-        "none";
+    document
+        .getElementById("lockedView")
+        .style.display = "none";
 
-
-    document.getElementById(
-        "reflectionContent"
-    ).style.display =
-        "block";
+    document
+        .getElementById("openView")
+        .style.display = "block";
 
 }
 
 </script>
+
 
 </body>
 </html>
