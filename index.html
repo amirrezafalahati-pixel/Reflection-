@@ -1,358 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Reflection Archive</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-
-    margin: 0;
-
-    min-height: 100vh;
-
+body{
+    margin:0;
+    min-height:100vh;
     background:
-        radial-gradient(
-            circle at 50% 10%,
-            #20252b 0%,
-            #0a0c0f 65%,
-            #060708 100%
-        );
-
-    color: #e7e4dc;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 30px 18px;
-
+        radial-gradient(circle at 50% 8%,#20252b 0%,#0a0c0f 60%,#050607 100%);
+    color:#e7e4dc;
+    font-family:Georgia,"Times New Roman",serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px 18px;
 }
 
-.container {
-
-    width: 100%;
-
-    max-width: 1000px;
-
-    text-align: center;
-
+.container{
+    width:100%;
+    max-width:1000px;
+    text-align:center;
 }
 
-.label {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 6px;
-
-    color: #646a70;
-
-    margin-bottom: 25px;
-
+.label{
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    letter-spacing:6px;
+    color:#646a70;
+    margin-bottom:25px;
 }
 
-h1 {
-
-    font-size:
-        clamp(
-            44px,
-            9vw,
-            78px
-        );
-
-    font-weight: normal;
-
-    letter-spacing: 7px;
-
-    margin: 0;
-
+h1{
+    font-size:clamp(44px,9vw,78px);
+    font-weight:normal;
+    letter-spacing:7px;
+    margin:0;
 }
 
-.intro {
-
-    max-width: 600px;
-
-    margin:
-        25px
-        auto
-        55px;
-
-    color: #92948f;
-
-    font-style: italic;
-
-    line-height: 1.9;
-
+.intro{
+    max-width:600px;
+    margin:25px auto 55px;
+    color:#92948f;
+    font-style:italic;
+    line-height:1.9;
 }
 
-.groups {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            1fr
-        );
-
-    gap: 20px;
-
+.groups{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
 }
 
-.card {
-
-    border:
-        1px solid
-        #3d4247;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .025
-        );
-
-    padding: 45px 25px;
-
-    text-decoration: none;
-
-    color: #e4e1d9;
-
-    transition:
-        .35s ease;
-
+.card{
+    border:1px solid #3d4247;
+    background:rgba(255,255,255,.025);
+    padding:45px 25px;
+    text-decoration:none;
+    color:#e4e1d9;
+    transition:.35s ease;
 }
 
-.card:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        #73787d;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .045
-        );
-
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#73787d;
+    background:rgba(255,255,255,.045);
 }
 
-.card-label {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    color: #686e73;
-
+.card-label{
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    letter-spacing:4px;
+    color:#686e73;
 }
 
-.card h2 {
-
-    font-size: 34px;
-
-    font-weight: normal;
-
-    letter-spacing: 4px;
-
-    margin:
-        18px
-        0
-        12px;
-
+.card h2{
+    font-size:34px;
+    font-weight:normal;
+    letter-spacing:4px;
+    margin:18px 0 12px;
 }
 
-.card p {
-
-    color: #858883;
-
-    font-style: italic;
-
-    line-height: 1.7;
-
-    margin: 0;
-
+.card p{
+    color:#858883;
+    font-style:italic;
+    line-height:1.7;
+    margin:0;
 }
 
-.arrow {
-
-    display: block;
-
-    margin-top: 28px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    color: #71767b;
-
+.arrow{
+    display:block;
+    margin-top:28px;
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    letter-spacing:3px;
+    color:#71767b;
 }
 
-.footer {
-
-    margin-top: 55px;
-
-    color: #474d52;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 4px;
-
+.footer{
+    margin-top:55px;
+    color:#474d52;
+    font-family:Arial,sans-serif;
+    font-size:8px;
+    letter-spacing:4px;
 }
 
-@media(max-width:700px) {
-
-    .groups {
-
-        grid-template-columns: 1fr;
-
+@media(max-width:700px){
+    .groups{
+        grid-template-columns:1fr;
     }
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="container">
 
-
 <div class="label">
-
 REFLECTION ARCHIVE
-
 </div>
 
-
-<h1>
-
-TWO PERSPECTIVES
-
-</h1>
-
+<h1>TWO PERSPECTIVES</h1>
 
 <div class="intro">
-
-Two reflections.
-Two ways of seeing.
+Two reflections.<br>
+Two ways of seeing.<br>
 One archive.
-
 </div>
-
 
 <div class="groups">
 
-
-<a
-href="8a.html"
-class="card">
+<a href="8a.html" class="card">
 
 <div class="card-label">
-
 GROUP 08A
-
 </div>
 
-<h2>
-
-8A
-
-</h2>
+<h2>8A</h2>
 
 <p>
-
-Reflection
-
+A reflection in its own voice.
 </p>
 
 <span class="arrow">
-
 ENTER →
-
 </span>
 
 </a>
 
 
-<a
-href="8b.html"
-class="card">
+<a href="8b.html" class="card">
 
 <div class="card-label">
-
 GROUP 08B
-
 </div>
 
-<h2>
-
-8B
-
-</h2>
+<h2>8B</h2>
 
 <p>
-
-Reflection · Scenario · Challenge
-
+A reflection with a story,
+a hidden path, and something to discover.
 </p>
 
 <span class="arrow">
-
 ENTER →
-
 </span>
 
 </a>
 
-
 </div>
-
 
 <div class="footer">
-
 READ · QUESTION · RETHINK
-
 </div>
 
-
 </div>
-
 
 </body>
-
 </html>
