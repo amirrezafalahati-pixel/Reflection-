@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,87 +18,129 @@ body{
     min-height:100vh;
 
     background:
-        radial-gradient(circle at top,#20242b 0%,#0c0e12 55%,#050608 100%);
+        radial-gradient(
+            circle at top,
+            #22272d,
+            #090b0e 70%
+        );
 
     color:#e8e5dc;
 
-    font-family:Georgia,"Times New Roman",serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:30px 18px;
+    padding:28px 18px;
 }
 
 .container{
     width:100%;
-    max-width:800px;
-    text-align:center;
+    max-width:760px;
+    margin:auto;
 }
 
-.nav{
+/* NAV */
+
+.top-nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.nav-button{
     display:flex;
-    justify-content:space-between;
-    margin-bottom:45px;
-}
+    align-items:center;
+    justify-content:center;
 
-.nav a{
-    color:#656b70;
+    min-height:48px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    color:#777c81;
+
     text-decoration:none;
+
     font-family:Arial,sans-serif;
+
     font-size:9px;
+
     letter-spacing:2px;
+
     transition:.3s;
+
+    background:rgba(255,255,255,.025);
 }
 
-.nav a:hover{
-    color:#ddd9d0;
+.nav-button:hover{
+    color:#eeeae0;
+    border-color:rgba(255,255,255,.28);
+    background:rgba(255,255,255,.055);
+}
+
+/* MAIN */
+
+.main{
+    text-align:center;
+    padding:70px 0 45px;
 }
 
 .small-label{
     font-family:Arial,sans-serif;
-    font-size:11px;
+
+    font-size:10px;
+
     letter-spacing:4px;
-    text-transform:uppercase;
-    opacity:.55;
+
+    opacity:.5;
+
     margin-bottom:25px;
 }
 
 h1{
-    font-size:clamp(34px,7vw,62px);
+    font-size:clamp(38px,7vw,62px);
+
     font-weight:400;
+
     margin:0 0 18px;
 }
 
 .subtitle{
-    max-width:600px;
+    max-width:580px;
+
     margin:auto;
+
     line-height:1.8;
+
     color:#aaa9a4;
-    font-size:16px;
 }
 
+/* CHALLENGE */
+
 .challenge-box{
-    margin-top:40px;
+
+    margin-top:45px;
+
     padding:35px 25px;
 
     border:1px solid rgba(255,255,255,.12);
 
     background:rgba(255,255,255,.035);
 
-    backdrop-filter:blur(10px);
 }
 
-.input-label{
-    color:#c6c3bb;
+.instruction{
+    color:#c5c2ba;
 }
 
 input{
+
     width:100%;
+
     max-width:560px;
 
     padding:16px 18px;
+
     margin-top:20px;
 
     background:rgba(0,0,0,.35);
@@ -108,50 +150,84 @@ input{
     color:white;
 
     font-size:16px;
+
     text-align:center;
 
     outline:none;
+
 }
 
 input:focus{
     border-color:rgba(255,255,255,.45);
 }
 
-button{
+.verify{
+
+    width:100%;
+
+    max-width:560px;
+
     margin-top:16px;
 
-    padding:13px 30px;
+    padding:15px;
 
     background:#e8e5dc;
+
     color:#111;
 
     border:none;
 
     cursor:pointer;
 
-    font-size:13px;
-    letter-spacing:1px;
+    font-size:12px;
+
+    letter-spacing:2px;
 
     transition:.25s;
+
 }
 
-button:hover{
-    opacity:.85;
-    transform:translateY(-1px);
+.verify:hover{
+    transform:translateY(-2px);
+    opacity:.88;
 }
 
 .message{
+
     margin-top:18px;
+
     min-height:25px;
 
     font-family:Arial,sans-serif;
+
     font-size:13px;
+
 }
 
+/* ATTEMPT */
+
+.attempt{
+
+    margin-top:14px;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    color:#555b60;
+
+}
+
+/* HINTS */
+
 .hint{
+
     display:none;
 
-    margin-top:24px;
+    margin-top:25px;
+
     padding:18px;
 
     border-left:2px solid rgba(255,255,255,.35);
@@ -166,135 +242,204 @@ button:hover{
 
     font-size:14px;
 
-    animation:reveal .45s ease;
+    animation:hintAppear .5s ease;
+
 }
 
 .hint strong{
+
     display:block;
+
     color:#e8e5dc;
+
     margin-bottom:6px;
+
     letter-spacing:1px;
+
 }
 
-.guide{
+code{
+
+    color:#e8e5dc;
+
+    font-size:13px;
+
+}
+
+/* GUIDE */
+
+.guide-panel{
+
     display:none;
 
     margin-top:25px;
-    padding:22px;
 
-    border:1px solid rgba(255,255,255,.13);
+    padding:25px;
 
-    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(0,0,0,.20);
 
     text-align:left;
 
-    animation:reveal .45s ease;
+    animation:hintAppear .45s ease;
+
 }
 
 .guide-title{
+
     font-family:Arial,sans-serif;
+
     font-size:9px;
+
     letter-spacing:3px;
-    color:#ddd9d0;
-    margin-bottom:12px;
+
+    color:#d7d3c9;
+
+    margin-bottom:15px;
+
 }
 
-.guide p{
-    margin:0;
-    color:#a8a69f;
+.guide-panel p{
+
+    margin:10px 0;
+
+    color:#aaa9a4;
+
     line-height:1.8;
-    font-size:14px;
+
+    font-size:13px;
+
 }
 
-.strong-hint{
-    display:none;
+.guide-panel span{
 
-    margin-top:25px;
-    padding:22px;
+    color:#e5e1d8;
 
-    border:1px solid rgba(255,255,255,.20);
-
-    background:rgba(255,255,255,.045);
-
-    animation:reveal .6s ease;
 }
 
-.strong-hint .number{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:3px;
-    color:#8d9296;
-    margin-bottom:12px;
+/* LOWER NAV */
+
+.lower-nav{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-top:28px;
+
 }
 
-.strong-hint p{
-    color:#ddd9d0;
-    line-height:1.8;
-    margin:0;
-}
+.lower-button{
 
-.access{
-    margin-top:45px;
+    display:flex;
 
-    padding:20px;
+    align-items:center;
 
-    border-top:1px solid rgba(255,255,255,.07);
-}
+    justify-content:center;
 
-.access-title{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:3px;
-    color:#6d7378;
-    margin-bottom:8px;
-}
+    min-height:50px;
 
-.access-text{
-    max-width:520px;
-    margin:0 auto 14px;
+    border:1px solid rgba(255,255,255,.13);
 
-    color:#777d82;
-
-    font-family:Arial,sans-serif;
-
-    font-size:11px;
-
-    line-height:1.7;
-}
-
-.access a{
-    display:inline-block;
-
-    padding:10px 18px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    color:#aaa;
+    color:#aaa9a4;
 
     text-decoration:none;
 
     font-family:Arial,sans-serif;
 
-    font-size:10px;
+    font-size:9px;
 
-    letter-spacing:1px;
+    letter-spacing:2px;
+
+    background:rgba(255,255,255,.025);
 
     transition:.3s;
+
 }
 
-.access a:hover{
-    color:#eee;
-    border-color:rgba(255,255,255,.35);
+.lower-button:hover{
+
+    color:#eeeae0;
+
+    border-color:rgba(255,255,255,.28);
+
+    background:rgba(255,255,255,.055);
+
 }
+
+/* DIRECT ACCESS */
+
+.bypass{
+
+    margin-top:34px;
+
+    text-align:center;
+
+}
+
+.bypass a{
+
+    display:inline-block;
+
+    padding:12px 18px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    color:#777c81;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+
+}
+
+.bypass a:hover{
+
+    color:#ddd9d0;
+
+    border-color:rgba(255,255,255,.22);
+
+}
+
+.bypass-note{
+
+    margin-top:10px;
+
+    color:#454a4f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:.7px;
+
+}
+
+/* SUCCESS */
 
 .unlock{
+
     display:none;
 
     position:fixed;
 
     inset:0;
 
-    background:#050608;
+    background:
+        radial-gradient(
+            circle at center,
+            #1c2127,
+            #050608 75%
+        );
 
     z-index:20;
 
@@ -304,268 +449,408 @@ button:hover{
 
     text-align:center;
 
-    animation:fadeIn .7s ease;
+    animation:fadeIn .8s ease;
+
 }
 
 .unlock-content{
+
     max-width:650px;
+
     padding:30px;
+
+}
+
+.unlock-label{
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:#9a9b96;
+
+    margin-bottom:30px;
+
+    animation:reveal .9s ease;
+
 }
 
 .unlock h2{
-    font-size:clamp(34px,7vw,65px);
+
+    font-size:clamp(36px,7vw,68px);
 
     font-weight:400;
 
-    margin:0 0 20px;
+    margin:0 0 25px;
+
+    animation:reveal 1.1s ease;
+
 }
 
 .unlock p{
+
     color:#aaa;
-    line-height:1.8;
+
+    line-height:1.9;
+
+    animation:reveal 1.4s ease;
+
 }
 
 .continue-btn{
-    margin-top:28px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:220px;
+
+    min-height:52px;
+
+    margin-top:30px;
+
+    padding:14px 30px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    background:#e8e5dc;
+
+    color:#111;
+
+    cursor:pointer;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    animation:reveal 1.7s ease;
+
 }
+
+/* ANIMATION */
 
 @keyframes fadeIn{
 
-    from{
-        opacity:0;
-    }
+    from{opacity:0}
 
-    to{
-        opacity:1;
-    }
+    to{opacity:1}
+
 }
 
 @keyframes reveal{
 
     from{
+
         opacity:0;
-        transform:translateY(8px);
+
+        transform:translateY(18px);
+
+        filter:blur(5px);
+
     }
 
     to{
+
         opacity:1;
+
         transform:translateY(0);
+
+        filter:blur(0);
+
     }
+
 }
 
-@media(max-width:600px){
+@keyframes hintAppear{
 
-    .nav{
-        margin-bottom:30px;
+    from{
+
+        opacity:0;
+
+        transform:translateY(8px);
+
     }
 
-    .nav a{
-        font-size:8px;
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:560px){
+
+    .top-nav,
+    .lower-nav{
+
+        grid-template-columns:1fr;
+
     }
 
 }
 
 </style>
-
 </head>
+
 
 <body>
 
 <div class="container">
 
-<div class="nav">
+    <div class="top-nav">
 
-<a href="scenario.html">
-← BACK TO SCENARIO
-</a>
+        <a class="nav-button" href="8b.html">
+            ← GROUP 8B
+        </a>
 
-<a href="8b.html">
-GROUP 8B
-</a>
+        <a class="nav-button" href="scenario.html">
+            ← SCENARIO
+        </a>
+
+    </div>
+
+
+    <div class="main">
+
+        <div class="small-label">
+            A SMALL TEST OF ATTENTION
+        </div>
+
+        <h1>
+            The Challenge
+        </h1>
+
+        <p class="subtitle">
+            Some things are easier to find
+            when you stop looking for them directly.
+            The answer has already appeared
+            somewhere along the way.
+        </p>
+
+
+        <div class="challenge-box">
+
+            <div class="instruction">
+                Enter the key you believe belongs here.
+            </div>
+
+            <input
+                type="text"
+                id="answer"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Enter the key"
+            >
+
+            <button
+                class="verify"
+                onclick="checkAnswer()"
+            >
+                VERIFY
+            </button>
+
+
+            <div
+                class="message"
+                id="message">
+            </div>
+
+
+            <div
+                class="attempt"
+                id="attempt">
+                ATTEMPTS · 0
+            </div>
+
+
+            <!-- HINTS -->
+
+            <div class="hint" id="hint1">
+
+                <strong>HINT I</strong>
+
+                You have already seen the answer —
+                just not in the form you expect.
+
+            </div>
+
+
+            <div class="hint" id="hint2">
+
+                <strong>HINT II</strong>
+
+                The final key is not found by guessing.
+                Look carefully at what the text keeps telling you.
+
+            </div>
+
+
+            <div class="hint" id="hint3">
+
+                <strong>HINT III</strong>
+
+                Some answers are hidden in plain sight.
+
+            </div>
+
+
+            <div class="hint" id="hint4">
+
+                <strong>A CLOSER LOOK</strong>
+
+                The text is not merely telling a story.
+
+                It is part of the key.
+
+            </div>
+
+
+            <div class="hint" id="hint5">
+
+                <strong>YOU HAVE LOOKED LONG ENOUGH</strong>
+
+                The answer was never outside the story.
+
+                It was hiding in what
+                you were told to understand.
+
+                <br><br>
+
+                <code>
+                    understanding ...
+                </code>
+
+            </div>
+
+
+            <!-- GUIDE -->
+
+            <div
+                class="guide-panel"
+                id="guidePanel">
+
+                <div class="guide-title">
+                    A SMALL GUIDE
+                </div>
+
+                <p>
+                    <span>01.</span>
+                    Do not treat the scenario as ordinary text.
+                </p>
+
+                <p>
+                    <span>02.</span>
+                    Notice what the story asks you to do,
+                    not only what it tells you.
+                </p>
+
+                <p>
+                    <span>03.</span>
+                    The first clue points toward a direction.
+                    It is not necessarily the destination.
+                </p>
+
+                <p>
+                    <span>04.</span>
+                    When something tells you to
+                    “look back”, consider what came before.
+                </p>
+
+                <p>
+                    <span>05.</span>
+                    The final answer is a sentence,
+                    not a single word.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="lower-nav">
+
+            <a
+                class="lower-button"
+                href="scenario.html">
+
+                ← BACK TO SCENARIO
+
+            </a>
+
+            <button
+                class="lower-button"
+                id="guideButton"
+                onclick="toggleGuide()">
+
+                NEED A LITTLE HELP?
+
+            </button>
+
+        </div>
+
+
+        <div class="bypass">
+
+            <a href="access.html">
+
+                ENTER WITHOUT THE CHALLENGE
+
+            </a>
+
+            <div class="bypass-note">
+
+                This skips the search, clues and discovery.
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 
-<div class="small-label">
-A SMALL TEST OF ATTENTION
-</div>
+<!-- SUCCESS SCREEN -->
 
-<h1>The Challenge</h1>
+<div
+    class="unlock"
+    id="unlockScreen">
 
-<p class="subtitle">
+    <div class="unlock-content">
 
-Some things are easier to find
-when you stop looking for them directly.
+        <div class="unlock-label">
+            ACCESS GRANTED
+        </div>
 
-The answer has already appeared
-somewhere along the way.
+        <h2>
+            You found what was hidden.
+        </h2>
 
-</p>
+        <p>
+            You didn't just open a file.
+            You found what was behind it.
+        </p>
 
+        <button
+            class="continue-btn"
+            onclick="continueToReflection()">
 
-<div class="challenge-box">
+            CONTINUE TO THE REFLECTION
 
-<div class="input-label">
-Enter the key you believe belongs here.
-</div>
+        </button>
 
-
-<input
-type="text"
-id="answer"
-autocomplete="off"
-spellcheck="false"
-placeholder="Enter the key"
->
-
-<br>
-
-<button onclick="checkAnswer()">
-VERIFY
-</button>
-
-<div class="message" id="message"></div>
-
-
-<div class="hint" id="hint1">
-
-<strong>HINT I</strong>
-
-You have already seen the answer —
-just not necessarily in the form you expect.
-
-</div>
-
-
-<div class="hint" id="hint2">
-
-<strong>HINT II</strong>
-
-The final key is not found by guessing.
-Look carefully at what the text keeps telling you.
-
-</div>
-
-
-<div class="hint" id="hint3">
-
-<strong>HINT III</strong>
-
-There is a difference between
-the clue that points the way
-and the key that opens the door.
-
-</div>
-
-
-<div class="hint" id="hint4">
-
-<strong>A CLOSER LOOK</strong>
-
-The scenario is not merely telling a story.
-It contains the trail.
-
-Return to the text.
-Read it as something more than a narrative.
-
-</div>
-
-
-<div class="guide" id="guide">
-
-<div class="guide-title">
-A LITTLE MORE DIRECTION
-</div>
-
-<p>
-
-Do not begin by trying to invent a password.
-Begin by asking what the scenario has already
-placed in front of you.
-
-One clue may lead to another.
-And one answer may only be pointing
-toward the answer that actually matters.
-
-</p>
-
-</div>
-
-
-<div class="strong-hint" id="strongHint">
-
-<div class="number">
-15 ATTEMPTS · THE TRAIL IS GETTING LOUDER
-</div>
-
-<p>
-
-The final key begins with:
-
-<br><br>
-
-<strong>understanding ...</strong>
-
-<br><br>
-
-The rest is already waiting in the scenario.
-
-</p>
-
-</div>
-
-
-</div>
-
-
-<div class="access">
-
-<div class="access-title">
-NEED ANOTHER WAY?
-</div>
-
-<p class="access-text">
-
-If you would rather continue without solving the hidden path,
-you can use the alternative route.
-
-It will take you directly to what lies behind the code —
-but you will be choosing to leave the challenge unresolved.
-
-</p>
-
-<a href="access.html">
-A DIFFERENT WAY IN
-</a>
-
-</div>
-
-
-</div>
-
-
-<div class="unlock" id="unlockScreen">
-
-<div class="unlock-content">
-
-<div class="small-label">
-ACCESS GRANTED
-</div>
-
-<h2>You found what was hidden.</h2>
-
-<p>
-
-You didn't just open a file.
-You found what was behind it.
-
-</p>
-
-<button class="continue-btn" onclick="continueToReflection()">
-CONTINUE
-</button>
-
-</div>
+    </div>
 
 </div>
 
@@ -575,7 +860,7 @@ CONTINUE
 let attempts = 0;
 
 const finalPassword =
-"understanding is not the final stop";
+    "understanding is not the final stop";
 
 
 function checkAnswer(){
@@ -587,28 +872,28 @@ function checkAnswer(){
         document.getElementById("message");
 
     const answer =
-        input.value.trim().toLowerCase();
+        input.value
+        .trim()
+        .toLowerCase();
 
     attempts++;
 
+    document.getElementById("attempt").innerText =
+        "ATTEMPTS · " + attempts;
+
 
     if(answer === finalPassword){
-
-        message.innerHTML="";
-
-        sessionStorage.setItem(
-            "reflection8bUnlocked",
-            "true"
-        );
 
         localStorage.setItem(
             "reflection8bUnlocked",
             "true"
         );
 
+        message.innerHTML = "";
+
         document
-        .getElementById("unlockScreen")
-        .style.display="flex";
+            .getElementById("unlockScreen")
+            .style.display = "flex";
 
         return;
     }
@@ -618,62 +903,82 @@ function checkAnswer(){
         "Not quite. Something is still missing.";
 
     showHints();
+
 }
 
 
 function showHints(){
 
-    /* SECOND ATTEMPT */
-
     if(attempts >= 2){
 
         document
-        .getElementById("hint1")
-        .style.display="block";
+            .getElementById("hint1")
+            .style.display = "block";
+
     }
 
-
-    /* FOURTH ATTEMPT */
 
     if(attempts >= 4){
 
         document
-        .getElementById("hint2")
-        .style.display="block";
+            .getElementById("hint2")
+            .style.display = "block";
+
     }
 
-
-    /* SEVENTH ATTEMPT */
 
     if(attempts >= 7){
 
         document
-        .getElementById("hint3")
-        .style.display="block";
+            .getElementById("hint3")
+            .style.display = "block";
+
     }
 
-
-    /* TENTH ATTEMPT */
 
     if(attempts >= 10){
 
         document
-        .getElementById("hint4")
-        .style.display="block";
+            .getElementById("hint4")
+            .style.display = "block";
 
-        document
-        .getElementById("guide")
-        .style.display="block";
     }
 
-
-    /* FIFTEENTH ATTEMPT */
 
     if(attempts >= 15){
 
         document
-        .getElementById("strongHint")
-        .style.display="block";
+            .getElementById("hint5")
+            .style.display = "block";
+
+    }
+
+}
+
+
+function toggleGuide(){
+
+    const panel =
+        document.getElementById("guidePanel");
+
+    const button =
+        document.getElementById("guideButton");
+
+
+    if(panel.style.display === "block"){
+
+        panel.style.display = "none";
+
+        button.innerText =
+            "NEED A LITTLE HELP?";
+
+    }else{
+
+        panel.style.display = "block";
+
+        button.innerText =
+            "HIDE GUIDE";
+
     }
 
 }
@@ -687,17 +992,22 @@ function continueToReflection(){
 }
 
 
+/* ENTER KEY */
+
 document
-.getElementById("answer")
-.addEventListener("keydown",function(event){
+    .getElementById("answer")
+    .addEventListener(
+        "keydown",
+        function(event){
 
-    if(event.key === "Enter"){
+            if(event.key === "Enter"){
 
-        checkAnswer();
+                checkAnswer();
 
-    }
+            }
 
-});
+        }
+    );
 
 </script>
 
