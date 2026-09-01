@@ -1,117 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Direct Access · Group 08B</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="site.css">
+    <title>Direct Access · Reflection 08B</title>
+
+    <link rel="stylesheet" href="site.css">
 
 </head>
 
+
 <body>
+
 
 <main class="page-narrow">
 
-    <div class="direct-wrap">
+    <header class="archive-header">
 
-        <div class="direct-inner">
+        <div class="eyebrow">
+            Reflection 08B · Alternate Route
+        </div>
 
+        <h1>
+            Before you enter.
+        </h1>
 
-            <div class="direct-icon">
+        <p class="subtitle">
+            There is a direct route to the final reflection.
+            But it skips the experience designed around it.
+        </p>
 
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-
-                    <path d="M5 12h14"/>
-
-                    <path d="M13 6l6 6-6 6"/>
-
-                </svg>
-
-            </div>
+    </header>
 
 
-            <div class="kicker">
-                ALTERNATIVE ROUTE
-            </div>
+    <section class="direct-box">
 
+        <div class="warning-label">
+            Direct Access
+        </div>
 
-            <h1 class="title">
-                Direct Access.
-            </h1>
+        <h2>
+            You are about to bypass the trail.
+        </h2>
 
+        <p>
+            The scenario and challenge were designed as part
+            of the reflection itself. Entering directly means
+            skipping those clues and going straight to the final room.
+        </p>
 
-            <p class="subtitle" style="margin-left:auto;margin-right:auto;">
-                You can enter the reflection without completing
-                the challenge. But doing so means skipping the clues,
-                the coded message, and the discovery process.
-            </p>
+        <div class="actions">
 
+            <a
+                href="challenge.html"
+                class="btn secondary"
+            >
+                Return to the Challenge
+            </a>
 
-            <div class="warning">
-                This route is intentionally secondary.
-                If this is your first visit, returning to the challenge
-                is the recommended way to experience Group 08B.
-            </div>
-
-
-            <div class="actions">
-
-                <a
-                    class="secondary"
-                    href="challenge.html"
-                >
-                    RETURN TO CHALLENGE
-                </a>
-
-
-                <a
-                    class="primary"
-                    href="reflection-room.html"
-                    onclick="unlockDirectAccess()"
-                >
-                    ENTER DIRECTLY
-                </a>
-
-            </div>
-
-
-            <nav class="bottom-nav">
-
-                <a href="8b.html">
-                    ← BACK TO GROUP 08B
-                </a>
-
-                <span>
-                    DIRECT ROUTE
-                </span>
-
-            </nav>
+            <button
+                id="directButton"
+                class="btn primary"
+            >
+                Enter Directly →
+            </button>
 
         </div>
 
-    </div>
+    </section>
+
+
+    <nav class="bottom-nav">
+
+        <a href="8b.html">
+            ← Group 08B
+        </a>
+
+    </nav>
 
 </main>
 
 
 <script>
 
-function unlockDirectAccess(){
+document
+    .getElementById("directButton")
+    .addEventListener(
+        "click",
+        function() {
 
-    localStorage.setItem(
-        "reflection8bUnlocked",
-        "true"
+            localStorage.setItem(
+                "reflection8bUnlocked",
+                "true"
+            );
+
+            window.location.href =
+                "reflection-room.html";
+
+        }
     );
 
-}
-
 </script>
+
 
 </body>
 </html>
