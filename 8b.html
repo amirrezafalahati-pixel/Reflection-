@@ -1,599 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reflection 8B</title>
+<title>Group 08B · Reflection Archive</title>
 
 <style>
+
+:root{
+    --bg:#11110f;
+    --bg-soft:#171714;
+    --panel:#1c1c19;
+    --panel-hover:#22221e;
+    --line:#353530;
+    --line-soft:#292925;
+
+    --text:#eeeae1;
+    --muted:#aaa79e;
+    --dim:#77756d;
+
+    --accent:#d6d0c2;
+    --accent-soft:#bdb6a8;
+
+    --shadow:0 22px 60px rgba(0,0,0,.32);
+}
 
 *{
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     min-height:100vh;
-
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            #24272a 0%,
-            #121416 42%,
-            #08090a 100%
+        radial-gradient(circle at 50% -10%, #282824 0%, transparent 38%),
+        linear-gradient(180deg,#11110f 0%,#0e0e0c 100%);
+    color:var(--text);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.035;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(255,255,255,.4) 4px
         );
-
-    color:#e9e6de;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
 }
 
 .page{
-    width:min(1050px,92%);
+    width:min(1100px,92%);
     margin:auto;
-    padding:42px 0 65px;
+    padding:58px 0 42px;
 }
 
+/* ---------- HEADER ---------- */
 
-/* TOP */
-
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.topbar a{
-    color:#777b7e;
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-    letter-spacing:2px;
-
-    transition:.25s;
-}
-
-.topbar a:hover{
-    color:#e7e4dc;
-}
-
-
-/* HEADER */
-
-.header{
-    text-align:center;
-
-    padding:72px 0 55px;
-}
-
-.eyebrow{
-    color:#73777a;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
+.top-label{
+    font-size:10px;
     letter-spacing:4px;
+    color:var(--muted);
+    margin-bottom:18px;
+    text-transform:uppercase;
 }
 
 h1{
-    margin:17px 0 14px;
-
-    font-size:
-        clamp(44px,7vw,72px);
-
+    margin:0;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(38px,6vw,68px);
     font-weight:normal;
-
-    letter-spacing:3px;
-}
-
-.divider{
-    width:70px;
-    height:1px;
-
-    margin:25px auto;
-
-    background:rgba(255,255,255,.25);
+    letter-spacing:-1.5px;
 }
 
 .subtitle{
+    margin-top:16px;
     max-width:620px;
-
-    margin:auto;
-
-    color:#a5a5a0;
-
-    line-height:1.9;
-
-    font-style:italic;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.8;
 }
 
+.header-line{
+    height:1px;
+    background:var(--line);
+    margin:42px 0 34px;
+}
 
-/* CARDS */
+/* ---------- CONTENT ---------- */
+
+.section-label{
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--dim);
+    margin-bottom:16px;
+    text-transform:uppercase;
+}
 
 .cards{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
+    grid-template-columns:1fr 1fr;
     gap:18px;
 }
 
 .card{
     position:relative;
-
-    min-height:250px;
-
-    padding:31px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    background:
-        rgba(255,255,255,.025);
-
+    display:block;
+    min-height:235px;
+    padding:30px;
+    border:1px solid var(--line);
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.012)
+    );
+    color:var(--text);
+    text-decoration:none;
     overflow:hidden;
-
     transition:
-        transform .3s ease,
-        border-color .3s ease,
-        background .3s ease;
+        transform .28s ease,
+        border-color .28s ease,
+        background .28s ease;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    right:-80px;
+    bottom:-90px;
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:50%;
 }
 
 .card:hover{
-    transform:translateY(-3px);
-
-    border-color:
-        rgba(255,255,255,.27);
-
-    background:
-        rgba(255,255,255,.035);
-}
-
-.card-link{
-    position:absolute;
-
-    inset:0;
-
-    z-index:1;
-}
-
-.card-content{
-    position:relative;
-
-    z-index:2;
-
-    pointer-events:none;
+    transform:translateY(-4px);
+    border-color:#595850;
+    background:var(--panel-hover);
 }
 
 .card-number{
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
+    font-size:10px;
     letter-spacing:3px;
-
-    color:#666b6e;
-
-    margin-bottom:23px;
+    color:var(--dim);
 }
 
-.card h2{
-    margin:0 0 15px;
-
-    font-size:29px;
-
+.card-title{
+    margin-top:48px;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:30px;
     font-weight:normal;
 }
 
-.card p{
-    color:#9b9c98;
-
-    line-height:1.85;
-
-    max-width:450px;
+.card-description{
+    margin-top:12px;
+    max-width:430px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
 }
 
-.card-action{
-    display:inline-block;
-
-    margin-top:14px;
-
-    color:#d6d3ca;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
+.card-arrow{
+    position:absolute;
+    right:28px;
+    bottom:26px;
+    font-size:18px;
+    color:var(--accent);
 }
 
-
-/* LISTENING */
+/* ---------- LISTENING ---------- */
 
 .listening{
-    grid-column:1/-1;
-
-    min-height:205px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:30px;
-}
-
-.lock-visual{
-    width:70px;
-    height:70px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    background:
-        rgba(0,0,0,.18);
-
-    font-size:27px;
-
-    filter:grayscale(1);
+    margin-top:18px;
+    position:relative;
+    border:1px solid var(--line);
+    min-height:150px;
+    background:rgba(255,255,255,.018);
+    overflow:hidden;
 }
 
 .listening.locked{
     cursor:pointer;
 }
 
-.listening.locked:hover{
-    transform:none;
-
-    border-color:
-        rgba(255,255,255,.2);
+.listening-link{
+    position:absolute;
+    inset:0;
+    z-index:5;
 }
 
-.status{
-    margin-bottom:13px;
-
-    color:#666b6f;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:3px;
+.listening-inner{
+    padding:28px 30px;
+    display:flex;
+    align-items:center;
+    gap:24px;
 }
 
-.listening.unlocked{
-    cursor:pointer;
-
-    border-color:
-        rgba(255,255,255,.24);
+.lock-icon{
+    width:52px;
+    height:52px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--line);
+    font-size:22px;
 }
 
-.listening.unlocked .status{
-    color:#c9c6bd;
+.listening-title{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:25px;
 }
 
-.listening.unlocked .lock-visual{
-    border-color:
-        rgba(255,255,255,.25);
+.listening-status{
+    margin-top:6px;
+    color:var(--dim);
+    font-size:10px;
+    letter-spacing:2px;
 }
 
+.listening-text{
+    margin-top:10px;
+    color:var(--muted);
+    font-size:12px;
+}
 
-/* DIRECT */
+/* ---------- DIRECT ---------- */
 
 .direct{
+    margin-top:34px;
     text-align:center;
-
-    margin-top:32px;
 }
 
-.direct p{
-    color:#666b6e;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:.7px;
-
-    line-height:1.8;
-
-    margin-bottom:13px;
-}
-
-.direct a{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-height:45px;
-
-    padding:10px 20px;
-
-    color:#85898b;
-
-    text-decoration:none;
-
-    border:
-        1px solid
-        rgba(255,255,255,.10);
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
+.direct-label{
+    color:var(--dim);
+    font-size:10px;
     letter-spacing:2px;
+    margin-bottom:12px;
+}
 
+.direct-button{
+    display:inline-flex;
+    padding:12px 18px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:2px;
     transition:.25s;
 }
 
-.direct a:hover{
-    color:#eeeae1;
-
-    border-color:
-        rgba(255,255,255,.25);
-
-    background:
-        rgba(255,255,255,.03);
+.direct-button:hover{
+    border-color:#66645d;
+    color:var(--text);
 }
 
+/* ---------- FOOTER ---------- */
 
-/* BOTTOM */
-
-.bottom{
-    text-align:center;
-
-    margin-top:38px;
+.bottom-nav{
+    margin-top:55px;
+    padding-top:24px;
+    border-top:1px solid var(--line-soft);
 }
 
-.bottom a{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-height:45px;
-
-    padding:10px 20px;
-
-    color:#777b7e;
-
+.bottom-nav a{
+    color:var(--muted);
     text-decoration:none;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
+    font-size:10px;
     letter-spacing:2px;
-
-    transition:.25s;
+    transition:.2s;
 }
 
-.bottom a:hover{
-    color:#eeeae1;
-
-    border-color:
-        rgba(255,255,255,.22);
+.bottom-nav a:hover{
+    color:var(--text);
 }
 
+/* ---------- MOBILE ---------- */
 
-/* MOBILE */
+@media(max-width:720px){
 
-@media(max-width:700px){
+    .page{
+        padding-top:38px;
+    }
 
     .cards{
         grid-template-columns:1fr;
     }
 
-    .listening{
-        grid-column:auto;
-
-        display:block;
+    .card{
+        min-height:205px;
     }
 
-    .lock-visual{
-        margin-bottom:22px;
+    .listening-inner{
+        align-items:flex-start;
     }
 
-    .topbar{
-        gap:15px;
+    .card-title{
+        margin-top:35px;
     }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-<div class="page">
+<main class="page">
 
-
-    <div class="topbar">
-
-        <a href="index.html">
-            ← ARCHIVE
-        </a>
-
-        <a href="8a.html">
-            GROUP 8A →
-        </a>
-
+    <div class="top-label">
+        REFLECTION ARCHIVE · GROUP 08B
     </div>
 
+    <h1>One more layer.</h1>
 
-    <header class="header">
+    <p class="subtitle">
+        The reflection is not presented all at once.
+        Follow the trail, question what you see,
+        and decide where the real answer begins.
+    </p>
 
-        <div class="eyebrow">
-            REFLECTION ARCHIVE · GROUP 08B
-        </div>
+    <div class="header-line"></div>
 
-        <h1>
-            Reflection
-        </h1>
-
-        <div class="divider"></div>
-
-        <div class="subtitle">
-            Another way of seeing.
-        </div>
-
-    </header>
-
+    <div class="section-label">
+        FOLLOW THE TRAIL
+    </div>
 
     <section class="cards">
 
+        <a class="card" href="scenario.html">
 
-        <!-- SCENARIO -->
-
-        <article class="card">
-
-            <a
-                class="card-link"
-                href="scenario.html"
-                aria-label="Open The Scenario">
-            </a>
-
-            <div class="card-content">
-
-                <div class="card-number">
-                    01 · BEGIN
-                </div>
-
-                <h2>
-                    The Scenario
-                </h2>
-
-                <p>
-                    Four voices gather around a question:
-                    logic, skepticism, intuition,
-                    and critical thought.
-                </p>
-
-                <span class="card-action">
-                    ENTER THE SCENARIO →
-                </span>
-
+            <div class="card-number">
+                01 · SCENARIO
             </div>
 
-        </article>
-
-
-        <!-- CHALLENGE -->
-
-        <article class="card">
-
-            <a
-                class="card-link"
-                href="challenge.html"
-                aria-label="Open The Challenge">
-            </a>
-
-            <div class="card-content">
-
-                <div class="card-number">
-                    02 · DISCOVER
-                </div>
-
-                <h2>
-                    The Challenge
-                </h2>
-
-                <p>
-                    The scenario leaves a trail.
-                    Follow it carefully and discover
-                    what waits beyond the obvious.
-                </p>
-
-                <span class="card-action">
-                    FOLLOW THE TRAIL →
-                </span>
-
+            <div class="card-title">
+                The Beginning
             </div>
 
-        </article>
+            <div class="card-description">
+                Before the reflection, there is a story.
+                Read carefully. Some details are not there by accident.
+            </div>
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
 
 
-        <!-- LISTENING -->
+        <a class="card" href="challenge.html">
 
-        <article
-            class="card listening locked"
-            id="listeningCard">
+            <div class="card-number">
+                02 · CHALLENGE
+            </div>
 
-            <div
-                class="lock-visual"
-                id="lockVisual">
+            <div class="card-title">
+                The Hidden Layer
+            </div>
+
+            <div class="card-description">
+                Follow the clues and uncover what lies beneath
+                the first answer.
+            </div>
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+    </section>
+
+
+    <section
+        id="listeningCard"
+        class="listening locked"
+        onclick="openListening()"
+    >
+
+        <a
+            id="listeningLink"
+            class="listening-link"
+            href="challenge.html"
+            aria-label="Listening Archive"
+        ></a>
+
+        <div class="listening-inner">
+
+            <div class="lock-icon" id="lockIcon">
                 🔒
             </div>
 
-            <div class="card-content">
+            <div>
+
+                <div class="listening-title">
+                    Listening Archive
+                </div>
 
                 <div
-                    class="status"
-                    id="listeningStatus">
+                    class="listening-status"
+                    id="listeningStatus"
+                >
                     LISTENING ARCHIVE · LOCKED
                 </div>
 
-                <h2>
-                    The Reflection Voice
-                </h2>
-
-                <p id="listeningText">
-                    The voice waits beyond the path.
-                    Complete the challenge to unlock it.
-                </p>
-
-                <span
-                    class="card-action"
-                    id="listeningAction">
-                    COMPLETE THE PATH →
-                </span>
+                <div class="listening-text" id="listeningText">
+                    Complete the challenge to enter the reflection room.
+                </div>
 
             </div>
 
-        </article>
+        </div>
 
     </section>
 
 
     <div class="direct">
 
-        <p>
-            Prefer another route? You can enter directly,
-            but the discovery will be skipped.
-        </p>
+        <div class="direct-label">
+            ALTERNATIVE ROUTE
+        </div>
 
-        <a href="access-confirm.html">
-            A DIFFERENT WAY FORWARD →
+        <a
+            class="direct-button"
+            href="access-confirm.html"
+        >
+            DIRECT ACCESS →
         </a>
 
     </div>
 
 
-    <div class="bottom">
+    <div class="bottom-nav">
 
         <a href="index.html">
             ← BACK TO ARCHIVE
@@ -601,77 +451,70 @@ h1{
 
     </div>
 
-</div>
+</main>
 
 
 <script>
 
-const unlocked =
-    localStorage.getItem(
-        "reflection8bUnlocked"
-    ) === "true";
+function isUnlocked(){
+    return localStorage.getItem("reflection8bUnlocked") === "true";
+}
+
+function updateListeningCard(){
+
+    const card = document.getElementById("listeningCard");
+    const link = document.getElementById("listeningLink");
+    const icon = document.getElementById("lockIcon");
+    const status = document.getElementById("listeningStatus");
+    const text = document.getElementById("listeningText");
+
+    if(isUnlocked()){
+
+        card.classList.remove("locked");
+
+        link.href = "reflection-room.html";
+
+        icon.textContent = "🔓";
+
+        status.textContent =
+            "LISTENING ARCHIVE · UNLOCKED";
+
+        text.textContent =
+            "The reflection is open. Read it and listen to it together.";
+
+    }else{
+
+        card.classList.add("locked");
+
+        link.href = "challenge.html";
+
+        icon.textContent = "🔒";
+
+        status.textContent =
+            "LISTENING ARCHIVE · LOCKED";
+
+        text.textContent =
+            "Complete the challenge to enter the reflection room.";
+    }
+}
 
 
-const card =
-    document.getElementById(
-        "listeningCard"
-    );
+function openListening(){
 
-const visual =
-    document.getElementById(
-        "lockVisual"
-    );
-
-const status =
-    document.getElementById(
-        "listeningStatus"
-    );
-
-const text =
-    document.getElementById(
-        "listeningText"
-    );
-
-const action =
-    document.getElementById(
-        "listeningAction"
-    );
-
-
-if(unlocked){
-
-    card.classList.remove("locked");
-
-    card.classList.add("unlocked");
-
-    visual.textContent = "🔓";
-
-    status.textContent =
-        "LISTENING ARCHIVE · UNLOCKED";
-
-    text.textContent =
-        "The written reflection can now be read and heard together.";
-
-    action.textContent =
-        "ENTER THE REFLECTION ROOM →";
-
-    card.onclick = function(){
+    if(isUnlocked()){
 
         window.location.href =
             "reflection-room.html";
 
-    };
-
-}else{
-
-    card.onclick = function(){
+    }else{
 
         window.location.href =
             "challenge.html";
-
-    };
-
+    }
 }
+
+
+updateListeningCard();
 
 </script>
 
