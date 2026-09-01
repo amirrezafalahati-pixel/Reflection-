@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Reflection Room</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>The Reflection Room · 8B</title>
 
 <style>
 
@@ -14,37 +18,377 @@
 }
 
 body{
+
     margin:0;
 
     min-height:100vh;
 
     background:
-        radial-gradient(circle at top,#20242b,#090a0d 65%);
+        radial-gradient(
+            circle at top,
+            #22272d,
+            #080a0c 65%,
+            #040506 100%
+        );
 
     color:#e8e5dc;
 
-    font-family:Georgia,"Times New Roman",serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    padding:25px 18px;
+
 }
 
 .container{
-    width:min(1150px,92%);
+
+    width:100%;
+
+    max-width:1200px;
 
     margin:auto;
 
-    padding:55px 0;
 }
 
-.top-nav{
+
+/* NAV */
+
+.nav{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-bottom:35px;
+
+}
+
+.nav a{
+
     display:flex;
 
-    justify-content:space-between;
+    align-items:center;
 
-    margin-bottom:60px;
+    justify-content:center;
+
+    min-height:46px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    color:#777c81;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    background:rgba(255,255,255,.025);
+
+    transition:.3s;
+
 }
 
-.top-nav a{
+.nav a:hover{
 
-    color:#666c71;
+    color:#eeeae0;
+
+    border-color:rgba(255,255,255,.25);
+
+}
+
+
+/* HEADER */
+
+.header{
+
+    text-align:center;
+
+    padding:35px 0 45px;
+
+}
+
+.label{
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:#6d7277;
+
+}
+
+h1{
+
+    margin:18px 0 15px;
+
+    font-size:clamp(40px,7vw,70px);
+
+    font-weight:normal;
+
+    letter-spacing:3px;
+
+}
+
+.subtitle{
+
+    color:#999a96;
+
+    font-style:italic;
+
+}
+
+
+/* CONTENT */
+
+.content{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        330px;
+
+    gap:20px;
+
+}
+
+
+/* PDF */
+
+.pdf-panel{
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:#111315;
+
+    min-height:720px;
+
+    overflow:hidden;
+
+}
+
+.pdf-panel iframe{
+
+    width:100%;
+
+    height:720px;
+
+    border:none;
+
+    display:block;
+
+}
+
+
+/* AUDIO */
+
+.audio-panel{
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.035);
+
+    padding:30px;
+
+    height:max-content;
+
+    position:sticky;
+
+    top:20px;
+
+}
+
+.audio-label{
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    color:#6d7277;
+
+    margin-bottom:20px;
+
+}
+
+.audio-panel h2{
+
+    font-size:28px;
+
+    font-weight:normal;
+
+    margin:0 0 15px;
+
+}
+
+.audio-panel p{
+
+    color:#969791;
+
+    line-height:1.8;
+
+    font-size:14px;
+
+}
+
+audio{
+
+    width:100%;
+
+    margin-top:25px;
+
+}
+
+.download{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:48px;
+
+    margin-top:14px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    color:#d7d4cc;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+
+}
+
+.download:hover{
+
+    background:#e8e5dc;
+
+    color:#111;
+
+}
+
+
+/* FOOTER */
+
+.footer{
+
+    text-align:center;
+
+    padding:45px 0 20px;
+
+    color:#454a4f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+}
+
+
+/* LOCK SCREEN */
+
+.lock-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #1b2025,
+            #050607 75%
+        );
+
+}
+
+.lock-content{
+
+    max-width:600px;
+
+}
+
+.lock-icon{
+
+    font-size:45px;
+
+    margin-bottom:25px;
+
+    opacity:.7;
+
+}
+
+.lock-content h2{
+
+    font-size:42px;
+
+    font-weight:normal;
+
+    margin:0 0 20px;
+
+}
+
+.lock-content p{
+
+    color:#999;
+
+    line-height:1.9;
+
+}
+
+.lock-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:220px;
+
+    min-height:50px;
+
+    margin-top:28px;
+
+    padding:12px 25px;
+
+    background:#e8e5dc;
+
+    color:#111;
 
     text-decoration:none;
 
@@ -54,190 +398,45 @@ body{
 
     letter-spacing:2px;
 
-    transition:.3s;
 }
 
-.top-nav a:hover{
-    color:#ddd9d0;
-}
 
-.header{
-    max-width:760px;
+/* MOBILE */
 
-    margin-bottom:55px;
-}
+@media(max-width:850px){
 
-.label{
-    font-family:Arial,sans-serif;
+    .content{
 
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    opacity:.5;
-
-    margin-bottom:20px;
-}
-
-h1{
-    font-size:clamp(38px,6vw,70px);
-
-    font-weight:400;
-
-    margin:0 0 20px;
-}
-
-.intro{
-
-    color:#aaa;
-
-    line-height:1.9;
-
-    font-size:16px;
-}
-
-.discovery{
-
-    margin-top:25px;
-
-    padding-left:16px;
-
-    border-left:1px solid #555a5f;
-
-    color:#858883;
-
-    font-style:italic;
-
-    line-height:1.8;
-}
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:1.45fr .85fr;
-
-    gap:22px;
-}
-
-.card{
-
-    border:1px solid rgba(255,255,255,.12);
-
-    background:rgba(255,255,255,.035);
-
-    padding:25px;
-
-}
-
-.card h2{
-
-    font-size:24px;
-
-    font-weight:400;
-
-    margin:8px 0 12px;
-}
-
-.card p{
-
-    color:#999;
-
-    line-height:1.7;
-}
-
-iframe{
-
-    width:100%;
-
-    height:680px;
-
-    border:none;
-
-    background:white;
-
-    margin-top:18px;
-}
-
-.audio-card{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    min-height:350px;
-}
-
-.audio-mark{
-
-    font-size:35px;
-
-    opacity:.65;
-
-    margin:15px 0;
-}
-
-audio{
-
-    width:100%;
-
-    margin-top:25px;
-}
-
-.download{
-
-    display:inline-block;
-
-    margin-top:18px;
-
-    padding:11px 18px;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    color:#ddd;
-
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:10px;
-
-    letter-spacing:1px;
-
-    transition:.3s;
-}
-
-.download:hover{
-
-    background:rgba(255,255,255,.08);
-
-}
-
-.footer{
-
-    text-align:center;
-
-    margin-top:45px;
-
-    color:#474d52;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:3px;
-}
-
-@media(max-width:800px){
-
-    .grid{
         grid-template-columns:1fr;
+
     }
 
-    iframe{
+    .audio-panel{
+
+        position:static;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .pdf-panel{
+
+        min-height:600px;
+
+    }
+
+    .pdf-panel iframe{
+
         height:600px;
+
     }
 
 }
@@ -246,141 +445,183 @@ audio{
 
 </head>
 
+
 <body>
+
+
+<div
+    class="lock-screen"
+    id="lockScreen">
+
+    <div class="lock-content">
+
+        <div class="lock-icon">
+            🔒
+        </div>
+
+        <h2>
+            Reflection Locked
+        </h2>
+
+        <p>
+
+            This room belongs to the completed path.
+
+            <br>
+
+            Follow the trail first,
+            or choose direct access.
+
+        </p>
+
+        <a
+            class="lock-button"
+            href="8b.html">
+
+            RETURN TO GROUP 8B
+
+        </a>
+
+    </div>
+
+</div>
+
 
 <div class="container">
 
 
-<div class="top-nav">
+    <div class="nav">
 
-<a href="8b.html">
-← GROUP 8B
-</a>
+        <a href="index.html">
+            ← ARCHIVE
+        </a>
 
-<a href="index.html">
-REFLECTION ARCHIVE
-</a>
+        <a href="8b.html">
+            ← GROUP 8B
+        </a>
 
-</div>
+        <a href="challenge.html">
+            ← CHALLENGE
+        </a>
 
-
-<div class="header">
-
-<div class="label">
-AFTER THE ANSWER
-</div>
-
-<h1>
-The Reflection Room
-</h1>
-
-<p class="intro">
-
-You found what was hidden.
-
-Now there is nothing left to decode.
-
-Only something left to read —
-and perhaps, to hear differently.
-
-</p>
-
-<div class="discovery">
-
-The answer opened the door.
-What comes after it is the reflection itself.
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="grid">
+    <div class="header">
+
+        <div class="label">
+            GROUP 08B · FINAL ROOM
+        </div>
+
+        <h1>
+            The Reflection Room
+        </h1>
+
+        <div class="subtitle">
+            Read · Listen · Reflect
+        </div>
+
+    </div>
 
 
-<div class="card">
-
-<div class="label">
-THE MAIN REFLECTION
-</div>
-
-<h2>
-What was behind the code
-</h2>
-
-<p>
-The reflection is now open.
-Take your time with it.
-</p>
-
-<iframe src="Main%20Reflection%208b%20Open.pdf"></iframe>
-
-</div>
+    <div class="content">
 
 
-<div class="card audio-card">
+        <!-- PDF -->
 
-<div class="label">
-THE OTHER VOICE
-</div>
+        <div class="pdf-panel">
 
-<div class="audio-mark">
-◌
-</div>
+            <iframe
+                src="Main%20Reflection%208b%20Open.pdf"
+                title="Main Reflection 8B">
 
-<h2>
-Reflection 8b — Voice
-</h2>
+            </iframe>
 
-<p>
-
-Some things read differently
-when they are heard.
-
-</p>
-
-<audio controls preload="metadata">
-
-<source
-src="reflection-8b-voice.mp3"
-type="audio/mpeg">
-
-Your browser does not support
-audio playback.
-
-</audio>
-
-<a
-class="download"
-href="reflection-8b-voice.mp3"
-download>
-
-DOWNLOAD AUDIO
-
-</a>
-
-</div>
+        </div>
 
 
-</div>
+        <!-- AUDIO -->
+
+        <div class="audio-panel">
+
+            <div class="audio-label">
+                REFLECTION VOICE
+            </div>
+
+            <h2>
+                Listen
+            </h2>
+
+            <p>
+
+                The written reflection
+                is presented alongside
+                its spoken version.
+
+                <br><br>
+
+                Read it.
+
+                Listen to it.
+
+                Then decide what remains
+                after the first impression.
+
+            </p>
 
 
-<div class="footer">
+            <audio
+                controls
+                preload="metadata">
 
-READ · LISTEN · RETHINK
+                <source
+                    src="reflection-8b-voice.mp3?v=2"
+                    type="audio/mpeg">
+
+                Your browser does not support
+                audio playback.
+
+            </audio>
+
+
+            <a
+                class="download"
+                href="reflection-8b-voice.mp3?v=2"
+                download>
+
+                DOWNLOAD AUDIO
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        WHAT WE SEE IS NOT ALWAYS THE WHOLE TRUTH.
+
+    </div>
 
 </div>
 
-</div>
 
 <script>
 
-/*
-If someone arrives here directly,
-the page still works as a presentation page.
-The intended unlock is performed through
-Challenge or Access.
-*/
+const unlocked =
+    localStorage.getItem(
+        "reflection8bUnlocked"
+    ) === "true";
+
+
+if(!unlocked){
+
+    document
+        .getElementById("lockScreen")
+        .style.display = "flex";
+
+}
 
 </script>
 
