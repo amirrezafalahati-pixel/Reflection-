@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Challenge</title>
+<title>The Challenge · 8B</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -14,235 +17,574 @@
 body{
     margin:0;
     min-height:100vh;
+
     background:
-       radial-gradient(circle at top,#20252b,#090b0e 70%);
-    color:#e8e5dc;
-    font-family:Georgia,"Times New Roman",serif;
+        radial-gradient(
+            circle at 50% 0%,
+            #24272a 0%,
+            #121416 43%,
+            #08090a 100%
+        );
+
+    color:#e9e6de;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 .page{
     width:min(800px,92%);
     margin:auto;
-    padding:60px 0 70px;
+
+    padding:65px 0 70px;
+}
+
+
+/* HEADER */
+
+.header{
     text-align:center;
 }
 
-.symbol{
-    font-size:2.8rem;
-    opacity:.7;
-    margin-bottom:15px;
-}
-
 .eyebrow{
-    color:#777;
-    letter-spacing:.2em;
-    font-size:.72rem;
-    text-transform:uppercase;
+    color:#73777a;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:4px;
 }
 
 h1{
+    margin:18px 0 15px;
+
+    font-size:
+        clamp(43px,7vw,65px);
+
     font-weight:normal;
-    font-size:clamp(2rem,6vw,3.6rem);
-    margin:14px 0;
 }
 
-.line{
-    width:75px;
+.divider{
+    width:70px;
     height:1px;
-    background:#555;
-    margin:24px auto;
+
+    margin:25px auto;
+
+    background:rgba(255,255,255,.24);
 }
 
 .intro{
-    max-width:630px;
+    max-width:620px;
+
     margin:auto;
-    color:#aaa;
+
+    color:#a4a49f;
+
     line-height:1.9;
 }
 
+
+/* CHALLENGE */
+
 .challenge-box{
+
     margin-top:45px;
-    padding:35px 25px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.025);
+
+    padding:34px 24px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-align:center;
 }
 
 .question{
-    font-size:1.15rem;
-    line-height:1.8;
+
     margin-bottom:22px;
+
+    color:#d2cfc7;
+
+    line-height:1.8;
 }
 
 input{
-    width:min(560px,100%);
-    padding:16px 18px;
-    background:#0c0c0c;
-    border:1px solid rgba(255,255,255,.18);
+
+    width:min(570px,100%);
+
+    min-height:53px;
+
+    padding:14px 18px;
+
+    background:#0a0b0c;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
     color:#eee;
+
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    font-size:15px;
+
     outline:none;
-    font-family:inherit;
-    font-size:1rem;
 }
 
 input:focus{
-    border-color:rgba(255,255,255,.5);
-}
 
-button{
-    font-family:inherit;
+    border-color:
+        rgba(255,255,255,.45);
 }
 
 .submit{
-    margin-top:15px;
+
+    width:min(570px,100%);
+
     min-height:52px;
-    padding:12px 27px;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(255,255,255,.07);
+
+    margin-top:14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    background:
+        rgba(255,255,255,.07);
+
     color:#eee;
+
     cursor:pointer;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
     transition:.25s;
 }
 
 .submit:hover{
-    background:rgba(255,255,255,.13);
-    transform:translateY(-1px);
+
+    background:
+        rgba(255,255,255,.12);
+
+    border-color:
+        rgba(255,255,255,.4);
 }
 
 .message{
-    min-height:26px;
+
+    min-height:27px;
+
     margin-top:18px;
-    color:#aaa;
+
+    color:#999;
+
+    font-size:13px;
+
     line-height:1.7;
 }
 
-.hint-box,
-.help-box{
+
+/* HINT */
+
+.hint-box{
+
     display:none;
+
     margin-top:22px;
-    padding:18px;
+
+    padding:18px 20px;
+
+    border-left:
+        2px solid
+        rgba(255,255,255,.28);
+
+    background:
+        rgba(255,255,255,.025);
+
     text-align:left;
-    border-left:2px solid rgba(255,255,255,.28);
-    background:rgba(255,255,255,.025);
-    color:#aaa;
+
+    animation:appear .4s ease;
+}
+
+.hint-title{
+
+    margin-bottom:7px;
+
+    color:#d8d5cd;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+}
+
+#hintText{
+
+    color:#aaa9a3;
+
     line-height:1.8;
+
+    font-size:13px;
 }
 
-.hint-title,
+
+/* HELP */
+
+.help-box{
+
+    display:none;
+
+    margin-top:18px;
+
+    padding:18px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        rgba(0,0,0,.18);
+
+    text-align:left;
+
+    animation:appear .4s ease;
+}
+
 .help-title{
-    color:#ddd;
-    margin-bottom:8px;
-    font-size:.8rem;
-    letter-spacing:.12em;
-    text-transform:uppercase;
+
+    color:#777c80;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    margin-bottom:9px;
 }
 
-.utility{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px;
-    margin-top:30px;
+#helpText{
+
+    color:#b5b3ac;
+
+    line-height:1.8;
+
+    font-size:13px;
 }
 
-.utility button,
-.utility a{
-    min-height:45px;
-    padding:10px 19px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    font-family:inherit;
-    color:#aaa;
+
+/* HELP BUTTON */
+
+.help-button{
+
+    min-height:46px;
+
+    margin-top:22px;
+
+    padding:10px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
     background:transparent;
-    border:1px solid rgba(255,255,255,.12);
+
+    color:#aaa;
+
     cursor:pointer;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
     transition:.25s;
 }
 
-.utility button:hover,
-.utility a:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.4);
-    background:rgba(255,255,255,.04);
+.help-button:hover{
+
+    color:#eee;
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.035);
 }
 
+.help-button:disabled{
+
+    opacity:.4;
+
+    cursor:default;
+}
+
+
+/* LOWER NAV */
+
+.bottom-nav{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:30px;
+}
+
+.bottom-nav a{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:47px;
+
+    padding:10px 24px;
+
+    color:#aaa;
+
+    text-decoration:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.bottom-nav a:hover{
+
+    color:#fff;
+
+    border-color:
+        rgba(255,255,255,.35);
+
+}
+
+
+/* DIRECT ACCESS */
+
 .access{
+
     margin-top:38px;
+
     padding-top:25px;
-    border-top:1px solid rgba(255,255,255,.08);
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    text-align:center;
 }
 
 .access p{
-    color:#777;
+
+    color:#666b6f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
     line-height:1.8;
+
     margin:0 0 14px;
 }
 
 .access a{
+
     display:inline-flex;
-    min-height:48px;
+
     align-items:center;
     justify-content:center;
-    padding:12px 23px;
-    color:#aaa;
+
+    min-height:45px;
+
+    padding:10px 20px;
+
+    color:#777c80;
+
     text-decoration:none;
-    border:1px solid rgba(255,255,255,.16);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
     transition:.25s;
 }
 
 .access a:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.45);
-    background:rgba(255,255,255,.05);
+
+    color:#ddd;
+
+    border-color:
+        rgba(255,255,255,.25);
 }
 
+
+/* SUCCESS */
+
 .success-screen{
+
     display:none;
+
     position:fixed;
+
     inset:0;
-    z-index:100;
-    background:#050505;
+
+    z-index:50;
+
     align-items:center;
+
     justify-content:center;
+
     text-align:center;
+
     padding:25px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #24272a,
+            #08090a 75%
+        );
 }
 
 .success-content{
-    animation:appear 1.2s ease forwards;
+
+    max-width:650px;
+
+    animation:
+        reveal 1s ease forwards;
 }
 
-.success-symbol{
-    font-size:4rem;
+.success-mark{
+
+    font-size:45px;
+
     margin-bottom:20px;
+
+    opacity:.8;
 }
 
 .success-content h2{
-    font-weight:normal;
-    font-size:clamp(2rem,6vw,4rem);
+
     margin:0 0 20px;
+
+    font-size:
+        clamp(35px,7vw,62px);
+
+    font-weight:normal;
 }
 
 .success-content p{
-    color:#aaa;
-    line-height:1.8;
-    max-width:500px;
+
+    max-width:520px;
+
     margin:auto;
+
+    color:#aaa;
+
+    line-height:1.9;
 }
 
+.enter-reflection{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:53px;
+
+    margin-top:30px;
+
+    padding:13px 27px;
+
+    background:#e8e5dc;
+
+    color:#111;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.enter-reflection:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+}
+
+
+/* ANIMATION */
+
 @keyframes appear{
+
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(8px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
 
+@keyframes reveal{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+        filter:blur(5px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+        filter:blur(0);
+    }
+}
+
+
 @media(max-width:600px){
+
     .page{
         padding-top:45px;
     }
@@ -251,242 +593,393 @@ button{
         padding:28px 16px;
     }
 
-    .utility{
-        flex-direction:column;
-    }
-
-    .utility button,
-    .utility a{
-        width:100%;
-    }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="page">
 
-<div class="symbol">⌁</div>
 
-<div class="eyebrow">Reflection 8B</div>
+    <header class="header">
 
-<h1>The Challenge</h1>
+        <div class="eyebrow">
+            REFLECTION 8B · FOLLOW THE TRAIL
+        </div>
 
-<div class="line"></div>
+        <h1>
+            The Challenge
+        </h1>
 
-<p class="intro">
-The answer may not be hidden where you first expect it.
-Some clues only make sense after another clue has been understood.
-</p>
+        <div class="divider"></div>
+
+        <p class="intro">
+
+            The answer is not simply hidden.
+            It has been placed somewhere along the path.
+
+            <br>
+
+            Look carefully.
+            Then look back.
+
+        </p>
+
+    </header>
 
 
-<section class="challenge-box">
+    <section class="challenge-box">
 
-<div class="question">
-Enter the final key.
+        <div class="question">
+
+            Enter the final key.
+
+        </div>
+
+
+        <input
+            type="text"
+            id="answer"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="enter the key..."
+        >
+
+
+        <button
+            class="submit"
+            onclick="checkAnswer()">
+
+            VERIFY
+
+        </button>
+
+
+        <div
+            class="message"
+            id="message">
+        </div>
+
+
+        <!-- AUTOMATIC HINT -->
+
+        <div
+            class="hint-box"
+            id="hintBox">
+
+            <div class="hint-title">
+                HINT
+            </div>
+
+            <div id="hintText"></div>
+
+        </div>
+
+
+        <!-- STEP BY STEP HELP -->
+
+        <div
+            class="help-box"
+            id="helpBox">
+
+            <div class="help-title">
+                A LITTLE MORE HELP
+            </div>
+
+            <div id="helpText"></div>
+
+        </div>
+
+
+        <button
+            class="help-button"
+            id="helpButton"
+            onclick="nextHelp()">
+
+            NEED SOME HELP?
+
+        </button>
+
+    </section>
+
+
+    <!-- BOTTOM NAV -->
+
+    <div class="bottom-nav">
+
+        <a href="scenario.html">
+            ← BACK TO SCENARIO
+        </a>
+
+    </div>
+
+
+    <!-- DIRECT -->
+
+    <section class="access">
+
+        <p>
+
+            There is another route.
+
+            <br>
+
+            It skips the search, clues and discovery.
+
+        </p>
+
+        <a href="access-confirm.html">
+
+            A DIFFERENT WAY FORWARD →
+
+        </a>
+
+    </section>
+
+
 </div>
 
-<input
-type="text"
-id="answer"
-autocomplete="off"
-autocapitalize="none"
-spellcheck="false"
-placeholder="the key..."
->
 
-<br>
+<!-- SUCCESS -->
 
-<button class="submit" onclick="checkAnswer()">
-Try the Key
-</button>
+<div
+    class="success-screen"
+    id="successScreen">
 
-<div class="message" id="message"></div>
+    <div class="success-content">
 
-<div class="hint-box" id="hintBox">
-<div class="hint-title">Hint</div>
-<div id="hintText"></div>
-</div>
+        <div class="success-mark">
+            ✦
+        </div>
 
-<div class="help-box" id="helpBox">
-<div class="help-title">A Little More Help</div>
-<div id="helpText"></div>
-</div>
+        <h2>
+            Access Granted
+        </h2>
 
-<div class="utility">
+        <p>
 
-<button id="helpButton" onclick="nextHelp()">
-Need some help?
-</button>
+            You found what was hidden.
 
-</div>
+            <br><br>
 
-</section>
+            The answer was not the final stop.
+            It was the point where the reflection began.
+
+        </p>
 
 
-<section class="access">
+        <a
+            class="enter-reflection"
+            href="reflection-room.html">
 
-<p>
-Still curious about what lies beyond the challenge?
-A different route is available — but it will reveal what the puzzle was meant to protect.
-</p>
+            ENTER THE REFLECTION →
 
-<a href="access-confirm.html">
-A Different Way Forward →
-</a>
+        </a>
 
-</section>
-
-
-<div class="utility" style="margin-top:28px;">
-
-<a href="scenario.html">
-← Back to the Scenario
-</a>
-
-</div>
-
-</div>
-
-
-<div class="success-screen" id="successScreen">
-
-<div class="success-content">
-
-<div class="success-symbol">✦</div>
-
-<h2>The pattern changes.</h2>
-
-<p>
-The final stop was never the answer.
-It was only the moment to look again.
-</p>
-
-</div>
+    </div>
 
 </div>
 
 
 <script>
+
 let attempts = 0;
+
 let helpStep = 0;
 
-const finalAnswer = "understanding is not the final stop";
 
-const answerInput = document.getElementById("answer");
-const message = document.getElementById("message");
-const hintBox = document.getElementById("hintBox");
-const hintText = document.getElementById("hintText");
-const helpBox = document.getElementById("helpBox");
-const helpText = document.getElementById("helpText");
-const helpButton = document.getElementById("helpButton");
+const finalAnswer =
+    "understanding is not the final stop";
+
 
 const helps = [
+
     "Return to the scenario. The clues are part of the story, not separate from it.",
-    "The strange symbols near the end are not the final destination. They tell you to reconsider your direction.",
-    "A decoded message asks you to look back. Take that instruction literally.",
-    "Look again at the earlier coded line in the scenario.",
-    "The first coded sentence can be read with a very simple shift: each letter has moved forward by two places.",
-    "The answer is a complete English sentence, and the final PDF password is written entirely in lowercase."
+
+    "The strange symbols are a direction, not necessarily the final answer.",
+
+    "The message tells you to look back. Take that instruction seriously.",
+
+    "Go back to the earlier coded line in the scenario and examine it again.",
+
+    "The coded English line uses a simple shift. Each letter has moved forward by two places.",
+
+    "The final answer is a complete English sentence. It is written entirely in lowercase."
+
 ];
 
-function normalize(text){
-    return text
+
+function normalize(value){
+
+    return value
         .trim()
         .toLowerCase()
         .replace(/\s+/g," ");
+
 }
+
 
 function checkAnswer(){
 
-    const value = normalize(answerInput.value);
+    const input =
+        document.getElementById("answer");
+
+    const value =
+        normalize(input.value);
+
 
     if(value === finalAnswer){
 
-        localStorage.setItem("reflection8bUnlocked","true");
+        localStorage.setItem(
+            "reflection8bUnlocked",
+            "true"
+        );
 
-        document.getElementById("successScreen").style.display="flex";
-
-        setTimeout(()=>{
-            window.location.href="main-8b.html";
-        },4200);
+        document
+            .getElementById("successScreen")
+            .style.display = "flex";
 
         return;
+
     }
+
 
     attempts++;
 
-    message.textContent = "Not this one. The answer may be somewhere you have already passed.";
+
+    document
+        .getElementById("message")
+        .textContent =
+        "Not quite. Something along the path may still be pointing you backward.";
+
 
     showHint();
 
-    answerInput.select();
+    input.select();
+
 }
 
 
 function showHint(){
 
-    hintBox.style.display="block";
+    const box =
+        document.getElementById("hintBox");
+
+    const text =
+        document.getElementById("hintText");
+
+
+    box.style.display = "block";
+
 
     if(attempts === 1){
 
-        hintText.textContent =
-        "The answer is not the rune message itself. That message points somewhere else.";
+        text.textContent =
+            "The answer is not the rune message itself. The rune message points somewhere else.";
 
-    }else if(attempts < 4){
-
-        hintText.textContent =
-        "One of the messages in the scenario tells you to reconsider something earlier.";
-
-    }else if(attempts < 8){
-
-        hintText.textContent =
-        "The clue that says “look back” is a bridge, not the final key.";
-
-    }else if(attempts < 15){
-
-        hintText.textContent =
-        "Go back to the earlier coded English line. Its letters have been shifted.";
-
-    }else{
-
-        hintText.innerHTML =
-        "You have looked long enough. Here is part of the final key:<br><br><strong>understanding is not the ...</strong>";
     }
+
+    else if(attempts < 4){
+
+        text.textContent =
+            "One of the messages in the scenario asks you to reconsider something you have already seen.";
+
+    }
+
+    else if(attempts < 7){
+
+        text.textContent =
+            "The words “look back” are an instruction. Do not treat them as the final answer.";
+
+    }
+
+    else if(attempts < 10){
+
+        text.textContent =
+            "Return to the earlier coded English sentence. There is a transformation hidden inside it.";
+
+    }
+
+    else if(attempts < 15){
+
+        text.textContent =
+            "Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.";
+
+    }
+
+    else{
+
+        text.innerHTML =
+            "You have looked long enough.<br><br>" +
+            "<strong>understanding is not the ...</strong>";
+
+    }
+
 }
 
 
 function nextHelp(){
 
-    helpBox.style.display="block";
+    const box =
+        document.getElementById("helpBox");
 
-    helpText.textContent = helps[helpStep];
+    const text =
+        document.getElementById("helpText");
+
+    const button =
+        document.getElementById("helpButton");
+
+
+    box.style.display = "block";
+
+
+    text.textContent =
+        helps[helpStep];
+
 
     helpStep++;
 
+
     if(helpStep < helps.length){
 
-        helpButton.textContent = "Need a little more help?";
+        button.textContent =
+            "NEED MORE HELP?";
 
     }else{
 
-        helpButton.textContent = "That is all the help available.";
-        helpButton.disabled = true;
-        helpButton.style.opacity = ".45";
-        helpButton.style.cursor = "default";
+        button.textContent =
+            "NO MORE HELP AVAILABLE";
+
+        button.disabled = true;
+
     }
+
 }
 
 
-answerInput.addEventListener("keydown",function(event){
+document
+    .getElementById("answer")
+    .addEventListener(
+        "keydown",
+        function(event){
 
-    if(event.key === "Enter"){
-        checkAnswer();
-    }
+            if(event.key === "Enter"){
 
-});
+                checkAnswer();
+
+            }
+
+        }
+    );
+
 </script>
 
 </body>
+
 </html>
