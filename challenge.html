@@ -13,66 +13,72 @@
 
 <body>
 
-<main class="narrow-page">
+<main class="page-narrow">
+
 
     <section id="challengePage">
 
-        <div class="archive-kicker">
+        <div class="kicker">
             REFLECTION 08B · FOLLOW THE TRAIL
         </div>
 
-        <h1 class="archive-title">
+        <h1 class="title">
             The Hidden Layer.
         </h1>
 
-        <p class="archive-subtitle">
+        <p class="subtitle">
             You have followed the story this far.
             But the first answer is only a direction.
             Something you have already seen is waiting
             to be reconsidered.
         </p>
 
-        <div class="archive-line"></div>
+        <div class="rule"></div>
 
 
-        <div class="challenge-box">
+        <div class="challenge">
 
             <div class="challenge-label">
                 FINAL ENTRY
             </div>
 
-            <div class="challenge-question">
+            <div class="question">
                 What is the password?
             </div>
 
+
             <input
                 id="answer"
-                class="challenge-input"
+                class="input"
                 type="text"
                 autocomplete="off"
                 spellcheck="false"
                 placeholder="Enter the answer..."
             >
 
+
             <button
-                class="challenge-submit"
+                id="verify"
+                class="verify"
                 onclick="checkAnswer()"
             >
                 VERIFY ANSWER
             </button>
 
+
             <div
                 id="message"
-                class="challenge-message"
+                class="message"
             ></div>
+
 
             <div
-                id="autoHint"
-                class="hint-box"
+                id="hint"
+                class="hint"
             ></div>
 
 
-            <div class="help-area">
+            <div class="help">
 
                 <button
                     id="helpButton"
@@ -109,22 +115,34 @@
 
     <section
         id="successPage"
-        class="success-screen"
+        class="success"
     >
 
         <div class="success-inner">
 
-            <div class="success-symbol">
-                ◇
+            <div class="success-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path d="M5 12.5l4 4 10-10"/>
+
+                </svg>
+
             </div>
+
 
             <div class="success-label">
                 ACCESS GRANTED
             </div>
 
+
             <h2 class="success-title">
                 You found what was hidden.
             </h2>
+
 
             <p class="success-description">
                 The trail is complete.
@@ -132,8 +150,9 @@
                 and heard.
             </p>
 
+
             <a
-                class="primary-button"
+                class="primary"
                 href="reflection-room.html"
             >
                 ENTER THE LISTENING ARCHIVE →
@@ -152,6 +171,7 @@ const PASSWORD =
     "understanding is not the final stop";
 
 let attempts = 0;
+
 let helpStep = 0;
 
 
@@ -198,12 +218,14 @@ function checkAnswer(){
         document.getElementById("message");
 
     const hint =
-        document.getElementById("autoHint");
+        document.getElementById("hint");
+
 
     const value =
         input.value
         .trim()
         .toLowerCase();
+
 
     attempts++;
 
@@ -215,13 +237,18 @@ function checkAnswer(){
             "true"
         );
 
+
         document.getElementById(
             "challengePage"
-        ).style.display = "none";
+        ).style.display =
+            "none";
+
 
         document.getElementById(
             "successPage"
-        ).style.display = "flex";
+        ).style.display =
+            "flex";
+
 
         return;
     }
@@ -229,6 +256,7 @@ function checkAnswer(){
 
     message.textContent =
         "Not quite. The trail continues.";
+
 
     hint.style.display =
         "block";
@@ -256,6 +284,7 @@ function checkAnswer(){
     }else if(attempts >= 2){
 
         index = 1;
+
     }
 
 
@@ -282,8 +311,10 @@ function showHelp(){
     text.style.display =
         "block";
 
+
     text.textContent =
         helpMessages[helpStep];
+
 
     helpStep++;
 
@@ -306,6 +337,7 @@ function showHelp(){
 
         button.style.cursor =
             "default";
+
     }
 
 }
