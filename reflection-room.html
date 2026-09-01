@@ -1,267 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>The Reflection Room</title>
 
-    <title>The Listening Archive · Reflection 08B</title>
+<style>
 
-    <link rel="stylesheet" href="site.css">
+*{
+    box-sizing:border-box;
+}
 
-</head>
+body{
+    margin:0;
 
+    min-height:100vh;
 
-<body>
+    background:
+        radial-gradient(circle at top,#20242b,#090a0d 65%);
 
+    color:#e8e5dc;
 
-<div id="lockedView">
+    font-family:Georgia,"Times New Roman",serif;
+}
 
-    <main class="page">
+.container{
+    width:min(1150px,92%);
 
-        <section class="lock-screen">
+    margin:auto;
 
-            <div class="lock-inner">
+    padding:55px 0;
+}
 
-                <div class="lock-icon">
+.top-nav{
+    display:flex;
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
+    justify-content:space-between;
 
-                        <rect
-                            x="5"
-                            y="10"
-                            width="14"
-                            height="10"
-                            rx="2"
-                        />
+    margin-bottom:60px;
+}
 
-                        <path
-                            d="M8 10V7a4 4 0 0 1 8 0v3"
-                        />
+.top-nav a{
 
-                    </svg>
+    color:#666c71;
 
-                </div>
+    text-decoration:none;
 
+    font-family:Arial,sans-serif;
 
-                <div class="eyebrow">
-                    Reflection 08B · Restricted
-                </div>
+    font-size:9px;
 
+    letter-spacing:2px;
 
-                <h1>
-                    Archive Locked.
-                </h1>
+    transition:.3s;
+}
 
+.top-nav a:hover{
+    color:#ddd9d0;
+}
 
-                <p>
-                    This room becomes available after
-                    completing the challenge.
-                </p>
+.header{
+    max-width:760px;
 
+    margin-bottom:55px;
+}
 
-                <a
-                    href="8b.html"
-                    class="btn secondary"
-                >
-                    Return to Group 08B
-                </a>
+.label{
+    font-family:Arial,sans-serif;
 
-            </div>
+    font-size:10px;
 
-        </section>
+    letter-spacing:4px;
 
-    </main>
+    opacity:.5;
 
-</div>
+    margin-bottom:20px;
+}
 
+h1{
+    font-size:clamp(38px,6vw,70px);
 
+    font-weight:400;
 
-<div id="openView" style="display:none;">
+    margin:0 0 20px;
+}
 
-    <main class="page-wide">
+.intro{
 
+    color:#aaa;
 
-        <header class="reading-header">
+    line-height:1.9;
 
-            <div>
+    font-size:16px;
+}
 
-                <div class="eyebrow">
-                    Reflection 08B · Listening Archive
-                </div>
+.discovery{
 
-                <h1>
-                    The Reflection Room.
-                </h1>
+    margin-top:25px;
 
-                <p>
-                    Read the reflection while listening to its
-                    accompanying voice recording.
-                </p>
+    padding-left:16px;
 
-            </div>
+    border-left:1px solid #555a5f;
 
-        </header>
+    color:#858883;
 
+    font-style:italic;
 
-        <section class="reading-grid">
+    line-height:1.8;
+}
 
+.grid{
 
-            <!-- PDF -->
+    display:grid;
 
-            <div>
+    grid-template-columns:1.45fr .85fr;
 
-                <iframe
-                    class="pdf-frame"
-                    src="Main%20Reflection%208b%20Open.pdf"
-                    title="Main Reflection 08B"
-                ></iframe>
+    gap:22px;
+}
 
-            </div>
+.card{
 
+    border:1px solid rgba(255,255,255,.12);
 
-            <!-- AUDIO -->
+    background:rgba(255,255,255,.035);
 
-            <aside class="audio-column">
-
-                <div class="audio-panel">
-
-
-                    <div class="audio-icon">
-
-                        <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        >
-
-                            <path
-                                d="M4 10v4"
-                            />
-
-                            <path
-                                d="M8 7v10"
-                            />
-
-                            <path
-                                d="M12 4v16"
-                            />
-
-                            <path
-                                d="M16 7v10"
-                            />
-
-                            <path
-                                d="M20 10v4"
-                            />
-
-                        </svg>
-
-                    </div>
-
-
-                    <h2>
-                        Voice Reflection
-                    </h2>
-
-
-                    <p>
-                        Listen while following the reflection
-                        on the page.
-                    </p>
-
-
-                    <audio
-                        controls
-                        preload="metadata"
-                    >
-
-                        <source
-                            src="reflection-8b-voice.mp3?v=5"
-                            type="audio/mpeg"
-                        >
-
-                        Your browser does not support audio playback.
-
-                    </audio>
-
-
-                    <div class="audio-meta">
-                        Reflection 08B · Voice Recording
-                    </div>
-
-
-                    <a
-                        class="download"
-                        href="reflection-8b-voice.mp3"
-                        download
-                    >
-                        Download Audio →
-                    </a>
-
-                </div>
-
-            </aside>
-
-
-        </section>
-
-
-        <nav class="bottom-nav">
-
-            <a href="8b.html">
-                ← Group 08B
-            </a>
-
-            <a href="index.html">
-                Archive
-            </a>
-
-        </nav>
-
-
-    </main>
-
-</div>
-
-
-
-<script>
-
-const unlocked =
-    localStorage.getItem("reflection8bUnlocked")
-    === "true";
-
-
-if (unlocked) {
-
-    document
-        .getElementById("lockedView")
-        .style.display = "none";
-
-    document
-        .getElementById("openView")
-        .style.display = "block";
+    padding:25px;
 
 }
 
-</script>
+.card h2{
 
+    font-size:24px;
+
+    font-weight:400;
+
+    margin:8px 0 12px;
+}
+
+.card p{
+
+    color:#999;
+
+    line-height:1.7;
+}
+
+iframe{
+
+    width:100%;
+
+    height:680px;
+
+    border:none;
+
+    background:white;
+
+    margin-top:18px;
+}
+
+.audio-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    min-height:350px;
+}
+
+.audio-mark{
+
+    font-size:35px;
+
+    opacity:.65;
+
+    margin:15px 0;
+}
+
+audio{
+
+    width:100%;
+
+    margin-top:25px;
+}
+
+.download{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:11px 18px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.download:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.footer{
+
+    text-align:center;
+
+    margin-top:45px;
+
+    color:#474d52;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+}
+
+@media(max-width:800px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    iframe{
+        height:600px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+<div class="top-nav">
+
+<a href="8b.html">
+← GROUP 8B
+</a>
+
+<a href="index.html">
+REFLECTION ARCHIVE
+</a>
+
+</div>
+
+
+<div class="header">
+
+<div class="label">
+AFTER THE ANSWER
+</div>
+
+<h1>
+The Reflection Room
+</h1>
+
+<p class="intro">
+
+You found what was hidden.
+
+Now there is nothing left to decode.
+
+Only something left to read —
+and perhaps, to hear differently.
+
+</p>
+
+<div class="discovery">
+
+The answer opened the door.
+What comes after it is the reflection itself.
+
+</div>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="label">
+THE MAIN REFLECTION
+</div>
+
+<h2>
+What was behind the code
+</h2>
+
+<p>
+The reflection is now open.
+Take your time with it.
+</p>
+
+<iframe src="Main%20Reflection%208b%20Open.pdf"></iframe>
+
+</div>
+
+
+<div class="card audio-card">
+
+<div class="label">
+THE OTHER VOICE
+</div>
+
+<div class="audio-mark">
+◌
+</div>
+
+<h2>
+Reflection 8b — Voice
+</h2>
+
+<p>
+
+Some things read differently
+when they are heard.
+
+</p>
+
+<audio controls preload="metadata">
+
+<source
+src="reflection-8b-voice.mp3"
+type="audio/mpeg">
+
+Your browser does not support
+audio playback.
+
+</audio>
+
+<a
+class="download"
+href="reflection-8b-voice.mp3"
+download>
+
+DOWNLOAD AUDIO
+
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+READ · LISTEN · RETHINK
+
+</div>
+
+</div>
+
+<script>
+
+/*
+If someone arrives here directly,
+the page still works as a presentation page.
+The intended unlock is performed through
+Challenge or Access.
+*/
+
+</script>
 
 </body>
 </html>
