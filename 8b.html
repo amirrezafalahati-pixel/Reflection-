@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Reflection 8B</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -14,327 +17,662 @@
 body{
     margin:0;
     min-height:100vh;
+
     background:
-        radial-gradient(circle at top,#20252b,#090b0e 70%);
-    color:#e8e5dc;
-    font-family:Georgia,"Times New Roman",serif;
+        radial-gradient(
+            circle at 50% 0%,
+            #24272a 0%,
+            #121416 42%,
+            #08090a 100%
+        );
+
+    color:#e9e6de;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 .page{
     width:min(1050px,92%);
     margin:auto;
-    padding:55px 0 70px;
+    padding:42px 0 65px;
 }
 
-header{
+
+/* TOP */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topbar a{
+    color:#777b7e;
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.topbar a:hover{
+    color:#e7e4dc;
+}
+
+
+/* HEADER */
+
+.header{
     text-align:center;
-    margin-bottom:55px;
+
+    padding:72px 0 55px;
 }
 
 .eyebrow{
-    color:#777;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    font-size:.75rem;
+    color:#73777a;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+    letter-spacing:4px;
 }
 
 h1{
+    margin:17px 0 14px;
+
+    font-size:
+        clamp(44px,7vw,72px);
+
     font-weight:normal;
-    letter-spacing:.05em;
-    margin:14px 0;
-    font-size:clamp(2rem,5vw,3.5rem);
+
+    letter-spacing:3px;
+}
+
+.divider{
+    width:70px;
+    height:1px;
+
+    margin:25px auto;
+
+    background:rgba(255,255,255,.25);
 }
 
 .subtitle{
-    color:#aaa;
-    line-height:1.8;
-    max-width:650px;
-    margin:15px auto 0;
+    max-width:620px;
+
+    margin:auto;
+
+    color:#a5a5a0;
+
+    line-height:1.9;
+
+    font-style:italic;
 }
 
-.line{
-    width:80px;
-    height:1px;
-    background:#555;
-    margin:25px auto;
-}
 
-.grid{
+/* CARDS */
+
+.cards{
     display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:22px;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:18px;
 }
 
 .card{
     position:relative;
-    min-height:245px;
-    padding:32px;
-    border:1px solid rgba(255,255,255,.11);
-    background:rgba(255,255,255,.025);
-    transition:.25s ease;
+
+    min-height:250px;
+
+    padding:31px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    background:
+        rgba(255,255,255,.025);
+
     overflow:hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
 }
 
 .card:hover{
-    border-color:rgba(255,255,255,.38);
     transform:translateY(-3px);
+
+    border-color:
+        rgba(255,255,255,.27);
+
+    background:
+        rgba(255,255,255,.035);
 }
 
-.card h2{
-    margin:0 0 15px;
-    font-weight:normal;
-    font-size:1.55rem;
-}
-
-.card p{
-    color:#aaa;
-    line-height:1.85;
-}
-
-.full-link{
+.card-link{
     position:absolute;
+
     inset:0;
+
     z-index:1;
 }
 
 .card-content{
     position:relative;
+
     z-index:2;
+
     pointer-events:none;
 }
 
-.tag{
+.card-number{
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:#666b6e;
+
+    margin-bottom:23px;
+}
+
+.card h2{
+    margin:0 0 15px;
+
+    font-size:29px;
+
+    font-weight:normal;
+}
+
+.card p{
+    color:#9b9c98;
+
+    line-height:1.85;
+
+    max-width:450px;
+}
+
+.card-action{
     display:inline-block;
-    margin-top:15px;
-    color:#d6d6d6;
-    font-size:.85rem;
-    letter-spacing:.08em;
+
+    margin-top:14px;
+
+    color:#d6d3ca;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
 }
 
-.challenge{
+
+/* LISTENING */
+
+.listening{
+    grid-column:1/-1;
+
+    min-height:205px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+}
+
+.lock-visual{
+    width:70px;
+    height:70px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
     background:
-        radial-gradient(circle at 80% 20%,rgba(255,255,255,.07),transparent 35%),
-        rgba(255,255,255,.025);
-}
+        rgba(0,0,0,.18);
 
-.locked{
-    cursor:pointer;
-}
+    font-size:27px;
 
-.lock-icon{
-    font-size:3rem;
-    margin-bottom:15px;
     filter:grayscale(1);
 }
 
-.locked::after{
-    content:"LOCKED";
-    position:absolute;
-    top:18px;
-    right:18px;
-    font-size:.68rem;
-    letter-spacing:.18em;
-    color:#777;
-    border:1px solid rgba(255,255,255,.12);
-    padding:6px 9px;
+.listening.locked{
+    cursor:pointer;
 }
 
-.unlocked::after{
-    content:"UNLOCKED";
-    position:absolute;
-    top:18px;
-    right:18px;
-    font-size:.68rem;
-    letter-spacing:.18em;
-    color:#a7a7a7;
-    border:1px solid rgba(255,255,255,.22);
-    padding:6px 9px;
+.listening.locked:hover{
+    transform:none;
+
+    border-color:
+        rgba(255,255,255,.2);
 }
 
-.direct-note{
-    grid-column:1/-1;
+.status{
+    margin-bottom:13px;
+
+    color:#666b6f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+}
+
+.listening.unlocked{
+    cursor:pointer;
+
+    border-color:
+        rgba(255,255,255,.24);
+}
+
+.listening.unlocked .status{
+    color:#c9c6bd;
+}
+
+.listening.unlocked .lock-visual{
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+
+/* DIRECT */
+
+.direct{
     text-align:center;
-    padding:10px 15px 0;
+
+    margin-top:32px;
 }
 
-.direct-link{
+.direct p{
+    color:#666b6e;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:.7px;
+
+    line-height:1.8;
+
+    margin-bottom:13px;
+}
+
+.direct a{
     display:inline-flex;
-    min-height:48px;
+
     align-items:center;
     justify-content:center;
-    padding:12px 25px;
-    color:#aaa;
+
+    min-height:45px;
+
+    padding:10px 20px;
+
+    color:#85898b;
+
     text-decoration:none;
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
     transition:.25s;
 }
 
-.direct-link:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.4);
-    background:rgba(255,255,255,.04);
+.direct a:hover{
+    color:#eeeae1;
+
+    border-color:
+        rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.03);
 }
 
-.back{
-    margin-top:45px;
+
+/* BOTTOM */
+
+.bottom{
     text-align:center;
+
+    margin-top:38px;
 }
 
-.back a{
+.bottom a{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
-    min-height:46px;
-    padding:10px 22px;
+
+    min-height:45px;
+
+    padding:10px 20px;
+
+    color:#777b7e;
+
     text-decoration:none;
-    color:#aaa;
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
     transition:.25s;
 }
 
-.back a:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.4);
-    background:rgba(255,255,255,.04);
+.bottom a:hover{
+    color:#eeeae1;
+
+    border-color:
+        rgba(255,255,255,.22);
 }
+
+
+/* MOBILE */
 
 @media(max-width:700px){
-    .grid{
+
+    .cards{
         grid-template-columns:1fr;
     }
 
-    .direct-note{
+    .listening{
         grid-column:auto;
+
+        display:block;
     }
 
-    .card{
-        min-height:220px;
+    .lock-visual{
+        margin-bottom:22px;
     }
+
+    .topbar{
+        gap:15px;
+    }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
 <div class="page">
 
-<header>
-<div class="eyebrow">Reflection Archive</div>
 
-<h1>Reflection 8B</h1>
+    <div class="topbar">
 
-<div class="line"></div>
+        <a href="index.html">
+            ← ARCHIVE
+        </a>
 
-<p class="subtitle">
-Not every path begins with an answer.
-Some begin with a question —
-and some answers only appear after looking back.
-</p>
-</header>
+        <a href="8a.html">
+            GROUP 8A →
+        </a>
 
-<section class="grid">
-
-<article class="card">
-<a class="full-link" href="scenario.html" aria-label="Open Scenario"></a>
-
-<div class="card-content">
-<h2>The Scenario</h2>
-
-<p>
-Before the reflection, there is a scene.
-Four voices. One machine.
-A question that refuses to disappear.
-</p>
-
-<span class="tag">BEGIN HERE →</span>
-</div>
-</article>
+    </div>
 
 
-<article class="card challenge">
-<a class="full-link" href="challenge.html" aria-label="Open Challenge"></a>
+    <header class="header">
 
-<div class="card-content">
-<h2>The Challenge</h2>
+        <div class="eyebrow">
+            REFLECTION ARCHIVE · GROUP 08B
+        </div>
 
-<p>
-The story left more than one trace behind.
-Some things are written to be read.
-Others are written to be noticed.
-</p>
+        <h1>
+            Reflection
+        </h1>
 
-<span class="tag">FOLLOW THE CLUES →</span>
-</div>
-</article>
+        <div class="divider"></div>
 
+        <div class="subtitle">
+            Another way of seeing.
+        </div>
 
-<article class="card locked" id="voiceCard">
-
-<div class="card-content">
-<div class="lock-icon" id="lockIcon">🔒</div>
-
-<h2>Listening Archive</h2>
-
-<p id="voiceText">
-A voice remains behind the reflection.
-For now, it waits.
-</p>
-
-<span class="tag" id="voiceTag">LOCKED UNTIL ACCESS IS GRANTED</span>
-</div>
-</article>
-
-</section>
+    </header>
 
 
-<div class="direct-note">
-
-<p style="color:#777;line-height:1.8;">
-If time is limited or you prefer not to follow the challenge,
-another route remains available.
-</p>
-
-<a class="direct-link" href="access-confirm.html">
-A DIFFERENT WAY FORWARD →
-</a>
-
-</div>
+    <section class="cards">
 
 
-<div class="back">
-<a href="index.html">← Back to Archive</a>
-</div>
+        <!-- SCENARIO -->
+
+        <article class="card">
+
+            <a
+                class="card-link"
+                href="scenario.html"
+                aria-label="Open The Scenario">
+            </a>
+
+            <div class="card-content">
+
+                <div class="card-number">
+                    01 · BEGIN
+                </div>
+
+                <h2>
+                    The Scenario
+                </h2>
+
+                <p>
+                    Four voices gather around a question:
+                    logic, skepticism, intuition,
+                    and critical thought.
+                </p>
+
+                <span class="card-action">
+                    ENTER THE SCENARIO →
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- CHALLENGE -->
+
+        <article class="card">
+
+            <a
+                class="card-link"
+                href="challenge.html"
+                aria-label="Open The Challenge">
+            </a>
+
+            <div class="card-content">
+
+                <div class="card-number">
+                    02 · DISCOVER
+                </div>
+
+                <h2>
+                    The Challenge
+                </h2>
+
+                <p>
+                    The scenario leaves a trail.
+                    Follow it carefully and discover
+                    what waits beyond the obvious.
+                </p>
+
+                <span class="card-action">
+                    FOLLOW THE TRAIL →
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- LISTENING -->
+
+        <article
+            class="card listening locked"
+            id="listeningCard">
+
+            <div
+                class="lock-visual"
+                id="lockVisual">
+                🔒
+            </div>
+
+            <div class="card-content">
+
+                <div
+                    class="status"
+                    id="listeningStatus">
+                    LISTENING ARCHIVE · LOCKED
+                </div>
+
+                <h2>
+                    The Reflection Voice
+                </h2>
+
+                <p id="listeningText">
+                    The voice waits beyond the path.
+                    Complete the challenge to unlock it.
+                </p>
+
+                <span
+                    class="card-action"
+                    id="listeningAction">
+                    COMPLETE THE PATH →
+                </span>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <div class="direct">
+
+        <p>
+            Prefer another route? You can enter directly,
+            but the discovery will be skipped.
+        </p>
+
+        <a href="access-confirm.html">
+            A DIFFERENT WAY FORWARD →
+        </a>
+
+    </div>
+
+
+    <div class="bottom">
+
+        <a href="index.html">
+            ← BACK TO ARCHIVE
+        </a>
+
+    </div>
 
 </div>
 
 
 <script>
-const unlocked = localStorage.getItem('reflection8bUnlocked') === 'true';
 
-const voiceCard = document.getElementById('voiceCard');
-const voiceText = document.getElementById('voiceText');
-const voiceTag = document.getElementById('voiceTag');
-const lockIcon = document.getElementById('lockIcon');
+const unlocked =
+    localStorage.getItem(
+        "reflection8bUnlocked"
+    ) === "true";
+
+
+const card =
+    document.getElementById(
+        "listeningCard"
+    );
+
+const visual =
+    document.getElementById(
+        "lockVisual"
+    );
+
+const status =
+    document.getElementById(
+        "listeningStatus"
+    );
+
+const text =
+    document.getElementById(
+        "listeningText"
+    );
+
+const action =
+    document.getElementById(
+        "listeningAction"
+    );
+
 
 if(unlocked){
-    voiceCard.classList.remove('locked');
-    voiceCard.classList.add('unlocked');
 
-    lockIcon.textContent = '🔓';
+    card.classList.remove("locked");
 
-    voiceText.textContent =
-        'The written reflection can now be heard in another form.';
+    card.classList.add("unlocked");
 
-    voiceTag.textContent = 'OPEN LISTENING ARCHIVE →';
+    visual.textContent = "🔓";
 
-    voiceCard.addEventListener('click',()=>{
-        window.location.href='reflection-room.html';
-    });
+    status.textContent =
+        "LISTENING ARCHIVE · UNLOCKED";
+
+    text.textContent =
+        "The written reflection can now be read and heard together.";
+
+    action.textContent =
+        "ENTER THE REFLECTION ROOM →";
+
+    card.onclick = function(){
+
+        window.location.href =
+            "reflection-room.html";
+
+    };
+
 }else{
-    voiceCard.addEventListener('click',()=>{
-        alert('This archive is still locked. Complete the challenge or choose direct access first.');
-    });
+
+    card.onclick = function(){
+
+        window.location.href =
+            "challenge.html";
+
+    };
+
 }
+
 </script>
 
 </body>
