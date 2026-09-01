@@ -13,65 +13,57 @@
 
 <body>
 
-<main class="narrow-page">
+<main class="page-narrow">
 
-    <div
-        style="
-        min-height:75vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        text-align:center;
-        "
-    >
+    <div class="direct-wrap">
 
-        <div style="width:100%;">
+        <div class="direct-inner">
 
-            <div class="success-symbol">
-                ◌
+
+            <div class="direct-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path d="M5 12h14"/>
+
+                    <path d="M13 6l6 6-6 6"/>
+
+                </svg>
+
             </div>
 
-            <div class="archive-kicker">
+
+            <div class="kicker">
                 ALTERNATIVE ROUTE
             </div>
 
-            <h1 class="archive-title">
+
+            <h1 class="title">
                 Direct Access.
             </h1>
 
-            <p class="archive-subtitle" style="margin-left:auto;margin-right:auto;">
+
+            <p class="subtitle" style="margin-left:auto;margin-right:auto;">
                 You can enter the reflection without completing
                 the challenge. But doing so means skipping the clues,
                 the coded message, and the discovery process.
             </p>
 
 
-            <div
-                style="
-                margin:30px 0;
-                padding:20px;
-                border:1px solid var(--line);
-                color:var(--muted);
-                font-size:12px;
-                line-height:1.8;
-                "
-            >
+            <div class="warning">
                 This route is intentionally secondary.
                 If this is your first visit, returning to the challenge
                 is the recommended way to experience Group 08B.
             </div>
 
 
-            <div
-                style="
-                display:grid;
-                gap:10px;
-                "
-            >
+            <div class="actions">
 
                 <a
-                    class="secondary-button"
-                    style="display:flex;justify-content:center;"
+                    class="secondary"
                     href="challenge.html"
                 >
                     RETURN TO CHALLENGE
@@ -79,7 +71,7 @@
 
 
                 <a
-                    class="primary-button"
+                    class="primary"
                     href="reflection-room.html"
                     onclick="unlockDirectAccess()"
                 >
@@ -89,7 +81,7 @@
             </div>
 
 
-            <div class="bottom-nav">
+            <nav class="bottom-nav">
 
                 <a href="8b.html">
                     ← BACK TO GROUP 08B
@@ -99,7 +91,7 @@
                     DIRECT ROUTE
                 </span>
 
-            </div>
+            </nav>
 
         </div>
 
