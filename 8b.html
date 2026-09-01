@@ -1,381 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Group 08B · Reflection Archive</title>
 
-<style>
+<link rel="stylesheet" href="site.css">
 
-:root{
-    --bg:#11110f;
-    --bg-soft:#171714;
-    --panel:#1c1c19;
-    --panel-hover:#22221e;
-    --line:#353530;
-    --line-soft:#292925;
-
-    --text:#eeeae1;
-    --muted:#aaa79e;
-    --dim:#77756d;
-
-    --accent:#d6d0c2;
-    --accent-soft:#bdb6a8;
-
-    --shadow:0 22px 60px rgba(0,0,0,.32);
-}
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 50% -10%, #282824 0%, transparent 38%),
-        linear-gradient(180deg,#11110f 0%,#0e0e0c 100%);
-    color:var(--text);
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.035;
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 3px,
-            rgba(255,255,255,.4) 4px
-        );
-}
-
-.page{
-    width:min(1100px,92%);
-    margin:auto;
-    padding:58px 0 42px;
-}
-
-/* ---------- HEADER ---------- */
-
-.top-label{
-    font-size:10px;
-    letter-spacing:4px;
-    color:var(--muted);
-    margin-bottom:18px;
-    text-transform:uppercase;
-}
-
-h1{
-    margin:0;
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:clamp(38px,6vw,68px);
-    font-weight:normal;
-    letter-spacing:-1.5px;
-}
-
-.subtitle{
-    margin-top:16px;
-    max-width:620px;
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.8;
-}
-
-.header-line{
-    height:1px;
-    background:var(--line);
-    margin:42px 0 34px;
-}
-
-/* ---------- CONTENT ---------- */
-
-.section-label{
-    font-size:10px;
-    letter-spacing:3px;
-    color:var(--dim);
-    margin-bottom:16px;
-    text-transform:uppercase;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-.card{
-    position:relative;
-    display:block;
-    min-height:235px;
-    padding:30px;
-    border:1px solid var(--line);
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.035),
-        rgba(255,255,255,.012)
-    );
-    color:var(--text);
-    text-decoration:none;
-    overflow:hidden;
-    transition:
-        transform .28s ease,
-        border-color .28s ease,
-        background .28s ease;
-}
-
-.card:before{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:170px;
-    right:-80px;
-    bottom:-90px;
-    border:1px solid rgba(255,255,255,.05);
-    border-radius:50%;
-}
-
-.card:hover{
-    transform:translateY(-4px);
-    border-color:#595850;
-    background:var(--panel-hover);
-}
-
-.card-number{
-    font-size:10px;
-    letter-spacing:3px;
-    color:var(--dim);
-}
-
-.card-title{
-    margin-top:48px;
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:30px;
-    font-weight:normal;
-}
-
-.card-description{
-    margin-top:12px;
-    max-width:430px;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.7;
-}
-
-.card-arrow{
-    position:absolute;
-    right:28px;
-    bottom:26px;
-    font-size:18px;
-    color:var(--accent);
-}
-
-/* ---------- LISTENING ---------- */
-
-.listening{
-    margin-top:18px;
-    position:relative;
-    border:1px solid var(--line);
-    min-height:150px;
-    background:rgba(255,255,255,.018);
-    overflow:hidden;
-}
-
-.listening.locked{
-    cursor:pointer;
-}
-
-.listening-link{
-    position:absolute;
-    inset:0;
-    z-index:5;
-}
-
-.listening-inner{
-    padding:28px 30px;
-    display:flex;
-    align-items:center;
-    gap:24px;
-}
-
-.lock-icon{
-    width:52px;
-    height:52px;
-    flex:none;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid var(--line);
-    font-size:22px;
-}
-
-.listening-title{
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:25px;
-}
-
-.listening-status{
-    margin-top:6px;
-    color:var(--dim);
-    font-size:10px;
-    letter-spacing:2px;
-}
-
-.listening-text{
-    margin-top:10px;
-    color:var(--muted);
-    font-size:12px;
-}
-
-/* ---------- DIRECT ---------- */
-
-.direct{
-    margin-top:34px;
-    text-align:center;
-}
-
-.direct-label{
-    color:var(--dim);
-    font-size:10px;
-    letter-spacing:2px;
-    margin-bottom:12px;
-}
-
-.direct-button{
-    display:inline-flex;
-    padding:12px 18px;
-    border:1px solid var(--line);
-    color:var(--muted);
-    text-decoration:none;
-    font-size:10px;
-    letter-spacing:2px;
-    transition:.25s;
-}
-
-.direct-button:hover{
-    border-color:#66645d;
-    color:var(--text);
-}
-
-/* ---------- FOOTER ---------- */
-
-.bottom-nav{
-    margin-top:55px;
-    padding-top:24px;
-    border-top:1px solid var(--line-soft);
-}
-
-.bottom-nav a{
-    color:var(--muted);
-    text-decoration:none;
-    font-size:10px;
-    letter-spacing:2px;
-    transition:.2s;
-}
-
-.bottom-nav a:hover{
-    color:var(--text);
-}
-
-/* ---------- MOBILE ---------- */
-
-@media(max-width:720px){
-
-    .page{
-        padding-top:38px;
-    }
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .card{
-        min-height:205px;
-    }
-
-    .listening-inner{
-        align-items:flex-start;
-    }
-
-    .card-title{
-        margin-top:35px;
-    }
-}
-
-</style>
 </head>
 
 <body>
 
-<main class="page">
+<main class="archive-page">
 
-    <div class="top-label">
+    <div class="archive-kicker">
         REFLECTION ARCHIVE · GROUP 08B
     </div>
 
-    <h1>One more layer.</h1>
+    <h1 class="archive-title">
+        One more layer.
+    </h1>
 
-    <p class="subtitle">
-        The reflection is not presented all at once.
+    <p class="archive-subtitle">
+        This reflection is deliberately not presented all at once.
         Follow the trail, question what you see,
-        and decide where the real answer begins.
+        and discover what lies beneath the first answer.
     </p>
 
-    <div class="header-line"></div>
+    <div class="archive-line"></div>
+
 
     <div class="section-label">
         FOLLOW THE TRAIL
     </div>
 
-    <section class="cards">
 
-        <a class="card" href="scenario.html">
+    <section class="archive-grid">
 
-            <div class="card-number">
+
+        <a
+            class="archive-card"
+            href="scenario.html"
+        >
+
+            <div class="archive-number">
                 01 · SCENARIO
             </div>
 
-            <div class="card-title">
+            <div class="archive-card-title">
                 The Beginning
             </div>
 
-            <div class="card-description">
+            <div class="archive-card-description">
                 Before the reflection, there is a story.
                 Read carefully. Some details are not there by accident.
             </div>
 
-            <div class="card-arrow">
+            <div class="meta-row">
+                <span class="meta">
+                    CLUES
+                </span>
+
+                <span class="meta">
+                    SCENARIO
+                </span>
+            </div>
+
+            <div class="archive-arrow">
                 →
             </div>
 
         </a>
 
 
-        <a class="card" href="challenge.html">
+        <a
+            class="archive-card"
+            href="challenge.html"
+        >
 
-            <div class="card-number">
+            <div class="archive-number">
                 02 · CHALLENGE
             </div>
 
-            <div class="card-title">
+            <div class="archive-card-title">
                 The Hidden Layer
             </div>
 
-            <div class="card-description">
-                Follow the clues and uncover what lies beneath
-                the first answer.
+            <div class="archive-card-description">
+                The first answer is only a direction.
+                Look back, reconsider what you have already seen,
+                and uncover the final entry.
             </div>
 
-            <div class="card-arrow">
+            <div class="meta-row">
+                <span class="meta">
+                    ENIGMA
+                </span>
+
+                <span class="meta">
+                    ACCESS
+                </span>
+            </div>
+
+            <div class="archive-arrow">
                 →
             </div>
 
@@ -386,20 +115,21 @@ h1{
 
     <section
         id="listeningCard"
-        class="listening locked"
-        onclick="openListening()"
+        class="listening-card"
     >
 
         <a
             id="listeningLink"
-            class="listening-link"
+            class="listening-card-link"
             href="challenge.html"
-            aria-label="Listening Archive"
         ></a>
 
-        <div class="listening-inner">
+        <div class="listening-content">
 
-            <div class="lock-icon" id="lockIcon">
+            <div
+                class="listening-icon"
+                id="listeningIcon"
+            >
                 🔒
             </div>
 
@@ -410,14 +140,18 @@ h1{
                 </div>
 
                 <div
-                    class="listening-status"
                     id="listeningStatus"
+                    class="listening-status"
                 >
                     LISTENING ARCHIVE · LOCKED
                 </div>
 
-                <div class="listening-text" id="listeningText">
-                    Complete the challenge to enter the reflection room.
+                <div
+                    id="listeningDescription"
+                    class="listening-description"
+                >
+                    Complete the challenge to enter
+                    the reflection room.
                 </div>
 
             </div>
@@ -427,14 +161,14 @@ h1{
     </section>
 
 
-    <div class="direct">
+    <div class="alternative-route">
 
-        <div class="direct-label">
+        <div class="alternative-label">
             ALTERNATIVE ROUTE
         </div>
 
         <a
-            class="direct-button"
+            class="secondary-button"
             href="access-confirm.html"
         >
             DIRECT ACCESS →
@@ -443,78 +177,65 @@ h1{
     </div>
 
 
-    <div class="bottom-nav">
+    <nav class="bottom-nav">
 
         <a href="index.html">
             ← BACK TO ARCHIVE
         </a>
 
-    </div>
+        <span>
+            GROUP 08B · ACTIVE FILE
+        </span>
+
+    </nav>
 
 </main>
 
 
 <script>
 
-function isUnlocked(){
-    return localStorage.getItem("reflection8bUnlocked") === "true";
+const unlocked =
+    localStorage.getItem(
+        "reflection8bUnlocked"
+    ) === "true";
+
+
+const link =
+    document.getElementById(
+        "listeningLink"
+    );
+
+const icon =
+    document.getElementById(
+        "listeningIcon"
+    );
+
+const status =
+    document.getElementById(
+        "listeningStatus"
+    );
+
+const description =
+    document.getElementById(
+        "listeningDescription"
+    );
+
+
+if(unlocked){
+
+    link.href =
+        "reflection-room.html";
+
+    icon.textContent =
+        "🔓";
+
+    status.textContent =
+        "LISTENING ARCHIVE · UNLOCKED";
+
+    description.textContent =
+        "The reflection is open. Read it and listen to it together.";
+
 }
-
-function updateListeningCard(){
-
-    const card = document.getElementById("listeningCard");
-    const link = document.getElementById("listeningLink");
-    const icon = document.getElementById("lockIcon");
-    const status = document.getElementById("listeningStatus");
-    const text = document.getElementById("listeningText");
-
-    if(isUnlocked()){
-
-        card.classList.remove("locked");
-
-        link.href = "reflection-room.html";
-
-        icon.textContent = "🔓";
-
-        status.textContent =
-            "LISTENING ARCHIVE · UNLOCKED";
-
-        text.textContent =
-            "The reflection is open. Read it and listen to it together.";
-
-    }else{
-
-        card.classList.add("locked");
-
-        link.href = "challenge.html";
-
-        icon.textContent = "🔒";
-
-        status.textContent =
-            "LISTENING ARCHIVE · LOCKED";
-
-        text.textContent =
-            "Complete the challenge to enter the reflection room.";
-    }
-}
-
-
-function openListening(){
-
-    if(isUnlocked()){
-
-        window.location.href =
-            "reflection-room.html";
-
-    }else{
-
-        window.location.href =
-            "challenge.html";
-    }
-}
-
-
-updateListeningCard();
 
 </script>
 
