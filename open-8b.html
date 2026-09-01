@@ -1,230 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Reflection 8B</title>
 
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
+body{
 
-    margin: 0;
+    margin:0;
 
-    min-height: 100vh;
+    min-height:100vh;
 
     background:
-        radial-gradient(
-            circle at top,
-            #1d2228,
-            #090b0e 72%
-        );
+        radial-gradient(circle at top,#1d2228,#090b0e 72%);
 
-    color: #e8e5dc;
+    color:#e8e5dc;
 
-    font-family: Georgia, serif;
+    font-family:Georgia,serif;
 
-    padding: 32px 18px;
-
+    padding:32px 18px;
 }
 
-.container {
+.container{
 
-    max-width: 1250px;
+    max-width:1250px;
 
-    margin: auto;
-
+    margin:auto;
 }
 
-.back {
+.back{
 
-    color: #696e73;
+    color:#696e73;
 
-    text-decoration: none;
+    text-decoration:none;
 
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
-    font-size: 9px;
+    font-size:9px;
 
-    letter-spacing: 2px;
-
+    letter-spacing:2px;
 }
 
-.header {
+.header{
 
-    text-align: center;
+    text-align:center;
 
-    padding:
-        55px
-        0
-        40px;
-
+    padding:55px 0 40px;
 }
 
-.label {
+.label{
 
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
-    font-size: 9px;
+    font-size:9px;
 
-    letter-spacing: 5px;
+    letter-spacing:5px;
 
-    color: #666b70;
-
+    color:#666b70;
 }
 
-h1 {
+h1{
 
-    font-size:
-        clamp(
-            38px,
-            7vw,
-            65px
-        );
+    font-size:clamp(38px,7vw,65px);
 
-    font-weight: normal;
+    font-weight:normal;
 
-    letter-spacing: 5px;
+    letter-spacing:5px;
 
-    margin:
-        18px
-        0
-        12px;
-
+    margin:18px 0 12px;
 }
 
-.subtitle {
+.subtitle{
 
-    color: #999a96;
+    color:#999a96;
 
-    font-style: italic;
-
+    font-style:italic;
 }
 
-.content {
+.content{
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
-        minmax(0, 1.65fr)
-        minmax(300px, .75fr);
+        minmax(0,1.65fr)
+        minmax(300px,.75fr);
 
-    gap: 20px;
-
+    gap:20px;
 }
 
-.panel {
+.panel{
 
-    border:
-        1px solid
-        #3d4247;
+    border:1px solid #3d4247;
 
-    background:
-        #111317;
+    background:#111317;
 
-    overflow: hidden;
-
+    overflow:hidden;
 }
 
-.panel-label {
+.panel-label{
 
-    padding:
-        14px
-        18px;
+    padding:14px 18px;
 
-    border-bottom:
-        1px solid
-        #30353a;
+    border-bottom:1px solid #30353a;
 
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
-    font-size: 9px;
+    font-size:9px;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    color: #70757a;
-
+    color:#70757a;
 }
 
-iframe {
+iframe{
 
-    display: block;
+    display:block;
 
-    width: 100%;
+    width:100%;
 
-    height: 820px;
+    height:820px;
 
-    border: none;
+    border:none;
 
-    background: white;
-
+    background:white;
 }
 
-.audio {
+.audio{
 
-    padding:
-        28px
-        24px;
+    padding:28px 24px;
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .025
-        );
-
+    background:rgba(255,255,255,.025);
 }
 
-.audio h2 {
+.audio h2{
 
-    font-size: 24px;
+    font-size:24px;
 
-    font-weight: normal;
+    font-weight:normal;
 
-    letter-spacing: 2px;
-
+    letter-spacing:2px;
 }
 
-.audio p {
+.audio p{
 
-    color: #92938f;
+    color:#92938f;
 
-    font-style: italic;
+    font-style:italic;
 
-    line-height: 1.8;
-
+    line-height:1.8;
 }
 
-audio {
+audio{
 
-    width: 100%;
+    width:100%;
 
-    margin-top: 18px;
-
+    margin-top:18px;
 }
 
-@media(max-width:850px) {
+.download{
 
-    .content {
+    display:inline-block;
 
-        grid-template-columns: 1fr;
+    margin-top:18px;
 
+    padding:11px 18px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+@media(max-width:850px){
+
+    .content{
+
+        grid-template-columns:1fr;
     }
 
-    iframe {
+    iframe{
 
-        height: 650px;
-
+        height:650px;
     }
 
 }
@@ -233,40 +204,26 @@ audio {
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
-
-<a
-href="8b.html"
-class="back">
-
+<a href="8b.html" class="back">
 ← GROUP 8B
-
 </a>
-
 
 <div class="header">
 
 <div class="label">
-
 FILE 08B
-
 </div>
 
 <h1>
-
 MAIN REFLECTION
-
 </h1>
 
 <div class="subtitle">
-
 The reflection, without the lock.
-
 </div>
 
 </div>
@@ -278,9 +235,7 @@ The reflection, without the lock.
 <div class="panel">
 
 <div class="panel-label">
-
 REFLECTION · 08B
-
 </div>
 
 <iframe
@@ -293,44 +248,42 @@ src="Main%20Reflection%208b%20Open.pdf">
 <div class="panel audio">
 
 <div class="panel-label">
-
 LISTENING ARCHIVE
-
 </div>
 
 <h2>
-
-Reflection 8b
-
+THE OTHER VOICE
 </h2>
 
 <p>
-
-The same reflection,
-through another voice.
-
+The reflection, heard rather than read.
 </p>
 
-<audio controls>
+<audio controls preload="metadata">
 
 <source
 src="reflection-8b-voice.mp3"
 type="audio/mpeg">
 
-Your browser does not support
-audio playback.
+Your browser does not support audio playback.
 
 </audio>
 
+<a
+class="download"
+href="reflection-8b-voice.mp3"
+download>
+
+DOWNLOAD AUDIO
+
+</a>
+
 </div>
 
 
 </div>
 
-
 </div>
-
 
 </body>
-
 </html>
