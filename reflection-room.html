@@ -1,201 +1,689 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Listening Archive</title>
+<title>The Reflection Room · 8B</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
 
 body{
+
     margin:0;
+
     min-height:100vh;
+
     background:
-        radial-gradient(circle at top,#1d1d1d 0%,#0b0b0b 58%,#050505 100%);
-    color:#eee;
-    font-family:Georgia,"Times New Roman",serif;
+        radial-gradient(
+            circle at 50% 0%,
+            #24272a 0%,
+            #121416 42%,
+            #08090a 100%
+        );
+
+    color:#e9e6de;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 .page{
-    width:min(780px,92%);
+
+    width:min(1250px,94%);
+
     margin:auto;
-    padding:65px 0;
-    text-align:center;
+
+    padding:40px 0 65px;
 }
 
-.icon{
-    font-size:3.3rem;
-    margin-bottom:18px;
+
+/* TOP */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.topbar a{
+
+    color:#777c80;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.topbar a:hover{
+
+    color:#eeeae2;
+}
+
+
+/* HEADER */
+
+.header{
+
+    text-align:center;
+
+    padding:60px 0 40px;
 }
 
 .eyebrow{
-    color:#777;
-    font-size:.74rem;
-    letter-spacing:.2em;
-    text-transform:uppercase;
+
+    color:#73787b;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:4px;
 }
 
 h1{
-    font-size:clamp(2rem,6vw,3.7rem);
+
+    margin:17px 0 14px;
+
+    font-size:
+        clamp(40px,6vw,66px);
+
     font-weight:normal;
-    margin:15px 0;
+
+    letter-spacing:2px;
 }
 
-.line{
-    width:75px;
+.divider{
+
+    width:70px;
+
     height:1px;
-    background:#555;
+
     margin:25px auto;
+
+    background:
+        rgba(255,255,255,.24);
 }
 
-.intro{
-    max-width:600px;
-    color:#aaa;
-    line-height:1.9;
-    margin:auto;
+.subtitle{
+
+    color:#a5a5a0;
+
+    font-style:italic;
+
+    line-height:1.8;
 }
 
-.archive-box{
-    margin-top:45px;
-    padding:35px 28px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.025);
+
+/* MAIN */
+
+.room{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        310px;
+
+    gap:20px;
+
+    align-items:start;
 }
 
-.archive-box h2{
+
+/* PDF */
+
+.pdf{
+
+    min-height:760px;
+
+    overflow:hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background:#111;
+}
+
+.pdf iframe{
+
+    display:block;
+
+    width:100%;
+
+    height:760px;
+
+    border:0;
+
+    background:#fff;
+}
+
+
+/* AUDIO */
+
+.voice{
+
+    position:sticky;
+
+    top:20px;
+
+    padding:28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.voice-mark{
+
+    font-size:30px;
+
+    margin-bottom:20px;
+
+    opacity:.75;
+}
+
+.voice-label{
+
+    color:#73787b;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+}
+
+.voice h2{
+
+    margin:0 0 15px;
+
+    font-size:28px;
+
     font-weight:normal;
-    margin-top:0;
 }
 
-.archive-box p{
-    color:#aaa;
+.voice p{
+
+    color:#9c9d98;
+
     line-height:1.85;
+
+    font-size:14px;
 }
 
 audio{
+
     width:100%;
-    margin:25px 0 12px;
+
+    margin-top:24px;
 }
 
 .download{
+
     display:flex;
-    width:100%;
-    min-height:52px;
+
     align-items:center;
+
     justify-content:center;
+
+    min-height:49px;
+
+    margin-top:15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:#d7d4cc;
+
     text-decoration:none;
-    color:#ddd;
-    border:1px solid rgba(255,255,255,.16);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
     transition:.25s;
 }
 
 .download:hover{
-    border-color:rgba(255,255,255,.45);
-    background:rgba(255,255,255,.05);
+
+    background:
+        rgba(255,255,255,.07);
+
+    border-color:
+        rgba(255,255,255,.35);
 }
 
-.note{
-    margin-top:28px;
-    color:#666;
-    font-size:.88rem;
-    line-height:1.8;
+.voice-note{
+
+    margin-top:20px;
+
+    padding-top:18px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:#666b6e;
+
+    font-size:11px;
+
+    line-height:1.7;
 }
 
-.navigation{
+
+/* BOTTOM */
+
+.bottom{
+
     display:flex;
+
     justify-content:center;
-    flex-wrap:wrap;
+
     gap:12px;
-    margin-top:35px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
 }
 
-.navigation a{
+.bottom a{
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     min-height:46px;
-    padding:10px 22px;
+
+    padding:10px 21px;
+
+    color:#858a8d;
+
     text-decoration:none;
-    color:#aaa;
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
     transition:.25s;
 }
 
-.navigation a:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.4);
-    background:rgba(255,255,255,.04);
+.bottom a:hover{
+
+    color:#eeeae2;
+
+    border-color:
+        rgba(255,255,255,.28);
+
+    background:
+        rgba(255,255,255,.025);
 }
+
+
+/* LOCK */
+
+.lock-screen{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #24272a,
+            #08090a 75%
+        );
+}
+
+.lock-inner{
+
+    max-width:600px;
+}
+
+.lock-icon{
+
+    font-size:45px;
+
+    margin-bottom:20px;
+
+    opacity:.7;
+}
+
+.lock-inner h2{
+
+    margin:0 0 20px;
+
+    font-size:42px;
+
+    font-weight:normal;
+}
+
+.lock-inner p{
+
+    color:#aaa;
+
+    line-height:1.9;
+}
+
+.lock-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:49px;
+
+    margin-top:25px;
+
+    padding:10px 23px;
+
+    color:#111;
+
+    background:#e8e5dc;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .room{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .voice{
+
+        position:static;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .topbar{
+
+        gap:15px;
+
+    }
+
+    .pdf{
+
+        min-height:620px;
+
+    }
+
+    .pdf iframe{
+
+        height:620px;
+
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<div
+    class="lock-screen"
+    id="lockScreen">
+
+    <div class="lock-inner">
+
+        <div class="lock-icon">
+            🔒
+        </div>
+
+        <h2>
+            Reflection Locked
+        </h2>
+
+        <p>
+
+            This room belongs to the completed path.
+
+            <br>
+
+            Follow the challenge first,
+            or choose the alternative route.
+
+        </p>
+
+        <a
+            class="lock-button"
+            href="8b.html">
+
+            RETURN TO GROUP 8B
+
+        </a>
+
+    </div>
+
+</div>
+
+
 <div class="page">
 
-<div class="icon">🎧</div>
 
-<div class="eyebrow">Unlocked Archive</div>
+    <div class="topbar">
 
-<h1>Listening Archive</h1>
+        <a href="8b.html">
+            ← GROUP 8B
+        </a>
 
-<div class="line"></div>
+        <a href="index.html">
+            ARCHIVE
+        </a>
 
-<p class="intro">
-The written reflection has another rhythm when heard aloud.
-Here, the words are allowed to unfold in time.
-</p>
-
-
-<section class="archive-box">
-
-<h2>Reflection 8B — Voice</h2>
-
-<p>
-A recorded reading of the main reflection.
-You may listen here, or keep a copy for later.
-</p>
-
-<audio controls preload="metadata">
-
-<source
-src="reflection-8b-voice.mp3"
-type="audio/mpeg">
-
-Your browser does not support the audio element.
-
-</audio>
-
-<a
-class="download"
-href="reflection-8b-voice.mp3"
-download="Reflection 8b voice.mp3">
-Download the Voice Archive
-</a>
-
-</section>
+    </div>
 
 
-<p class="note">
-Unlocked through the challenge — or through a conscious choice to take another route.
-</p>
+    <header class="header">
+
+        <div class="eyebrow">
+            GROUP 08B · FINAL ROOM
+        </div>
+
+        <h1>
+            The Reflection Room
+        </h1>
+
+        <div class="divider"></div>
+
+        <div class="subtitle">
+            Read it. Listen to it. Rethink it.
+        </div>
+
+    </header>
 
 
-<div class="navigation">
+    <main class="room">
 
-<a href="main-8b.html">← Back to Main Reflection</a>
 
-<a href="8b.html">Back to Reflection 8B</a>
+        <!-- REFLECTION -->
 
-<a href="index.html">Back to Archive</a>
+        <section class="pdf">
+
+            <iframe
+                src="Main%20Reflection%208b%20Open.pdf"
+                title="Main Reflection 8B">
+            </iframe>
+
+        </section>
+
+
+        <!-- VOICE -->
+
+        <aside class="voice">
+
+            <div class="voice-mark">
+                ◉
+            </div>
+
+            <div class="voice-label">
+                REFLECTION VOICE
+            </div>
+
+            <h2>
+                Listen
+            </h2>
+
+            <p>
+
+                The reflection is here beside you.
+
+                <br><br>
+
+                Follow the written text while
+                listening to the recorded voice.
+
+                <br><br>
+
+                Sometimes hearing an idea
+                changes the way we read it.
+
+            </p>
+
+
+            <audio
+                controls
+                preload="metadata">
+
+                <source
+                    src="reflection-8b-voice.mp3?v=3"
+                    type="audio/mpeg">
+
+                Your browser does not support
+                the audio element.
+
+            </audio>
+
+
+            <a
+                class="download"
+                href="reflection-8b-voice.mp3?v=3"
+                download="Reflection 8B Voice.mp3">
+
+                DOWNLOAD THE VOICE
+
+            </a>
+
+
+            <div class="voice-note">
+
+                Suggested experience:
+
+                <br>
+
+                Open the reflection,
+                start the audio,
+                and read along.
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <div class="bottom">
+
+        <a href="8b.html">
+            ← BACK TO 8B
+        </a>
+
+        <a href="index.html">
+            BACK TO ARCHIVE
+        </a>
+
+    </div>
 
 </div>
 
-</div>
+
+<script>
+
+const unlocked =
+    localStorage.getItem(
+        "reflection8bUnlocked"
+    ) === "true";
+
+
+if(!unlocked){
+
+    document
+        .getElementById("lockScreen")
+        .style.display =
+        "flex";
+
+}
+
+</script>
 
 </body>
+
 </html>
