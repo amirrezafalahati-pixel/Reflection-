@@ -1,185 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>A Different Way Forward</title>
 
 <style>
+
 *{
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
     margin:0;
     min-height:100vh;
-    font-family:Georgia, "Times New Roman", serif;
-    color:#eee;
-    background:
-        radial-gradient(circle at top, #252525 0%, #111 48%, #070707 100%);
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     padding:25px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #24272a 0%,
+            #121416 45%,
+            #08090a 100%
+        );
+
+    color:#e9e6de;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 .container{
-    width:min(700px, 100%);
-    text-align:center;
+
+    width:min(700px,100%);
+
     padding:50px 35px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.035);
-    box-shadow:0 20px 80px rgba(0,0,0,.45);
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
 }
 
 .symbol{
-    font-size:2.4rem;
-    opacity:.75;
-    margin-bottom:18px;
+
+    font-size:38px;
+
+    opacity:.7;
+
+    margin-bottom:20px;
+}
+
+.eyebrow{
+
+    color:#74797c;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:4px;
 }
 
 h1{
-    font-size:clamp(1.7rem,5vw,2.7rem);
+
+    margin:18px 0;
+
+    font-size:
+        clamp(36px,7vw,58px);
+
     font-weight:normal;
-    letter-spacing:.04em;
-    margin:0 0 22px;
 }
 
-.line{
-    width:75px;
+.divider{
+
+    width:70px;
     height:1px;
-    background:rgba(255,255,255,.35);
-    margin:0 auto 25px;
+
+    background:
+        rgba(255,255,255,.23);
+
+    margin:25px auto;
 }
 
-p{
-    color:#bdbdbd;
+.intro{
+
+    color:#aaa9a3;
+
     line-height:1.9;
-    font-size:1rem;
+
     max-width:560px;
-    margin:15px auto;
+
+    margin:auto;
 }
 
 .warning{
-    margin:28px auto;
-    padding:18px 20px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.025);
-    color:#d0d0d0;
+
+    margin-top:35px;
+
+    padding:22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    background:
+        rgba(0,0,0,.17);
+
+    color:#aaa;
+
+    line-height:1.85;
+
+    font-size:14px;
 }
 
 .warning strong{
-    color:#fff;
+
+    color:#e0ddd5;
+
+    font-weight:normal;
 }
 
 .actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
-    justify-content:center;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:12px;
+
     margin-top:30px;
 }
 
 .btn{
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
+    min-height:52px;
+
+    padding:12px 20px;
+
     text-decoration:none;
-    color:#eee;
-    min-height:55px;
-    padding:15px 24px;
-    border:1px solid rgba(255,255,255,.2);
-    transition:.25s ease;
-    cursor:pointer;
-    font-family:inherit;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    color:#aaa;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
 }
 
 .btn:hover{
-    background:rgba(255,255,255,.09);
-    border-color:rgba(255,255,255,.55);
+
+    color:#eee;
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.04);
+
     transform:translateY(-2px);
 }
 
 .primary{
-    background:rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.07);
+
+    color:#ddd;
 }
 
-.secondary{
-    color:#aaa;
-}
+.note{
 
-.small{
-    margin-top:28px;
-    font-size:.84rem;
-    opacity:.55;
+    margin-top:25px;
+
+    color:#555b5f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:1px;
+
+    line-height:1.7;
 }
 
 @media(max-width:600px){
+
     .container{
         padding:40px 22px;
     }
 
     .actions{
-        flex-direction:column;
+        grid-template-columns:1fr;
     }
 
-    .btn{
-        width:100%;
-    }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <main class="container">
 
-<div class="symbol">⌁</div>
 
-<h1>Before You Continue</h1>
+    <div class="symbol">
+        ⌁
+    </div>
 
-<div class="line"></div>
 
-<p>
-You are about to take the direct route.
-</p>
+    <div class="eyebrow">
+        AN ALTERNATIVE PATH
+    </div>
 
-<div class="warning">
-<strong>The reflection will be revealed without completing the challenge.</strong>
-<br><br>
-The hidden path, the clues, and the process of discovering the final key
-will remain unexplored.
-</div>
 
-<p>
-There is nothing wrong with choosing this way.
-Some stories simply need to be read when time is short.
-But the choice should be yours — knowingly.
-</p>
+    <h1>
+        A Different Way Forward
+    </h1>
 
-<div class="actions">
 
-<a class="btn primary" href="main-8b.html"
-onclick="localStorage.setItem('reflection8bUnlocked','true');">
-Continue Directly
-</a>
+    <div class="divider"></div>
 
-<a class="btn secondary" href="challenge.html">
-Return to the Challenge
-</a>
 
-</div>
+    <p class="intro">
 
-<div class="small">
-Some doors are opened by solving. Others by choosing.
-</div>
+        You are about to enter the reflection
+        without completing the challenge.
+
+    </p>
+
+
+    <div class="warning">
+
+        <strong>
+            This choice skips the discovery experience.
+        </strong>
+
+        <br><br>
+
+        The scenario, clues, search,
+        and final challenge were designed
+        to be part of the reflection itself.
+
+        <br><br>
+
+        If you want to experience the complete path,
+        return to the challenge.
+
+    </div>
+
+
+    <div class="actions">
+
+        <a
+            class="btn"
+            href="challenge.html">
+
+            RETURN TO CHALLENGE
+
+        </a>
+
+
+        <a
+            class="btn primary"
+            href="reflection-room.html"
+            onclick="unlockDirectAccess()">
+
+            ENTER DIRECTLY
+
+        </a>
+
+    </div>
+
+
+    <div class="note">
+
+        You are choosing to skip the trail —
+        not to change the destination.
+
+    </div>
+
 
 </main>
 
+
+<script>
+
+function unlockDirectAccess(){
+
+    localStorage.setItem(
+        "reflection8bUnlocked",
+        "true"
+    );
+
+}
+
+</script>
+
 </body>
+
 </html>
