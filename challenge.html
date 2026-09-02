@@ -600,6 +600,22 @@ button:hover {
 
 }
 </style>
+<link rel="stylesheet" href="shared-theme.css">
+
+<style>
+.direct-access-section.is-completed{
+    display:none !important;
+}
+.completed-notice{
+    margin-top:28px;
+    padding:18px;
+    border-top:1px solid #3d4247;
+    border-bottom:1px solid #3d4247;
+    color:#92948f;
+    font-style:italic;
+    line-height:1.8;
+}
+</style>
 </head>
 
 
@@ -756,7 +772,7 @@ button:hover {
 
         <!-- DIRECT ACCESS -->
 
-        <div class="help-section">
+        <div class="help-section direct-access-section" id="directAccessSection">
 
             <div class="section-label">
                 ANOTHER PATH
@@ -1231,6 +1247,23 @@ function goDirect() {
 ================================================== */
 
 updateCounter();
+
+/*
+  Once the Challenge has genuinely been solved,
+  the alternative/direct path has no purpose anymore.
+  Keep the state permanent; do not undo completion.
+*/
+if (
+    localStorage.getItem("reflection8bChallengeCompleted") === "true"
+) {
+    const directSection =
+        document.getElementById("directAccessSection");
+
+    if (directSection) {
+        directSection.classList.add("is-completed");
+    }
+}
+
 
 </script>
 

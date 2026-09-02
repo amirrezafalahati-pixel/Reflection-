@@ -819,6 +819,125 @@ button:hover {
 
 }
 </style>
+<link rel="stylesheet" href="shared-theme.css">
+
+<style>
+/* FINAL POLISH — same visual language as Index / Group A */
+.card{
+    position:relative;
+}
+
+/* A more cinematic "decryption / dissolve" exit */
+.challenge-removing{
+    overflow:hidden;
+    animation:challengeExit 2.65s cubic-bezier(.2,.72,.2,1) forwards !important;
+    will-change:transform,opacity,filter,max-height;
+}
+
+.challenge-removing::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:4;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            transparent 38%,
+            rgba(231,228,220,.10) 50%,
+            transparent 62%,
+            transparent 100%);
+    transform:translateX(-120%);
+    animation:decryptionSweep 2.15s .05s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+.challenge-removing::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:5;
+    border:1px solid rgba(231,228,220,.22);
+    box-shadow:
+        inset 0 0 35px rgba(150,165,180,.08),
+        0 0 35px rgba(120,140,160,.08);
+    opacity:0;
+    animation:decryptionFrame 2.35s ease forwards;
+}
+
+.challenge-removing > *{
+    animation:contentDissolve 2.15s .15s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+@keyframes decryptionSweep{
+    0%{transform:translateX(-120%);opacity:0}
+    20%{opacity:1}
+    55%{opacity:.75}
+    100%{transform:translateX(120%);opacity:0}
+}
+
+@keyframes decryptionFrame{
+    0%,18%{opacity:0}
+    35%{opacity:.9}
+    62%{opacity:.35}
+    100%{opacity:0}
+}
+
+@keyframes contentDissolve{
+    0%{opacity:1;filter:blur(0);transform:translateX(0)}
+    48%{opacity:.82;filter:blur(.3px);transform:translateX(4px)}
+    76%{opacity:.25;filter:blur(2.5px);transform:translateX(12px)}
+    100%{opacity:0;filter:blur(7px);transform:translateX(25px)}
+}
+
+@keyframes challengeExit{
+    0%{
+        opacity:1;
+        transform:translate3d(0,0,0) scale(1);
+        filter:blur(0);
+        max-height:420px;
+        margin-bottom:0;
+    }
+    45%{
+        opacity:.92;
+        transform:translate3d(4px,-2px,0) scale(.985);
+        filter:blur(.4px);
+    }
+    72%{
+        opacity:.38;
+        transform:translate3d(16px,-3px,0) scale(.94);
+        filter:blur(2px);
+    }
+    90%{
+        opacity:.08;
+        transform:translate3d(34px,-3px,0) scale(.86);
+        filter:blur(5px);
+    }
+    100%{
+        opacity:0;
+        transform:translate3d(55px,-3px,0) scale(.72);
+        filter:blur(8px);
+        max-height:0;
+        margin-top:0;
+        margin-bottom:0;
+        padding-top:0;
+        padding-bottom:0;
+        border-width:0;
+    }
+}
+
+/* Make the Group A / Index palette unmistakable */
+.cards.reflowed .scenario,
+.cards.reflowed .listening{
+    background:rgba(255,255,255,.025) !important;
+}
+
+@media(max-width:700px){
+    .challenge-removing{
+        animation-duration:2.4s !important;
+    }
+}
+</style>
 </head>
 
 
@@ -1356,7 +1475,7 @@ function animateChallengeRemoval() {
 
             }, 700);
 
-        }, 3200);
+        }, 2650);
 
     }, 650);
 }
