@@ -7,397 +7,626 @@
 <title>Challenge — Reflection 8B</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(50,70,95,.14),
+            transparent 42%
+        ),
+        #090b0f;
+
+    color: #e8edf2;
+    font-family: Arial, sans-serif;
+}
+
+.page {
+    width: min(900px, 92%);
+    margin: auto;
+    padding: 40px 0 70px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 65px;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.topbar a,
+.back-links a {
+    color: #858f9b;
+    text-decoration: none;
+    transition: color .25s ease;
+}
+
+.topbar a:hover,
+.back-links a:hover {
+    color: #e8edf2;
+}
+
+.eyebrow {
+    margin-bottom: 15px;
+
+    color: #707c88;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+h1 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+    font-size: clamp(40px, 7vw, 64px);
+    font-weight: 400;
+}
+
+.intro {
+    max-width: 650px;
+    margin-top: 17px;
+
+    color: #8d98a4;
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.challenge-box {
+    margin-top: 52px;
+
+    padding: 34px;
+
+    border: 1px solid rgba(165,180,195,.15);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,25,32,.76),
+            rgba(11,14,19,.76)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.27);
+}
+
+.challenge-symbol {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    border: 1px solid rgba(170,185,200,.17);
+
+    color: #b5bec7;
+
+    font-size: 24px;
+}
+
+.challenge-box h2 {
+    margin: 0 0 10px;
+
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.description {
+    margin-bottom: 28px;
+
+    color: #858f9b;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   ATTEMPT COUNTER
+========================= */
+
+.attempt-counter {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 16px;
+
+    color: #788490;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.attempt-counter strong {
+    color: #d0d7de;
+
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.attempt-dot {
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #66737f;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-wrap {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+
+    padding: 15px 16px;
+
+    border: 1px solid rgba(170,185,200,.18);
+
+    background: #080b0f;
+
+    color: #e9edf2;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+input:focus {
+    border-color:
+        rgba(190,205,220,.4);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(160,180,200,.035);
+}
+
+button {
+    min-height: 46px;
+
+    padding: 0 19px;
+
+    border:
+        1px solid rgba(185,200,215,.19);
+
+    background:
+        rgba(185,200,215,.055);
+
+    color: #e7ecf0;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    letter-spacing: 1.7px;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease;
+}
+
+button:hover {
+    background:
+        rgba(185,200,215,.11);
+
+    border-color:
+        rgba(205,220,235,.34);
+}
+
+.primary {
+    background:
+        rgba(205,215,225,.1);
+}
+
+.status {
+    min-height: 24px;
+
+    margin-top: 15px;
+
+    color: #858f9b;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   HINT SECTION
+========================= */
+
+.hints-section {
+    margin-top: 38px;
+}
+
+.section-label {
+    margin-bottom: 13px;
+
+    color: #687480;
+
+    font-size: 9px;
+    letter-spacing: 2.5px;
+}
+
+.hint-history {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.hint-item {
+    display: grid;
+
+    grid-template-columns: 30px 1fr;
+
+    gap: 11px;
+
+    padding: 12px 13px;
+
+    border:
+        1px solid rgba(150,165,180,.09);
+
+    background:
+        rgba(255,255,255,.016);
+
+    color: #8e99a5;
+
+    font-size: 12px;
+    line-height: 1.65;
+
+    animation:
+        hintAppear
+        .55s
+        ease
+        both;
+}
+
+.hint-number {
+    color: #65727e;
+
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+@keyframes hintAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-7px);
     }
 
-    html {
-        scroll-behavior: smooth;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        background:
-            radial-gradient(circle at 50% 15%, rgba(55,75,100,.15), transparent 38%),
-            radial-gradient(circle at 20% 80%, rgba(30,45,65,.12), transparent 35%),
-            #090b0f;
-        color: #e9edf2;
-        font-family: Arial, sans-serif;
-    }
 
-    .page {
-        width: min(900px, 92%);
-        margin: auto;
-        padding: 45px 0 70px;
-    }
+/* =========================
+   PARTIAL ANSWER
+========================= */
 
-    .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 65px;
-        font-size: 12px;
-        letter-spacing: 2px;
-        color: #8d98a5;
-    }
+.partial-answer {
+    margin-top: 12px;
 
-    .topbar a,
-    .back-links a {
-        color: #9ba8b7;
-        text-decoration: none;
-        transition: .25s ease;
-    }
+    padding: 16px;
 
-    .topbar a:hover,
-    .back-links a:hover {
-        color: white;
-    }
+    border:
+        1px solid rgba(180,195,210,.17);
 
-    .eyebrow {
-        font-size: 11px;
-        letter-spacing: 3px;
-        color: #7e8b99;
-        margin-bottom: 16px;
-    }
+    background:
+        rgba(180,195,210,.035);
 
-    h1 {
-        font-family: Georgia, serif;
-        font-weight: 400;
-        font-size: clamp(38px, 7vw, 64px);
-        margin: 0 0 18px;
-        letter-spacing: -1px;
-    }
+    color: #cbd3da;
 
-    .intro {
-        max-width: 650px;
-        color: #9da7b3;
-        line-height: 1.8;
-        font-size: 15px;
-    }
+    font-family: Georgia, serif;
+
+    animation:
+        hintAppear
+        .7s
+        ease
+        both;
+}
+
+.partial-answer span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #788590;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   HELP — COMPLETELY SEPARATE
+========================= */
+
+.help-section {
+    margin-top: 34px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid rgba(170,185,200,.08);
+}
+
+.help-box {
+    padding: 17px;
+
+    border:
+        1px solid rgba(150,165,180,.1);
+
+    background:
+        rgba(255,255,255,.012);
+}
+
+.help-text {
+    margin: 0 0 15px;
+
+    color: #838e9a;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.help-response {
+    min-height: 20px;
+
+    margin-top: 13px;
+
+    color: #9ba6b1;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.help-button {
+    background: transparent;
+
+    color: #89949f;
+}
+
+
+/* =========================
+   BACK LINKS
+========================= */
+
+.back-links {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px 25px;
+
+    margin-top: 52px;
+    padding-top: 24px;
+
+    border-top:
+        1px solid rgba(170,185,200,.08);
+
+    font-size: 10px;
+    letter-spacing: 1.7px;
+}
+
+
+/* =========================
+   SUCCESS MODAL
+========================= */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(4,6,9,.84);
+
+    backdrop-filter: blur(9px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .5s ease,
+        visibility .5s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-card {
+    width: min(520px,100%);
+
+    padding: 42px 38px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(185,200,215,.19);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(110,135,160,.08),
+            transparent 55%
+        ),
+        #0c1015;
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.56);
+
+    transform:
+        translateY(24px)
+        scale(.97);
+
+    opacity: 0;
+
+    transition:
+        transform .7s cubic-bezier(.22,.61,.36,1),
+        opacity .7s ease;
+}
+
+.overlay.show .success-card {
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+}
+
+.success-symbol {
+    margin-bottom: 20px;
+
+    font-size: 28px;
+}
+
+.success-card h2 {
+    margin: 0 0 14px;
+
+    font-family: Georgia, serif;
+    font-size: 31px;
+    font-weight: 400;
+}
+
+.success-card p {
+    max-width: 420px;
+
+    margin: 0 auto 27px;
+
+    color: #8b96a2;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.success-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 9px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 620px) {
 
     .challenge-box {
-        margin-top: 55px;
-        padding: 34px;
-        border: 1px solid rgba(170,185,200,.16);
-        background: rgba(13,17,23,.76);
-        box-shadow:
-            0 25px 70px rgba(0,0,0,.28),
-            inset 0 1px rgba(255,255,255,.025);
-    }
-
-    .challenge-symbol {
-        width: 55px;
-        height: 55px;
-        border: 1px solid rgba(170,185,200,.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 23px;
-        color: #b7c1cb;
-        margin-bottom: 25px;
-    }
-
-    .challenge-box h2 {
-        font-family: Georgia, serif;
-        font-weight: 400;
-        font-size: 27px;
-        margin: 0 0 10px;
-    }
-
-    .description {
-        color: #8995a2;
-        line-height: 1.75;
-        font-size: 14px;
-        margin-bottom: 30px;
-    }
-
-    .attempt-counter {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 0 0 18px;
-        color: #8f9aa7;
-        font-size: 12px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-    }
-
-    .attempt-counter strong {
-        color: #d5dbe1;
-        font-weight: normal;
-    }
-
-    .attempt-dot {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: #697683;
-        display: inline-block;
+        padding: 27px 21px;
     }
 
     .input-wrap {
-        display: flex;
-        gap: 10px;
-    }
-
-    input {
-        flex: 1;
-        min-width: 0;
-        background: #080b0f;
-        color: #edf1f4;
-        border: 1px solid rgba(170,185,200,.18);
-        padding: 15px 16px;
-        font-size: 14px;
-        outline: none;
-        transition: .25s ease;
-    }
-
-    input:focus {
-        border-color: rgba(190,205,220,.42);
-        box-shadow: 0 0 0 3px rgba(160,180,200,.04);
-    }
-
-    button {
-        border: 1px solid rgba(190,205,220,.22);
-        background: rgba(190,205,220,.07);
-        color: #e9edf2;
-        padding: 0 22px;
-        min-height: 48px;
-        cursor: pointer;
-        font-size: 11px;
-        letter-spacing: 1.8px;
-        transition: .25s ease;
-    }
-
-    button:hover {
-        background: rgba(190,205,220,.13);
-        border-color: rgba(210,220,230,.4);
-    }
-
-    .status {
-        min-height: 25px;
-        margin-top: 16px;
-        color: #8d99a6;
-        font-size: 13px;
-        line-height: 1.6;
-    }
-
-    .status.error {
-        color: #aab1b9;
-    }
-
-    .status.success {
-        color: #d8e0e7;
-    }
-
-    .hints {
-        margin-top: 40px;
-    }
-
-    .hints-title {
-        font-size: 10px;
-        letter-spacing: 2.5px;
-        color: #6f7a87;
-        margin-bottom: 14px;
-    }
-
-    .hint-history {
-        display: flex;
         flex-direction: column;
-        gap: 9px;
     }
 
-    .hint-item {
-        display: grid;
-        grid-template-columns: 30px 1fr;
-        gap: 12px;
-        padding: 13px 14px;
-        border: 1px solid rgba(150,165,180,.1);
-        background: rgba(255,255,255,.018);
-        color: #909ba7;
-        font-size: 12px;
-        line-height: 1.65;
-        animation: hintIn .55s ease both;
+    .input-wrap button {
+        width: 100%;
     }
 
-    .hint-number {
-        color: #687481;
-        font-size: 10px;
-        letter-spacing: 1px;
-    }
+}
 
-    .partial-answer {
-        margin-top: 14px;
-        padding: 17px;
-        border: 1px solid rgba(180,195,210,.18);
-        background: rgba(180,195,210,.035);
-        color: #cbd3da;
-        font-family: Georgia, serif;
-        letter-spacing: .4px;
-        animation: hintIn .8s ease both;
-    }
-
-    .partial-answer span {
-        color: #8794a2;
-        font-family: Arial, sans-serif;
-        font-size: 10px;
-        letter-spacing: 2px;
-        display: block;
-        margin-bottom: 9px;
-    }
-
-    .help-button {
-        margin-top: 24px;
-        background: transparent;
-        border-color: rgba(150,165,180,.12);
-        color: #788491;
-    }
-
-    .back-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px 25px;
-        margin-top: 55px;
-        padding-top: 24px;
-        border-top: 1px solid rgba(170,185,200,.08);
-        font-size: 11px;
-        letter-spacing: 1.5px;
-    }
-
-    /* SUCCESS OVERLAY */
-
-    .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(4,6,9,.84);
-        backdrop-filter: blur(9px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 25px;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .45s ease, visibility .45s ease;
-        z-index: 100;
-    }
-
-    .overlay.show {
-        opacity: 1;
-        visibility: visible;
-    }
+@media (max-width: 480px) {
 
     .success-card {
-        width: min(510px, 100%);
-        padding: 45px 38px;
-        text-align: center;
-        border: 1px solid rgba(190,205,220,.2);
-        background:
-            radial-gradient(circle at 50% 0%, rgba(120,145,170,.08), transparent 50%),
-            #0c1015;
-        box-shadow: 0 35px 100px rgba(0,0,0,.55);
-        transform: translateY(20px) scale(.97);
-        opacity: 0;
-        transition: transform .7s cubic-bezier(.22,.61,.36,1), opacity .7s ease;
-    }
-
-    .overlay.show .success-card {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-
-    .success-symbol {
-        font-size: 28px;
-        color: #d8e0e7;
-        margin-bottom: 22px;
-    }
-
-    .success-card h2 {
-        font-family: Georgia, serif;
-        font-weight: 400;
-        font-size: 31px;
-        margin: 0 0 15px;
-    }
-
-    .success-card p {
-        color: #8d98a5;
-        line-height: 1.8;
-        font-size: 13px;
-        margin: 0 auto 30px;
-        max-width: 390px;
+        padding: 35px 22px;
     }
 
     .success-actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        flex-direction: column;
     }
 
-    .primary {
-        background: rgba(210,220,230,.11);
+    .success-actions button {
+        width: 100%;
     }
 
-    @keyframes hintIn {
-        from {
-            opacity: 0;
-            transform: translateY(-8px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
     }
 
-    @media (max-width: 620px) {
-        .page {
-            padding-top: 30px;
-        }
-
-        .topbar {
-            margin-bottom: 45px;
-        }
-
-        .challenge-box {
-            padding: 25px 20px;
-        }
-
-        .input-wrap {
-            flex-direction: column;
-        }
-
-        button {
-            min-height: 46px;
-        }
-
-        .input-wrap button {
-            width: 100%;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-            animation-duration: .01ms !important;
-            transition-duration: .01ms !important;
-        }
-    }
+}
 </style>
 </head>
+
 
 <body>
 
 <div class="page">
 
     <div class="topbar">
-        <a href="8b.html">← GROUP 8B</a>
-        <span>CHALLENGE</span>
+
+        <a href="8b.html">
+            ← GROUP 8B
+        </a>
+
+        <span>
+            CHALLENGE
+        </span>
+
     </div>
 
-    <div class="eyebrow">REFLECTION 8B · ACCESS POINT</div>
 
-    <h1>The Challenge</h1>
+    <div class="eyebrow">
+        REFLECTION 8B · ACCESS POINT
+    </div>
+
+    <h1>
+        The Challenge
+    </h1>
 
     <div class="intro">
         Some answers are not found by moving forward.
@@ -405,11 +634,16 @@
         and read what you thought you had already understood.
     </div>
 
+
     <div class="challenge-box">
 
-        <div class="challenge-symbol">⌁</div>
+        <div class="challenge-symbol">
+            ◈
+        </div>
 
-        <h2>Decode the final message.</h2>
+        <h2>
+            Decode the final message.
+        </h2>
 
         <div class="description">
             The trail has already given you what you need.
@@ -417,14 +651,32 @@
             look again rather than simply looking harder.
         </div>
 
+
+        <!-- ATTEMPTS -->
+
         <div class="attempt-counter">
-            <strong id="attemptCount">0</strong>
-            <span>wrong attempts</span>
+
+            <strong id="attemptCount">
+                0
+            </strong>
+
+            <span>
+                wrong attempts
+            </span>
+
             <span class="attempt-dot"></span>
-            <span id="attemptLabel">first attempt</span>
+
+            <span id="attemptLabel">
+                first attempt
+            </span>
+
         </div>
 
+
+        <!-- INPUT -->
+
         <div class="input-wrap">
+
             <input
                 id="answerInput"
                 type="text"
@@ -433,27 +685,120 @@
                 placeholder="Enter the final answer..."
             >
 
-            <button onclick="checkAnswer()">SUBMIT</button>
+            <button onclick="checkAnswer()">
+                SUBMIT
+            </button>
+
         </div>
 
-        <div id="status" class="status"></div>
 
-        <div class="hints">
-            <div class="hints-title">TRAIL NOTES</div>
-            <div id="hintHistory" class="hint-history"></div>
+        <div
+            id="status"
+            class="status"
+        ></div>
+
+
+        <!-- =========================
+             AUTOMATIC HINTS
+        ========================== -->
+
+        <div class="hints-section">
+
+            <div class="section-label">
+                TRAIL HINTS
+            </div>
+
+            <div
+                id="hintHistory"
+                class="hint-history"
+            ></div>
+
             <div id="partialAnswer"></div>
+
         </div>
 
-        <button class="help-button" onclick="showHelp()">
-            NEED SOME HELP?
-        </button>
+
+        <!-- =========================
+             HELP — SEPARATE
+        ========================== -->
+
+        <div class="help-section">
+
+            <div class="section-label">
+                NEED SOME HELP?
+            </div>
+
+            <div class="help-box">
+
+                <p class="help-text">
+                    If you want an extra nudge,
+                    you can ask for help here.
+                    This is separate from the hints
+                    revealed by wrong attempts.
+                </p>
+
+                <button
+                    class="help-button"
+                    onclick="showHelp()"
+                >
+                    GET A HINT
+                </button>
+
+                <div
+                    id="helpResponse"
+                    class="help-response"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DIRECT ACCESS -->
+
+        <div class="help-section">
+
+            <div class="section-label">
+                ANOTHER PATH
+            </div>
+
+            <div class="help-box">
+
+                <p class="help-text">
+                    You can follow the challenge,
+                    or choose a different way forward.
+                </p>
+
+                <button
+                    class="help-button"
+                    onclick="goDirect()"
+                >
+                    A DIFFERENT WAY FORWARD →
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
+
+    <!-- BACK BUTTONS -->
+
     <div class="back-links">
-        <a href="8b.html">← BACK TO GROUP 8B</a>
-        <a href="scenario.html">← BACK TO SCENARIO</a>
-        <a href="index.html">← ARCHIVE</a>
+
+        <a href="8b.html">
+            ← BACK TO GROUP 8B
+        </a>
+
+        <a href="scenario.html">
+            ← BACK TO SCENARIO
+        </a>
+
+        <a href="index.html">
+            ← ARCHIVE
+        </a>
+
     </div>
 
 </div>
@@ -461,13 +806,20 @@
 
 <!-- SUCCESS -->
 
-<div class="overlay" id="successOverlay">
+<div
+    class="overlay"
+    id="successOverlay"
+>
 
     <div class="success-card">
 
-        <div class="success-symbol">✦</div>
+        <div class="success-symbol">
+            ✦
+        </div>
 
-        <h2>Access Granted</h2>
+        <h2>
+            Access Granted
+        </h2>
 
         <p>
             You found what was hidden.
@@ -477,16 +829,15 @@
 
         <div class="success-actions">
 
-            <button class="primary" onclick="enterReflection()">
+            <button
+                class="primary"
+                onclick="enterReflection()"
+            >
                 ENTER THE REFLECTION →
             </button>
 
             <button onclick="goGroupB()">
                 GROUP 8B
-            </button>
-
-            <button onclick="goScenario()">
-                SCENARIO
             </button>
 
             <button onclick="goArchive()">
@@ -502,9 +853,29 @@
 
 <script>
 
-const finalAnswer = "understanding is not the final stop";
+/* ==================================================
+   ANSWER
+================================================== */
 
-let attempts = Number(localStorage.getItem("reflection8bAttempts") || 0);
+const finalAnswer =
+    "understanding is not the final stop";
+
+
+/* ==================================================
+   ATTEMPTS
+================================================== */
+
+let attempts =
+    Number(
+        localStorage.getItem(
+            "reflection8bAttempts"
+        ) || 0
+    );
+
+
+/* ==================================================
+   AUTOMATIC HINTS
+================================================== */
 
 const hints = [
 
@@ -522,6 +893,11 @@ const hints = [
 
 ];
 
+
+/* ==================================================
+   SEPARATE HELP
+================================================== */
+
 const helpHints = [
 
     "The answer is not the rune message itself. The rune message points somewhere else.",
@@ -538,99 +914,189 @@ const helpHints = [
 
 ];
 
-const attemptCount = document.getElementById("attemptCount");
-const attemptLabel = document.getElementById("attemptLabel");
-const hintHistory = document.getElementById("hintHistory");
-const partialAnswer = document.getElementById("partialAnswer");
-const status = document.getElementById("status");
-const input = document.getElementById("answerInput");
 
+const attemptCount =
+    document.getElementById(
+        "attemptCount"
+    );
+
+const attemptLabel =
+    document.getElementById(
+        "attemptLabel"
+    );
+
+const hintHistory =
+    document.getElementById(
+        "hintHistory"
+    );
+
+const partialAnswer =
+    document.getElementById(
+        "partialAnswer"
+    );
+
+const status =
+    document.getElementById(
+        "status"
+    );
+
+const input =
+    document.getElementById(
+        "answerInput"
+    );
+
+const helpResponse =
+    document.getElementById(
+        "helpResponse"
+    );
+
+
+/* ==================================================
+   COUNTER
+================================================== */
 
 function updateCounter() {
 
-    attemptCount.textContent = attempts;
+    attemptCount.textContent =
+        attempts;
 
     if (attempts === 0) {
-        attemptLabel.textContent = "first attempt";
-    } else if (attempts === 1) {
-        attemptLabel.textContent = "keep looking";
+
+        attemptLabel.textContent =
+            "first attempt";
+
     } else if (attempts < 5) {
-        attemptLabel.textContent = "the trail continues";
+
+        attemptLabel.textContent =
+            "the trail continues";
+
     } else if (attempts < 10) {
-        attemptLabel.textContent = "look again";
+
+        attemptLabel.textContent =
+            "look again";
+
     } else if (attempts < 15) {
-        attemptLabel.textContent = "you are getting closer";
+
+        attemptLabel.textContent =
+            "you are getting closer";
+
     } else {
-        attemptLabel.textContent = "the trail is opening";
+
+        attemptLabel.textContent =
+            "the trail is opening";
     }
 }
 
+
+/* ==================================================
+   ADD AUTOMATIC HINT
+================================================== */
 
 function addHint(text) {
 
-    const existing = [...hintHistory.children]
-        .some(item => item.dataset.text === text);
+    const exists =
+        [...hintHistory.children]
+        .some(
+            item =>
+                item.dataset.text === text
+        );
 
-    if (existing) return;
+    if (exists) return;
 
-    const number = hintHistory.children.length + 1;
+    const number =
+        hintHistory.children.length + 1;
 
-    const item = document.createElement("div");
+    const item =
+        document.createElement("div");
 
-    item.className = "hint-item";
-    item.dataset.text = text;
+    item.className =
+        "hint-item";
+
+    item.dataset.text =
+        text;
 
     item.innerHTML = `
-        <div class="hint-number">${String(number).padStart(2,"0")}</div>
-        <div>${text}</div>
+        <div class="hint-number">
+            ${String(number).padStart(2,"0")}
+        </div>
+
+        <div>
+            ${text}
+        </div>
     `;
 
-    hintHistory.appendChild(item);
+    hintHistory.appendChild(
+        item
+    );
 }
 
 
-function revealProgressiveHint() {
+/* ==================================================
+   AUTOMATIC HINT REVEAL
+================================================== */
 
-    /*
-      Every wrong attempt gradually reveals the trail.
-      Old hints remain visible.
-    */
+function revealAutomaticHint() {
 
-    const index = Math.min(attempts - 1, hints.length - 1);
+    const index =
+        Math.min(
+            attempts - 1,
+            hints.length - 1
+        );
 
     if (index >= 0) {
-        addHint(hints[index]);
+
+        addHint(
+            hints[index]
+        );
     }
 
+
     /*
-      At attempt 15, reveal a controlled fragment
-      of the actual answer.
+      15 WRONG ATTEMPTS
+      → partial answer
     */
 
     if (attempts >= 15) {
 
         partialAnswer.innerHTML = `
             <div class="partial-answer">
-                <span>PARTIAL REVEAL</span>
+
+                <span>
+                    PARTIAL REVEAL
+                </span>
+
                 understanding is not the f...
+
             </div>
         `;
-
     }
 }
 
 
+/* ==================================================
+   CHECK ANSWER
+================================================== */
+
 function checkAnswer() {
 
-    const answer = input.value.trim().toLowerCase();
+    const answer =
+        input.value
+        .trim()
+        .toLowerCase();
+
 
     if (!answer) {
 
-        status.textContent = "Enter something first.";
-        status.className = "status error";
+        status.textContent =
+            "Enter something first.";
 
         return;
     }
+
+
+    /* =========================
+       CORRECT
+    ========================== */
 
     if (answer === finalAnswer) {
 
@@ -640,8 +1106,7 @@ function checkAnswer() {
         );
 
         /*
-          This is the important permanent flag.
-          It fixes the Challenge-return bug.
+          PERMANENT completion state.
         */
 
         localStorage.setItem(
@@ -649,27 +1114,30 @@ function checkAnswer() {
             "true"
         );
 
+        /*
+          One-time visual animation.
+        */
+
         localStorage.setItem(
             "reflection8bJustUnlocked",
             "true"
         );
 
-        /*
-          A direct unlock state must never interfere
-          with the solved-challenge flow.
-        */
-
         localStorage.removeItem(
             "reflection8bDirectUnlocked"
         );
 
-        status.textContent = "The path opens.";
-        status.className = "status success";
+
+        status.textContent =
+            "The path opens.";
+
 
         setTimeout(() => {
 
             document
-                .getElementById("successOverlay")
+                .getElementById(
+                    "successOverlay"
+                )
                 .classList.add("show");
 
         }, 450);
@@ -677,6 +1145,10 @@ function checkAnswer() {
         return;
     }
 
+
+    /* =========================
+       WRONG
+    ========================== */
 
     attempts++;
 
@@ -686,54 +1158,45 @@ function checkAnswer() {
     );
 
     updateCounter();
-    revealProgressiveHint();
+
+    revealAutomaticHint();
+
 
     status.textContent =
         "Not quite. Something along the path may still be pointing you backward.";
-
-    status.className = "status error";
 
     input.select();
 }
 
 
+/* ==================================================
+   HELP
+================================================== */
+
+let helpIndex = 0;
+
 function showHelp() {
 
-    /*
-      Help is separate from automatic attempts,
-      but hints remain permanently visible.
-    */
+    if (
+        helpIndex >= helpHints.length
+    ) {
 
-    const current = hintHistory.children.length;
+        helpResponse.textContent =
+            "There is nothing more to reveal here. The remaining step is yours.";
 
-    if (current < hints.length) {
-
-        addHint(hints[current]);
-
-    } else {
-
-        const helpIndex =
-            Math.min(
-                current - hints.length,
-                helpHints.length - 1
-            );
-
-        addHint(helpHints[helpIndex]);
-
+        return;
     }
 
-    if (attempts >= 15) {
+    helpResponse.textContent =
+        helpHints[helpIndex];
 
-        partialAnswer.innerHTML = `
-            <div class="partial-answer">
-                <span>PARTIAL REVEAL</span>
-                understanding is not the f...
-            </div>
-        `;
-
-    }
+    helpIndex++;
 }
 
+
+/* ==================================================
+   NAVIGATION
+================================================== */
 
 function enterReflection() {
 
@@ -749,13 +1212,6 @@ function goGroupB() {
 }
 
 
-function goScenario() {
-
-    window.location.href =
-        "scenario.html";
-}
-
-
 function goArchive() {
 
     window.location.href =
@@ -763,14 +1219,16 @@ function goArchive() {
 }
 
 
-input.addEventListener("keydown", function(event) {
+function goDirect() {
 
-    if (event.key === "Enter") {
-        checkAnswer();
-    }
+    window.location.href =
+        "access-confirm.html";
+}
 
-});
 
+/* ==================================================
+   INITIALIZE
+================================================== */
 
 updateCounter();
 
