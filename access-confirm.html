@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,300 +8,213 @@
 
 <style>
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
+body {
+    margin: 0;
+    min-height: 100vh;
 
-    margin:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    min-height:100vh;
+    padding: 25px;
 
-    display:flex;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(60,80,105,.14),
+            transparent 42%
+        ),
+        #090b0f;
 
-    align-items:center;
+    color: #e8edf2;
+    font-family: Arial, sans-serif;
+}
 
-    justify-content:center;
+.panel {
+    width: min(620px, 100%);
+    padding: 45px 40px;
 
-    padding:25px;
+    border: 1px solid rgba(180,195,210,.17);
 
     background:
         radial-gradient(
             circle at 50% 0%,
-            #24272a,
-            #121416 45%,
-            #08090a
-        );
-
-    color:#e9e6de;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-}
-
-.panel{
-
-    width:min(620px,100%);
-
-    padding:50px 42px 42px;
-
-    text-align:center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    background:
-        rgba(255,255,255,.025);
+            rgba(120,145,170,.07),
+            transparent 55%
+        ),
+        #0c1015;
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,.45);
+        0 35px 100px rgba(0,0,0,.45);
+
+    text-align: center;
 }
 
-.symbol{
-
-    width:64px;
-    height:64px;
-
-    margin:0 auto 25px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    font-size:24px;
-
-    color:#ccc9c0;
+.symbol {
+    font-size: 29px;
+    margin-bottom: 22px;
 }
 
-.eyebrow{
-
-    color:#73777a;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:3px;
-
-    margin-bottom:15px;
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #707d8a;
+    margin-bottom: 14px;
 }
 
-h1{
-
-    margin:0 0 18px;
-
-    font-size:
-        clamp(34px,7vw,54px);
-
-    font-weight:normal;
+h1 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: 37px;
+    margin: 0 0 17px;
 }
 
-p{
-
-    max-width:460px;
-
-    margin:0 auto;
-
-    color:#9c9d98;
-
-    line-height:1.9;
+p {
+    max-width: 460px;
+    margin: 0 auto;
+    color: #8d98a5;
+    font-size: 13px;
+    line-height: 1.85;
 }
 
-.buttons{
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-    margin-top:32px;
+    margin-top: 32px;
 }
 
-a,
-button{
+button {
+    min-height: 46px;
+    padding: 0 20px;
 
-    width:100%;
+    border: 1px solid rgba(185,200,215,.2);
+    background: rgba(185,200,215,.06);
 
-    min-height:50px;
+    color: #e9edf2;
 
-    display:flex;
+    font-size: 10px;
+    letter-spacing: 1.7px;
 
-    align-items:center;
-    justify-content:center;
+    cursor: pointer;
 
-    padding:10px 20px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    background:
-        rgba(255,255,255,.025);
-
-    color:#d7d4cb;
-
-    text-decoration:none;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    cursor:pointer;
-
-    transition:.25s;
+    transition: .25s ease;
 }
 
-a:hover,
-button:hover{
-
-    border-color:
-        rgba(255,255,255,.32);
-
-    background:
-        rgba(255,255,255,.06);
-
-    color:#fff;
+button:hover {
+    background: rgba(185,200,215,.12);
+    border-color: rgba(205,220,235,.35);
 }
 
-.primary{
-
-    background:
-        rgba(255,255,255,.08);
-
-    border-color:
-        rgba(255,255,255,.24);
+.primary {
+    background: rgba(205,215,225,.1);
 }
 
-.note{
+.back {
+    margin-top: 30px;
+    display: inline-block;
 
-    margin-top:25px;
+    color: #727f8c;
+    text-decoration: none;
 
-    color:#62676a;
+    font-size: 10px;
+    letter-spacing: 1.8px;
 
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    line-height:1.8;
+    transition: .25s ease;
 }
 
-@media(max-width:600px){
+.back:hover {
+    color: white;
+}
 
-    .panel{
+@media(max-width:500px) {
 
-        padding:
-            38px
-            23px
-            30px;
+    .panel {
+        padding: 36px 23px;
+    }
+
+    h1 {
+        font-size: 31px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
     }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="panel">
 
-
-    <div class="symbol">
-        ◇
-    </div>
-
+    <div class="symbol">⌁</div>
 
     <div class="eyebrow">
-        AN ALTERNATIVE ROUTE
+        ANOTHER PATH
     </div>
 
-
-    <h1>
-        A Different Way Forward
-    </h1>
-
+    <h1>A Different Way Forward</h1>
 
     <p>
-
-        There is another way into the reflection.
-
-        <br><br>
-
-        You can enter directly,
-        but doing so means leaving
-        the trail and its clues unexplored.
-
+        Not every door has to be opened in the same way.
+        You can return to the challenge and follow the trail,
+        or enter the reflection directly.
     </p>
 
+    <div class="actions">
 
-    <div class="buttons">
-
-
-        <a
-            href="challenge.html">
-
-            RETURN TO THE CHALLENGE →
-
-        </a>
-
+        <button onclick="goChallenge()">
+            RETURN TO THE CHALLENGE
+        </button>
 
         <button
             class="primary"
-            onclick="unlockDirectAccess()">
-
+            onclick="unlockDirectAccess()"
+        >
             ENTER DIRECTLY →
-
         </button>
 
-
-        <a href="8b.html">
-
-            ← BACK TO GROUP 8B
-
-        </a>
-
-
     </div>
 
-
-    <div class="note">
-
-        The choice is yours.
-        Discovery or another way forward.
-
-    </div>
-
+    <a class="back" href="8b.html">
+        ← BACK TO GROUP 8B
+    </a>
 
 </div>
 
 
 <script>
 
-function unlockDirectAccess(){
+function goChallenge() {
+
+    window.location.href =
+        "challenge.html";
+
+}
+
+
+function unlockDirectAccess() {
 
     /*
-       Direct access unlocks the
-       Reflection Voice.
+      Direct access unlocks the Voice.
 
-       It does NOT mark the Challenge
-       as solved.
+      It intentionally does NOT create
+      reflection8bChallengeCompleted.
 
-       Therefore the Challenge remains
-       visible when returning to Group 8B.
+      Therefore Challenge remains visible.
     */
 
     localStorage.setItem(
@@ -311,37 +222,30 @@ function unlockDirectAccess(){
         "true"
     );
 
-
-    /*
-       Separate flag used only to tell
-       Group 8B to animate the opening
-       of the Reflection Voice lock.
-    */
-
     localStorage.setItem(
         "reflection8bDirectUnlocked",
         "true"
     );
 
-
     /*
-       Make sure the Challenge-removal
-       animation can NEVER be triggered
-       by direct access.
+      Make absolutely sure the
+      challenge-solved animation
+      cannot accidentally trigger.
     */
 
     localStorage.removeItem(
         "reflection8bJustUnlocked"
     );
 
+    localStorage.removeItem(
+        "reflection8bChallengeCompleted"
+    );
 
     window.location.href =
         "reflection-room.html";
-
 }
 
 </script>
 
 </body>
-
 </html>
