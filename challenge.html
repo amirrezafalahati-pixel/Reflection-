@@ -96,7 +96,7 @@ h1{
 
 
 /* =========================
-   CHALLENGE BOX
+   CHALLENGE
 ========================= */
 
 .challenge-box{
@@ -257,13 +257,13 @@ input:focus{
         rgba(255,255,255,.025);
 
     animation:
-        hintReveal .45s ease both;
+        hintReveal .75s ease both;
 }
 
 .hint-item.new{
 
     border-left-color:
-        rgba(255,255,255,.55);
+        rgba(255,255,255,.58);
 
     background:
         rgba(255,255,255,.045);
@@ -295,19 +295,13 @@ input:focus{
 
     from{
         opacity:0;
-
-        transform:
-            translateY(10px);
-
-        filter:blur(2px);
+        transform:translateY(14px);
+        filter:blur(3px);
     }
 
     to{
         opacity:1;
-
-        transform:
-            translateY(0);
-
+        transform:translateY(0);
         filter:blur(0);
     }
 
@@ -336,7 +330,7 @@ input:focus{
     text-align:left;
 
     animation:
-        appear .4s ease;
+        appear .5s ease;
 }
 
 .help-title{
@@ -413,7 +407,7 @@ input:focus{
 
 
 /* =========================
-   LOWER NAVIGATION
+   NAVIGATION
 ========================= */
 
 .bottom-nav{
@@ -469,7 +463,7 @@ input:focus{
 
 
 /* =========================
-   DIRECT ACCESS
+   DIRECT
 ========================= */
 
 .access{
@@ -537,7 +531,7 @@ input:focus{
 
 
 /* =========================
-   SUCCESS
+   SUCCESS SCREEN
 ========================= */
 
 .success-screen{
@@ -572,7 +566,7 @@ input:focus{
     max-width:650px;
 
     animation:
-        reveal 1s ease forwards;
+        reveal 1.1s ease forwards;
 }
 
 .success-mark{
@@ -643,14 +637,14 @@ input:focus{
 
 
 /* =========================
-   ANIMATIONS
+   ANIMATION
 ========================= */
 
 @keyframes appear{
 
     from{
         opacity:0;
-        transform:translateY(8px);
+        transform:translateY(10px);
     }
 
     to{
@@ -663,13 +657,13 @@ input:focus{
 
     from{
         opacity:0;
-        transform:translateY(18px);
+        transform:translateY(25px) scale(.98);
         filter:blur(5px);
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0) scale(1);
         filter:blur(0);
     }
 }
@@ -710,147 +704,127 @@ input:focus{
 <div class="page">
 
 
-    <!-- HEADER -->
+<header class="header">
 
-    <header class="header">
+    <div class="eyebrow">
+        REFLECTION 8B · FOLLOW THE TRAIL
+    </div>
 
-        <div class="eyebrow">
-            REFLECTION 8B · FOLLOW THE TRAIL
+    <h1>
+        The Challenge
+    </h1>
+
+    <div class="divider"></div>
+
+    <p class="intro">
+
+        The answer is not simply hidden.
+        It has been placed somewhere along the path.
+
+        <br>
+
+        Look carefully.
+        Then look back.
+
+    </p>
+
+</header>
+
+
+<section class="challenge-box">
+
+    <div class="question">
+        Enter the final key.
+    </div>
+
+
+    <input
+        type="text"
+        id="answer"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="enter the key..."
+    >
+
+
+    <button
+        class="submit"
+        id="verifyButton"
+        onclick="checkAnswer()">
+
+        VERIFY
+
+    </button>
+
+
+    <div
+        class="message"
+        id="message">
+    </div>
+
+
+    <div
+        class="hint-history"
+        id="hintHistory">
+    </div>
+
+
+    <div
+        class="help-box"
+        id="helpBox">
+
+        <div class="help-title">
+            A LITTLE MORE HELP
         </div>
 
-        <h1>
-            The Challenge
-        </h1>
-
-        <div class="divider"></div>
-
-        <p class="intro">
-
-            The answer is not simply hidden.
-            It has been placed somewhere along the path.
-
-            <br>
-
-            Look carefully.
-            Then look back.
-
-        </p>
-
-    </header>
-
-
-    <!-- CHALLENGE -->
-
-    <section class="challenge-box">
-
-        <div class="question">
-
-            Enter the final key.
-
-        </div>
-
-
-        <input
-            type="text"
-            id="answer"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="enter the key..."
-        >
-
-
-        <button
-            class="submit"
-            id="verifyButton"
-            onclick="checkAnswer()">
-
-            VERIFY
-
-        </button>
-
-
-        <div
-            class="message"
-            id="message">
-        </div>
-
-
-        <!-- HINT HISTORY -->
-
-        <div
-            class="hint-history"
-            id="hintHistory">
-        </div>
-
-
-        <!-- EXTRA HELP -->
-
-        <div
-            class="help-box"
-            id="helpBox">
-
-            <div class="help-title">
-                A LITTLE MORE HELP
-            </div>
-
-            <div id="helpText"></div>
-
-        </div>
-
-
-        <button
-            class="help-button"
-            id="helpButton"
-            onclick="nextHelp()">
-
-            NEED SOME HELP?
-
-        </button>
-
-    </section>
-
-
-    <!-- NAVIGATION -->
-
-    <div class="bottom-nav">
-
-        <a href="8b.html">
-            ← BACK TO GROUP 8B
-        </a>
-
-        <a href="scenario.html">
-            BACK TO SCENARIO
-        </a>
-
-        <a href="index.html">
-            ARCHIVE
-        </a>
+        <div id="helpText"></div>
 
     </div>
 
 
-    <!-- DIRECT ACCESS -->
+    <button
+        class="help-button"
+        id="helpButton"
+        onclick="nextHelp()">
 
-    <section class="access">
+        NEED SOME HELP?
 
-        <p>
+    </button>
 
-            There is another route.
+</section>
 
-            <br>
 
-            It skips the search, clues and discovery.
+<div class="bottom-nav">
 
-        </p>
+    <a href="8b.html">
+        ← BACK TO GROUP 8B
+    </a>
 
-        <a href="access-confirm.html">
+    <a href="scenario.html">
+        BACK TO SCENARIO
+    </a>
 
-            A DIFFERENT WAY FORWARD →
+    <a href="index.html">
+        ARCHIVE
+    </a>
 
-        </a>
+</div>
 
-    </section>
+
+<section class="access">
+
+    <p>
+        There is another route.
+        <br>
+        It skips the search, clues and discovery.
+    </p>
+
+    <a href="access-confirm.html">
+        A DIFFERENT WAY FORWARD →
+    </a>
+
+</section>
 
 
 </div>
@@ -886,10 +860,10 @@ input:focus{
 
         <a
             class="enter-reflection"
-            href="8b.html"
+            href="reflection-room.html"
             onclick="prepareReturn()">
 
-            RETURN TO GROUP 8B →
+            ENTER THE REFLECTION →
 
         </a>
 
@@ -971,7 +945,7 @@ function normalize(value){
 
 
 /* =========================
-   CHECK ANSWER
+   CHECK
 ========================= */
 
 function checkAnswer(){
@@ -990,10 +964,21 @@ function checkAnswer(){
             "true"
         );
 
+
+        /*
+           This flag is deliberately kept
+           until the user later returns
+           to Group 8B.
+
+           That is when the Challenge
+           removal animation will happen.
+        */
+
         localStorage.setItem(
             "reflection8bJustUnlocked",
             "true"
         );
+
 
         document
             .getElementById("successScreen")
@@ -1015,9 +1000,7 @@ function checkAnswer(){
 
     /*
        Every wrong answer reveals
-       one new hint.
-
-       Previous hints remain visible.
+       one additional permanent hint.
     */
 
     if(
@@ -1050,10 +1033,6 @@ function addHint(index){
             "hintHistory"
         );
 
-
-    /*
-       Prevent duplicates.
-    */
 
     if(
         document.getElementById(
@@ -1104,22 +1083,20 @@ function addHint(index){
     history.appendChild(item);
 
 
-    /*
-       After the entrance animation,
-       remove the temporary new state.
-    */
+    setTimeout(
+        function(){
 
-    setTimeout(function(){
+            item.classList.remove("new");
 
-        item.classList.remove("new");
-
-    },900);
+        },
+        1100
+    );
 
 }
 
 
 /* =========================
-   EXTRA HELP
+   MORE HELP
 ========================= */
 
 function nextHelp(){
@@ -1149,7 +1126,8 @@ function nextHelp(){
     }
 
 
-    box.style.display = "block";
+    box.style.display =
+        "block";
 
     text.textContent =
         helps[helpStep];
@@ -1159,8 +1137,8 @@ function nextHelp(){
 
 
     /*
-       Also preserve the extra help
-       as part of the visible history.
+       Extra help also reveals
+       the next permanent hint.
     */
 
     if(
@@ -1197,7 +1175,7 @@ function nextHelp(){
 
 
 /* =========================
-   RETURN PREPARATION
+   RETURN FLAG
 ========================= */
 
 function prepareReturn(){
@@ -1220,7 +1198,9 @@ document
         "keydown",
         function(event){
 
-            if(event.key === "Enter"){
+            if(
+                event.key === "Enter"
+            ){
 
                 checkAnswer();
 
