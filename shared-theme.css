@@ -1,0 +1,135 @@
+
+/* REFLECTION ARCHIVE — shared visual language, based on Index / Group A */
+:root{
+    --bg-top:#20252b;
+    --bg-mid:#0a0c0f;
+    --bg-bottom:#050607;
+    --text:#e7e4dc;
+    --muted:#92948f;
+    --muted-2:#646a70;
+    --border:#3d4247;
+    --border-soft:#30353a;
+    --panel:rgba(255,255,255,.025);
+}
+
+body{
+    background:
+        radial-gradient(circle at 50% 8%,var(--bg-top) 0%,var(--bg-mid) 60%,var(--bg-bottom) 100%) !important;
+    color:var(--text) !important;
+    font-family:Georgia,"Times New Roman",serif !important;
+}
+
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+.topbar a,
+.back-links a,
+.bottom a,
+.back,
+.topbar span{
+    color:var(--muted-2) !important;
+    font-family:Arial,sans-serif !important;
+    font-size:9px !important;
+    letter-spacing:2px !important;
+}
+
+.topbar a:hover,
+.back-links a:hover,
+.bottom a:hover,
+.back:hover{
+    color:var(--text) !important;
+}
+
+.eyebrow,
+.label,
+.card-number,
+.card-label,
+.voice-label,
+.section-label,
+.panel-label{
+    color:var(--muted-2) !important;
+    font-family:Arial,sans-serif !important;
+}
+
+h1,h2{
+    font-family:Georgia,"Times New Roman",serif !important;
+    color:var(--text) !important;
+    font-weight:normal !important;
+}
+
+.subtitle,
+.intro,
+.description,
+.card p,
+.voice-description,
+.help-text,
+.voice p{
+    color:var(--muted) !important;
+}
+
+.card,
+.challenge-box,
+.panel,
+.pdf,
+.voice,
+.modal-card,
+.success-card,
+.help-box{
+    border-color:var(--border) !important;
+}
+
+button,
+.next a,
+.lock-button,
+.download{
+    border-color:#555a5f !important;
+    color:var(--text) !important;
+    background:rgba(255,255,255,.025) !important;
+    font-family:Arial,sans-serif !important;
+}
+
+button:hover,
+.next a:hover,
+.lock-button:hover,
+.download:hover{
+    border-color:#73787d !important;
+    background:rgba(255,255,255,.045) !important;
+}
+
+.card{
+    background:rgba(255,255,255,.025) !important;
+}
+
+.card:hover{
+    border-color:#73787d !important;
+    background:rgba(255,255,255,.045) !important;
+}
+
+input{
+    border-color:#3d4247 !important;
+    background:rgba(255,255,255,.025) !important;
+    color:var(--text) !important;
+    font-family:Georgia,"Times New Roman",serif !important;
+}
+
+input::placeholder{
+    color:#646a70 !important;
+}
+
+.overlay{
+    background:rgba(5,7,9,.78) !important;
+    backdrop-filter:blur(8px);
+}
+
+.modal-card,
+.success-card{
+    background:
+        radial-gradient(circle at 50% 0%,rgba(32,37,43,.96),rgba(10,12,15,.98) 68%) !important;
+}
+
+@media(max-width:700px){
+    .topbar{
+        gap:18px;
+    }
+}
