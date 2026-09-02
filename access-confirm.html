@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -10,324 +9,275 @@
 
 <style>
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
-    min-height:100vh;
+body {
+    margin: 0;
+    min-height: 100vh;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    padding:25px;
+    padding: 25px;
 
     background:
         radial-gradient(
             circle at 50% 0%,
-            #24272a 0%,
-            #121416 45%,
-            #08090a 100%
+            rgba(50,70,95,.14),
+            transparent 42%
+        ),
+        #090b0f;
+
+    color: #e8edf2;
+
+    font-family: Arial, sans-serif;
+}
+
+.panel {
+    width: min(600px,100%);
+
+    padding: 45px 40px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(165,180,195,.15);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,25,32,.76),
+            rgba(11,14,19,.76)
         );
 
-    color:#e9e6de;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.45);
 }
 
-.container{
+.symbol {
+    margin-bottom: 20px;
 
-    width:min(700px,100%);
+    color: #b7c1ca;
 
-    padding:50px 35px;
+    font-size: 27px;
+}
 
-    text-align:center;
+.eyebrow {
+    margin-bottom: 14px;
+
+    color: #707c88;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+h1 {
+    margin: 0 0 16px;
+
+    font-family: Georgia, serif;
+    font-size: 37px;
+    font-weight: 400;
+}
+
+p {
+    max-width: 450px;
+
+    margin: 0 auto;
+
+    color: #8d98a4;
+
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 32px;
+}
+
+button {
+    min-height: 46px;
+
+    padding: 0 20px;
 
     border:
-        1px solid
-        rgba(255,255,255,.12);
+        1px solid rgba(185,200,215,.19);
 
     background:
-        rgba(255,255,255,.025);
+        rgba(185,200,215,.055);
+
+    color: #e7ecf0;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    letter-spacing: 1.7px;
+
+    transition: .25s ease;
 }
 
-.symbol{
-
-    font-size:38px;
-
-    opacity:.7;
-
-    margin-bottom:20px;
-}
-
-.eyebrow{
-
-    color:#74797c;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:4px;
-}
-
-h1{
-
-    margin:18px 0;
-
-    font-size:
-        clamp(36px,7vw,58px);
-
-    font-weight:normal;
-}
-
-.divider{
-
-    width:70px;
-    height:1px;
-
+button:hover {
     background:
-        rgba(255,255,255,.23);
-
-    margin:25px auto;
-}
-
-.intro{
-
-    color:#aaa9a3;
-
-    line-height:1.9;
-
-    max-width:560px;
-
-    margin:auto;
-}
-
-.warning{
-
-    margin-top:35px;
-
-    padding:22px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    background:
-        rgba(0,0,0,.17);
-
-    color:#aaa;
-
-    line-height:1.85;
-
-    font-size:14px;
-}
-
-.warning strong{
-
-    color:#e0ddd5;
-
-    font-weight:normal;
-}
-
-.actions{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:12px;
-
-    margin-top:30px;
-}
-
-.btn{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-height:52px;
-
-    padding:12px 20px;
-
-    text-decoration:none;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    color:#aaa;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    transition:.25s;
-}
-
-.btn:hover{
-
-    color:#eee;
+        rgba(185,200,215,.11);
 
     border-color:
-        rgba(255,255,255,.35);
+        rgba(205,220,235,.34);
+}
 
+.primary {
     background:
-        rgba(255,255,255,.04);
-
-    transform:translateY(-2px);
+        rgba(205,215,225,.1);
 }
 
-.primary{
+.bottom-links {
+    display: flex;
 
-    background:
-        rgba(255,255,255,.07);
+    justify-content: center;
 
-    color:#ddd;
+    gap: 28px;
+
+    margin-top: 30px;
 }
 
-.note{
+.bottom-links a {
+    color: #747f8b;
 
-    margin-top:25px;
+    text-decoration: none;
 
-    color:#555b5f;
+    font-size: 10px;
+    letter-spacing: 1.7px;
 
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:1px;
-
-    line-height:1.7;
+    transition: color .25s ease;
 }
 
-@media(max-width:600px){
+.bottom-links a:hover {
+    color: #e8edf2;
+}
 
-    .container{
-        padding:40px 22px;
+@media(max-width:500px) {
+
+    .panel {
+        padding: 36px 23px;
     }
 
-    .actions{
-        grid-template-columns:1fr;
+    h1 {
+        font-size: 31px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .bottom-links {
+        gap: 20px;
     }
 
 }
 
 </style>
-
+<link rel="stylesheet" href="shared-theme.css">
 </head>
 
 
 <body>
 
-
-<main class="container">
-
+<div class="panel">
 
     <div class="symbol">
         ⌁
     </div>
 
-
     <div class="eyebrow">
-        AN ALTERNATIVE PATH
+        ANOTHER PATH
     </div>
-
 
     <h1>
         A Different Way Forward
     </h1>
 
-
-    <div class="divider"></div>
-
-
-    <p class="intro">
-
-        You are about to enter the reflection
-        without completing the challenge.
-
+    <p>
+        Not every door has to be opened in the same way.
+        You can return to the challenge and follow the trail,
+        or enter the reflection directly.
     </p>
-
-
-    <div class="warning">
-
-        <strong>
-            This choice skips the discovery experience.
-        </strong>
-
-        <br><br>
-
-        The scenario, clues, search,
-        and final challenge were designed
-        to be part of the reflection itself.
-
-        <br><br>
-
-        If you want to experience the complete path,
-        return to the challenge.
-
-    </div>
 
 
     <div class="actions">
 
-        <a
-            class="btn"
-            href="challenge.html">
-
-            RETURN TO CHALLENGE
-
-        </a>
-
-
-        <a
-            class="btn primary"
-            href="reflection-room.html"
-            onclick="unlockDirectAccess()">
-
-            ENTER DIRECTLY
-
-        </a>
+        <button
+            class="primary"
+            onclick="unlockDirectAccess()"
+        >
+            ENTER DIRECTLY →
+        </button>
 
     </div>
 
 
-    <div class="note">
+    <div class="bottom-links">
 
-        You are choosing to skip the trail —
-        not to change the destination.
+        <a href="8b.html">
+            ← GROUP 8B
+        </a>
+
+        <a href="index.html">
+            ARCHIVE
+        </a>
 
     </div>
 
-
-</main>
+</div>
 
 
 <script>
 
-function unlockDirectAccess(){
+function unlockDirectAccess() {
+
+    /*
+      Direct access unlocks Voice.
+
+      It does NOT complete Challenge.
+    */
 
     localStorage.setItem(
         "reflection8bUnlocked",
         "true"
     );
 
+    localStorage.setItem(
+        "reflection8bDirectUnlocked",
+        "true"
+    );
+
+
+    /*
+      Prevent challenge-completion animation.
+    */
+
+    localStorage.removeItem(
+        "reflection8bJustUnlocked"
+    );
+
+
+
+    window.location.href =
+        "reflection-room.html";
 }
 
 </script>
 
 </body>
-
 </html>
