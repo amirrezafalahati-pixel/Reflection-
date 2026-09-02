@@ -56,7 +56,9 @@ body.modal-open{
 
 .topbar{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 }
 
@@ -143,9 +145,6 @@ h1{
         repeat(2,minmax(0,1fr));
 
     gap:18px;
-
-    transition:
-        grid-template-columns .4s ease;
 }
 
 .card{
@@ -165,14 +164,11 @@ h1{
     overflow:hidden;
 
     transition:
-        transform .3s ease,
-        border-color .3s ease,
-        background .3s ease,
-        box-shadow .3s ease,
-        opacity .4s ease,
-        max-height .5s ease,
-        padding .5s ease,
-        margin .5s ease;
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease,
+        opacity .35s ease;
 }
 
 .card:hover{
@@ -245,10 +241,11 @@ h1{
 
 
 /* =========================
-   CHALLENGE FOCUS
+   SCENARIO → CHALLENGE
 ========================= */
 
 .challenge-focus{
+
     animation:
         challengePulse 1.8s ease-in-out 3;
 
@@ -261,28 +258,6 @@ h1{
 
     background:
         rgba(255,255,255,.055);
-}
-
-.challenge-focus::after{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:0;
-    right:0;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.5),
-            transparent
-        );
-
-    opacity:.7;
 }
 
 @keyframes challengePulse{
@@ -301,15 +276,12 @@ h1{
 
 }
 
-
-/* =========================
-   FOCUS LABEL
-========================= */
-
 .focus-label{
+
     position:absolute;
 
     top:-18px;
+
     left:50%;
 
     transform:
@@ -335,10 +307,6 @@ h1{
 
     letter-spacing:2.5px;
 
-    opacity:0;
-
-    pointer-events:none;
-
     animation:
         focusLabelIn .5s ease forwards;
 }
@@ -347,14 +315,12 @@ h1{
 
     from{
         opacity:0;
-
         transform:
             translate(-50%,8px);
     }
 
     to{
         opacity:1;
-
         transform:
             translate(-50%,0);
     }
@@ -367,6 +333,7 @@ h1{
 ========================= */
 
 .listening{
+
     grid-column:1/-1;
 
     min-height:205px;
@@ -379,6 +346,7 @@ h1{
 }
 
 .lock-visual{
+
     width:70px;
     height:70px;
 
@@ -401,9 +369,9 @@ h1{
     filter:grayscale(1);
 
     transition:
-        border-color .3s ease,
-        background .3s ease,
-        transform .3s ease;
+        border-color .5s ease,
+        background .5s ease,
+        transform .5s ease;
 }
 
 .listening.locked{
@@ -411,20 +379,15 @@ h1{
 }
 
 .listening.locked:hover{
+
     transform:none;
 
     border-color:
         rgba(255,255,255,.25);
 }
 
-.listening.locked:hover .lock-visual{
-    transform:translateY(-2px);
-
-    border-color:
-        rgba(255,255,255,.22);
-}
-
 .status{
+
     margin-bottom:13px;
 
     color:#666b6f;
@@ -437,6 +400,7 @@ h1{
 }
 
 .listening.unlocked{
+
     cursor:pointer;
 
     border-color:
@@ -444,20 +408,97 @@ h1{
 }
 
 .listening.unlocked .status{
+
     color:#c9c6bd;
 }
 
 .listening.unlocked .lock-visual{
+
     border-color:
-        rgba(255,255,255,.25);
+        rgba(255,255,255,.28);
 
     background:
-        rgba(255,255,255,.025);
+        rgba(255,255,255,.035);
+
+    filter:none;
 }
 
 
 /* =========================
-   UNLOCK TRANSITION
+   LOCK OPEN ANIMATION
+========================= */
+
+.listening.unlocking{
+
+    animation:
+        unlockCard 1.6s ease both;
+}
+
+.listening.unlocking .lock-visual{
+
+    animation:
+        unlockSymbol 1.25s ease both;
+}
+
+@keyframes unlockCard{
+
+    0%{
+        border-color:
+            rgba(255,255,255,.11);
+
+        box-shadow:
+            0 0 0 rgba(255,255,255,0);
+    }
+
+    45%{
+        border-color:
+            rgba(225,220,205,.48);
+
+        box-shadow:
+            0 0 45px rgba(225,220,205,.10);
+    }
+
+    100%{
+        border-color:
+            rgba(255,255,255,.24);
+
+        box-shadow:
+            0 0 0 rgba(255,255,255,0);
+    }
+
+}
+
+@keyframes unlockSymbol{
+
+    0%{
+        transform:
+            scale(.8)
+            rotate(-8deg);
+
+        opacity:.35;
+    }
+
+    45%{
+        transform:
+            scale(1.12)
+            rotate(3deg);
+
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            scale(1)
+            rotate(0);
+
+        opacity:1;
+    }
+
+}
+
+
+/* =========================
+   CHALLENGE REMOVAL
 ========================= */
 
 .challenge-removing{
@@ -467,10 +508,11 @@ h1{
     opacity:0;
 
     transform:
-        translateY(-14px)
-        scale(.96);
+        translateY(-30px)
+        scale(.91);
 
-    filter:blur(4px);
+    filter:
+        blur(5px);
 
     max-height:0 !important;
 
@@ -487,6 +529,14 @@ h1{
 
     background:
         transparent !important;
+
+    transition:
+        opacity 1.25s ease,
+        transform 1.25s cubic-bezier(.22,.61,.36,1),
+        filter 1.25s ease,
+        max-height 1.55s ease,
+        padding .95s ease,
+        margin .95s ease;
 }
 
 
@@ -495,12 +545,14 @@ h1{
 ========================= */
 
 .direct{
+
     text-align:center;
 
     margin-top:32px;
 }
 
 .direct p{
+
     color:#666b6e;
 
     font-family:Arial,sans-serif;
@@ -515,6 +567,7 @@ h1{
 }
 
 .direct a{
+
     display:inline-flex;
 
     align-items:center;
@@ -542,6 +595,7 @@ h1{
 }
 
 .direct a:hover{
+
     color:#eeeae1;
 
     border-color:
@@ -557,12 +611,14 @@ h1{
 ========================= */
 
 .bottom{
+
     text-align:center;
 
     margin-top:38px;
 }
 
 .bottom a{
+
     display:inline-flex;
 
     align-items:center;
@@ -590,6 +646,7 @@ h1{
 }
 
 .bottom a:hover{
+
     color:#eeeae1;
 
     border-color:
@@ -602,6 +659,7 @@ h1{
 ========================= */
 
 .lock-modal{
+
     position:fixed;
 
     inset:0;
@@ -625,20 +683,23 @@ h1{
         blur(8px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:
-        opacity .3s ease,
-        visibility .3s ease;
+        opacity .35s ease,
+        visibility .35s ease;
 }
 
 .lock-modal.active{
+
     opacity:1;
 
     visibility:visible;
 }
 
 .lock-panel{
+
     position:relative;
 
     width:min(570px,100%);
@@ -662,20 +723,22 @@ h1{
         0 30px 100px rgba(0,0,0,.55);
 
     transform:
-        translateY(18px)
-        scale(.98);
+        translateY(25px)
+        scale(.96);
 
     transition:
-        transform .35s ease;
+        transform .45s cubic-bezier(.22,.61,.36,1);
 }
 
 .lock-modal.active .lock-panel{
+
     transform:
         translateY(0)
         scale(1);
 }
 
 .lock-panel::before{
+
     content:"";
 
     position:absolute;
@@ -694,6 +757,7 @@ h1{
 }
 
 .modal-symbol{
+
     width:58px;
     height:58px;
 
@@ -714,6 +778,7 @@ h1{
 }
 
 .modal-eyebrow{
+
     margin-bottom:14px;
 
     color:#6e7376;
@@ -726,6 +791,7 @@ h1{
 }
 
 .lock-panel h2{
+
     margin:0 0 18px;
 
     font-size:
@@ -737,6 +803,7 @@ h1{
 }
 
 .modal-main{
+
     max-width:420px;
 
     margin:0 auto 12px;
@@ -751,6 +818,7 @@ h1{
 }
 
 .modal-sub{
+
     max-width:430px;
 
     margin:0 auto 30px;
@@ -767,6 +835,7 @@ h1{
 }
 
 .modal-actions{
+
     display:flex;
 
     flex-direction:column;
@@ -775,6 +844,7 @@ h1{
 }
 
 .modal-button{
+
     width:100%;
 
     min-height:48px;
@@ -805,13 +875,11 @@ h1{
 
     cursor:pointer;
 
-    transition:
-        background .25s ease,
-        border-color .25s ease,
-        color .25s ease;
+    transition:.25s;
 }
 
 .modal-button:hover{
+
     background:
         rgba(255,255,255,.07);
 
@@ -822,6 +890,7 @@ h1{
 }
 
 .modal-button.primary{
+
     background:
         rgba(255,255,255,.075);
 
@@ -830,6 +899,7 @@ h1{
 }
 
 .modal-button.close{
+
     border-color:
         transparent;
 
@@ -838,13 +908,166 @@ h1{
     color:#666b6e;
 }
 
-.modal-button.close:hover{
-    color:#b9b6ae;
 
-    background:transparent;
+/* =========================
+   CELEBRATION
+========================= */
 
-    border-color:
-        transparent;
+.celebration{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1100;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+        rgba(4,5,6,.68);
+
+    backdrop-filter:
+        blur(6px);
+
+    -webkit-backdrop-filter:
+        blur(6px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .45s ease,
+        visibility .45s ease;
+}
+
+.celebration.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.celebration-panel{
+
+    width:min(500px,100%);
+
+    padding:40px 35px 34px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.17);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,.065),
+            rgba(12,14,16,.97)
+        );
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.55);
+
+    transform:
+        translateY(20px)
+        scale(.97);
+
+    transition:
+        transform .5s cubic-bezier(.22,.61,.36,1);
+}
+
+.celebration.active
+.celebration-panel{
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.celebration-symbol{
+
+    font-size:30px;
+
+    margin-bottom:17px;
+
+    opacity:.85;
+}
+
+.celebration-label{
+
+    color:#777c80;
+
+    font-family:Arial,sans-serif;
+
+    font-size:7px;
+
+    letter-spacing:3px;
+
+    margin-bottom:12px;
+}
+
+.celebration h2{
+
+    margin:0 0 15px;
+
+    font-size:31px;
+
+    font-weight:normal;
+}
+
+.celebration p{
+
+    margin:0 auto;
+
+    max-width:390px;
+
+    color:#9d9e99;
+
+    line-height:1.85;
+
+    font-size:13px;
+}
+
+.celebration-button{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:48px;
+
+    margin-top:25px;
+
+    padding:10px 22px;
+
+    color:#111;
+
+    background:#e8e5dc;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.celebration-button:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
 }
 
 
@@ -855,44 +1078,48 @@ h1{
 @media(max-width:700px){
 
     .page{
+
         width:min(92%,1050px);
 
         padding-top:28px;
     }
 
     .header{
+
         padding:58px 0 42px;
     }
 
     .cards{
+
         grid-template-columns:1fr;
     }
 
     .listening{
+
         grid-column:auto;
 
         display:block;
     }
 
     .lock-visual{
+
         margin-bottom:22px;
     }
 
-    .topbar{
-        gap:15px;
-    }
-
     .card{
+
         min-height:230px;
 
         padding:27px;
     }
 
     .card h2{
+
         font-size:27px;
     }
 
     .focus-label{
+
         top:-15px;
 
         font-size:6px;
@@ -901,14 +1128,17 @@ h1{
     }
 
     .lock-panel{
+
         padding:38px 24px 28px;
     }
 
     .lock-panel h2{
+
         font-size:31px;
     }
 
     .modal-main{
+
         font-size:14px;
     }
 
@@ -928,8 +1158,11 @@ h1{
     *,
     *::before,
     *::after{
+
         animation-duration:.01ms !important;
+
         animation-iteration-count:1 !important;
+
         transition-duration:.01ms !important;
     }
 
@@ -942,191 +1175,187 @@ h1{
 
 <body>
 
+
 <div class="page">
 
 
-    <!-- TOP -->
+<div class="topbar">
 
-    <div class="topbar">
+    <a href="index.html">
+        ← ARCHIVE
+    </a>
 
-        <a href="index.html">
-            ← ARCHIVE
-        </a>
+    <a href="8a.html">
+        GROUP 8A →
+    </a>
 
-        <a href="8a.html">
-            GROUP 8A →
-        </a>
+</div>
 
+
+<header class="header">
+
+    <div class="eyebrow">
+        REFLECTION ARCHIVE · GROUP 08B
     </div>
 
+    <h1>
+        Reflection
+    </h1>
 
-    <!-- HEADER -->
+    <div class="divider"></div>
 
-    <header class="header">
+    <div class="subtitle">
+        Another way of seeing.
+    </div>
 
-        <div class="eyebrow">
-            REFLECTION ARCHIVE · GROUP 08B
+</header>
+
+
+<section
+    class="cards"
+    id="cards">
+
+
+<!-- SCENARIO -->
+
+<article
+    class="card"
+    id="scenarioCard">
+
+    <a
+        class="card-link"
+        href="scenario.html"
+        aria-label="Open The Scenario">
+    </a>
+
+    <div class="card-content">
+
+        <div class="card-number">
+            01 · BEGIN
         </div>
 
-        <h1>
-            Reflection
-        </h1>
-
-        <div class="divider"></div>
-
-        <div class="subtitle">
-            Another way of seeing.
-        </div>
-
-    </header>
-
-
-    <!-- CARDS -->
-
-    <section class="cards" id="cards">
-
-
-        <!-- SCENARIO -->
-
-        <article
-            class="card"
-            id="scenarioCard">
-
-            <a
-                class="card-link"
-                href="scenario.html"
-                aria-label="Open The Scenario">
-            </a>
-
-            <div class="card-content">
-
-                <div class="card-number">
-                    01 · BEGIN
-                </div>
-
-                <h2>
-                    The Scenario
-                </h2>
-
-                <p>
-                    Four voices gather around a question:
-                    logic, skepticism, intuition,
-                    and critical thought.
-                </p>
-
-                <span class="card-action">
-                    ENTER THE SCENARIO →
-                </span>
-
-            </div>
-
-        </article>
-
-
-        <!-- CHALLENGE -->
-
-        <article
-            class="card"
-            id="challengeCard">
-
-            <a
-                class="card-link"
-                href="challenge.html"
-                aria-label="Open The Challenge">
-            </a>
-
-            <div class="card-content">
-
-                <div class="card-number">
-                    02 · DISCOVER
-                </div>
-
-                <h2>
-                    The Challenge
-                </h2>
-
-                <p>
-                    The scenario leaves a trail.
-                    Follow it carefully and discover
-                    what waits beyond the obvious.
-                </p>
-
-                <span class="card-action">
-                    FOLLOW THE TRAIL →
-                </span>
-
-            </div>
-
-        </article>
-
-
-        <!-- LISTENING -->
-
-        <article
-            class="card listening locked"
-            id="listeningCard">
-
-            <div
-                class="lock-visual"
-                id="lockVisual">
-                🔒
-            </div>
-
-            <div class="card-content">
-
-                <div
-                    class="status"
-                    id="listeningStatus">
-                    LISTENING ARCHIVE · LOCKED
-                </div>
-
-                <h2>
-                    The Reflection Voice
-                </h2>
-
-                <p id="listeningText">
-                    The voice waits beyond the path.
-                    Complete the challenge to unlock it.
-                </p>
-
-                <span
-                    class="card-action"
-                    id="listeningAction">
-                    FOLLOW THE TRAIL →
-                </span>
-
-            </div>
-
-        </article>
-
-    </section>
-
-
-    <!-- DIRECT ACCESS -->
-
-    <div class="direct">
+        <h2>
+            The Scenario
+        </h2>
 
         <p>
-            Prefer another route? You can enter directly,
-            but the discovery will be skipped.
+            Four voices gather around a question:
+            logic, skepticism, intuition,
+            and critical thought.
         </p>
 
-        <a href="access-confirm.html">
-            A DIFFERENT WAY FORWARD →
-        </a>
+        <span class="card-action">
+            ENTER THE SCENARIO →
+        </span>
 
     </div>
 
+</article>
 
-    <!-- BOTTOM -->
 
-    <div class="bottom">
+<!-- CHALLENGE -->
 
-        <a href="index.html">
-            ← BACK TO ARCHIVE
-        </a>
+<article
+    class="card"
+    id="challengeCard">
+
+    <a
+        class="card-link"
+        href="challenge.html"
+        aria-label="Open The Challenge">
+    </a>
+
+    <div class="card-content">
+
+        <div class="card-number">
+            02 · DISCOVER
+        </div>
+
+        <h2>
+            The Challenge
+        </h2>
+
+        <p>
+            The scenario leaves a trail.
+            Follow it carefully and discover
+            what waits beyond the obvious.
+        </p>
+
+        <span class="card-action">
+            FOLLOW THE TRAIL →
+        </span>
 
     </div>
+
+</article>
+
+
+<!-- LISTENING -->
+
+<article
+    class="card listening locked"
+    id="listeningCard">
+
+    <div
+        class="lock-visual"
+        id="lockVisual">
+        🔒
+    </div>
+
+    <div class="card-content">
+
+        <div
+            class="status"
+            id="listeningStatus">
+            LISTENING ARCHIVE · LOCKED
+        </div>
+
+        <h2>
+            The Reflection Voice
+        </h2>
+
+        <p id="listeningText">
+            The voice waits beyond the path.
+            Complete the challenge to unlock it.
+        </p>
+
+        <span
+            class="card-action"
+            id="listeningAction">
+            FOLLOW THE TRAIL →
+        </span>
+
+    </div>
+
+</article>
+
+
+</section>
+
+
+<div class="direct">
+
+    <p>
+        Prefer another route?
+        You can enter directly,
+        but the discovery will be skipped.
+    </p>
+
+    <a href="access-confirm.html">
+        A DIFFERENT WAY FORWARD →
+    </a>
+
+</div>
+
+
+<div class="bottom">
+
+    <a href="index.html">
+        ← BACK TO ARCHIVE
+    </a>
+
+</div>
+
 
 </div>
 
@@ -1141,8 +1370,7 @@ h1{
     <div
         class="lock-panel"
         role="dialog"
-        aria-modal="true"
-        aria-labelledby="lockTitle">
+        aria-modal="true">
 
         <div class="modal-symbol">
             ◇
@@ -1152,7 +1380,7 @@ h1{
             LISTENING ARCHIVE · ACCESS RESTRICTED
         </div>
 
-        <h2 id="lockTitle">
+        <h2>
             Reflection Locked
         </h2>
 
@@ -1173,23 +1401,67 @@ h1{
             <a
                 class="modal-button primary"
                 href="challenge.html">
+
                 GO TO THE CHALLENGE →
+
             </a>
 
             <a
                 class="modal-button"
                 href="access-confirm.html">
+
                 A DIFFERENT WAY FORWARD →
+
             </a>
 
             <button
                 class="modal-button close"
-                id="closeModal"
-                type="button">
+                id="closeModal">
+
                 CLOSE
+
             </button>
 
         </div>
+
+    </div>
+
+</div>
+
+
+<!-- CELEBRATION -->
+
+<div
+    class="celebration"
+    id="celebration">
+
+    <div class="celebration-panel">
+
+        <div class="celebration-symbol">
+            ✦
+        </div>
+
+        <div class="celebration-label">
+            PATH COMPLETED
+        </div>
+
+        <h2>
+            You made it.
+        </h2>
+
+        <p>
+            The challenge has been left behind.
+            The Reflection Voice is now open —
+            whenever you are ready to enter it.
+        </p>
+
+        <a
+            class="celebration-button"
+            href="reflection-room.html">
+
+            ENTER THE REFLECTION →
+
+        </a>
 
     </div>
 
@@ -1207,9 +1479,16 @@ const unlocked =
         "reflection8bUnlocked"
     ) === "true";
 
+
 const justUnlocked =
     localStorage.getItem(
         "reflection8bJustUnlocked"
+    ) === "true";
+
+
+const directUnlocked =
+    localStorage.getItem(
+        "reflection8bDirectUnlocked"
     ) === "true";
 
 
@@ -1222,35 +1501,42 @@ const challengeCard =
         "challengeCard"
     );
 
+
 const listeningCard =
     document.getElementById(
         "listeningCard"
     );
+
 
 const visual =
     document.getElementById(
         "lockVisual"
     );
 
+
 const status =
     document.getElementById(
         "listeningStatus"
     );
+
 
 const text =
     document.getElementById(
         "listeningText"
     );
 
+
 const action =
     document.getElementById(
         "listeningAction"
     );
 
+
 const lockModal =
     document.getElementById(
         "lockModal"
     );
+
 
 const closeModal =
     document.getElementById(
@@ -1258,11 +1544,17 @@ const closeModal =
     );
 
 
+const celebration =
+    document.getElementById(
+        "celebration"
+    );
+
+
 /* =========================
-   UNLOCKED STATE
+   UNLOCK LISTENING
 ========================= */
 
-if(unlocked){
+function unlockListening(){
 
     listeningCard.classList.remove(
         "locked"
@@ -1272,7 +1564,8 @@ if(unlocked){
         "unlocked"
     );
 
-    visual.textContent = "🔓";
+    visual.textContent =
+        "🔓";
 
     status.textContent =
         "LISTENING ARCHIVE · UNLOCKED";
@@ -1292,11 +1585,27 @@ if(unlocked){
 
         };
 
+}
+
+
+/* =========================
+   CHALLENGE SOLVED
+========================= */
+
+if(unlocked){
+
+    unlockListening();
+
 
     /*
-       Only animate the Challenge away
-       on the first return immediately
-       after solving it.
+       IMPORTANT:
+
+       If the challenge was actually
+       solved, remove it only when the
+       user first comes back to Group B.
+
+       If direct access was used,
+       Challenge stays visible.
     */
 
     if(
@@ -1306,19 +1615,51 @@ if(unlocked){
 
         animateChallengeRemoval();
 
-    }else if(
-        challengeCard
-    ){
-
-        challengeCard.remove();
-
     }
+}
+
+
+/* =========================
+   DIRECT ACCESS
+========================= */
+
+else if(directUnlocked){
+
+    /*
+       Direct access unlocks only
+       the Reflection Voice.
+
+       Challenge remains.
+    */
+
+    unlockListening();
+
+    listeningCard.classList.add(
+        "unlocking"
+    );
+
+
+    setTimeout(
+        function(){
+
+            listeningCard.classList.remove(
+                "unlocking"
+            );
+
+        },
+        1700
+    );
+
+
+    localStorage.removeItem(
+        "reflection8bDirectUnlocked"
+    );
 
 }
 
 
 /* =========================
-   LOCKED STATE
+   LOCKED
 ========================= */
 
 else{
@@ -1342,27 +1683,26 @@ else{
 function animateChallengeRemoval(){
 
     /*
-       Give the browser one frame
-       before beginning the transition.
+       Make sure the card is visible
+       long enough for the visitor to
+       understand what is disappearing.
     */
 
-    requestAnimationFrame(
+    setTimeout(
         function(){
 
             challengeCard.classList.add(
                 "challenge-removing"
             );
 
-        }
+        },
+        700
     );
 
 
     /*
-       After the visual transition,
-       remove the card from the DOM.
-
-       The remaining cards naturally
-       reflow into the available space.
+       Wait until the longer animation
+       has actually finished.
     */
 
     setTimeout(
@@ -1374,19 +1714,46 @@ function animateChallengeRemoval(){
 
             }
 
+
+            /*
+               Consume the one-time flag.
+
+               Refreshing later will NOT
+               replay the animation.
+            */
+
             localStorage.removeItem(
                 "reflection8bJustUnlocked"
             );
 
+
+            /*
+               Give the layout a moment
+               to settle before showing
+               the small celebration.
+            */
+
+            setTimeout(
+                function(){
+
+                    celebration.classList.add(
+                        "active"
+                    );
+
+                },
+                280
+            );
+
+
         },
-        620
+        2250
     );
 
 }
 
 
 /* =========================
-   OPEN MODAL
+   MODAL
 ========================= */
 
 function openLockModal(){
@@ -1410,15 +1777,11 @@ function openLockModal(){
             closeModal.focus();
 
         },
-        100
+        150
     );
 
 }
 
-
-/* =========================
-   CLOSE MODAL
-========================= */
 
 function closeLockModal(){
 
@@ -1438,19 +1801,11 @@ function closeLockModal(){
 }
 
 
-/* =========================
-   CLOSE BUTTON
-========================= */
-
 closeModal.addEventListener(
     "click",
     closeLockModal
 );
 
-
-/* =========================
-   CLICK OUTSIDE
-========================= */
 
 lockModal.addEventListener(
     "click",
@@ -1467,10 +1822,6 @@ lockModal.addEventListener(
     }
 );
 
-
-/* =========================
-   ESC
-========================= */
 
 document.addEventListener(
     "keydown",
@@ -1492,13 +1843,14 @@ document.addEventListener(
 
 
 /* =========================
-   SCENARIO → CHALLENGE
+   SCENARIO FOCUS
 ========================= */
 
 const params =
     new URLSearchParams(
         window.location.search
     );
+
 
 const focusTarget =
     params.get("focus");
@@ -1534,6 +1886,7 @@ if(
 
             label.textContent =
                 "THIS IS WHERE THE TRAIL CONTINUES";
+
 
             challengeCard.appendChild(
                 label
