@@ -1,821 +1,747 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Challenge — Reflection 8B</title>
+<title>The Challenge · 8B</title>
 
 <style>
-* {
-    box-sizing: border-box;
+
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
+body{
+    margin:0;
+    min-height:100vh;
 
     background:
         radial-gradient(
             circle at 50% 0%,
-            rgba(50,70,95,.14),
-            transparent 42%
-        ),
-        #090b0f;
-
-    color: #e8edf2;
-    font-family: Arial, sans-serif;
-}
-
-.page {
-    width: min(900px, 92%);
-    margin: auto;
-    padding: 40px 0 70px;
-}
-
-.topbar {
-    display: flex;
-    justify-content: space-between;
-
-    margin-bottom: 65px;
-
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-.topbar a,
-.back-links a {
-    color: #858f9b;
-    text-decoration: none;
-    transition: color .25s ease;
-}
-
-.topbar a:hover,
-.back-links a:hover {
-    color: #e8edf2;
-}
-
-.eyebrow {
-    margin-bottom: 15px;
-
-    color: #707c88;
-
-    font-size: 10px;
-    letter-spacing: 3px;
-}
-
-h1 {
-    margin: 0;
-
-    font-family: Georgia, serif;
-    font-size: clamp(40px, 7vw, 64px);
-    font-weight: 400;
-}
-
-.intro {
-    max-width: 650px;
-    margin-top: 17px;
-
-    color: #8d98a4;
-
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.challenge-box {
-    margin-top: 52px;
-
-    padding: 34px;
-
-    border: 1px solid rgba(165,180,195,.15);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,25,32,.76),
-            rgba(11,14,19,.76)
+            #24272a 0%,
+            #121416 43%,
+            #08090a 100%
         );
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.27);
+    color:#e9e6de;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
-.challenge-symbol {
-    width: 55px;
-    height: 55px;
+.page{
+    width:min(800px,92%);
+    margin:auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 24px;
-
-    border: 1px solid rgba(170,185,200,.17);
-
-    color: #b5bec7;
-
-    font-size: 24px;
-}
-
-.challenge-box h2 {
-    margin: 0 0 10px;
-
-    font-family: Georgia, serif;
-    font-size: 28px;
-    font-weight: 400;
-}
-
-.description {
-    margin-bottom: 28px;
-
-    color: #858f9b;
-
-    font-size: 13px;
-    line-height: 1.8;
+    padding:65px 0 70px;
 }
 
 
-/* =========================
-   ATTEMPT COUNTER
-========================= */
+/* HEADER */
 
-.attempt-counter {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    margin-bottom: 16px;
-
-    color: #788490;
-
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+.header{
+    text-align:center;
 }
 
-.attempt-counter strong {
-    color: #d0d7de;
+.eyebrow{
+    color:#73777a;
 
-    font-size: 13px;
-    font-weight: normal;
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:4px;
 }
 
-.attempt-dot {
-    width: 4px;
-    height: 4px;
+h1{
+    margin:18px 0 15px;
 
-    border-radius: 50%;
+    font-size:
+        clamp(43px,7vw,65px);
 
-    background: #66737f;
+    font-weight:normal;
+}
+
+.divider{
+    width:70px;
+    height:1px;
+
+    margin:25px auto;
+
+    background:rgba(255,255,255,.24);
+}
+
+.intro{
+    max-width:620px;
+
+    margin:auto;
+
+    color:#a4a49f;
+
+    line-height:1.9;
 }
 
 
-/* =========================
-   INPUT
-========================= */
+/* CHALLENGE */
 
-.input-wrap {
-    display: flex;
-    gap: 10px;
-}
+.challenge-box{
 
-input {
-    flex: 1;
-    min-width: 0;
+    margin-top:45px;
 
-    padding: 15px 16px;
-
-    border: 1px solid rgba(170,185,200,.18);
-
-    background: #080b0f;
-
-    color: #e9edf2;
-
-    outline: none;
-
-    font-size: 14px;
-
-    transition:
-        border-color .25s ease,
-        box-shadow .25s ease;
-}
-
-input:focus {
-    border-color:
-        rgba(190,205,220,.4);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(160,180,200,.035);
-}
-
-button {
-    min-height: 46px;
-
-    padding: 0 19px;
+    padding:34px 24px;
 
     border:
-        1px solid rgba(185,200,215,.19);
+        1px solid
+        rgba(255,255,255,.12);
 
     background:
-        rgba(185,200,215,.055);
+        rgba(255,255,255,.025);
 
-    color: #e7ecf0;
-
-    cursor: pointer;
-
-    font-size: 10px;
-    letter-spacing: 1.7px;
-
-    transition:
-        background .25s ease,
-        border-color .25s ease;
+    text-align:center;
 }
 
-button:hover {
-    background:
-        rgba(185,200,215,.11);
+.question{
 
-    border-color:
-        rgba(205,220,235,.34);
-}
+    margin-bottom:22px;
 
-.primary {
-    background:
-        rgba(205,215,225,.1);
-}
+    color:#d2cfc7;
 
-.status {
-    min-height: 24px;
-
-    margin-top: 15px;
-
-    color: #858f9b;
-
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-
-/* =========================
-   HINT SECTION
-========================= */
-
-.hints-section {
-    margin-top: 38px;
-}
-
-.section-label {
-    margin-bottom: 13px;
-
-    color: #687480;
-
-    font-size: 9px;
-    letter-spacing: 2.5px;
-}
-
-.hint-history {
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.hint-item {
-    display: grid;
-
-    grid-template-columns: 30px 1fr;
-
-    gap: 11px;
-
-    padding: 12px 13px;
-
-    border:
-        1px solid rgba(150,165,180,.09);
-
-    background:
-        rgba(255,255,255,.016);
-
-    color: #8e99a5;
-
-    font-size: 12px;
-    line-height: 1.65;
-
-    animation:
-        hintAppear
-        .55s
-        ease
-        both;
-}
-
-.hint-number {
-    color: #65727e;
-
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-@keyframes hintAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(-7px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* =========================
-   PARTIAL ANSWER
-========================= */
-
-.partial-answer {
-    margin-top: 12px;
-
-    padding: 16px;
-
-    border:
-        1px solid rgba(180,195,210,.17);
-
-    background:
-        rgba(180,195,210,.035);
-
-    color: #cbd3da;
-
-    font-family: Georgia, serif;
-
-    animation:
-        hintAppear
-        .7s
-        ease
-        both;
-}
-
-.partial-answer span {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #788590;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-
-/* =========================
-   HELP — COMPLETELY SEPARATE
-========================= */
-
-.help-section {
-    margin-top: 34px;
-
-    padding-top: 25px;
-
-    border-top:
-        1px solid rgba(170,185,200,.08);
-}
-
-.help-box {
-    padding: 17px;
-
-    border:
-        1px solid rgba(150,165,180,.1);
-
-    background:
-        rgba(255,255,255,.012);
-}
-
-.help-text {
-    margin: 0 0 15px;
-
-    color: #838e9a;
-
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.help-response {
-    min-height: 20px;
-
-    margin-top: 13px;
-
-    color: #9ba6b1;
-
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.help-button {
-    background: transparent;
-
-    color: #89949f;
-}
-
-
-/* =========================
-   BACK LINKS
-========================= */
-
-.back-links {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 12px 25px;
-
-    margin-top: 52px;
-    padding-top: 24px;
-
-    border-top:
-        1px solid rgba(170,185,200,.08);
-
-    font-size: 10px;
-    letter-spacing: 1.7px;
-}
-
-
-/* =========================
-   SUCCESS MODAL
-========================= */
-
-.overlay {
-    position: fixed;
-    inset: 0;
-
-    z-index: 100;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    background:
-        rgba(4,6,9,.84);
-
-    backdrop-filter: blur(9px);
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity .5s ease,
-        visibility .5s ease;
-}
-
-.overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.success-card {
-    width: min(520px,100%);
-
-    padding: 42px 38px;
-
-    text-align: center;
-
-    border:
-        1px solid rgba(185,200,215,.19);
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(110,135,160,.08),
-            transparent 55%
-        ),
-        #0c1015;
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.56);
-
-    transform:
-        translateY(24px)
-        scale(.97);
-
-    opacity: 0;
-
-    transition:
-        transform .7s cubic-bezier(.22,.61,.36,1),
-        opacity .7s ease;
-}
-
-.overlay.show .success-card {
-    transform:
-        translateY(0)
-        scale(1);
-
-    opacity: 1;
-}
-
-.success-symbol {
-    margin-bottom: 20px;
-
-    font-size: 28px;
-}
-
-.success-card h2 {
-    margin: 0 0 14px;
-
-    font-family: Georgia, serif;
-    font-size: 31px;
-    font-weight: 400;
-}
-
-.success-card p {
-    max-width: 420px;
-
-    margin: 0 auto 27px;
-
-    color: #8b96a2;
-
-    font-size: 13px;
-    line-height: 1.8;
-}
-
-.success-actions {
-    display: flex;
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 9px;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 620px) {
-
-    .challenge-box {
-        padding: 27px 21px;
-    }
-
-    .input-wrap {
-        flex-direction: column;
-    }
-
-    .input-wrap button {
-        width: 100%;
-    }
-
-}
-
-@media (max-width: 480px) {
-
-    .success-card {
-        padding: 35px 22px;
-    }
-
-    .success-actions {
-        flex-direction: column;
-    }
-
-    .success-actions button {
-        width: 100%;
-    }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-    }
-
-}
-</style>
-<link rel="stylesheet" href="shared-theme.css">
-
-<style>
-.direct-access-section.is-completed{
-    display:none !important;
-}
-.completed-notice{
-    margin-top:28px;
-    padding:18px;
-    border-top:1px solid #3d4247;
-    border-bottom:1px solid #3d4247;
-    color:#92948f;
-    font-style:italic;
     line-height:1.8;
 }
+
+input{
+
+    width:min(570px,100%);
+
+    min-height:53px;
+
+    padding:14px 18px;
+
+    background:#0a0b0c;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    color:#eee;
+
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+input:focus{
+
+    border-color:
+        rgba(255,255,255,.45);
+}
+
+.submit{
+
+    width:min(570px,100%);
+
+    min-height:52px;
+
+    margin-top:14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    background:
+        rgba(255,255,255,.07);
+
+    color:#eee;
+
+    cursor:pointer;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.submit:hover{
+
+    background:
+        rgba(255,255,255,.12);
+
+    border-color:
+        rgba(255,255,255,.4);
+}
+
+.message{
+
+    min-height:27px;
+
+    margin-top:18px;
+
+    color:#999;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+/* HINT */
+
+.hint-box{
+
+    display:none;
+
+    margin-top:22px;
+
+    padding:18px 20px;
+
+    border-left:
+        2px solid
+        rgba(255,255,255,.28);
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-align:left;
+
+    animation:appear .4s ease;
+}
+
+.hint-title{
+
+    margin-bottom:7px;
+
+    color:#d8d5cd;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+}
+
+#hintText{
+
+    color:#aaa9a3;
+
+    line-height:1.8;
+
+    font-size:13px;
+}
+
+
+/* HELP */
+
+.help-box{
+
+    display:none;
+
+    margin-top:18px;
+
+    padding:18px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        rgba(0,0,0,.18);
+
+    text-align:left;
+
+    animation:appear .4s ease;
+}
+
+.help-title{
+
+    color:#777c80;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    margin-bottom:9px;
+}
+
+#helpText{
+
+    color:#b5b3ac;
+
+    line-height:1.8;
+
+    font-size:13px;
+}
+
+
+/* HELP BUTTON */
+
+.help-button{
+
+    min-height:46px;
+
+    margin-top:22px;
+
+    padding:10px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background:transparent;
+
+    color:#aaa;
+
+    cursor:pointer;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.help-button:hover{
+
+    color:#eee;
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.035);
+}
+
+.help-button:disabled{
+
+    opacity:.4;
+
+    cursor:default;
+}
+
+
+/* LOWER NAV */
+
+.bottom-nav{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:30px;
+}
+
+.bottom-nav a{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:47px;
+
+    padding:10px 24px;
+
+    color:#aaa;
+
+    text-decoration:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.bottom-nav a:hover{
+
+    color:#fff;
+
+    border-color:
+        rgba(255,255,255,.35);
+
+}
+
+
+/* DIRECT ACCESS */
+
+.access{
+
+    margin-top:38px;
+
+    padding-top:25px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    text-align:center;
+}
+
+.access p{
+
+    color:#666b6f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    line-height:1.8;
+
+    margin:0 0 14px;
+}
+
+.access a{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:45px;
+
+    padding:10px 20px;
+
+    color:#777c80;
+
+    text-decoration:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.access a:hover{
+
+    color:#ddd;
+
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+
+/* SUCCESS */
+
+.success-screen{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:50;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #24272a,
+            #08090a 75%
+        );
+}
+
+.success-content{
+
+    max-width:650px;
+
+    animation:
+        reveal 1s ease forwards;
+}
+
+.success-mark{
+
+    font-size:45px;
+
+    margin-bottom:20px;
+
+    opacity:.8;
+}
+
+.success-content h2{
+
+    margin:0 0 20px;
+
+    font-size:
+        clamp(35px,7vw,62px);
+
+    font-weight:normal;
+}
+
+.success-content p{
+
+    max-width:520px;
+
+    margin:auto;
+
+    color:#aaa;
+
+    line-height:1.9;
+}
+
+.enter-reflection{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:53px;
+
+    margin-top:30px;
+
+    padding:13px 27px;
+
+    background:#e8e5dc;
+
+    color:#111;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.enter-reflection:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+}
+
+
+/* ANIMATION */
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes reveal{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+        filter:blur(5px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+        filter:blur(0);
+    }
+}
+
+
+@media(max-width:600px){
+
+    .page{
+        padding-top:45px;
+    }
+
+    .challenge-box{
+        padding:28px 16px;
+    }
+
+}
+
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="page">
 
-    <div class="topbar">
 
-        <a href="8b.html">
-            ← GROUP 8B
-        </a>
+    <header class="header">
 
-        <span>
-            CHALLENGE
-        </span>
-
-    </div>
-
-
-    <div class="eyebrow">
-        REFLECTION 8B · ACCESS POINT
-    </div>
-
-    <h1>
-        The Challenge
-    </h1>
-
-    <div class="intro">
-        Some answers are not found by moving forward.
-        Sometimes the path asks you to return, reconsider,
-        and read what you thought you had already understood.
-    </div>
-
-
-    <div class="challenge-box">
-
-        <div class="challenge-symbol">
-            ◈
+        <div class="eyebrow">
+            REFLECTION 8B · FOLLOW THE TRAIL
         </div>
 
-        <h2>
-            Decode the final message.
-        </h2>
+        <h1>
+            The Challenge
+        </h1>
 
-        <div class="description">
-            The trail has already given you what you need.
-            Follow it carefully. If the first answer does not work,
-            look again rather than simply looking harder.
-        </div>
+        <div class="divider"></div>
+
+        <p class="intro">
+
+            The answer is not simply hidden.
+            It has been placed somewhere along the path.
+
+            <br>
+
+            Look carefully.
+            Then look back.
+
+        </p>
+
+    </header>
 
 
-        <!-- ATTEMPTS -->
+    <section class="challenge-box">
 
-        <div class="attempt-counter">
+        <div class="question">
 
-            <strong id="attemptCount">
-                0
-            </strong>
-
-            <span>
-                wrong attempts
-            </span>
-
-            <span class="attempt-dot"></span>
-
-            <span id="attemptLabel">
-                first attempt
-            </span>
+            Enter the final key.
 
         </div>
 
 
-        <!-- INPUT -->
+        <input
+            type="text"
+            id="answer"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="enter the key..."
+        >
 
-        <div class="input-wrap">
 
-            <input
-                id="answerInput"
-                type="text"
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="Enter the final answer..."
-            >
+        <button
+            class="submit"
+            onclick="checkAnswer()">
 
-            <button onclick="checkAnswer()">
-                SUBMIT
-            </button>
+            VERIFY
 
-        </div>
+        </button>
 
 
         <div
-            id="status"
-            class="status"
-        ></div>
+            class="message"
+            id="message">
+        </div>
 
 
-        <!-- =========================
-             AUTOMATIC HINTS
-        ========================== -->
+        <!-- AUTOMATIC HINT -->
 
-        <div class="hints-section">
+        <div
+            class="hint-box"
+            id="hintBox">
 
-            <div class="section-label">
-                TRAIL HINTS
+            <div class="hint-title">
+                HINT
             </div>
 
-            <div
-                id="hintHistory"
-                class="hint-history"
-            ></div>
-
-            <div id="partialAnswer"></div>
+            <div id="hintText"></div>
 
         </div>
 
 
-        <!-- =========================
-             HELP — SEPARATE
-        ========================== -->
+        <!-- STEP BY STEP HELP -->
 
-        <div class="help-section">
+        <div
+            class="help-box"
+            id="helpBox">
 
-            <div class="section-label">
-                NEED SOME HELP?
+            <div class="help-title">
+                A LITTLE MORE HELP
             </div>
 
-            <div class="help-box">
-
-                <p class="help-text">
-                    If you want an extra nudge,
-                    you can ask for help here.
-                    This is separate from the hints
-                    revealed by wrong attempts.
-                </p>
-
-                <button
-                    class="help-button"
-                    onclick="showHelp()"
-                >
-                    GET A HINT
-                </button>
-
-                <div
-                    id="helpResponse"
-                    class="help-response"
-                ></div>
-
-            </div>
+            <div id="helpText"></div>
 
         </div>
 
 
-        <!-- DIRECT ACCESS -->
+        <button
+            class="help-button"
+            id="helpButton"
+            onclick="nextHelp()">
 
-        <div class="help-section direct-access-section" id="directAccessSection">
+            NEED SOME HELP?
 
-            <div class="section-label">
-                ANOTHER PATH
-            </div>
+        </button>
 
-            <div class="help-box">
-
-                <p class="help-text">
-                    You can follow the challenge,
-                    or choose a different way forward.
-                </p>
-
-                <button
-                    class="help-button"
-                    onclick="goDirect()"
-                >
-                    A DIFFERENT WAY FORWARD →
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- BACK BUTTONS -->
+    <!-- BOTTOM NAV -->
 
-    <div class="back-links">
-
-        <a href="8b.html">
-            ← BACK TO GROUP 8B
-        </a>
+    <div class="bottom-nav">
 
         <a href="scenario.html">
             ← BACK TO SCENARIO
         </a>
 
-        <a href="index.html">
-            ← ARCHIVE
+    </div>
+
+
+    <!-- DIRECT -->
+
+    <section class="access">
+
+        <p>
+
+            There is another route.
+
+            <br>
+
+            It skips the search, clues and discovery.
+
+        </p>
+
+        <a href="access-confirm.html">
+
+            A DIFFERENT WAY FORWARD →
+
         </a>
 
-    </div>
+    </section>
+
 
 </div>
 
@@ -823,13 +749,12 @@ button:hover {
 <!-- SUCCESS -->
 
 <div
-    class="overlay"
-    id="successOverlay"
->
+    class="success-screen"
+    id="successScreen">
 
-    <div class="success-card">
+    <div class="success-content">
 
-        <div class="success-symbol">
+        <div class="success-mark">
             ✦
         </div>
 
@@ -838,29 +763,24 @@ button:hover {
         </h2>
 
         <p>
+
             You found what was hidden.
+
+            <br><br>
+
             The answer was not the final stop.
             It was the point where the reflection began.
+
         </p>
 
-        <div class="success-actions">
 
-            <button
-                class="primary"
-                onclick="enterReflection()"
-            >
-                ENTER THE REFLECTION →
-            </button>
+        <a
+            class="enter-reflection"
+            href="reflection-room.html">
 
-            <button onclick="goGroupB()">
-                GROUP 8B
-            </button>
+            ENTER THE REFLECTION →
 
-            <button onclick="goArchive()">
-                ARCHIVE
-            </button>
-
-        </div>
+        </a>
 
     </div>
 
@@ -869,31 +789,16 @@ button:hover {
 
 <script>
 
-/* ==================================================
-   ANSWER
-================================================== */
+let attempts = 0;
+
+let helpStep = 0;
+
 
 const finalAnswer =
     "understanding is not the final stop";
 
 
-/* ==================================================
-   ATTEMPTS
-================================================== */
-
-let attempts =
-    Number(
-        localStorage.getItem(
-            "reflection8bAttempts"
-        ) || 0
-    );
-
-
-/* ==================================================
-   AUTOMATIC HINTS
-================================================== */
-
-const hints = [
+const helps = [
 
     "Return to the scenario. The clues are part of the story, not separate from it.",
 
@@ -901,7 +806,7 @@ const hints = [
 
     "The message tells you to look back. Take that instruction seriously.",
 
-    "Go back to the earlier coded English line in the scenario and examine it again.",
+    "Go back to the earlier coded line in the scenario and examine it again.",
 
     "The coded English line uses a simple shift. Each letter has moved forward by two places.",
 
@@ -910,362 +815,171 @@ const hints = [
 ];
 
 
-/* ==================================================
-   SEPARATE HELP
-================================================== */
+function normalize(value){
 
-const helpHints = [
-
-    "The answer is not the rune message itself. The rune message points somewhere else.",
-
-    "One of the messages in the scenario asks you to reconsider something you have already seen.",
-
-    "The words “look back” are an instruction. Do not treat them as the final answer.",
-
-    "Return to the earlier coded English sentence. There is a transformation hidden inside it.",
-
-    "Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.",
-
-    "You are very close. The final sentence begins with the idea of understanding and ends with the idea of a stop."
-
-];
-
-
-const attemptCount =
-    document.getElementById(
-        "attemptCount"
-    );
-
-const attemptLabel =
-    document.getElementById(
-        "attemptLabel"
-    );
-
-const hintHistory =
-    document.getElementById(
-        "hintHistory"
-    );
-
-const partialAnswer =
-    document.getElementById(
-        "partialAnswer"
-    );
-
-const status =
-    document.getElementById(
-        "status"
-    );
-
-const input =
-    document.getElementById(
-        "answerInput"
-    );
-
-const helpResponse =
-    document.getElementById(
-        "helpResponse"
-    );
-
-
-/* ==================================================
-   COUNTER
-================================================== */
-
-function updateCounter() {
-
-    attemptCount.textContent =
-        attempts;
-
-    if (attempts === 0) {
-
-        attemptLabel.textContent =
-            "first attempt";
-
-    } else if (attempts < 5) {
-
-        attemptLabel.textContent =
-            "the trail continues";
-
-    } else if (attempts < 10) {
-
-        attemptLabel.textContent =
-            "look again";
-
-    } else if (attempts < 15) {
-
-        attemptLabel.textContent =
-            "you are getting closer";
-
-    } else {
-
-        attemptLabel.textContent =
-            "the trail is opening";
-    }
-}
-
-
-/* ==================================================
-   ADD AUTOMATIC HINT
-================================================== */
-
-function addHint(text) {
-
-    const exists =
-        [...hintHistory.children]
-        .some(
-            item =>
-                item.dataset.text === text
-        );
-
-    if (exists) return;
-
-    const number =
-        hintHistory.children.length + 1;
-
-    const item =
-        document.createElement("div");
-
-    item.className =
-        "hint-item";
-
-    item.dataset.text =
-        text;
-
-    item.innerHTML = `
-        <div class="hint-number">
-            ${String(number).padStart(2,"0")}
-        </div>
-
-        <div>
-            ${text}
-        </div>
-    `;
-
-    hintHistory.appendChild(
-        item
-    );
-}
-
-
-/* ==================================================
-   AUTOMATIC HINT REVEAL
-================================================== */
-
-function revealAutomaticHint() {
-
-    const index =
-        Math.min(
-            attempts - 1,
-            hints.length - 1
-        );
-
-    if (index >= 0) {
-
-        addHint(
-            hints[index]
-        );
-    }
-
-
-    /*
-      15 WRONG ATTEMPTS
-      → partial answer
-    */
-
-    if (attempts >= 15) {
-
-        partialAnswer.innerHTML = `
-            <div class="partial-answer">
-
-                <span>
-                    PARTIAL REVEAL
-                </span>
-
-                understanding is not the f...
-
-            </div>
-        `;
-    }
-}
-
-
-/* ==================================================
-   CHECK ANSWER
-================================================== */
-
-function checkAnswer() {
-
-    const answer =
-        input.value
+    return value
         .trim()
-        .toLowerCase();
+        .toLowerCase()
+        .replace(/\s+/g," ");
+
+}
 
 
-    if (!answer) {
+function checkAnswer(){
 
-        status.textContent =
-            "Enter something first.";
+    const input =
+        document.getElementById("answer");
 
-        return;
-    }
+    const value =
+        normalize(input.value);
 
 
-    /* =========================
-       CORRECT
-    ========================== */
-
-    if (answer === finalAnswer) {
+    if(value === finalAnswer){
 
         localStorage.setItem(
             "reflection8bUnlocked",
             "true"
         );
 
-        /*
-          PERMANENT completion state.
-        */
-
-        localStorage.setItem(
-            "reflection8bChallengeCompleted",
-            "true"
-        );
-
-        /*
-          One-time visual animation.
-        */
-
-        localStorage.setItem(
-            "reflection8bJustUnlocked",
-            "true"
-        );
-
-        localStorage.removeItem(
-            "reflection8bDirectUnlocked"
-        );
-
-
-        status.textContent =
-            "The path opens.";
-
-
-        setTimeout(() => {
-
-            document
-                .getElementById(
-                    "successOverlay"
-                )
-                .classList.add("show");
-
-        }, 450);
+        document
+            .getElementById("successScreen")
+            .style.display = "flex";
 
         return;
+
     }
 
-
-    /* =========================
-       WRONG
-    ========================== */
 
     attempts++;
 
-    localStorage.setItem(
-        "reflection8bAttempts",
-        attempts
-    );
 
-    updateCounter();
-
-    revealAutomaticHint();
-
-
-    status.textContent =
+    document
+        .getElementById("message")
+        .textContent =
         "Not quite. Something along the path may still be pointing you backward.";
 
+
+    showHint();
+
     input.select();
+
 }
 
 
-/* ==================================================
-   HELP
-================================================== */
+function showHint(){
 
-let helpIndex = 0;
+    const box =
+        document.getElementById("hintBox");
 
-function showHelp() {
+    const text =
+        document.getElementById("hintText");
 
-    if (
-        helpIndex >= helpHints.length
-    ) {
 
-        helpResponse.textContent =
-            "There is nothing more to reveal here. The remaining step is yours.";
+    box.style.display = "block";
 
-        return;
+
+    if(attempts === 1){
+
+        text.textContent =
+            "The answer is not the rune message itself. The rune message points somewhere else.";
+
     }
 
-    helpResponse.textContent =
-        helpHints[helpIndex];
+    else if(attempts < 4){
 
-    helpIndex++;
-}
+        text.textContent =
+            "One of the messages in the scenario asks you to reconsider something you have already seen.";
 
-
-/* ==================================================
-   NAVIGATION
-================================================== */
-
-function enterReflection() {
-
-    window.location.href =
-        "reflection-room.html";
-}
-
-
-function goGroupB() {
-
-    window.location.href =
-        "8b.html";
-}
-
-
-function goArchive() {
-
-    window.location.href =
-        "index.html";
-}
-
-
-function goDirect() {
-
-    window.location.href =
-        "access-confirm.html";
-}
-
-
-/* ==================================================
-   INITIALIZE
-================================================== */
-
-updateCounter();
-
-/*
-  Once the Challenge has genuinely been solved,
-  the alternative/direct path has no purpose anymore.
-  Keep the state permanent; do not undo completion.
-*/
-if (
-    localStorage.getItem("reflection8bChallengeCompleted") === "true"
-) {
-    const directSection =
-        document.getElementById("directAccessSection");
-
-    if (directSection) {
-        directSection.classList.add("is-completed");
     }
+
+    else if(attempts < 7){
+
+        text.textContent =
+            "The words “look back” are an instruction. Do not treat them as the final answer.";
+
+    }
+
+    else if(attempts < 10){
+
+        text.textContent =
+            "Return to the earlier coded English sentence. There is a transformation hidden inside it.";
+
+    }
+
+    else if(attempts < 15){
+
+        text.textContent =
+            "Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.";
+
+    }
+
+    else{
+
+        text.innerHTML =
+            "You have looked long enough.<br><br>" +
+            "<strong>understanding is not the ...</strong>";
+
+    }
+
 }
 
+
+function nextHelp(){
+
+    const box =
+        document.getElementById("helpBox");
+
+    const text =
+        document.getElementById("helpText");
+
+    const button =
+        document.getElementById("helpButton");
+
+
+    box.style.display = "block";
+
+
+    text.textContent =
+        helps[helpStep];
+
+
+    helpStep++;
+
+
+    if(helpStep < helps.length){
+
+        button.textContent =
+            "NEED MORE HELP?";
+
+    }else{
+
+        button.textContent =
+            "NO MORE HELP AVAILABLE";
+
+        button.disabled = true;
+
+    }
+
+}
+
+
+document
+    .getElementById("answer")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                checkAnswer();
+
+            }
+
+        }
+    );
 
 </script>
 
 </body>
+
 </html>
