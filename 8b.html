@@ -14,6 +14,10 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     min-height:100vh;
@@ -34,6 +38,10 @@ body{
         serif;
 }
 
+body.modal-open{
+    overflow:hidden;
+}
+
 .page{
     width:min(1050px,92%);
     margin:auto;
@@ -41,7 +49,9 @@ body{
 }
 
 
-/* TOP */
+/* =========================
+   TOP
+========================= */
 
 .topbar{
     display:flex;
@@ -66,7 +76,9 @@ body{
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     text-align:center;
@@ -116,7 +128,9 @@ h1{
 }
 
 
-/* CARDS */
+/* =========================
+   CARDS
+========================= */
 
 .cards{
     display:grid;
@@ -146,7 +160,9 @@ h1{
     transition:
         transform .3s ease,
         border-color .3s ease,
-        background .3s ease;
+        background .3s ease,
+        box-shadow .3s ease,
+        opacity .4s ease;
 }
 
 .card:hover{
@@ -218,7 +234,125 @@ h1{
 }
 
 
-/* LISTENING */
+/* =========================
+   CHALLENGE FOCUS
+========================= */
+
+.challenge-focus{
+    animation:
+        challengePulse 1.8s ease-in-out 3;
+
+    border-color:
+        rgba(225,220,205,.55) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(225,220,205,.08),
+        0 0 35px rgba(225,220,205,.08);
+
+    background:
+        rgba(255,255,255,.055);
+}
+
+.challenge-focus::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    opacity:.7;
+}
+
+@keyframes challengePulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 0 1px rgba(225,220,205,.05),
+            0 0 0 rgba(225,220,205,0);
+    }
+
+    50%{
+        box-shadow:
+            0 0 0 1px rgba(225,220,205,.15),
+            0 0 42px rgba(225,220,205,.12);
+    }
+
+}
+
+
+/* =========================
+   FOCUS LABEL
+========================= */
+
+.focus-label{
+    position:absolute;
+
+    top:-18px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index:10;
+
+    padding:8px 14px;
+
+    white-space:nowrap;
+
+    color:#d9d6cd;
+
+    background:#111315;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    font-family:Arial,sans-serif;
+
+    font-size:7px;
+
+    letter-spacing:2.5px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    animation:
+        focusLabelIn .5s ease forwards;
+}
+
+@keyframes focusLabelIn{
+
+    from{
+        opacity:0;
+        transform:
+            translate(-50%,8px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translate(-50%,0);
+    }
+
+}
+
+
+/* =========================
+   LISTENING
+========================= */
 
 .listening{
     grid-column:1/-1;
@@ -253,6 +387,11 @@ h1{
     font-size:27px;
 
     filter:grayscale(1);
+
+    transition:
+        border-color .3s ease,
+        background .3s ease,
+        transform .3s ease;
 }
 
 .listening.locked{
@@ -263,7 +402,14 @@ h1{
     transform:none;
 
     border-color:
-        rgba(255,255,255,.2);
+        rgba(255,255,255,.25);
+}
+
+.listening.locked:hover .lock-visual{
+    transform:translateY(-2px);
+
+    border-color:
+        rgba(255,255,255,.22);
 }
 
 .status{
@@ -292,10 +438,15 @@ h1{
 .listening.unlocked .lock-visual{
     border-color:
         rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.025);
 }
 
 
-/* DIRECT */
+/* =========================
+   DIRECT
+========================= */
 
 .direct{
     text-align:center;
@@ -355,7 +506,9 @@ h1{
 }
 
 
-/* BOTTOM */
+/* =========================
+   BOTTOM
+========================= */
 
 .bottom{
     text-align:center;
@@ -398,9 +551,272 @@ h1{
 }
 
 
-/* MOBILE */
+/* =========================
+   LOCK MODAL
+========================= */
+
+.lock-modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+        rgba(3,4,5,.78);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+.lock-modal.active{
+    opacity:1;
+
+    visibility:visible;
+}
+
+.lock-panel{
+    position:relative;
+
+    width:min(570px,100%);
+
+    padding:45px 42px 38px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,.055),
+            rgba(14,16,18,.97) 55%
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
+    transform:
+        translateY(18px)
+        scale(.98);
+
+    transition:
+        transform .35s ease;
+}
+
+.lock-modal.active .lock-panel{
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.lock-panel::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:50%;
+
+    width:70px;
+    height:1px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(255,255,255,.35);
+}
+
+.modal-symbol{
+    width:58px;
+    height:58px;
+
+    margin:0 auto 24px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    color:#c9c6bd;
+
+    font-size:21px;
+}
+
+.modal-eyebrow{
+    margin-bottom:14px;
+
+    color:#6e7376;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3.5px;
+}
+
+.lock-panel h2{
+    margin:0 0 18px;
+
+    font-size:
+        clamp(28px,6vw,42px);
+
+    font-weight:normal;
+
+    letter-spacing:1px;
+}
+
+.modal-main{
+    max-width:420px;
+
+    margin:0 auto 12px;
+
+    color:#d1cec5;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    font-style:italic;
+}
+
+.modal-sub{
+    max-width:430px;
+
+    margin:0 auto 30px;
+
+    color:#7f8384;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    line-height:1.8;
+
+    letter-spacing:.4px;
+}
+
+.modal-actions{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.modal-button{
+    width:100%;
+
+    min-height:48px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:10px 18px;
+
+    text-decoration:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    color:#d7d4cb;
+
+    background:
+        rgba(255,255,255,.025);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease;
+}
+
+.modal-button:hover{
+    background:
+        rgba(255,255,255,.07);
+
+    border-color:
+        rgba(255,255,255,.3);
+
+    color:#fff;
+}
+
+.modal-button.primary{
+    background:
+        rgba(255,255,255,.075);
+
+    border-color:
+        rgba(255,255,255,.23);
+}
+
+.modal-button.close{
+    border-color:
+        transparent;
+
+    background:transparent;
+
+    color:#666b6e;
+}
+
+.modal-button.close:hover{
+    color:#b9b6ae;
+
+    background:transparent;
+
+    border-color:
+        transparent;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
+
+    .page{
+        width:min(92%,1050px);
+
+        padding-top:28px;
+    }
+
+    .header{
+        padding:58px 0 42px;
+    }
 
     .cards{
         grid-template-columns:1fr;
@@ -420,6 +836,57 @@ h1{
         gap:15px;
     }
 
+    .card{
+        min-height:230px;
+
+        padding:27px;
+    }
+
+    .card h2{
+        font-size:27px;
+    }
+
+    .focus-label{
+        top:-15px;
+
+        font-size:6px;
+
+        letter-spacing:2px;
+    }
+
+    .lock-panel{
+        padding:38px 24px 28px;
+    }
+
+    .lock-panel h2{
+        font-size:31px;
+    }
+
+    .modal-main{
+        font-size:14px;
+    }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+
 }
 
 </style>
@@ -431,6 +898,8 @@ h1{
 
 <div class="page">
 
+
+    <!-- TOP -->
 
     <div class="topbar">
 
@@ -444,6 +913,8 @@ h1{
 
     </div>
 
+
+    <!-- HEADER -->
 
     <header class="header">
 
@@ -464,12 +935,14 @@ h1{
     </header>
 
 
-    <section class="cards">
+    <!-- CARDS -->
+
+    <section class="cards" id="cards">
 
 
         <!-- SCENARIO -->
 
-        <article class="card">
+        <article class="card" id="scenarioCard">
 
             <a
                 class="card-link"
@@ -504,7 +977,9 @@ h1{
 
         <!-- CHALLENGE -->
 
-        <article class="card">
+        <article
+            class="card"
+            id="challengeCard">
 
             <a
                 class="card-link"
@@ -569,7 +1044,7 @@ h1{
                 <span
                     class="card-action"
                     id="listeningAction">
-                    COMPLETE THE PATH →
+                    FOLLOW THE TRAIL →
                 </span>
 
             </div>
@@ -578,6 +1053,8 @@ h1{
 
     </section>
 
+
+    <!-- DIRECT ACCESS -->
 
     <div class="direct">
 
@@ -593,6 +1070,8 @@ h1{
     </div>
 
 
+    <!-- BOTTOM -->
+
     <div class="bottom">
 
         <a href="index.html">
@@ -604,7 +1083,78 @@ h1{
 </div>
 
 
+<!-- =========================
+     LOCK MODAL
+========================= -->
+
+<div
+    class="lock-modal"
+    id="lockModal"
+    aria-hidden="true">
+
+    <div
+        class="lock-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="lockTitle">
+
+        <div class="modal-symbol">
+            ◇
+        </div>
+
+        <div class="modal-eyebrow">
+            LISTENING ARCHIVE · ACCESS RESTRICTED
+        </div>
+
+        <h2 id="lockTitle">
+            Reflection Locked
+        </h2>
+
+        <p class="modal-main">
+            The voice is not lost.
+            It is simply not yours yet.
+        </p>
+
+        <p class="modal-sub">
+            The reflection remains behind the path
+            you have not completed.
+            Follow the trail to unlock it —
+            or choose another way forward.
+        </p>
+
+        <div class="modal-actions">
+
+            <a
+                class="modal-button primary"
+                href="challenge.html">
+                GO TO THE CHALLENGE →
+            </a>
+
+            <a
+                class="modal-button"
+                href="access-confirm.html">
+                A DIFFERENT WAY FORWARD →
+            </a>
+
+            <button
+                class="modal-button close"
+                id="closeModal"
+                type="button">
+                CLOSE
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
+
+/* =========================
+   UNLOCK STATE
+========================= */
 
 const unlocked =
     localStorage.getItem(
@@ -612,37 +1162,63 @@ const unlocked =
     ) === "true";
 
 
-const card =
-    document.getElementById(
-        "listeningCard"
-    );
+/* =========================
+   ELEMENTS
+========================= */
+
+const cards =
+    document.getElementById("cards");
+
+const challengeCard =
+    document.getElementById("challengeCard");
+
+const listeningCard =
+    document.getElementById("listeningCard");
 
 const visual =
-    document.getElementById(
-        "lockVisual"
-    );
+    document.getElementById("lockVisual");
 
 const status =
-    document.getElementById(
-        "listeningStatus"
-    );
+    document.getElementById("listeningStatus");
 
 const text =
-    document.getElementById(
-        "listeningText"
-    );
+    document.getElementById("listeningText");
 
 const action =
-    document.getElementById(
-        "listeningAction"
-    );
+    document.getElementById("listeningAction");
 
+const lockModal =
+    document.getElementById("lockModal");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+
+/* =========================
+   UNLOCKED STATE
+========================= */
 
 if(unlocked){
 
-    card.classList.remove("locked");
+    /*
+       Once the challenge is completed,
+       remove the challenge completely.
+    */
 
-    card.classList.add("unlocked");
+    if(challengeCard){
+
+        challengeCard.remove();
+
+    }
+
+
+    /*
+       Unlock listening archive.
+    */
+
+    listeningCard.classList.remove("locked");
+
+    listeningCard.classList.add("unlocked");
 
     visual.textContent = "🔓";
 
@@ -655,25 +1231,218 @@ if(unlocked){
     action.textContent =
         "ENTER THE REFLECTION ROOM →";
 
-    card.onclick = function(){
+
+    listeningCard.onclick = function(){
 
         window.location.href =
             "reflection-room.html";
 
     };
 
-}else{
+}
 
-    card.onclick = function(){
 
-        window.location.href =
-            "challenge.html";
+/* =========================
+   LOCKED STATE
+========================= */
+
+else{
+
+    listeningCard.onclick = function(event){
+
+        event.preventDefault();
+
+        openLockModal();
 
     };
+
+}
+
+
+/* =========================
+   OPEN MODAL
+========================= */
+
+function openLockModal(){
+
+    lockModal.classList.add("active");
+
+    lockModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+    setTimeout(function(){
+
+        closeModal.focus();
+
+    },100);
+
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeLockModal(){
+
+    lockModal.classList.remove("active");
+
+    lockModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+closeModal.addEventListener(
+    "click",
+    closeLockModal
+);
+
+
+/* =========================
+   CLICK OUTSIDE
+========================= */
+
+lockModal.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === lockModal){
+
+            closeLockModal();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ESC KEY
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape" &&
+            lockModal.classList.contains("active")
+        ){
+
+            closeLockModal();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   SCENARIO → CHALLENGE FOCUS
+========================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const focusTarget =
+    params.get("focus");
+
+
+if(
+    focusTarget === "challenge" &&
+    !unlocked &&
+    challengeCard
+){
+
+    /*
+       Wait until the page is fully rendered.
+    */
+
+    setTimeout(function(){
+
+        challengeCard.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+
+        /*
+           Add temporary focus.
+        */
+
+        challengeCard.classList.add(
+            "challenge-focus"
+        );
+
+
+        /*
+           Add a small contextual label.
+        */
+
+        const label =
+            document.createElement("div");
+
+        label.className =
+            "focus-label";
+
+        label.textContent =
+            "THIS IS WHERE THE TRAIL CONTINUES";
+
+        challengeCard.appendChild(label);
+
+
+        /*
+           Remove the focus after a few seconds.
+        */
+
+        setTimeout(function(){
+
+            challengeCard.classList.remove(
+                "challenge-focus"
+            );
+
+        },6500);
+
+
+        /*
+           Remove the label slightly later.
+        */
+
+        setTimeout(function(){
+
+            if(label && label.parentNode){
+
+                label.remove();
+
+            }
+
+        },7000);
+
+    },500);
 
 }
 
 </script>
 
 </body>
+
 </html>
