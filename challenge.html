@@ -14,6 +14,10 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     min-height:100vh;
@@ -35,14 +39,16 @@ body{
 }
 
 .page{
-    width:min(800px,92%);
+    width:min(820px,92%);
     margin:auto;
 
-    padding:65px 0 70px;
+    padding:55px 0 70px;
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     text-align:center;
@@ -65,6 +71,8 @@ h1{
         clamp(43px,7vw,65px);
 
     font-weight:normal;
+
+    letter-spacing:1px;
 }
 
 .divider{
@@ -87,7 +95,9 @@ h1{
 }
 
 
-/* CHALLENGE */
+/* =========================
+   CHALLENGE BOX
+========================= */
 
 .challenge-box{
 
@@ -114,6 +124,11 @@ h1{
     line-height:1.8;
 }
 
+
+/* =========================
+   INPUT
+========================= */
+
 input{
 
     width:min(570px,100%);
@@ -137,13 +152,25 @@ input{
     font-size:15px;
 
     outline:none;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
 input:focus{
 
     border-color:
         rgba(255,255,255,.45);
+
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.025);
 }
+
+
+/* =========================
+   VERIFY
+========================= */
 
 .submit{
 
@@ -182,6 +209,11 @@ input:focus{
         rgba(255,255,255,.4);
 }
 
+
+/* =========================
+   MESSAGE
+========================= */
+
 .message{
 
     min-height:27px;
@@ -196,15 +228,26 @@ input:focus{
 }
 
 
-/* HINT */
+/* =========================
+   HINT HISTORY
+========================= */
 
-.hint-box{
+.hint-history{
 
-    display:none;
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
 
     margin-top:22px;
 
-    padding:18px 20px;
+    text-align:left;
+}
+
+.hint-item{
+
+    padding:17px 19px;
 
     border-left:
         2px solid
@@ -213,25 +256,33 @@ input:focus{
     background:
         rgba(255,255,255,.025);
 
-    text-align:left;
-
-    animation:appear .4s ease;
+    animation:
+        hintReveal .45s ease both;
 }
 
-.hint-title{
+.hint-item.new{
+
+    border-left-color:
+        rgba(255,255,255,.55);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+.hint-number{
 
     margin-bottom:7px;
 
-    color:#d8d5cd;
+    color:#777c80;
 
     font-family:Arial,sans-serif;
 
-    font-size:8px;
+    font-size:7px;
 
     letter-spacing:3px;
 }
 
-#hintText{
+.hint-text{
 
     color:#aaa9a3;
 
@@ -240,8 +291,32 @@ input:focus{
     font-size:13px;
 }
 
+@keyframes hintReveal{
 
-/* HELP */
+    from{
+        opacity:0;
+
+        transform:
+            translateY(10px);
+
+        filter:blur(2px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+        filter:blur(0);
+    }
+
+}
+
+
+/* =========================
+   EXTRA HELP
+========================= */
 
 .help-box{
 
@@ -260,7 +335,8 @@ input:focus{
 
     text-align:left;
 
-    animation:appear .4s ease;
+    animation:
+        appear .4s ease;
 }
 
 .help-title{
@@ -286,7 +362,9 @@ input:focus{
 }
 
 
-/* HELP BUTTON */
+/* =========================
+   HELP BUTTON
+========================= */
 
 .help-button{
 
@@ -334,13 +412,19 @@ input:focus{
 }
 
 
-/* LOWER NAV */
+/* =========================
+   LOWER NAVIGATION
+========================= */
 
 .bottom-nav{
 
     display:flex;
 
+    flex-wrap:wrap;
+
     justify-content:center;
+
+    gap:10px;
 
     margin-top:30px;
 }
@@ -355,7 +439,7 @@ input:focus{
 
     min-height:47px;
 
-    padding:10px 24px;
+    padding:10px 22px;
 
     color:#aaa;
 
@@ -384,7 +468,9 @@ input:focus{
 }
 
 
-/* DIRECT ACCESS */
+/* =========================
+   DIRECT ACCESS
+========================= */
 
 .access{
 
@@ -417,6 +503,7 @@ input:focus{
     display:inline-flex;
 
     align-items:center;
+
     justify-content:center;
 
     min-height:45px;
@@ -449,7 +536,9 @@ input:focus{
 }
 
 
-/* SUCCESS */
+/* =========================
+   SUCCESS
+========================= */
 
 .success-screen{
 
@@ -521,6 +610,7 @@ input:focus{
     display:inline-flex;
 
     align-items:center;
+
     justify-content:center;
 
     min-height:53px;
@@ -552,7 +642,9 @@ input:focus{
 }
 
 
-/* ANIMATION */
+/* =========================
+   ANIMATIONS
+========================= */
 
 @keyframes appear{
 
@@ -583,6 +675,10 @@ input:focus{
 }
 
 
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:600px){
 
     .page{
@@ -591,6 +687,14 @@ input:focus{
 
     .challenge-box{
         padding:28px 16px;
+    }
+
+    .bottom-nav{
+        flex-direction:column;
+    }
+
+    .bottom-nav a{
+        width:100%;
     }
 
 }
@@ -605,6 +709,8 @@ input:focus{
 
 <div class="page">
 
+
+    <!-- HEADER -->
 
     <header class="header">
 
@@ -633,6 +739,8 @@ input:focus{
     </header>
 
 
+    <!-- CHALLENGE -->
+
     <section class="challenge-box">
 
         <div class="question">
@@ -654,6 +762,7 @@ input:focus{
 
         <button
             class="submit"
+            id="verifyButton"
             onclick="checkAnswer()">
 
             VERIFY
@@ -667,22 +776,15 @@ input:focus{
         </div>
 
 
-        <!-- AUTOMATIC HINT -->
+        <!-- HINT HISTORY -->
 
         <div
-            class="hint-box"
-            id="hintBox">
-
-            <div class="hint-title">
-                HINT
-            </div>
-
-            <div id="hintText"></div>
-
+            class="hint-history"
+            id="hintHistory">
         </div>
 
 
-        <!-- STEP BY STEP HELP -->
+        <!-- EXTRA HELP -->
 
         <div
             class="help-box"
@@ -709,18 +811,26 @@ input:focus{
     </section>
 
 
-    <!-- BOTTOM NAV -->
+    <!-- NAVIGATION -->
 
     <div class="bottom-nav">
 
+        <a href="8b.html">
+            ← BACK TO GROUP 8B
+        </a>
+
         <a href="scenario.html">
-            ← BACK TO SCENARIO
+            BACK TO SCENARIO
+        </a>
+
+        <a href="index.html">
+            ARCHIVE
         </a>
 
     </div>
 
 
-    <!-- DIRECT -->
+    <!-- DIRECT ACCESS -->
 
     <section class="access">
 
@@ -776,9 +886,10 @@ input:focus{
 
         <a
             class="enter-reflection"
-            href="reflection-room.html">
+            href="8b.html"
+            onclick="prepareReturn()">
 
-            ENTER THE REFLECTION →
+            RETURN TO GROUP 8B →
 
         </a>
 
@@ -789,16 +900,25 @@ input:focus{
 
 <script>
 
+/* =========================
+   STATE
+========================= */
+
 let attempts = 0;
 
 let helpStep = 0;
 
+let automaticHintsShown = 0;
 
 const finalAnswer =
     "understanding is not the final stop";
 
 
-const helps = [
+/* =========================
+   HINTS
+========================= */
+
+const hints = [
 
     "Return to the scenario. The clues are part of the story, not separate from it.",
 
@@ -806,7 +926,7 @@ const helps = [
 
     "The message tells you to look back. Take that instruction seriously.",
 
-    "Go back to the earlier coded line in the scenario and examine it again.",
+    "Go back to the earlier coded English line in the scenario and examine it again.",
 
     "The coded English line uses a simple shift. Each letter has moved forward by two places.",
 
@@ -814,6 +934,31 @@ const helps = [
 
 ];
 
+
+/* =========================
+   EXTRA HELP
+========================= */
+
+const helps = [
+
+    "The answer is not the rune message itself. The rune message points somewhere else.",
+
+    "One of the messages in the scenario asks you to reconsider something you have already seen.",
+
+    "The words “look back” are an instruction. Do not treat them as the final answer.",
+
+    "Return to the earlier coded English sentence. There is a transformation hidden inside it.",
+
+    "Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.",
+
+    "You are very close. The final sentence begins with the idea of understanding and ends with the idea of a stop."
+
+];
+
+
+/* =========================
+   NORMALIZE
+========================= */
 
 function normalize(value){
 
@@ -824,6 +969,10 @@ function normalize(value){
 
 }
 
+
+/* =========================
+   CHECK ANSWER
+========================= */
 
 function checkAnswer(){
 
@@ -838,6 +987,11 @@ function checkAnswer(){
 
         localStorage.setItem(
             "reflection8bUnlocked",
+            "true"
+        );
+
+        localStorage.setItem(
+            "reflection8bJustUnlocked",
             "true"
         );
 
@@ -859,85 +1013,143 @@ function checkAnswer(){
         "Not quite. Something along the path may still be pointing you backward.";
 
 
-    showHint();
+    /*
+       Every wrong answer reveals
+       one new hint.
+
+       Previous hints remain visible.
+    */
+
+    if(
+        automaticHintsShown <
+        hints.length
+    ){
+
+        addHint(
+            automaticHintsShown
+        );
+
+        automaticHintsShown++;
+
+    }
+
 
     input.select();
 
 }
 
 
-function showHint(){
+/* =========================
+   ADD HINT
+========================= */
 
-    const box =
-        document.getElementById("hintBox");
+function addHint(index){
+
+    const history =
+        document.getElementById(
+            "hintHistory"
+        );
+
+
+    /*
+       Prevent duplicates.
+    */
+
+    if(
+        document.getElementById(
+            "hint-" + index
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "hint-item new";
+
+    item.id =
+        "hint-" + index;
+
+
+    const number =
+        document.createElement("div");
+
+    number.className =
+        "hint-number";
+
+    number.textContent =
+        "HINT " +
+        String(index + 1).padStart(2,"0");
+
 
     const text =
-        document.getElementById("hintText");
+        document.createElement("div");
+
+    text.className =
+        "hint-text";
+
+    text.textContent =
+        hints[index];
 
 
-    box.style.display = "block";
+    item.appendChild(number);
+
+    item.appendChild(text);
+
+    history.appendChild(item);
 
 
-    if(attempts === 1){
+    /*
+       After the entrance animation,
+       remove the temporary new state.
+    */
 
-        text.textContent =
-            "The answer is not the rune message itself. The rune message points somewhere else.";
+    setTimeout(function(){
 
-    }
+        item.classList.remove("new");
 
-    else if(attempts < 4){
-
-        text.textContent =
-            "One of the messages in the scenario asks you to reconsider something you have already seen.";
-
-    }
-
-    else if(attempts < 7){
-
-        text.textContent =
-            "The words “look back” are an instruction. Do not treat them as the final answer.";
-
-    }
-
-    else if(attempts < 10){
-
-        text.textContent =
-            "Return to the earlier coded English sentence. There is a transformation hidden inside it.";
-
-    }
-
-    else if(attempts < 15){
-
-        text.textContent =
-            "Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.";
-
-    }
-
-    else{
-
-        text.innerHTML =
-            "You have looked long enough.<br><br>" +
-            "<strong>understanding is not the ...</strong>";
-
-    }
+    },900);
 
 }
 
 
+/* =========================
+   EXTRA HELP
+========================= */
+
 function nextHelp(){
 
     const box =
-        document.getElementById("helpBox");
+        document.getElementById(
+            "helpBox"
+        );
 
     const text =
-        document.getElementById("helpText");
+        document.getElementById(
+            "helpText"
+        );
 
     const button =
-        document.getElementById("helpButton");
+        document.getElementById(
+            "helpButton"
+        );
+
+
+    if(
+        helpStep >= helps.length
+    ){
+
+        return;
+
+    }
 
 
     box.style.display = "block";
-
 
     text.textContent =
         helps[helpStep];
@@ -946,7 +1158,28 @@ function nextHelp(){
     helpStep++;
 
 
-    if(helpStep < helps.length){
+    /*
+       Also preserve the extra help
+       as part of the visible history.
+    */
+
+    if(
+        automaticHintsShown <
+        hints.length
+    ){
+
+        addHint(
+            automaticHintsShown
+        );
+
+        automaticHintsShown++;
+
+    }
+
+
+    if(
+        helpStep < helps.length
+    ){
 
         button.textContent =
             "NEED MORE HELP?";
@@ -962,6 +1195,24 @@ function nextHelp(){
 
 }
 
+
+/* =========================
+   RETURN PREPARATION
+========================= */
+
+function prepareReturn(){
+
+    localStorage.setItem(
+        "reflection8bJustUnlocked",
+        "true"
+    );
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
 
 document
     .getElementById("answer")
