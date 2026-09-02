@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Challenge · 8B</title>
+<title>Reflection 8B</title>
 
 <style>
 
@@ -26,7 +26,7 @@ body{
         radial-gradient(
             circle at 50% 0%,
             #24272a 0%,
-            #121416 43%,
+            #121416 42%,
             #08090a 100%
         );
 
@@ -38,11 +38,44 @@ body{
         serif;
 }
 
+body.modal-open{
+    overflow:hidden;
+}
+
 .page{
-    width:min(820px,92%);
+    width:min(1050px,92%);
     margin:auto;
 
-    padding:55px 0 70px;
+    padding:42px 0 65px;
+}
+
+
+/* =========================
+   TOP
+========================= */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topbar a{
+    color:#777b7e;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+.topbar a:hover{
+    color:#e7e4dc;
 }
 
 
@@ -52,6 +85,8 @@ body{
 
 .header{
     text-align:center;
+
+    padding:72px 0 55px;
 }
 
 .eyebrow{
@@ -65,14 +100,14 @@ body{
 }
 
 h1{
-    margin:18px 0 15px;
+    margin:17px 0 14px;
 
     font-size:
-        clamp(43px,7vw,65px);
+        clamp(44px,7vw,72px);
 
     font-weight:normal;
 
-    letter-spacing:1px;
+    letter-spacing:3px;
 }
 
 .divider{
@@ -81,411 +116,316 @@ h1{
 
     margin:25px auto;
 
-    background:rgba(255,255,255,.24);
+    background:rgba(255,255,255,.25);
 }
 
-.intro{
+.subtitle{
     max-width:620px;
 
     margin:auto;
 
-    color:#a4a49f;
+    color:#a5a5a0;
 
     line-height:1.9;
+
+    font-style:italic;
 }
 
 
 /* =========================
-   CHALLENGE BOX
+   CARDS
 ========================= */
 
-.challenge-box{
+.cards{
+    display:grid;
 
-    margin-top:45px;
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
 
-    padding:34px 24px;
+    gap:18px;
+
+    transition:
+        grid-template-columns .4s ease;
+}
+
+.card{
+    position:relative;
+
+    min-height:250px;
+
+    padding:31px;
 
     border:
         1px solid
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.11);
 
     background:
         rgba(255,255,255,.025);
 
-    text-align:center;
-}
-
-.question{
-
-    margin-bottom:22px;
-
-    color:#d2cfc7;
-
-    line-height:1.8;
-}
-
-
-/* =========================
-   INPUT
-========================= */
-
-input{
-
-    width:min(570px,100%);
-
-    min-height:53px;
-
-    padding:14px 18px;
-
-    background:#0a0b0c;
-
-    border:
-        1px solid
-        rgba(255,255,255,.18);
-
-    color:#eee;
-
-    text-align:center;
-
-    font-family:Georgia,serif;
-
-    font-size:15px;
-
-    outline:none;
+    overflow:hidden;
 
     transition:
-        border-color .25s ease,
-        box-shadow .25s ease;
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease,
+        opacity .4s ease,
+        max-height .5s ease,
+        padding .5s ease,
+        margin .5s ease;
 }
 
-input:focus{
+.card:hover{
+    transform:translateY(-3px);
 
     border-color:
-        rgba(255,255,255,.45);
+        rgba(255,255,255,.27);
 
-    box-shadow:
-        0 0 0 3px rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.035);
 }
 
+.card-link{
+    position:absolute;
 
-/* =========================
-   VERIFY
-========================= */
+    inset:0;
 
-.submit{
+    z-index:1;
+}
 
-    width:min(570px,100%);
+.card-content{
+    position:relative;
 
-    min-height:52px;
+    z-index:2;
+
+    pointer-events:none;
+}
+
+.card-number{
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:#666b6e;
+
+    margin-bottom:23px;
+}
+
+.card h2{
+    margin:0 0 15px;
+
+    font-size:29px;
+
+    font-weight:normal;
+}
+
+.card p{
+    color:#9b9c98;
+
+    line-height:1.85;
+
+    max-width:450px;
+}
+
+.card-action{
+    display:inline-block;
 
     margin-top:14px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.22);
-
-    background:
-        rgba(255,255,255,.07);
-
-    color:#eee;
-
-    cursor:pointer;
+    color:#d6d3ca;
 
     font-family:Arial,sans-serif;
 
-    font-size:9px;
+    font-size:8px;
 
     letter-spacing:2px;
-
-    transition:.25s;
 }
 
-.submit:hover{
 
-    background:
-        rgba(255,255,255,.12);
+/* =========================
+   CHALLENGE FOCUS
+========================= */
+
+.challenge-focus{
+    animation:
+        challengePulse 1.8s ease-in-out 3;
 
     border-color:
-        rgba(255,255,255,.4);
+        rgba(225,220,205,.55) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(225,220,205,.08),
+        0 0 35px rgba(225,220,205,.08);
+
+    background:
+        rgba(255,255,255,.055);
+}
+
+.challenge-focus::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    opacity:.7;
+}
+
+@keyframes challengePulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 0 1px rgba(225,220,205,.05),
+            0 0 0 rgba(225,220,205,0);
+    }
+
+    50%{
+        box-shadow:
+            0 0 0 1px rgba(225,220,205,.15),
+            0 0 42px rgba(225,220,205,.12);
+    }
+
 }
 
 
 /* =========================
-   MESSAGE
+   FOCUS LABEL
 ========================= */
 
-.message{
+.focus-label{
+    position:absolute;
 
-    min-height:27px;
+    top:-18px;
+    left:50%;
 
-    margin-top:18px;
+    transform:
+        translateX(-50%);
 
-    color:#999;
+    z-index:10;
 
-    font-size:13px;
+    padding:8px 14px;
 
-    line-height:1.7;
-}
+    white-space:nowrap;
 
+    color:#d9d6cd;
 
-/* =========================
-   HINT HISTORY
-========================= */
+    background:#111315;
 
-.hint-history{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-    margin-top:22px;
-
-    text-align:left;
-}
-
-.hint-item{
-
-    padding:17px 19px;
-
-    border-left:
-        2px solid
-        rgba(255,255,255,.28);
-
-    background:
-        rgba(255,255,255,.025);
-
-    animation:
-        hintReveal .45s ease both;
-}
-
-.hint-item.new{
-
-    border-left-color:
-        rgba(255,255,255,.55);
-
-    background:
-        rgba(255,255,255,.045);
-}
-
-.hint-number{
-
-    margin-bottom:7px;
-
-    color:#777c80;
+    border:
+        1px solid
+        rgba(255,255,255,.16);
 
     font-family:Arial,sans-serif;
 
     font-size:7px;
 
-    letter-spacing:3px;
+    letter-spacing:2.5px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    animation:
+        focusLabelIn .5s ease forwards;
 }
 
-.hint-text{
-
-    color:#aaa9a3;
-
-    line-height:1.8;
-
-    font-size:13px;
-}
-
-@keyframes hintReveal{
+@keyframes focusLabelIn{
 
     from{
         opacity:0;
 
         transform:
-            translateY(10px);
-
-        filter:blur(2px);
+            translate(-50%,8px);
     }
 
     to{
         opacity:1;
 
         transform:
-            translateY(0);
-
-        filter:blur(0);
+            translate(-50%,0);
     }
 
 }
 
 
 /* =========================
-   EXTRA HELP
+   LISTENING
 ========================= */
 
-.help-box{
+.listening{
+    grid-column:1/-1;
 
-    display:none;
-
-    margin-top:18px;
-
-    padding:18px 20px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.10);
-
-    background:
-        rgba(0,0,0,.18);
-
-    text-align:left;
-
-    animation:
-        appear .4s ease;
-}
-
-.help-title{
-
-    color:#777c80;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:3px;
-
-    margin-bottom:9px;
-}
-
-#helpText{
-
-    color:#b5b3ac;
-
-    line-height:1.8;
-
-    font-size:13px;
-}
-
-
-/* =========================
-   HELP BUTTON
-========================= */
-
-.help-button{
-
-    min-height:46px;
-
-    margin-top:22px;
-
-    padding:10px 20px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.13);
-
-    background:transparent;
-
-    color:#aaa;
-
-    cursor:pointer;
-
-    font-family:Arial,sans-serif;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    transition:.25s;
-}
-
-.help-button:hover{
-
-    color:#eee;
-
-    border-color:
-        rgba(255,255,255,.35);
-
-    background:
-        rgba(255,255,255,.035);
-}
-
-.help-button:disabled{
-
-    opacity:.4;
-
-    cursor:default;
-}
-
-
-/* =========================
-   LOWER NAVIGATION
-========================= */
-
-.bottom-nav{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:30px;
-}
-
-.bottom-nav a{
+    min-height:205px;
 
     display:flex;
 
     align-items:center;
 
+    gap:30px;
+}
+
+.lock-visual{
+    width:70px;
+    height:70px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
     justify-content:center;
-
-    min-height:47px;
-
-    padding:10px 22px;
-
-    color:#aaa;
-
-    text-decoration:none;
 
     border:
         1px solid
         rgba(255,255,255,.12);
 
-    font-family:Arial,sans-serif;
+    background:
+        rgba(0,0,0,.18);
 
-    font-size:8px;
+    font-size:27px;
 
-    letter-spacing:2px;
+    filter:grayscale(1);
 
-    transition:.25s;
+    transition:
+        border-color .3s ease,
+        background .3s ease,
+        transform .3s ease;
 }
 
-.bottom-nav a:hover{
+.listening.locked{
+    cursor:pointer;
+}
 
-    color:#fff;
+.listening.locked:hover{
+    transform:none;
 
     border-color:
-        rgba(255,255,255,.35);
-
+        rgba(255,255,255,.25);
 }
 
+.listening.locked:hover .lock-visual{
+    transform:translateY(-2px);
 
-/* =========================
-   DIRECT ACCESS
-========================= */
-
-.access{
-
-    margin-top:38px;
-
-    padding-top:25px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.07);
-
-    text-align:center;
+    border-color:
+        rgba(255,255,255,.22);
 }
 
-.access p{
+.status{
+    margin-bottom:13px;
 
     color:#666b6f;
 
@@ -493,30 +433,104 @@ input:focus{
 
     font-size:8px;
 
-    line-height:1.8;
-
-    margin:0 0 14px;
+    letter-spacing:3px;
 }
 
-.access a{
+.listening.unlocked{
+    cursor:pointer;
 
+    border-color:
+        rgba(255,255,255,.24);
+}
+
+.listening.unlocked .status{
+    color:#c9c6bd;
+}
+
+.listening.unlocked .lock-visual{
+    border-color:
+        rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+/* =========================
+   UNLOCK TRANSITION
+========================= */
+
+.challenge-removing{
+
+    pointer-events:none;
+
+    opacity:0;
+
+    transform:
+        translateY(-14px)
+        scale(.96);
+
+    filter:blur(4px);
+
+    max-height:0 !important;
+
+    min-height:0 !important;
+
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+
+    border-color:
+        transparent !important;
+
+    background:
+        transparent !important;
+}
+
+
+/* =========================
+   DIRECT
+========================= */
+
+.direct{
+    text-align:center;
+
+    margin-top:32px;
+}
+
+.direct p{
+    color:#666b6e;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:.7px;
+
+    line-height:1.8;
+
+    margin-bottom:13px;
+}
+
+.direct a{
     display:inline-flex;
 
     align-items:center;
-
     justify-content:center;
 
     min-height:45px;
 
     padding:10px 20px;
 
-    color:#777c80;
+    color:#85898b;
 
     text-decoration:none;
 
     border:
         1px solid
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.10);
 
     font-family:Arial,sans-serif;
 
@@ -527,151 +541,310 @@ input:focus{
     transition:.25s;
 }
 
-.access a:hover{
-
-    color:#ddd;
+.direct a:hover{
+    color:#eeeae1;
 
     border-color:
         rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.03);
 }
 
 
 /* =========================
-   SUCCESS
+   BOTTOM
 ========================= */
 
-.success-screen{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:50;
-
-    align-items:center;
-
-    justify-content:center;
-
+.bottom{
     text-align:center;
 
-    padding:25px;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #24272a,
-            #08090a 75%
-        );
+    margin-top:38px;
 }
 
-.success-content{
-
-    max-width:650px;
-
-    animation:
-        reveal 1s ease forwards;
-}
-
-.success-mark{
-
-    font-size:45px;
-
-    margin-bottom:20px;
-
-    opacity:.8;
-}
-
-.success-content h2{
-
-    margin:0 0 20px;
-
-    font-size:
-        clamp(35px,7vw,62px);
-
-    font-weight:normal;
-}
-
-.success-content p{
-
-    max-width:520px;
-
-    margin:auto;
-
-    color:#aaa;
-
-    line-height:1.9;
-}
-
-.enter-reflection{
-
+.bottom a{
     display:inline-flex;
 
     align-items:center;
-
     justify-content:center;
 
-    min-height:53px;
+    min-height:45px;
 
-    margin-top:30px;
+    padding:10px 20px;
 
-    padding:13px 27px;
-
-    background:#e8e5dc;
-
-    color:#111;
+    color:#777b7e;
 
     text-decoration:none;
 
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
     font-family:Arial,sans-serif;
 
-    font-size:9px;
+    font-size:8px;
 
     letter-spacing:2px;
 
     transition:.25s;
 }
 
-.enter-reflection:hover{
+.bottom a:hover{
+    color:#eeeae1;
 
-    transform:translateY(-2px);
-
-    opacity:.9;
+    border-color:
+        rgba(255,255,255,.22);
 }
 
 
 /* =========================
-   ANIMATIONS
+   LOCK MODAL
 ========================= */
 
-@keyframes appear{
+.lock-modal{
+    position:fixed;
 
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
+    inset:0;
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    z-index:1000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+        rgba(3,4,5,.78);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
 }
 
-@keyframes reveal{
+.lock-modal.active{
+    opacity:1;
 
-    from{
-        opacity:0;
-        transform:translateY(18px);
-        filter:blur(5px);
-    }
+    visibility:visible;
+}
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-        filter:blur(0);
-    }
+.lock-panel{
+    position:relative;
+
+    width:min(570px,100%);
+
+    padding:45px 42px 38px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,.055),
+            rgba(14,16,18,.97) 55%
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
+    transform:
+        translateY(18px)
+        scale(.98);
+
+    transition:
+        transform .35s ease;
+}
+
+.lock-modal.active .lock-panel{
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.lock-panel::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:50%;
+
+    width:70px;
+    height:1px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(255,255,255,.35);
+}
+
+.modal-symbol{
+    width:58px;
+    height:58px;
+
+    margin:0 auto 24px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    color:#c9c6bd;
+
+    font-size:21px;
+}
+
+.modal-eyebrow{
+    margin-bottom:14px;
+
+    color:#6e7376;
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:3.5px;
+}
+
+.lock-panel h2{
+    margin:0 0 18px;
+
+    font-size:
+        clamp(28px,6vw,42px);
+
+    font-weight:normal;
+
+    letter-spacing:1px;
+}
+
+.modal-main{
+    max-width:420px;
+
+    margin:0 auto 12px;
+
+    color:#d1cec5;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    font-style:italic;
+}
+
+.modal-sub{
+    max-width:430px;
+
+    margin:0 auto 30px;
+
+    color:#7f8384;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    line-height:1.8;
+
+    letter-spacing:.4px;
+}
+
+.modal-actions{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.modal-button{
+    width:100%;
+
+    min-height:48px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:10px 18px;
+
+    text-decoration:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    color:#d7d4cb;
+
+    background:
+        rgba(255,255,255,.025);
+
+    font-family:Arial,sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease;
+}
+
+.modal-button:hover{
+    background:
+        rgba(255,255,255,.07);
+
+    border-color:
+        rgba(255,255,255,.3);
+
+    color:#fff;
+}
+
+.modal-button.primary{
+    background:
+        rgba(255,255,255,.075);
+
+    border-color:
+        rgba(255,255,255,.23);
+}
+
+.modal-button.close{
+    border-color:
+        transparent;
+
+    background:transparent;
+
+    color:#666b6e;
+}
+
+.modal-button.close:hover{
+    color:#b9b6ae;
+
+    background:transparent;
+
+    border-color:
+        transparent;
 }
 
 
@@ -679,22 +852,85 @@ input:focus{
    MOBILE
 ========================= */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
     .page{
-        padding-top:45px;
+        width:min(92%,1050px);
+
+        padding-top:28px;
     }
 
-    .challenge-box{
-        padding:28px 16px;
+    .header{
+        padding:58px 0 42px;
     }
 
-    .bottom-nav{
-        flex-direction:column;
+    .cards{
+        grid-template-columns:1fr;
     }
 
-    .bottom-nav a{
-        width:100%;
+    .listening{
+        grid-column:auto;
+
+        display:block;
+    }
+
+    .lock-visual{
+        margin-bottom:22px;
+    }
+
+    .topbar{
+        gap:15px;
+    }
+
+    .card{
+        min-height:230px;
+
+        padding:27px;
+    }
+
+    .card h2{
+        font-size:27px;
+    }
+
+    .focus-label{
+        top:-15px;
+
+        font-size:6px;
+
+        letter-spacing:2px;
+    }
+
+    .lock-panel{
+        padding:38px 24px 28px;
+    }
+
+    .lock-panel h2{
+        font-size:31px;
+    }
+
+    .modal-main{
+        font-size:14px;
+    }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
     }
 
 }
@@ -706,8 +942,22 @@ input:focus{
 
 <body>
 
-
 <div class="page">
+
+
+    <!-- TOP -->
+
+    <div class="topbar">
+
+        <a href="index.html">
+            ← ARCHIVE
+        </a>
+
+        <a href="8a.html">
+            GROUP 8A →
+        </a>
+
+    </div>
 
 
     <!-- HEADER -->
@@ -715,183 +965,231 @@ input:focus{
     <header class="header">
 
         <div class="eyebrow">
-            REFLECTION 8B · FOLLOW THE TRAIL
+            REFLECTION ARCHIVE · GROUP 08B
         </div>
 
         <h1>
-            The Challenge
+            Reflection
         </h1>
 
         <div class="divider"></div>
 
-        <p class="intro">
-
-            The answer is not simply hidden.
-            It has been placed somewhere along the path.
-
-            <br>
-
-            Look carefully.
-            Then look back.
-
-        </p>
+        <div class="subtitle">
+            Another way of seeing.
+        </div>
 
     </header>
 
 
-    <!-- CHALLENGE -->
+    <!-- CARDS -->
 
-    <section class="challenge-box">
-
-        <div class="question">
-
-            Enter the final key.
-
-        </div>
+    <section class="cards" id="cards">
 
 
-        <input
-            type="text"
-            id="answer"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="enter the key..."
-        >
+        <!-- SCENARIO -->
 
+        <article
+            class="card"
+            id="scenarioCard">
 
-        <button
-            class="submit"
-            id="verifyButton"
-            onclick="checkAnswer()">
+            <a
+                class="card-link"
+                href="scenario.html"
+                aria-label="Open The Scenario">
+            </a>
 
-            VERIFY
+            <div class="card-content">
 
-        </button>
+                <div class="card-number">
+                    01 · BEGIN
+                </div>
 
+                <h2>
+                    The Scenario
+                </h2>
 
-        <div
-            class="message"
-            id="message">
-        </div>
+                <p>
+                    Four voices gather around a question:
+                    logic, skepticism, intuition,
+                    and critical thought.
+                </p>
 
+                <span class="card-action">
+                    ENTER THE SCENARIO →
+                </span>
 
-        <!-- HINT HISTORY -->
-
-        <div
-            class="hint-history"
-            id="hintHistory">
-        </div>
-
-
-        <!-- EXTRA HELP -->
-
-        <div
-            class="help-box"
-            id="helpBox">
-
-            <div class="help-title">
-                A LITTLE MORE HELP
             </div>
 
-            <div id="helpText"></div>
-
-        </div>
+        </article>
 
 
-        <button
-            class="help-button"
-            id="helpButton"
-            onclick="nextHelp()">
+        <!-- CHALLENGE -->
 
-            NEED SOME HELP?
+        <article
+            class="card"
+            id="challengeCard">
 
-        </button>
+            <a
+                class="card-link"
+                href="challenge.html"
+                aria-label="Open The Challenge">
+            </a>
+
+            <div class="card-content">
+
+                <div class="card-number">
+                    02 · DISCOVER
+                </div>
+
+                <h2>
+                    The Challenge
+                </h2>
+
+                <p>
+                    The scenario leaves a trail.
+                    Follow it carefully and discover
+                    what waits beyond the obvious.
+                </p>
+
+                <span class="card-action">
+                    FOLLOW THE TRAIL →
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- LISTENING -->
+
+        <article
+            class="card listening locked"
+            id="listeningCard">
+
+            <div
+                class="lock-visual"
+                id="lockVisual">
+                🔒
+            </div>
+
+            <div class="card-content">
+
+                <div
+                    class="status"
+                    id="listeningStatus">
+                    LISTENING ARCHIVE · LOCKED
+                </div>
+
+                <h2>
+                    The Reflection Voice
+                </h2>
+
+                <p id="listeningText">
+                    The voice waits beyond the path.
+                    Complete the challenge to unlock it.
+                </p>
+
+                <span
+                    class="card-action"
+                    id="listeningAction">
+                    FOLLOW THE TRAIL →
+                </span>
+
+            </div>
+
+        </article>
 
     </section>
 
 
-    <!-- NAVIGATION -->
+    <!-- DIRECT ACCESS -->
 
-    <div class="bottom-nav">
+    <div class="direct">
 
-        <a href="8b.html">
-            ← BACK TO GROUP 8B
-        </a>
+        <p>
+            Prefer another route? You can enter directly,
+            but the discovery will be skipped.
+        </p>
 
-        <a href="scenario.html">
-            BACK TO SCENARIO
-        </a>
-
-        <a href="index.html">
-            ARCHIVE
+        <a href="access-confirm.html">
+            A DIFFERENT WAY FORWARD →
         </a>
 
     </div>
 
 
-    <!-- DIRECT ACCESS -->
+    <!-- BOTTOM -->
 
-    <section class="access">
+    <div class="bottom">
 
-        <p>
-
-            There is another route.
-
-            <br>
-
-            It skips the search, clues and discovery.
-
-        </p>
-
-        <a href="access-confirm.html">
-
-            A DIFFERENT WAY FORWARD →
-
+        <a href="index.html">
+            ← BACK TO ARCHIVE
         </a>
 
-    </section>
-
+    </div>
 
 </div>
 
 
-<!-- SUCCESS -->
+<!-- LOCK MODAL -->
 
 <div
-    class="success-screen"
-    id="successScreen">
+    class="lock-modal"
+    id="lockModal"
+    aria-hidden="true">
 
-    <div class="success-content">
+    <div
+        class="lock-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="lockTitle">
 
-        <div class="success-mark">
-            ✦
+        <div class="modal-symbol">
+            ◇
         </div>
 
-        <h2>
-            Access Granted
+        <div class="modal-eyebrow">
+            LISTENING ARCHIVE · ACCESS RESTRICTED
+        </div>
+
+        <h2 id="lockTitle">
+            Reflection Locked
         </h2>
 
-        <p>
-
-            You found what was hidden.
-
-            <br><br>
-
-            The answer was not the final stop.
-            It was the point where the reflection began.
-
+        <p class="modal-main">
+            The voice is not lost.
+            It is simply not yours yet.
         </p>
 
+        <p class="modal-sub">
+            The reflection remains behind the path
+            you have not completed.
+            Follow the trail to unlock it —
+            or choose another way forward.
+        </p>
 
-        <a
-            class="enter-reflection"
-            href="8b.html"
-            onclick="prepareReturn()">
+        <div class="modal-actions">
 
-            RETURN TO GROUP 8B →
+            <a
+                class="modal-button primary"
+                href="challenge.html">
+                GO TO THE CHALLENGE →
+            </a>
 
-        </a>
+            <a
+                class="modal-button"
+                href="access-confirm.html">
+                A DIFFERENT WAY FORWARD →
+            </a>
+
+            <button
+                class="modal-button close"
+                id="closeModal"
+                type="button">
+                CLOSE
+            </button>
+
+        </div>
 
     </div>
 
@@ -904,330 +1202,377 @@ input:focus{
    STATE
 ========================= */
 
-let attempts = 0;
+const unlocked =
+    localStorage.getItem(
+        "reflection8bUnlocked"
+    ) === "true";
 
-let helpStep = 0;
-
-let automaticHintsShown = 0;
-
-const finalAnswer =
-    "understanding is not the final stop";
-
-
-/* =========================
-   HINTS
-========================= */
-
-const hints = [
-
-    "Return to the scenario. The clues are part of the story, not separate from it.",
-
-    "The strange symbols are a direction, not necessarily the final answer.",
-
-    "The message tells you to look back. Take that instruction seriously.",
-
-    "Go back to the earlier coded English line in the scenario and examine it again.",
-
-    "The coded English line uses a simple shift. Each letter has moved forward by two places.",
-
-    "The final answer is a complete English sentence. It is written entirely in lowercase."
-
-];
+const justUnlocked =
+    localStorage.getItem(
+        "reflection8bJustUnlocked"
+    ) === "true";
 
 
 /* =========================
-   EXTRA HELP
+   ELEMENTS
 ========================= */
 
-const helps = [
-
-    "The answer is not the rune message itself. The rune message points somewhere else.",
-
-    "One of the messages in the scenario asks you to reconsider something you have already seen.",
-
-    "The words “look back” are an instruction. Do not treat them as the final answer.",
-
-    "Return to the earlier coded English sentence. There is a transformation hidden inside it.",
-
-    "Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.",
-
-    "You are very close. The final sentence begins with the idea of understanding and ends with the idea of a stop."
-
-];
-
-
-/* =========================
-   NORMALIZE
-========================= */
-
-function normalize(value){
-
-    return value
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g," ");
-
-}
-
-
-/* =========================
-   CHECK ANSWER
-========================= */
-
-function checkAnswer(){
-
-    const input =
-        document.getElementById("answer");
-
-    const value =
-        normalize(input.value);
-
-
-    if(value === finalAnswer){
-
-        localStorage.setItem(
-            "reflection8bUnlocked",
-            "true"
-        );
-
-        localStorage.setItem(
-            "reflection8bJustUnlocked",
-            "true"
-        );
-
-        document
-            .getElementById("successScreen")
-            .style.display = "flex";
-
-        return;
-
-    }
-
-
-    attempts++;
-
-
-    document
-        .getElementById("message")
-        .textContent =
-        "Not quite. Something along the path may still be pointing you backward.";
-
-
-    /*
-       Every wrong answer reveals
-       one new hint.
-
-       Previous hints remain visible.
-    */
-
-    if(
-        automaticHintsShown <
-        hints.length
-    ){
-
-        addHint(
-            automaticHintsShown
-        );
-
-        automaticHintsShown++;
-
-    }
-
-
-    input.select();
-
-}
-
-
-/* =========================
-   ADD HINT
-========================= */
-
-function addHint(index){
-
-    const history =
-        document.getElementById(
-            "hintHistory"
-        );
-
-
-    /*
-       Prevent duplicates.
-    */
-
-    if(
-        document.getElementById(
-            "hint-" + index
-        )
-    ){
-
-        return;
-
-    }
-
-
-    const item =
-        document.createElement("div");
-
-    item.className =
-        "hint-item new";
-
-    item.id =
-        "hint-" + index;
-
-
-    const number =
-        document.createElement("div");
-
-    number.className =
-        "hint-number";
-
-    number.textContent =
-        "HINT " +
-        String(index + 1).padStart(2,"0");
-
-
-    const text =
-        document.createElement("div");
-
-    text.className =
-        "hint-text";
-
-    text.textContent =
-        hints[index];
-
-
-    item.appendChild(number);
-
-    item.appendChild(text);
-
-    history.appendChild(item);
-
-
-    /*
-       After the entrance animation,
-       remove the temporary new state.
-    */
-
-    setTimeout(function(){
-
-        item.classList.remove("new");
-
-    },900);
-
-}
-
-
-/* =========================
-   EXTRA HELP
-========================= */
-
-function nextHelp(){
-
-    const box =
-        document.getElementById(
-            "helpBox"
-        );
-
-    const text =
-        document.getElementById(
-            "helpText"
-        );
-
-    const button =
-        document.getElementById(
-            "helpButton"
-        );
-
-
-    if(
-        helpStep >= helps.length
-    ){
-
-        return;
-
-    }
-
-
-    box.style.display = "block";
-
-    text.textContent =
-        helps[helpStep];
-
-
-    helpStep++;
-
-
-    /*
-       Also preserve the extra help
-       as part of the visible history.
-    */
-
-    if(
-        automaticHintsShown <
-        hints.length
-    ){
-
-        addHint(
-            automaticHintsShown
-        );
-
-        automaticHintsShown++;
-
-    }
-
-
-    if(
-        helpStep < helps.length
-    ){
-
-        button.textContent =
-            "NEED MORE HELP?";
-
-    }else{
-
-        button.textContent =
-            "NO MORE HELP AVAILABLE";
-
-        button.disabled = true;
-
-    }
-
-}
-
-
-/* =========================
-   RETURN PREPARATION
-========================= */
-
-function prepareReturn(){
-
-    localStorage.setItem(
-        "reflection8bJustUnlocked",
-        "true"
+const challengeCard =
+    document.getElementById(
+        "challengeCard"
     );
 
+const listeningCard =
+    document.getElementById(
+        "listeningCard"
+    );
+
+const visual =
+    document.getElementById(
+        "lockVisual"
+    );
+
+const status =
+    document.getElementById(
+        "listeningStatus"
+    );
+
+const text =
+    document.getElementById(
+        "listeningText"
+    );
+
+const action =
+    document.getElementById(
+        "listeningAction"
+    );
+
+const lockModal =
+    document.getElementById(
+        "lockModal"
+    );
+
+const closeModal =
+    document.getElementById(
+        "closeModal"
+    );
+
+
+/* =========================
+   UNLOCKED STATE
+========================= */
+
+if(unlocked){
+
+    listeningCard.classList.remove(
+        "locked"
+    );
+
+    listeningCard.classList.add(
+        "unlocked"
+    );
+
+    visual.textContent = "🔓";
+
+    status.textContent =
+        "LISTENING ARCHIVE · UNLOCKED";
+
+    text.textContent =
+        "The written reflection can now be read and heard together.";
+
+    action.textContent =
+        "ENTER THE REFLECTION ROOM →";
+
+
+    listeningCard.onclick =
+        function(){
+
+            window.location.href =
+                "reflection-room.html";
+
+        };
+
+
+    /*
+       Only animate the Challenge away
+       on the first return immediately
+       after solving it.
+    */
+
+    if(
+        justUnlocked &&
+        challengeCard
+    ){
+
+        animateChallengeRemoval();
+
+    }else if(
+        challengeCard
+    ){
+
+        challengeCard.remove();
+
+    }
+
 }
 
 
 /* =========================
-   ENTER KEY
+   LOCKED STATE
 ========================= */
 
-document
-    .getElementById("answer")
-    .addEventListener(
-        "keydown",
+else{
+
+    listeningCard.onclick =
         function(event){
 
-            if(event.key === "Enter"){
+            event.preventDefault();
 
-                checkAnswer();
+            openLockModal();
 
-            }
+        };
+
+}
+
+
+/* =========================
+   CHALLENGE REMOVAL
+========================= */
+
+function animateChallengeRemoval(){
+
+    /*
+       Give the browser one frame
+       before beginning the transition.
+    */
+
+    requestAnimationFrame(
+        function(){
+
+            challengeCard.classList.add(
+                "challenge-removing"
+            );
 
         }
     );
+
+
+    /*
+       After the visual transition,
+       remove the card from the DOM.
+
+       The remaining cards naturally
+       reflow into the available space.
+    */
+
+    setTimeout(
+        function(){
+
+            if(challengeCard){
+
+                challengeCard.remove();
+
+            }
+
+            localStorage.removeItem(
+                "reflection8bJustUnlocked"
+            );
+
+        },
+        620
+    );
+
+}
+
+
+/* =========================
+   OPEN MODAL
+========================= */
+
+function openLockModal(){
+
+    lockModal.classList.add(
+        "active"
+    );
+
+    lockModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+    setTimeout(
+        function(){
+
+            closeModal.focus();
+
+        },
+        100
+    );
+
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeLockModal(){
+
+    lockModal.classList.remove(
+        "active"
+    );
+
+    lockModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+closeModal.addEventListener(
+    "click",
+    closeLockModal
+);
+
+
+/* =========================
+   CLICK OUTSIDE
+========================= */
+
+lockModal.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target === lockModal
+        ){
+
+            closeLockModal();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ESC
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape" &&
+            lockModal.classList.contains(
+                "active"
+            )
+        ){
+
+            closeLockModal();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   SCENARIO → CHALLENGE
+========================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const focusTarget =
+    params.get("focus");
+
+
+if(
+    focusTarget === "challenge" &&
+    !unlocked &&
+    challengeCard
+){
+
+    setTimeout(
+        function(){
+
+            challengeCard.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+
+            challengeCard.classList.add(
+                "challenge-focus"
+            );
+
+
+            const label =
+                document.createElement(
+                    "div"
+                );
+
+            label.className =
+                "focus-label";
+
+            label.textContent =
+                "THIS IS WHERE THE TRAIL CONTINUES";
+
+            challengeCard.appendChild(
+                label
+            );
+
+
+            setTimeout(
+                function(){
+
+                    challengeCard.classList.remove(
+                        "challenge-focus"
+                    );
+
+                },
+                6500
+            );
+
+
+            setTimeout(
+                function(){
+
+                    if(
+                        label &&
+                        label.parentNode
+                    ){
+
+                        label.remove();
+
+                    }
+
+                },
+                7000
+            );
+
+        },
+        500
+    );
+
+}
 
 </script>
 
