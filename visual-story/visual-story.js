@@ -1,199 +1,197 @@
-(() => {
-  const TOTAL = 12;
-  const pages = Array.from({ length: TOTAL }, (_, i) => ({
-    number: i + 1,
-    image: `visual-story/pages/page-${String(i + 1).padStart(2, '0')}.jpg`,
-    // Add optional text later, e.g.:
-    // kicker: 'THE QUESTION',
-    // caption: 'A short line that belongs to this frame.'
-  }));
+/* =========================================================
+   REFLECTION — VISUAL STORY / VERTICAL READER
+   ========================================================= */
 
-  const qs = (s) => document.querySelector(s);
-  const stage = qs('#stage');
-  const frame = qs('#imageFrame');
-  const image = qs('#storyImage');
-  const placeholder = qs('#imagePlaceholder');
-  const placeholderNumber = qs('#placeholderNumber');
-  const counter = qs('#pageCounter');
-  const label = qs('#pageLabel');
-  const dots = qs('#dots');
-  const prev = qs('#prevButton');
-  const next = qs('#nextButton');
-  const zoom = qs('#zoomButton');
-  const fullscreen = qs('#fullscreenButton');
-  const hint = qs('#hint');
-  const endScreen = qs('#endScreen');
-  const infoButton = qs('#infoButton');
-  const infoModal = qs('#infoModal');
-  const closeInfo = qs('#closeInfo');
-  const caption = qs('#caption');
-  const captionKicker = qs('#captionKicker');
-  const captionText = qs('#captionText');
+const TOTAL = 12;
 
-  let current = 0;
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let isDragging = false;
+/*
+  IMPORTANT:
+  The filenames below must match GitHub EXACTLY.
+  Example:
+  visual-story/pages/page-01.jpg
+  visual-story/pages/page-02.jpg
+  ...
+  visual-story/pages/page-12.jpg
 
-  pages.forEach((p, i) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'vs-dot';
-    dot.setAttribute('aria-label', `Go to page ${i + 1}`);
-    dot.addEventListener('click', () => goTo(i));
-    dots.appendChild(dot);
+  GitHub Pages is case-sensitive.
+*/
 
-    const preload = new Image();
-    preload.src = p.image;
+const pages = Array.from({ length: TOTAL }, (_, index) => {
+  const number = index + 1;
+  const padded = String(number).padStart(2, "0");
+
+  return {
+    number,
+    image: `visual-story/pages/page-${padded}.jpg`
+  };
+});
+
+const reader = document.getElementById("storyReader");
+const progressFill = document.getElementById("progressFill");
+const topButton = document.getElementById("topButton");
+
+function createFrame(page) {
+  const frame = document.createElement("article");
+  frame.className = "story-frame";
+  frame.dataset.page = page.number;
+
+  const head = document.createElement("div");
+  head.className = "story-frame-head";
+  head.innerHTML = `
+    <span class="frame-title">BEYOND WHAT WE SEE</span>
+    <span class="story-frame-number">FRAME ${String(page.number).padStart(2, "0")} / ${TOTAL}</span>
+  `;
+
+  const wrap = document.createElement("div");
+  wrap.className = "story-image-wrap";
+
+  const image = document.createElement("img");
+  image.className = "story-image";
+  image.src = page.image;
+  image.alt = `Beyond What We See — frame ${page.number}`;
+  image.loading = page.number === 1 ? "eager" : "lazy";
+  image.decoding = "async";
+  image.draggable = false;
+
+  image.addEventListener("error", () => {
+    wrap.classList.add("is-error");
+    wrap.innerHTML = `
+      <div class="story-error">
+        <strong>FRAME ${String(page.number).padStart(2, "0")} NOT FOUND</strong>
+        <div>The image could not be loaded from the expected path.</div>
+        <code>${page.image}</code>
+      </div>
+    `;
   });
 
-  function render(index, animate = true) {
-    current = Math.max(0, Math.min(TOTAL - 1, index));
-    const p = pages[current];
+  wrap.appendChild(image);
 
-    counter.textContent = `${String(p.number).padStart(2, '0')} / ${TOTAL}`;
-    label.textContent = 'BEYOND WHAT WE SEE';
-    placeholderNumber.textContent = String(p.number).padStart(2, '0');
-    placeholder.querySelector('.placeholder-note').textContent = `Upload page-${String(p.number).padStart(2, '0')}.jpg to visual-story/pages/`;
+  /*
+    Optional caption:
+    Add a caption here later without changing the image itself.
+    For now we keep the visual story clean.
+  */
 
-    image.classList.remove('loaded');
-    image.removeAttribute('src');
-    frame.classList.remove('zoomed');
-    zoom.textContent = 'LOOK CLOSER';
+  frame.append(head, wrap);
+  return frame;
+}
 
-    if (animate) {
-      stage.classList.remove('is-changing');
-      void stage.offsetWidth;
-      stage.classList.add('is-changing');
-    }
+function render() {
+  const fragment = document.createDocumentFragment();
 
-    image.onload = () => {
-      placeholder.style.display = 'none';
-      image.classList.add('loaded');
-    };
-    image.onerror = () => {
-      image.classList.remove('loaded');
-      placeholder.style.display = 'flex';
-    };
-    image.src = p.image;
-
-    if (p.caption || p.kicker) {
-      caption.hidden = false;
-      captionKicker.textContent = p.kicker || '';
-      captionText.textContent = p.caption || '';
-    } else {
-      caption.hidden = true;
-    }
-
-    document.querySelectorAll('.vs-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-    prev.disabled = current === 0;
-    next.disabled = false;
-
-    hint.textContent = current === TOTAL - 1
-      ? 'NEXT → REVEAL THE ENDING'
-      : 'SWIPE · USE ← → · TAP THE SIDES';
-  }
-
-  function goTo(index) {
-    endScreen.classList.remove('visible');
-    endScreen.setAttribute('aria-hidden', 'true');
-    render(index, true);
-  }
-
-  function goNext() {
-    if (current < TOTAL - 1) {
-      goTo(current + 1);
-    } else {
-      endScreen.classList.add('visible');
-      endScreen.setAttribute('aria-hidden', 'false');
-    }
-  }
-
-  function goPrev() {
-    if (current > 0) goTo(current - 1);
-  }
-
-  prev.addEventListener('click', goPrev);
-  next.addEventListener('click', goNext);
-
-  zoom.addEventListener('click', () => {
-    frame.classList.toggle('zoomed');
-    zoom.textContent = frame.classList.contains('zoomed') ? 'RESET VIEW' : 'LOOK CLOSER';
+  pages.forEach(page => {
+    fragment.appendChild(createFrame(page));
   });
 
-  fullscreen.addEventListener('click', async () => {
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-        fullscreen.textContent = 'EXIT FULLSCREEN';
-      } else {
-        await document.exitFullscreen();
-        fullscreen.textContent = 'FULLSCREEN';
-      }
-    } catch (_) {
-      fullscreen.textContent = 'FULLSCREEN';
-    }
-  });
+  reader.appendChild(fragment);
+}
 
-  document.addEventListener('fullscreenchange', () => {
-    fullscreen.textContent = document.fullscreenElement ? 'EXIT FULLSCREEN' : 'FULLSCREEN';
-  });
+function updateProgress() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-  document.addEventListener('keydown', (event) => {
-    if (!infoModal.hidden) {
-      if (event.key === 'Escape') closeInfoModal();
-      return;
-    }
-    if (event.key === 'ArrowRight' || event.key === 'PageDown') goNext();
-    if (event.key === 'ArrowLeft' || event.key === 'PageUp') goPrev();
-    if (event.key.toLowerCase() === 'f') fullscreen.click();
-    if (event.key.toLowerCase() === 'z') zoom.click();
-    if (event.key === 'Escape') endScreen.classList.remove('visible');
-  });
+  const progress = scrollHeight <= 0
+    ? 0
+    : Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100));
 
-  stage.addEventListener('click', (event) => {
-    if (isDragging) return;
-    const rect = stage.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    if (x < rect.width * .28) goPrev();
-    else if (x > rect.width * .72) goNext();
-  });
-
-  stage.addEventListener('touchstart', (event) => {
-    const t = event.changedTouches[0];
-    touchStartX = t.clientX;
-    touchStartY = t.clientY;
-    isDragging = false;
-  }, { passive: true });
-
-  stage.addEventListener('touchmove', (event) => {
-    const t = event.changedTouches[0];
-    if (Math.abs(t.clientX - touchStartX) > 12) isDragging = true;
-  }, { passive: true });
-
-  stage.addEventListener('touchend', (event) => {
-    const t = event.changedTouches[0];
-    const dx = t.clientX - touchStartX;
-    const dy = t.clientY - touchStartY;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      if (dx < 0) goNext(); else goPrev();
-    }
-    setTimeout(() => { isDragging = false; }, 0);
-  }, { passive: true });
-
-  function openInfoModal() {
-    infoModal.hidden = false;
-    closeInfo.focus();
+  /*
+    Desktop uses height; mobile uses width.
+  */
+  if (window.matchMedia("(max-width: 700px)").matches) {
+    progressFill.style.width = `${progress}%`;
+    progressFill.style.height = "100%";
+  } else {
+    progressFill.style.height = `${progress}%`;
+    progressFill.style.width = "100%";
   }
-  function closeInfoModal() {
-    infoModal.hidden = true;
-    infoButton.focus();
-  }
-  infoButton.addEventListener('click', openInfoModal);
-  closeInfo.addEventListener('click', closeInfoModal);
-  infoModal.querySelector('[data-close-info]').addEventListener('click', closeInfoModal);
+}
 
-  const params = new URLSearchParams(location.search);
-  const requestedPage = parseInt(params.get('page'), 10);
-  render(Number.isFinite(requestedPage) ? requestedPage - 1 : 0, false);
-})();
+function observeFrames() {
+  const frames = document.querySelectorAll(".story-frame");
+
+  if (!("IntersectionObserver" in window)) {
+    frames.forEach(frame => frame.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.08
+    }
+  );
+
+  frames.forEach(frame => observer.observe(frame));
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* Click an image to see it larger without leaving the story */
+function setupLightbox() {
+  const lightbox = document.createElement("div");
+  lightbox.className = "image-lightbox";
+  lightbox.setAttribute("aria-hidden", "true");
+
+  const image = document.createElement("img");
+  image.alt = "";
+
+  const close = document.createElement("button");
+  close.className = "lightbox-close";
+  close.type = "button";
+  close.setAttribute("aria-label", "Close image");
+  close.textContent = "×";
+
+  lightbox.append(image, close);
+  document.body.appendChild(lightbox);
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    image.src = "";
+  }
+
+  document.querySelectorAll(".story-image").forEach(source => {
+    source.addEventListener("click", () => {
+      image.src = source.src;
+      image.alt = source.alt;
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  close.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeLightbox();
+  });
+}
+
+/* Initial render */
+render();
+observeFrames();
+setupLightbox();
+
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+
+topButton.addEventListener("click", scrollToTop);
+
+updateProgress();
