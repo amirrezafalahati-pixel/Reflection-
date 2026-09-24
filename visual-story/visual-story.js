@@ -12,6 +12,7 @@ const TOTAL = 12;
   visual-story/pages/page-02.jpg
   ...
   visual-story/pages/page-12.jpg
+  or .png — both are supported.
 
   GitHub Pages is case-sensitive.
 */
@@ -22,6 +23,7 @@ const pages = Array.from({ length: TOTAL }, (_, index) => {
 
   return {
     number,
+    base: `visual-story/pages/page-${padded}`,
     image: `visual-story/pages/page-${padded}.jpg`
   };
 });
@@ -53,13 +55,26 @@ function createFrame(page) {
   image.decoding = "async";
   image.draggable = false;
 
+  let triedPng = false;
+
   image.addEventListener("error", () => {
+    /*
+      The current archive contains both JPG and PNG frames.
+      Try the alternate extension automatically before reporting
+      a missing frame. This also makes future image replacement easier.
+    */
+    if (!triedPng && image.src.toLowerCase().endsWith(".jpg")) {
+      triedPng = true;
+      image.src = `${page.base}.png`;
+      return;
+    }
+
     wrap.classList.add("is-error");
     wrap.innerHTML = `
       <div class="story-error">
         <strong>FRAME ${String(page.number).padStart(2, "0")} NOT FOUND</strong>
-        <div>The image could not be loaded from the expected path.</div>
-        <code>${page.image}</code>
+        <div>The image could not be loaded as JPG or PNG.</div>
+        <code>${page.base}.jpg</code>
       </div>
     `;
   });

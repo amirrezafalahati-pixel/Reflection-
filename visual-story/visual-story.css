@@ -206,12 +206,12 @@
 .story-reader {
   width: min(1000px, 100%);
   margin: 0 auto;
-  padding: 88px 0 50px;
+  padding: 64px 0 44px;
 }
 
 /* Each image is now a "page" in one continuous vertical document */
 .story-frame {
-  margin: 0 auto 105px;
+  margin: 0 auto 62px;
   opacity: 0;
   transform: translateY(28px);
   transition:
@@ -329,8 +329,33 @@
   display: block;
   width: 72px;
   height: 1px;
-  margin: 86px auto 0;
+  margin: 44px auto 0;
   background: var(--story-line);
+}
+
+
+/* A quiet continuity rail keeps the frames visually connected. */
+@media (min-width: 701px) {
+  .story-reader {
+    position: relative;
+  }
+
+  .story-reader::before {
+    content: "";
+    position: absolute;
+    top: 36px;
+    bottom: 36px;
+    left: -24px;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(231,228,220,.09) 8%,
+      rgba(231,228,220,.09) 92%,
+      transparent
+    );
+    pointer-events: none;
+  }
 }
 
 /* End */
@@ -490,11 +515,11 @@
   }
 
   .story-reader {
-    padding: 62px 0 20px;
+    padding: 48px 0 16px;
   }
 
   .story-frame {
-    margin-bottom: 72px;
+    margin-bottom: 46px;
   }
 
   .story-frame-head {
@@ -518,7 +543,7 @@
   }
 
   .story-frame:not(:last-child)::after {
-    margin-top: 60px;
+    margin-top: 34px;
   }
 
   .story-ending {
