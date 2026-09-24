@@ -262,6 +262,17 @@ h1 {
         box-shadow .5s ease;
 }
 
+.voice-symbol .lock-icon{
+    width:30px;
+    height:30px;
+    display:block;
+    color:#aeb8c2;
+}
+
+.voice-symbol .lock-icon *{
+    vector-effect:non-scaling-stroke;
+}
+
 .listening:hover .voice-symbol {
     transform: translateY(-2px);
 
@@ -300,7 +311,7 @@ h1 {
 }
 
 .unlocked .voice-symbol {
-    color: #d9e0e6;
+    color: #c8d0d7;
 }
 
 .unlocked .voice-title {
@@ -1338,6 +1349,8 @@ const voiceStatus =
     );
 
 
+voiceSymbol.innerHTML = getLockIcon(false);
+
 /* ==================================================
    NAVIGATION
 ================================================== */
@@ -1418,6 +1431,20 @@ function openListening() {
 }
 
 
+function getLockIcon(open = false){
+    const shackle = open
+        ? '<path d="M10 13V9.5a5 5 0 0 1 10 0" />'
+        : '<path d="M10 13V9.5a5 5 0 0 1 10 0v3.5" />';
+
+    return `
+      <svg class="lock-icon" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        ${shackle}
+        <rect x="6.5" y="13" width="17" height="12" rx="2.2" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="15" cy="18.7" r="1.35" fill="currentColor"/>
+        <path d="M15 20v2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>`;
+}
+
 function unlockListening() {
 
     listeningCard.classList.remove(
@@ -1435,8 +1462,7 @@ function unlockListening() {
       Reflection Room.
     */
 
-    voiceSymbol.textContent =
-        "🔓";
+    voiceSymbol.innerHTML = getLockIcon(true);
 
     voiceTitle.textContent =
         "Reflection Voice";

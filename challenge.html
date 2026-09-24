@@ -241,6 +241,13 @@ input:focus{
 }
 
 
+
+.hint-list,.help-list{display:flex;flex-direction:column;gap:10px;}
+.hint-item,.help-item{position:relative;padding:12px 14px 12px 16px;border-left:1px solid rgba(231,228,220,.14);background:rgba(255,255,255,.018);color:#aaa9a3;line-height:1.8;font-size:13px;animation:hintArrive .45s cubic-bezier(.2,.7,.2,1);}
+.hint-item::before,.help-item::before{content:"";position:absolute;left:-2px;top:12px;width:3px;height:14px;background:rgba(231,228,220,.34);}
+.hint-item .hint-index,.help-item .help-index{display:block;margin-bottom:4px;color:#777c80;font-size:8px;letter-spacing:2px;}
+@keyframes hintArrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
 /* HELP */
 
 .help-box{
@@ -677,7 +684,7 @@ input:focus{
                 HINT
             </div>
 
-            <div id="hintText"></div>
+            <div id="hintList" class="hint-list"></div>
 
         </div>
 
@@ -692,7 +699,7 @@ input:focus{
                 A LITTLE MORE HELP
             </div>
 
-            <div id="helpText"></div>
+            <div id="helpList" class="help-list"></div>
 
         </div>
 
@@ -789,179 +796,90 @@ input:focus{
 
 <script>
 
-let attempts = 0;
+let attempts = Number(localStorage.getItem("reflection8bAttempts") || 0);
+let helpStep = Number(localStorage.getItem("reflection8bHelpStep") || 0);
 
-let helpStep = 0;
+const finalAnswer = "understanding is not the final stop";
 
-
-const finalAnswer =
-    "understanding is not the final stop";
-
-
-const helps = [
-
-    "Return to the scenario. The clues are part of the story, not separate from it.",
-
-    "The strange symbols are a direction, not necessarily the final answer.",
-
-    "The message tells you to look back. Take that instruction seriously.",
-
-    "Go back to the earlier coded line in the scenario and examine it again.",
-
-    "The coded English line uses a simple shift. Each letter has moved forward by two places.",
-
-    "The final answer is a complete English sentence. It is written entirely in lowercase."
-
+const automaticHints = [
+"The answer is not the rune message itself. The rune message points somewhere else.",
+"One of the messages in the scenario asks you to reconsider something you have already seen.",
+"The words “look back” are an instruction. Do not treat them as the final answer.",
+"Return to the earlier coded English sentence. There is a transformation hidden inside it.",
+"Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.",
+"The final answer is a complete English sentence. It is written entirely in lowercase."
 ];
 
+const helps = [
+"Return to the scenario. The clues are part of the story, not separate from it.",
+"The strange symbols are a direction, not necessarily the final answer.",
+"The message tells you to look back. Take that instruction seriously.",
+"Go back to the earlier coded line in the scenario and examine it again.",
+"The coded English line uses a simple shift. Each letter has moved forward by two places.",
+"The final answer is a complete English sentence. It is written entirely in lowercase."
+];
 
-function normalize(value){
+function normalize(value){return value.trim().toLowerCase().replace(/\s+/g," ");}
 
-    return value
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g," ");
-
+function addHint(text,index){
+ const list=document.getElementById("hintList");
+ if(!list || list.querySelector(`[data-hint="${index}"]`)) return;
+ const item=document.createElement("div"); item.className="hint-item"; item.dataset.hint=index;
+ item.innerHTML=`<span class="hint-index">HINT ${String(index).padStart(2,"0")}</span>${text}`;
+ list.appendChild(item); document.getElementById("hintBox").style.display="block";
 }
 
+function addHelp(text,index){
+ const list=document.getElementById("helpList");
+ if(!list || list.querySelector(`[data-help="${index}"]`)) return;
+ const item=document.createElement("div"); item.className="help-item"; item.dataset.help=index;
+ item.innerHTML=`<span class="help-index">GUIDE ${String(index).padStart(2,"0")}</span>${text}`;
+ list.appendChild(item); document.getElementById("helpBox").style.display="block";
+}
+
+function restoreHints(){
+ const count=Math.min(automaticHints.length, Math.floor(attempts/2));
+ for(let i=0;i<count;i++) addHint(automaticHints[i],i+1);
+ if(attempts>=15) addHint("<strong>understanding is not the ...</strong>",99);
+}
+
+function restoreHelp(){
+ for(let i=0;i<helpStep && i<helps.length;i++) addHelp(helps[i],i+1);
+ updateHelpButton();
+}
 
 function checkAnswer(){
-
-    const input =
-        document.getElementById("answer");
-
-    const value =
-        normalize(input.value);
-
-
-    if(value === finalAnswer){
-
-        localStorage.setItem(
-            "reflection8bUnlocked",
-            "true"
-        );
-
-        document
-            .getElementById("successScreen")
-            .style.display = "flex";
-
-        return;
-
-    }
-
-
-    attempts++;
-
-
-    document
-        .getElementById("message")
-        .textContent =
-        "Not quite. Something along the path may still be pointing you backward.";
-
-
-    showHint();
-
-    input.select();
-
+ const input=document.getElementById("answer"); const value=normalize(input.value);
+ if(value===finalAnswer){
+  localStorage.setItem("reflection8bUnlocked","true");
+  localStorage.removeItem("reflection8bAttempts"); localStorage.removeItem("reflection8bHelpStep");
+  document.getElementById("successScreen").style.display="flex"; return;
+ }
+ attempts++; localStorage.setItem("reflection8bAttempts",String(attempts));
+ document.getElementById("message").textContent="Not quite. Something along the path may still be pointing you backward.";
+ showHint(); input.select();
 }
-
 
 function showHint(){
-
-    const box =
-        document.getElementById("hintBox");
-
-    const text =
-        document.getElementById("hintText");
-
-
-    box.style.display = "block";
-
-
-    if(attempts === 1){
-
-        text.textContent =
-            "The answer is not the rune message itself. The rune message points somewhere else.";
-
-    }
-
-    else if(attempts < 4){
-
-        text.textContent =
-            "One of the messages in the scenario asks you to reconsider something you have already seen.";
-
-    }
-
-    else if(attempts < 7){
-
-        text.textContent =
-            "The words “look back” are an instruction. Do not treat them as the final answer.";
-
-    }
-
-    else if(attempts < 10){
-
-        text.textContent =
-            "Return to the earlier coded English sentence. There is a transformation hidden inside it.";
-
-    }
-
-    else if(attempts < 15){
-
-        text.textContent =
-            "Each letter of the earlier coded sentence has been shifted. Try moving the letters backward.";
-
-    }
-
-    else{
-
-        text.innerHTML =
-            "You have looked long enough.<br><br>" +
-            "<strong>understanding is not the ...</strong>";
-
-    }
-
+ const count=Math.min(automaticHints.length,Math.floor(attempts/2));
+ for(let i=0;i<count;i++) addHint(automaticHints[i],i+1);
+ if(attempts>=15) addHint("<strong>understanding is not the ...</strong>",99);
 }
 
+function updateHelpButton(){
+ const button=document.getElementById("helpButton"); if(!button) return;
+ if(helpStep<helps.length){button.textContent=helpStep===0?"NEED SOME HELP?":"NEED MORE HELP?";button.disabled=false;}
+ else{button.textContent="NO MORE HELP AVAILABLE";button.disabled=true;}
+}
 
 function nextHelp(){
-
-    const box =
-        document.getElementById("helpBox");
-
-    const text =
-        document.getElementById("helpText");
-
-    const button =
-        document.getElementById("helpButton");
-
-
-    box.style.display = "block";
-
-
-    text.textContent =
-        helps[helpStep];
-
-
-    helpStep++;
-
-
-    if(helpStep < helps.length){
-
-        button.textContent =
-            "NEED MORE HELP?";
-
-    }else{
-
-        button.textContent =
-            "NO MORE HELP AVAILABLE";
-
-        button.disabled = true;
-
-    }
-
+ if(helpStep>=helps.length) return;
+ addHelp(helps[helpStep],helpStep+1); helpStep++;
+ localStorage.setItem("reflection8bHelpStep",String(helpStep)); updateHelpButton();
 }
 
+restoreHints();
+restoreHelp();
 
 document
     .getElementById("answer")
