@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080a0d">
+<meta name="description" content="Beyond What We See — a visual story from Reflection 8B.">
+<title>Beyond What We See · Visual Story</title>
+<link rel="stylesheet" href="shared-theme.css">
+<link rel="stylesheet" href="visual-story/visual-story.css">
+</head>
+<body class="visual-story-page">
+
+<div class="vs-shell" id="vsShell">
+
+  <header class="vs-topbar">
+    <a class="vs-back" href="8b.html">← GROUP 8B</a>
+    <div class="vs-brand">REFLECTION ARCHIVE · VISUAL STORY</div>
+    <button class="vs-text-button" id="infoButton" type="button">ABOUT</button>
+  </header>
+
+  <main class="vs-main">
+    <section class="vs-reader" id="reader" aria-label="Visual Story reader">
+
+      <div class="vs-progress-row">
+        <span id="pageCounter">01 / 12</span>
+        <span id="pageLabel">BEYOND WHAT WE SEE</span>
+      </div>
+
+      <div class="vs-stage-wrap">
+        <button class="vs-nav vs-prev" id="prevButton" type="button" aria-label="Previous page">‹</button>
+
+        <div class="vs-stage" id="stage">
+          <div class="vs-image-frame" id="imageFrame">
+            <div class="vs-image-placeholder" id="imagePlaceholder">
+              <span class="placeholder-number" id="placeholderNumber">01</span>
+              <span class="placeholder-title">FINAL ARTWORK</span>
+              <span class="placeholder-note">Upload page-01.jpg to visual-story/pages/</span>
+            </div>
+            <img id="storyImage" alt="Visual Story page" draggable="false">
+            <div class="vs-image-shade"></div>
+          </div>
+
+          <div class="vs-caption" id="caption" hidden>
+            <div class="vs-caption-kicker" id="captionKicker"></div>
+            <div class="vs-caption-text" id="captionText"></div>
+          </div>
+        </div>
+
+        <button class="vs-nav vs-next" id="nextButton" type="button" aria-label="Next page">›</button>
+      </div>
+
+      <div class="vs-controls">
+        <button type="button" id="zoomButton">LOOK CLOSER</button>
+        <div class="vs-dots" id="dots" aria-label="Page navigation"></div>
+        <button type="button" id="fullscreenButton">FULLSCREEN</button>
+      </div>
+
+      <div class="vs-hint" id="hint">SWIPE · USE ← → · TAP THE SIDES</div>
+    </section>
+  </main>
+
+  <section class="vs-end" id="endScreen" aria-hidden="true">
+    <div class="vs-end-inner">
+      <div class="vs-end-mark">✦</div>
+      <div class="vs-eyebrow">THE VISUAL STORY ENDS HERE</div>
+      <h1>رمز چیست؟</h1>
+      <p>The story may end at the image. The reflection does not.</p>
+      <div class="vs-end-actions">
+        <a href="reflection-room.html">ENTER THE REFLECTION</a>
+        <a href="8b.html">RETURN TO GROUP 8B</a>
+        <a href="index.html">ARCHIVE</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="vs-modal" id="infoModal" hidden>
+  <div class="vs-modal-backdrop" data-close-info></div>
+  <div class="vs-modal-card" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <button class="vs-modal-close" id="closeInfo" type="button" aria-label="Close">×</button>
+    <div class="vs-eyebrow">VISUAL STORY</div>
+    <h2 id="infoTitle">Beyond What We See</h2>
+    <p>A visual interpretation of the ideas behind Reflection 8B — designed to be read slowly, one frame at a time.</p>
+    <p class="vs-modal-small">The final artwork can be added later without changing the reader. Place the images in <code>visual-story/pages/</code> using the names page-01.jpg through page-12.jpg.</p>
+  </div>
+</div>
+
+<script src="visual-story/visual-story.js"></script>
+</body>
+</html>

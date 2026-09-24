@@ -206,6 +206,15 @@ h1 {
     letter-spacing: 2px;
 }
 
+.visual-story-card .card-icon{
+    font-size:30px;
+    transform:rotate(-12deg);
+}
+
+.visual-story-card:hover .card-icon{
+    transform:rotate(0deg) scale(1.05);
+}
+
 /* =========================
    VOICE CARD
 ========================= */
@@ -1004,6 +1013,37 @@ button:hover {
         </div>
 
 
+        <!-- VISUAL STORY -->
+
+        <div
+            class="card visual-story-card"
+            onclick="openVisualStory()"
+        >
+
+            <div class="card-number">
+                02 · VISUAL STORY
+            </div>
+
+            <div class="card-icon">
+                ◌
+            </div>
+
+            <h2>
+                Beyond What We See
+            </h2>
+
+            <p>
+                Step inside a visual interpretation of the story —
+                one frame at a time.
+            </p>
+
+            <div class="card-status">
+                ENTER THE VISUAL STORY →
+            </div>
+
+        </div>
+
+
         <!-- CHALLENGE -->
 
         <div
@@ -1013,7 +1053,7 @@ button:hover {
         >
 
             <div class="card-number">
-                02 · CHALLENGE
+                03 · CHALLENGE
             </div>
 
             <div class="card-icon">
@@ -1257,6 +1297,10 @@ const voiceStatus =
 /* ==================================================
    NAVIGATION
 ================================================== */
+
+function openVisualStory(){
+    window.location.href = "visual-story.html";
+}
 
 function openScenario() {
 
