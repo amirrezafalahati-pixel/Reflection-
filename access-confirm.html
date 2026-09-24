@@ -319,10 +319,17 @@ h1{
 
 function unlockDirectAccess(){
 
+    /* Direct access unlocks the Reflection Voice only.
+       It must never mark the Challenge as completed. */
     localStorage.setItem(
         "reflection8bUnlocked",
         "true"
     );
+    localStorage.setItem(
+        "reflection8bDirectUnlocked",
+        "true"
+    );
+    localStorage.removeItem("reflection8bJustUnlocked");
 
 }
 
