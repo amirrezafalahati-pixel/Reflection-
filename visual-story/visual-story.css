@@ -476,6 +476,9 @@
 
 /* Mobile */
 @media (max-width: 700px) {
+  .story-hud{left:10px;bottom:14px;padding:5px;}
+  .hud-current{min-width:82px;font-size:7px;}
+  .story-hud button{width:28px;height:28px;}
   .story-header-inner {
     width: calc(100% - 22px);
     min-height: 58px;
@@ -572,6 +575,45 @@
     width: 100%;
   }
 }
+
+
+/* Reader navigation HUD */
+.story-hud{
+  position:fixed;
+  z-index:45;
+  left:18px;
+  bottom:24px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:6px;
+  border:1px solid rgba(231,228,220,.10);
+  background:rgba(7,9,11,.72);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.hud-current{
+  min-width:92px;
+  padding:0 8px;
+  color:#8b908e;
+  font-size:8px;
+  letter-spacing:.16em;
+  font-weight:700;
+}
+.story-hud button{
+  width:30px;height:30px;
+  border:1px solid rgba(231,228,220,.10);
+  background:rgba(255,255,255,.02);
+  color:#a7aaa5;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.story-hud button:hover{color:#eeeae1;border-color:rgba(231,228,220,.28);transform:translateY(-1px);}
+
+/* More deliberate focus rhythm: the centered frame becomes the readable page. */
+.story-frame{will-change:transform,opacity,filter;}
+.story-frame:not(.is-active) .story-image{filter:saturate(.88) brightness(.86);}
+.story-frame.is-active .story-image{filter:saturate(1) brightness(1);}
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {

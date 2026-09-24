@@ -122,52 +122,60 @@ function updateProgress() {
 }
 
 function observeFrames() {
-  const frames = document.querySelectorAll(".story-frame");
+  const frames = [...document.querySelectorAll(".story-frame")];
+  if (!frames.length) return;
 
-  if (!("IntersectionObserver" in window)) {
-    frames.forEach(frame => frame.classList.add("is-visible"));
-    return;
-  }
-
-  // First observer: reveal each frame once as it enters the reading flow.
-  const revealObserver = new IntersectionObserver(
-    entries => {
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
           revealObserver.unobserve(entry.target);
         }
       });
-    },
-    {
-      root: null,
-      rootMargin: "0px 0px -8% 0px",
-      threshold: 0.08
-    }
-  );
+    }, { root:null, rootMargin:"0px 0px -8% 0px", threshold:0.08 });
+    frames.forEach(frame => revealObserver.observe(frame));
+  } else {
+    frames.forEach(frame => frame.classList.add("is-visible"));
+  }
 
-  // Second observer: gently focuses the frame closest to the reader's
-  // visual center. This gives the page a cinematic rhythm without
-  // turning the story into a slideshow.
-  const focusObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        entry.target.classList.toggle("is-active", entry.isIntersecting);
-      });
-    },
-    {
-      root: null,
-      /* A narrower center band makes the current image become clear
-         while the previous/next frames naturally recede. */
-      rootMargin: "-34% 0px -34% 0px",
-      threshold: 0.12
-    }
-  );
+  const hud = document.getElementById("hudCurrent");
+  let activeIndex = 0;
+  let ticking = false;
 
-  frames.forEach(frame => {
-    revealObserver.observe(frame);
-    focusObserver.observe(frame);
-  });
+  function setActive(index) {
+    index = Math.max(0, Math.min(frames.length - 1, index));
+    frames.forEach((frame, i) => frame.classList.toggle("is-active", i === index));
+    activeIndex = index;
+    if (hud) hud.textContent = `FRAME ${String(index + 1).padStart(2,"0")} / ${String(frames.length).padStart(2,"0")}`;
+  }
+
+  function measureFocus() {
+    const center = window.innerHeight * 0.50;
+    let best = 0;
+    let distance = Infinity;
+    frames.forEach((frame, i) => {
+      const rect = frame.getBoundingClientRect();
+      const frameCenter = rect.top + rect.height * 0.5;
+      const d = Math.abs(frameCenter - center);
+      if (d < distance) { distance = d; best = i; }
+    });
+    setActive(best);
+    ticking = false;
+  }
+
+  function requestFocus() {
+    if (!ticking) { ticking = true; requestAnimationFrame(measureFocus); }
+  }
+
+  window.addEventListener("scroll", requestFocus, { passive:true });
+  window.addEventListener("resize", requestFocus);
+  setActive(0);
+
+  const prev = document.getElementById("prevFrame");
+  const next = document.getElementById("nextFrame");
+  if (prev) prev.addEventListener("click", () => frames[Math.max(0, activeIndex-1)].scrollIntoView({behavior:"smooth",block:"center"}));
+  if (next) next.addEventListener("click", () => frames[Math.min(frames.length-1, activeIndex+1)].scrollIntoView({behavior:"smooth",block:"center"}));
 }
 
 function scrollToTop() {
