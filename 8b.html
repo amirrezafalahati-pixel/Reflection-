@@ -1042,9 +1042,9 @@ button:hover {
 .cards.reflowed > .scenario .card-icon{margin-bottom:18px;}
 
 /* Refined locked-audio mark: lock remains the semantic cue, audio rings add context. */
-.voice-symbol .lock-icon{width:34px;height:34px;color:#c2cad1;filter:drop-shadow(0 4px 14px rgba(0,0,0,.22));}
-.voice-symbol .audio-ring{fill:none;stroke:currentColor;stroke-width:1.1;opacity:.32;stroke-linecap:round;}
-.voice-symbol .audio-ring.r2{opacity:.18;}
+.voice-symbol .lock-icon{width:42px;height:42px;color:#b9c2ca;filter:drop-shadow(0 5px 15px rgba(0,0,0,.25));}
+.voice-symbol .audio-ring{fill:none;stroke:currentColor;stroke-width:1.15;opacity:.28;stroke-linecap:round;}
+.voice-symbol .audio-ring.r2{opacity:.14;}
 .listening:hover .voice-symbol .audio-ring{opacity:.48;}
 
 @media(max-width:700px){
@@ -1205,8 +1205,7 @@ button:hover {
             <div
                 class="voice-symbol"
                 id="voiceSymbol"
-            >
-                🔒
+                aria-label="Reflection Voice locked">
             </div>
 
             <div>
@@ -1492,19 +1491,18 @@ function openListening() {
 }
 
 
-function getLockIcon(open = false){
+function getLockIcon(open=false){
     const shackle = open
-        ? '<path d="M10 13V9.5a5 5 0 0 1 10 0" />'
-        : '<path d="M10 13V9.5a5 5 0 0 1 10 0v3.5" />';
-
+      ? '<path d="M11 13V9.5a4 4 0 0 1 8 0" />'
+      : '<path d="M11 13V9.5a4 4 0 0 1 8 0v3.5" />';
     return `
-      <svg class="lock-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <path class="audio-ring r2" d="M5.5 16.5a12 12 0 0 0 0 7" />
-        <path class="audio-ring" d="M2.5 13.2a17 17 0 0 0 0 13.6" />
+      <svg class="lock-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <path class="audio-ring r1" d="M7 17.5a12 12 0 0 0 0 9"/>
+        <path class="audio-ring r2" d="M3.5 14a16.5 16.5 0 0 0 0 16"/>
         ${shackle}
-        <rect x="8.5" y="16" width="23" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="20" cy="22" r="1.5" fill="currentColor"/>
-        <path d="M20 23.7v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="8.5" y="13" width="13" height="12" rx="2.2" stroke="currentColor" stroke-width="1.55"/>
+        <circle cx="15" cy="18.5" r="1.15" fill="currentColor"/>
+        <path d="M15 20.1v2" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/>
       </svg>`;
 }
 

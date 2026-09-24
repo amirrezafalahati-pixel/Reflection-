@@ -456,6 +456,19 @@ input:focus{
 }
 
 
+
+.attempt-status{
+    margin-top:10px;
+    color:#626a70;
+    font-family:Arial,sans-serif;
+    font-size:8px;
+    letter-spacing:2px;
+    text-align:center;
+    min-height:14px;
+}
+.bottom-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.bottom-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;}
+
 /* SUCCESS */
 
 .success-screen{
@@ -673,6 +686,10 @@ input:focus{
             id="message">
         </div>
 
+        <div class="attempt-status" id="attemptStatus" aria-live="polite">
+            ATTEMPT 0 · 0 HINTS UNLOCKED
+        </div>
+
 
         <!-- AUTOMATIC HINT -->
 
@@ -722,6 +739,10 @@ input:focus{
 
         <a href="scenario.html">
             ← BACK TO SCENARIO
+        </a>
+
+        <a href="8b.html">
+            ← BACK TO GROUP 8B
         </a>
 
     </div>
@@ -837,6 +858,13 @@ function addHelp(text,index){
  list.appendChild(item); document.getElementById("helpBox").style.display="block";
 }
 
+function updateAttemptStatus(){
+ const el=document.getElementById("attemptStatus");
+ if(!el) return;
+ const hints=Math.min(automaticHints.length,Math.floor(attempts/2));
+ el.textContent=`ATTEMPT ${attempts} · ${hints} HINT${hints===1?"":"S"} UNLOCKED${attempts>=15?" · PARTIAL KEY REVEALED":""}`;
+}
+
 function restoreHints(){
  const count=Math.min(automaticHints.length, Math.floor(attempts/2));
  for(let i=0;i<count;i++) addHint(automaticHints[i],i+1);
@@ -857,7 +885,7 @@ function checkAnswer(){
  }
  attempts++; localStorage.setItem("reflection8bAttempts",String(attempts));
  document.getElementById("message").textContent="Not quite. Something along the path may still be pointing you backward.";
- showHint(); input.select();
+ showHint(); updateAttemptStatus(); input.select();
 }
 
 function showHint(){
@@ -880,6 +908,7 @@ function nextHelp(){
 
 restoreHints();
 restoreHelp();
+updateAttemptStatus();
 
 document
     .getElementById("answer")

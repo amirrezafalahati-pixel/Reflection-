@@ -196,13 +196,17 @@ h1{
 }
 
 .voice-mark{
-
-    font-size:30px;
-
+    width:54px;
+    height:54px;
     margin-bottom:20px;
-
-    opacity:.75;
+    display:grid;
+    place-items:center;
+    color:#b9c2ca;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.018);
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
 }
+.voice-mark svg{width:42px;height:42px;display:block;}
 
 .voice-label{
 
@@ -580,8 +584,14 @@ audio{
 
         <aside class="voice">
 
-            <div class="voice-mark">
-                ◉
+            <div class="voice-mark" aria-hidden="true">
+                <svg viewBox="0 0 54 54" fill="none">
+                    <path d="M16 28v-5a11 11 0 0 1 22 0v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    <rect x="13" y="27" width="7" height="13" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                    <rect x="34" y="27" width="7" height="13" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M43.5 34c2.7-1.5 4.1-3.5 4.1-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
+                    <path d="M47.5 38c3.2-2.2 4.8-5.2 4.8-8.7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".25"/>
+                </svg>
             </div>
 
             <div class="voice-label">
