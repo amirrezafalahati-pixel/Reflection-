@@ -1002,6 +1002,69 @@ button:hover {
     }
 }
 </style>
+
+<style>
+/* =========================================================
+   FINAL 8B EXPERIENCE POLISH — HIERARCHY + REFLOW
+   ========================================================= */
+.cards{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+.cards > .scenario{grid-column:1;grid-row:1;}
+.cards > .challenge{grid-column:2;grid-row:1;}
+.cards > .visual-story-card{grid-column:1 / -1;grid-row:2;min-height:190px;}
+.cards > .listening{grid-column:1 / -1 !important;grid-row:3;min-height:190px !important;}
+.cards > .visual-story-card,
+.cards > .listening{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  column-gap:24px;
+}
+.cards > .visual-story-card .card-number,
+.cards > .listening .voice-label{grid-column:1 / -1;align-self:start;}
+.cards > .visual-story-card .card-icon{grid-column:1;grid-row:2 / span 2;margin:0;width:52px;height:52px;justify-content:center;border:1px solid rgba(170,185,200,.16);background:rgba(255,255,255,.012);font-size:25px;}
+.cards > .visual-story-card h2{grid-column:2;grid-row:2;margin:0 0 6px;}
+.cards > .visual-story-card p{grid-column:2;grid-row:3;max-width:700px;}
+.cards > .visual-story-card .card-status{left:auto;right:28px;bottom:28px;}
+.cards > .listening .voice-symbol{grid-column:1;grid-row:2 / span 2;width:58px;height:58px;flex-basis:58px;margin:0;}
+.cards > .listening > div:nth-child(2){grid-column:2;grid-row:2 / span 2;}
+.cards > .listening .card-status{left:auto;right:28px;bottom:28px;}
+
+/* When the challenge is gone, the archive becomes a calm vertical sequence. */
+.cards.reflowed{grid-template-columns:1fr;}
+.cards.reflowed > .scenario,
+.cards.reflowed > .visual-story-card,
+.cards.reflowed > .listening{grid-column:1;grid-row:auto;}
+.cards.reflowed > .scenario{min-height:190px;}
+.cards.reflowed > .scenario .card-icon{margin-bottom:18px;}
+
+/* Refined locked-audio mark: lock remains the semantic cue, audio rings add context. */
+.voice-symbol .lock-icon{width:34px;height:34px;color:#c2cad1;filter:drop-shadow(0 4px 14px rgba(0,0,0,.22));}
+.voice-symbol .audio-ring{fill:none;stroke:currentColor;stroke-width:1.1;opacity:.32;stroke-linecap:round;}
+.voice-symbol .audio-ring.r2{opacity:.18;}
+.listening:hover .voice-symbol .audio-ring{opacity:.48;}
+
+@media(max-width:700px){
+  .cards{grid-template-columns:1fr;gap:14px;}
+  .cards > .scenario,
+  .cards > .challenge,
+  .cards > .visual-story-card,
+  .cards > .listening{grid-column:1;grid-row:auto;}
+  .cards > .visual-story-card,
+  .cards > .listening{display:flex;align-items:flex-start;min-height:205px !important;}
+  .cards > .visual-story-card .card-number,
+  .cards > .listening .voice-label{display:block;position:absolute;left:28px;top:28px;}
+  .cards > .visual-story-card .card-icon{margin-top:30px;width:46px;height:46px;flex:0 0 46px;}
+  .cards > .visual-story-card h2{margin-top:30px;}
+  .cards > .visual-story-card .card-status,
+  .cards > .listening .card-status{left:28px;right:auto;bottom:22px;}
+  .cards > .listening .voice-symbol{margin-top:30px;}
+  .cards > .listening > div:nth-child(2){margin-top:30px;}
+}
+</style>
 </head>
 
 
@@ -1088,8 +1151,8 @@ button:hover {
             </h2>
 
             <p>
-                Step inside a visual interpretation of the story —
-                one frame at a time.
+                Follow the story beyond its first reading —
+                one image, one shift, one question at a time.
             </p>
 
             <div class="card-status">
@@ -1199,9 +1262,7 @@ button:hover {
 
     <div class="modal-card">
 
-        <div class="modal-symbol">
-            🔒
-        </div>
+        <div class="modal-symbol" aria-hidden="true">⌑</div>
 
         <h2>
             Reflection Locked
@@ -1437,11 +1498,13 @@ function getLockIcon(open = false){
         : '<path d="M10 13V9.5a5 5 0 0 1 10 0v3.5" />';
 
     return `
-      <svg class="lock-icon" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+      <svg class="lock-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path class="audio-ring r2" d="M5.5 16.5a12 12 0 0 0 0 7" />
+        <path class="audio-ring" d="M2.5 13.2a17 17 0 0 0 0 13.6" />
         ${shackle}
-        <rect x="6.5" y="13" width="17" height="12" rx="2.2" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="15" cy="18.7" r="1.35" fill="currentColor"/>
-        <path d="M15 20v2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="8.5" y="16" width="23" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="20" cy="22" r="1.5" fill="currentColor"/>
+        <path d="M20 23.7v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>`;
 }
 
@@ -1558,36 +1621,59 @@ function animateChallengeRemoval() {
 
         setTimeout(() => {
 
-            challengeCard.remove();
-
-            cards.classList.add(
-                "reflowed"
+            /*
+              FLIP reflow:
+              capture the remaining cards before removal, then let the
+              browser calculate their new positions and animate the exact
+              movement. This prevents the remaining cards from "jumping"
+              into the Challenge's old space.
+            */
+            const remaining = Array.from(cards.children).filter(el => el !== challengeCard);
+            const firstRects = new Map(
+                remaining.map(el => [el, el.getBoundingClientRect()])
             );
 
+            challengeCard.remove();
+            cards.classList.add("reflowed");
+
+            requestAnimationFrame(() => {
+                remaining.forEach(el => {
+                    const first = firstRects.get(el);
+                    const last = el.getBoundingClientRect();
+                    if (!first) return;
+
+                    const dx = first.left - last.left;
+                    const dy = first.top - last.top;
+
+                    if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+
+                    el.style.transition = "none";
+                    el.style.transform = `translate(${dx}px, ${dy}px)`;
+
+                    requestAnimationFrame(() => {
+                        el.style.transition = "transform .82s cubic-bezier(.2,.72,.2,1)";
+                        el.style.transform = "translate(0,0)";
+
+                        setTimeout(() => {
+                            el.style.transition = "";
+                            el.style.transform = "";
+                        }, 900);
+                    });
+                });
+            });
 
             /*
               Consume the one-time animation flag.
               The permanent completion flag remains.
             */
+            localStorage.removeItem("reflection8bJustUnlocked");
 
-            localStorage.removeItem(
-                "reflection8bJustUnlocked"
-            );
-
-
-            /*
-              Wait for the grid to settle.
-            */
-
+            /* Let the reflow finish before revealing the completion state. */
             setTimeout(() => {
-
                 document
-                    .getElementById(
-                        "celebrationOverlay"
-                    )
+                    .getElementById("celebrationOverlay")
                     .classList.add("show");
-
-            }, 700);
+            }, 900);
 
         }, 2650);
 
