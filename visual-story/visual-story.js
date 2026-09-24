@@ -129,12 +129,13 @@ function observeFrames() {
     return;
   }
 
-  const observer = new IntersectionObserver(
+  // First observer: reveal each frame once as it enters the reading flow.
+  const revealObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     },
@@ -145,7 +146,26 @@ function observeFrames() {
     }
   );
 
-  frames.forEach(frame => observer.observe(frame));
+  // Second observer: gently focuses the frame closest to the reader's
+  // visual center. This gives the page a cinematic rhythm without
+  // turning the story into a slideshow.
+  const focusObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle("is-active", entry.isIntersecting);
+      });
+    },
+    {
+      root: null,
+      rootMargin: "-28% 0px -28% 0px",
+      threshold: 0.15
+    }
+  );
+
+  frames.forEach(frame => {
+    revealObserver.observe(frame);
+    focusObserver.observe(frame);
+  });
 }
 
 function scrollToTop() {

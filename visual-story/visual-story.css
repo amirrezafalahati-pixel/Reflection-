@@ -211,17 +211,30 @@
 
 /* Each image is now a "page" in one continuous vertical document */
 .story-frame {
-  margin: 0 auto 62px;
+  margin: 0 auto 42px;
   opacity: 0;
-  transform: translateY(28px);
+  filter: blur(3px);
+  transform: translateY(20px) scale(.988);
   transition:
-    opacity .75s ease,
-    transform .85s cubic-bezier(.2,.7,.2,1);
+    opacity .72s ease,
+    filter .72s ease,
+    transform .82s cubic-bezier(.2,.72,.2,1);
 }
 
 .story-frame.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+.story-frame.is-active .story-image-wrap {
+  box-shadow:
+    0 28px 72px rgba(0,0,0,.34),
+    0 0 0 1px rgba(231,228,220,.035) inset;
+}
+
+.story-frame.is-active .story-image {
+  transform: scale(1.006);
 }
 
 .story-frame:last-child {
@@ -329,7 +342,7 @@
   display: block;
   width: 72px;
   height: 1px;
-  margin: 44px auto 0;
+  margin: 30px auto 0;
   background: var(--story-line);
 }
 
@@ -519,7 +532,7 @@
   }
 
   .story-frame {
-    margin-bottom: 46px;
+    margin-bottom: 30px;
   }
 
   .story-frame-head {
@@ -543,7 +556,7 @@
   }
 
   .story-frame:not(:last-child)::after {
-    margin-top: 34px;
+    margin-top: 24px;
   }
 
   .story-ending {
