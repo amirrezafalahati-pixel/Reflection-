@@ -207,12 +207,20 @@ h1 {
 }
 
 .visual-story-card .card-icon{
-    font-size:30px;
-    transform:rotate(-12deg);
+    height: 30px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 30px;
+    line-height: 1;
+    transform: none;
+    transition: transform .28s ease, color .28s ease;
 }
 
 .visual-story-card:hover .card-icon{
-    transform:rotate(0deg) scale(1.05);
+    transform: translateY(-2px) scale(1.03);
+    color: #c4ccd4;
 }
 
 /* =========================
@@ -220,9 +228,9 @@ h1 {
 ========================= */
 
 .listening {
-    grid-column: 1 / -1;
+    grid-column: auto;
 
-    min-height: 205px;
+    min-height: 245px;
 
     display: flex;
     align-items: center;
@@ -944,6 +952,42 @@ button:hover {
 @media(max-width:700px){
     .challenge-removing{
         animation-duration:2.4s !important;
+    }
+}
+</style>
+
+<style>
+/* FINAL STABILITY POLISH — Group 8B cards */
+.cards {
+    align-items: stretch;
+}
+
+.cards > .card {
+    min-width: 0;
+}
+
+.visual-story-card .card-icon {
+    position: relative;
+    flex: 0 0 30px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    transform: none !important;
+}
+
+.visual-story-card:hover .card-icon {
+    transform: translateY(-2px) scale(1.03) !important;
+}
+
+.listening {
+    grid-column: auto !important;
+    min-height: 245px !important;
+}
+
+@media (max-width: 700px) {
+    .listening,
+    .cards.reflowed .listening {
+        grid-column: auto !important;
+        min-height: 245px !important;
     }
 }
 </style>
