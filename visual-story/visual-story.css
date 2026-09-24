@@ -583,3 +583,47 @@
     transition: none !important;
   }
 }
+
+/* =========================================================
+   FINAL CINEMATIC READER POLISH
+   ========================================================= */
+.story-reader{padding-top:46px;padding-bottom:26px;}
+.story-frame{
+  margin-bottom:22px;
+  opacity:.22;
+  filter:blur(1.8px);
+  transform:translateY(0) scale(.955);
+  transform-origin:center center;
+  transition:opacity .42s ease,filter .5s ease,transform .62s cubic-bezier(.2,.72,.2,1),box-shadow .5s ease;
+}
+.story-frame.is-visible{opacity:.42;filter:blur(.8px);transform:scale(.975);}
+.story-frame.is-active{opacity:1;filter:blur(0);transform:scale(1);}
+.story-frame.is-active .story-image-wrap{
+  box-shadow:0 32px 86px rgba(0,0,0,.40),0 0 0 1px rgba(231,228,220,.055) inset;
+}
+.story-frame.is-active .story-image{transform:scale(1.004);}
+.story-frame-head{margin-bottom:9px;opacity:.72;transition:opacity .4s ease;}
+.story-frame.is-active .story-frame-head{opacity:1;}
+.story-frame:not(:last-child)::after{width:42px;margin-top:17px;opacity:.65;}
+.story-image-wrap{transition:box-shadow .5s ease,transform .5s ease;}
+.story-image{transition:transform .75s cubic-bezier(.2,.72,.2,1),filter .6s ease;}
+
+/* Keep the reading rail extremely subtle; the images remain the hero. */
+@media(min-width:701px){
+  .story-reader::before{left:-15px;opacity:.55;}
+}
+
+.story-ending{min-height:58vh;padding:92px 20px 120px;}
+.ending-actions{max-width:760px;gap:10px;}
+.story-button{min-height:44px;padding:0 18px;}
+.story-button span{margin-left:8px;opacity:.55;}
+
+@media(max-width:700px){
+  .story-reader{padding-top:30px;padding-bottom:18px;}
+  .story-frame{margin-bottom:15px;transform:scale(.965);}
+  .story-frame.is-visible{transform:scale(.982);}
+  .story-frame.is-active{transform:scale(1);}
+  .story-frame:not(:last-child)::after{margin-top:11px;width:30px;}
+  .story-frame-head{margin-bottom:7px;}
+  .story-ending{min-height:62vh;padding:76px 20px 100px;}
+}

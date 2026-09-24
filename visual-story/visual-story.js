@@ -157,8 +157,10 @@ function observeFrames() {
     },
     {
       root: null,
-      rootMargin: "-28% 0px -28% 0px",
-      threshold: 0.15
+      /* A narrower center band makes the current image become clear
+         while the previous/next frames naturally recede. */
+      rootMargin: "-34% 0px -34% 0px",
+      threshold: 0.12
     }
   );
 
