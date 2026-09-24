@@ -879,10 +879,16 @@ function restoreHelp(){
 function checkAnswer(){
  const input=document.getElementById("answer"); const value=normalize(input.value);
  if(value===finalAnswer){
+  /* Completion is persisted separately from unlock so 8B can run its
+     one-time Challenge disappearance animation on the first return. */
   localStorage.setItem("reflection8bUnlocked","true");
-  localStorage.removeItem("reflection8bAttempts"); localStorage.removeItem("reflection8bHelpStep");
+  localStorage.setItem("reflection8bChallengeCompleted","true");
+  localStorage.setItem("reflection8bJustUnlocked","true");
+  localStorage.removeItem("reflection8bDirectUnlocked");
+  localStorage.removeItem("reflection8bAttempts");
+  localStorage.removeItem("reflection8bHelpStep");
   document.getElementById("successScreen").style.display="flex"; return;
- }
+}
  attempts++; localStorage.setItem("reflection8bAttempts",String(attempts));
  document.getElementById("message").textContent="Not quite. Something along the path may still be pointing you backward.";
  showHint(); updateAttemptStatus(); input.select();
