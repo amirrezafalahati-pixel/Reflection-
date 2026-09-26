@@ -125,6 +125,182 @@ iframe{
     letter-spacing:3px;
 }
 
+
+/* =========================================================
+   FINAL GROUP 8A POLISH — ARCHIVE / DOCUMENT LANGUAGE
+========================================================= */
+.header{
+    position:relative;
+    padding-bottom:28px;
+}
+.header::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:min(360px,60%);
+    height:1px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,transparent,#3d4247,transparent);
+}
+.file-meta{
+    margin-top:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    color:#555b60;
+    font-family:Arial,sans-serif;
+    font-size:8px;
+    letter-spacing:2.5px;
+}
+.file-meta b{font-weight:normal;color:#353a3f}
+.content{
+    align-items:start;
+}
+.document-panel{
+    position:relative;
+    box-shadow:0 22px 60px rgba(0,0,0,.22);
+}
+.panel-label{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+}
+.panel-label a{
+    color:#646b71;
+    text-decoration:none;
+    font-family:Arial,sans-serif;
+    font-size:8px;
+    letter-spacing:1.7px;
+    transition:color .2s ease;
+}
+.panel-label a:hover{color:#d4d8db}
+.document-stage{
+    position:relative;
+    background:#0b0d10;
+    padding:0;
+}
+.document-stage::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(90deg,rgba(0,0,0,.12),transparent 12%,transparent 88%,rgba(0,0,0,.12));
+    z-index:2;
+}
+.document-corner{
+    position:absolute;
+    z-index:4;
+    color:#4e555b;
+    font-family:Arial,sans-serif;
+    font-size:7px;
+    letter-spacing:2px;
+    pointer-events:none;
+}
+.document-corner.top-left{left:14px;top:12px}
+.document-corner.top-right{right:14px;top:12px}
+.side-stack{
+    display:grid;
+    gap:20px;
+}
+.audio{
+    min-height:430px;
+    position:relative;
+    overflow:hidden;
+}
+.audio::after{
+    content:"08A";
+    position:absolute;
+    right:-12px;
+    bottom:-28px;
+    color:rgba(255,255,255,.018);
+    font-family:Georgia,serif;
+    font-size:145px;
+    line-height:1;
+    pointer-events:none;
+}
+.archive-mark{
+    width:62px;
+    height:62px;
+    margin:26px 0 24px;
+    display:grid;
+    place-items:center;
+    border:1px solid #3d4247;
+    color:#b8b8b0;
+    font-family:Georgia,serif;
+    font-size:26px;
+    letter-spacing:2px;
+    background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.06),transparent 65%);
+}
+.audio h2{
+    margin-top:0;
+}
+.coming{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+.status-dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#646a70;
+    box-shadow:0 0 8px rgba(190,195,200,.15);
+    flex:0 0 auto;
+}
+.archive-note{
+    position:relative;
+    padding:24px 24px 25px;
+    border:1px solid #30353a;
+    background:rgba(255,255,255,.018);
+    overflow:hidden;
+}
+.archive-note::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:24px;
+    width:38px;
+    height:1px;
+    background:#62686d;
+}
+.note-label{
+    margin-bottom:14px;
+    color:#555b60;
+    font-family:Arial,sans-serif;
+    font-size:8px;
+    letter-spacing:2.5px;
+}
+.archive-note strong{
+    display:block;
+    color:#b7b6af;
+    font-family:Georgia,serif;
+    font-size:18px;
+    font-weight:normal;
+    letter-spacing:.5px;
+}
+.archive-note p{
+    margin:10px 0 17px;
+    color:#777c80;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    line-height:1.7;
+}
+.archive-note a{
+    color:#777e84;
+    text-decoration:none;
+    font-family:Arial,sans-serif;
+    font-size:8px;
+    letter-spacing:2px;
+}
+.archive-note a:hover{color:#d8d8d2}
+@media(max-width:850px){
+    .side-stack{grid-template-columns:1fr 1fr;align-items:stretch}
+    .audio{min-height:300px}
+}
+
 @media(max-width:850px){
 
     .content{
@@ -133,6 +309,10 @@ iframe{
 
     iframe{
         height:650px;
+    }
+
+    .side-stack{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -158,19 +338,30 @@ FILE 08A
 A reflection in its own voice.
 </div>
 
+<div class="file-meta" aria-label="Archive metadata">
+    <span>ARCHIVE</span><b>·</b><span>FILE 08A</span><b>·</b><span>REFLECTION</span><b>·</b><span>DOCUMENT</span>
+</div>
+
 </div>
 
 <div class="content">
 
-<div class="panel">
+<div class="panel document-panel">
 
 <div class="panel-label">
-REFLECTION · 08A
+<span>REFLECTION · 08A</span>
+<a href="Reflection%208a.pdf" target="_blank" rel="noopener">OPEN PDF ↗</a>
 </div>
 
-<iframe src="Reflection%208a.pdf"></iframe>
+<div class="document-stage">
+    <div class="document-corner top-left">08A</div>
+    <div class="document-corner top-right">01</div>
+    <iframe src="Reflection%208a.pdf" title="Reflection 8A PDF"></iframe>
+</div>
 
 </div>
+
+<div class="side-stack">
 
 <div class="panel audio">
 
@@ -178,6 +369,7 @@ REFLECTION · 08A
 LISTENING ARCHIVE
 </div>
 
+<div class="archive-mark" aria-hidden="true">A</div>
 <h2>AUDIO REFLECTION</h2>
 
 <p>
@@ -185,7 +377,17 @@ Another voice may join the reflection here.
 </p>
 
 <div class="coming">
+<span class="status-dot"></span>
 AUDIO RECORDING · NOT YET AVAILABLE
+</div>
+
+</div>
+
+<div class="archive-note">
+    <div class="note-label">ARCHIVE NOTE</div>
+    <strong>ONE FILE · ONE PERSPECTIVE</strong>
+    <p>Read the document, then return to the archive.</p>
+    <a href="8b.html">VIEW GROUP 8B →</a>
 </div>
 
 </div>

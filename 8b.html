@@ -1146,6 +1146,118 @@ button:hover {
 .voice-symbol .lock-icon .lock-body{color:#c8d0d6;}
 .unlocked .voice-symbol .lock-icon{color:#d2d8dc;}
 </style>
+
+<style>
+/* FINAL MICRO-POLISH — make Reflection Room unlock unmistakable */
+.voice-symbol{
+    position:relative;
+    width:74px !important;
+    height:74px !important;
+    flex:0 0 74px !important;
+    border-color:rgba(205,218,230,.20);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.018);
+}
+.voice-symbol::before{
+    content:"";
+    position:absolute;
+    inset:7px;
+    border:1px solid rgba(220,230,238,.28);
+    border-radius:50%;
+    opacity:0;
+    transform:scale(.72);
+    pointer-events:none;
+}
+.voice-symbol .lock-icon{
+    width:66px !important;
+    height:50px !important;
+    position:relative;
+    z-index:2;
+    filter:drop-shadow(0 7px 15px rgba(0,0,0,.32));
+}
+.voice-symbol .lock-shackle{
+    transform-origin:36px 20px;
+    transition:opacity .55s ease, transform .72s cubic-bezier(.18,.82,.18,1);
+}
+.voice-symbol .shackle-open{
+    opacity:0;
+    transform:rotate(-48deg);
+}
+.voice-symbol .shackle-closed{
+    opacity:1;
+    transform:rotate(0deg);
+}
+.voice-symbol .lock-icon.is-open .shackle-open{
+    opacity:1;
+    transform:rotate(-48deg);
+}
+.voice-symbol .lock-icon.is-open .shackle-closed{
+    opacity:0;
+    transform:rotate(0deg);
+}
+.voice-symbol .audio-waves{
+    transition:opacity .45s ease, filter .45s ease;
+}
+.unlocking .voice-symbol::before{
+    animation:unlockHalo 1.75s cubic-bezier(.2,.72,.2,1) both;
+}
+.unlocking .voice-symbol .audio-waves{
+    animation:audioPulse 1.35s ease .15s 2;
+}
+.unlocking .voice-symbol{
+    border-color:rgba(220,230,238,.42);
+    box-shadow:0 0 0 1px rgba(220,230,238,.07),0 0 38px rgba(160,180,200,.13),inset 0 0 24px rgba(220,230,238,.035);
+}
+.voice-access-flash{
+    position:absolute;
+    top:20px;
+    right:28px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:7px 10px;
+    border:1px solid rgba(210,222,232,.18);
+    background:rgba(8,11,15,.76);
+    color:#aeb9c3;
+    font-size:8px;
+    letter-spacing:2px;
+    opacity:0;
+    transform:translateY(-5px);
+    pointer-events:none;
+}
+.voice-access-flash i{
+    display:block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#cfd7dd;
+    box-shadow:0 0 10px rgba(220,230,238,.45);
+}
+.unlocking .voice-access-flash{
+    animation:accessGranted 2.25s cubic-bezier(.2,.72,.2,1) both;
+}
+@keyframes unlockHalo{
+    0%{opacity:0;transform:scale(.72)}
+    28%{opacity:.75;transform:scale(1)}
+    70%{opacity:.25;transform:scale(1.14)}
+    100%{opacity:0;transform:scale(1.28)}
+}
+@keyframes audioPulse{
+    0%,100%{opacity:.55}
+    45%{opacity:1;filter:drop-shadow(0 0 4px rgba(220,230,238,.35))}
+}
+@keyframes accessGranted{
+    0%,12%{opacity:0;transform:translateY(-5px)}
+    25%,72%{opacity:1;transform:translateY(0)}
+    100%{opacity:0;transform:translateY(-2px)}
+}
+@media(max-width:700px){
+    .voice-access-flash{right:24px;top:18px}
+}
+@media(max-width:560px){
+    .voice-access-flash{position:relative;top:auto;right:auto;width:max-content;margin-top:-5px;margin-bottom:2px;align-self:flex-start}
+}
+</style>
+
 </head>
 
 
@@ -1317,6 +1429,10 @@ button:hover {
                 id="voiceStatus"
             >
                 LOCKED · FOLLOW THE PATH
+            </div>
+
+            <div class="voice-access-flash" id="voiceAccessFlash" aria-hidden="true">
+                <span>ACCESS GRANTED</span><i></i>
             </div>
 
         </div>
@@ -1594,7 +1710,7 @@ function getLockIcon(open=false){
         </g>
         <g class="lock-body">
           <path class="lock-shackle shackle-closed" d="M36 20V15.6a8.4 8.4 0 0 1 16.8 0V20" />
-          <path class="lock-shackle shackle-open" d="M36 20V15.6a8.4 8.4 0 0 1 16.8 0" />
+          <path class="lock-shackle shackle-open" d="M36 20V15.6a8.4 8.4 0 0 1 16.8 0V20" />
           <rect x="24" y="19" width="34" height="28" rx="6" fill="url(#lockSilver)"/>
           <rect x="24.8" y="19.8" width="32.4" height="26.4" rx="5.2" fill="none" stroke="url(#lockEdge)" stroke-width="1.1"/>
           <path d="M29 23.5h24" stroke="#fff" stroke-opacity=".24" stroke-width="1.1" stroke-linecap="round"/>
@@ -1614,7 +1730,7 @@ function unlockListening(animate=false) {
         if (animate) {
             listeningCard.classList.add("unlocking");
             requestAnimationFrame(() => icon.classList.add("is-open"));
-            setTimeout(() => listeningCard.classList.remove("unlocking"), 1800);
+            setTimeout(() => listeningCard.classList.remove("unlocking"), 2500);
         } else {
             icon.classList.remove("is-closed");
             icon.classList.add("is-open");
@@ -1795,7 +1911,7 @@ function animateDirectUnlock() {
             "reflection8bDirectUnlocked"
         );
 
-    }, 1800);
+    }, 2500);
 }
 
 
