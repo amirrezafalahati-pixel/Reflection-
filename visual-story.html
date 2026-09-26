@@ -25,9 +25,14 @@
         <strong>BEYOND WHAT WE SEE</strong>
       </div>
 
-      <button class="story-top-button" id="topButton" type="button" aria-label="Back to top">
-        ↑
-      </button>
+      <div class="story-header-actions">
+        <button class="story-top-button story-end-button" id="endButton" type="button" aria-label="Skip to end">
+          END ↓
+        </button>
+        <button class="story-top-button" id="topButton" type="button" aria-label="Back to top">
+          ↑
+        </button>
+      </div>
     </div>
   </header>
 
@@ -63,6 +68,7 @@
       <div class="hud-current" id="hudCurrent">FRAME 01 / 13</div>
       <button type="button" id="prevFrame" aria-label="Previous frame">↑</button>
       <button type="button" id="nextFrame" aria-label="Next frame">↓</button>
+      <button type="button" id="notesToggle" class="notes-toggle" aria-label="Show reading notes" aria-pressed="false">NOTES</button>
     </nav>
 
     <section class="story-ending" id="storyEnding">
