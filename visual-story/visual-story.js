@@ -2,7 +2,7 @@
    REFLECTION — VISUAL STORY / VERTICAL READER
    ========================================================= */
 
-const TOTAL = 12;
+const TOTAL = 13;
 
 /*
   IMPORTANT:
@@ -11,7 +11,7 @@ const TOTAL = 12;
   visual-story/pages/page-01.jpg
   visual-story/pages/page-02.jpg
   ...
-  visual-story/pages/page-12.jpg
+  visual-story/pages/page-13.jpg
   or .png — both are supported.
 
   GitHub Pages is case-sensitive.
