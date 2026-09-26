@@ -239,10 +239,10 @@ h1 {
 }
 
 .voice-symbol {
-    width: 68px;
-    height: 68px;
+    width: 58px;
+    height: 58px;
 
-    flex: 0 0 68px;
+    flex: 0 0 58px;
 
     display: flex;
     align-items: center;
@@ -263,8 +263,8 @@ h1 {
 }
 
 .voice-symbol .lock-icon{
-    width:58px;
-    height:44px;
+    width:44px;
+    height:33px;
     display:block;
     color:#c8d0d7;
     overflow:visible;
@@ -273,7 +273,7 @@ h1 {
 .voice-symbol .lock-shackle{
     fill:none;
     stroke:url(#lockEdge);
-    stroke-width:4.2;
+    stroke-width:3.2;
     stroke-linecap:round;
     stroke-linejoin:round;
     transition:opacity .38s ease, transform .55s cubic-bezier(.2,.72,.2,1);
@@ -286,8 +286,8 @@ h1 {
 .voice-symbol .lock-icon.is-open .shackle-closed{ opacity:0; transform:rotate(-5deg); }
 .unlocking .voice-symbol .lock-icon{ animation:lockReveal .75s cubic-bezier(.2,.72,.2,1) both; }
 @keyframes lockReveal{
-    0%{ transform:scale(.94); filter:brightness(.82); }
-    55%{ transform:scale(1.07); filter:brightness(1.12); }
+    0%{ transform:scale(.97); filter:brightness(.88); }
+    55%{ transform:scale(1.035); filter:brightness(1.08); }
     100%{ transform:scale(1); filter:brightness(1); }
 }
 
@@ -1705,9 +1705,9 @@ function getLockIcon(open=false){
         </defs>
         <g class="audio-waves" stroke="currentColor" stroke-linecap="round" fill="none">
           <path d="M12 18a12 12 0 0 0 0 20" stroke-width="2.1" opacity=".78"/>
-          <path d="M6.5 13.5a18.5 18.5 0 0 0 0 29" stroke-width="1.35" opacity=".34"/>
+          <path d="M6.5 13.5a18.5 18.5 0 0 0 0 29" stroke-width="1.05" opacity=".34"/>
           <path d="M64 18a12 12 0 0 1 0 20" stroke-width="2.1" opacity=".78"/>
-          <path d="M69.5 13.5a18.5 18.5 0 0 1 0 29" stroke-width="1.35" opacity=".34"/>
+          <path d="M69.5 13.5a18.5 18.5 0 0 1 0 29" stroke-width="1.05" opacity=".34"/>
         </g>
         <g class="lock-body">
           <path class="lock-shackle shackle-closed" d="M36 20V15.6a8.4 8.4 0 0 1 16.8 0V20" />
@@ -1715,8 +1715,8 @@ function getLockIcon(open=false){
           <rect x="24" y="19" width="34" height="28" rx="6" fill="url(#lockSilver)"/>
           <rect x="24.8" y="19.8" width="32.4" height="26.4" rx="5.2" fill="none" stroke="url(#lockEdge)" stroke-width="1.1"/>
           <path d="M29 23.5h24" stroke="#fff" stroke-opacity=".24" stroke-width="1.1" stroke-linecap="round"/>
-          <circle cx="41" cy="31.2" r="3.1" fill="#343b42"/>
-          <path d="M41 34v6.1" stroke="#343b42" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="41" cy="31.2" r="2.45" fill="#343b42"/>
+          <path d="M41 34v6.1" stroke="#343b42" stroke-width="2" stroke-linecap="round"/>
         </g>
       </svg>`;
 }
