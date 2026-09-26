@@ -1080,10 +1080,10 @@ button:hover {
 .cards > .visual-story-card .card-icon{grid-column:1;grid-row:2 / span 2;margin:0;width:52px;height:52px;justify-content:center;border:1px solid rgba(170,185,200,.16);background:rgba(255,255,255,.012);font-size:25px;}
 .cards > .visual-story-card h2{grid-column:2;grid-row:2;margin:0 0 6px;}
 .cards > .visual-story-card p{grid-column:2;grid-row:3;max-width:700px;}
-.cards > .visual-story-card .card-status{left:auto;right:26px;bottom:28px;}
+.cards > .visual-story-card .card-status{left:auto;right:28px;bottom:28px;}
 .cards > .listening .voice-symbol{grid-column:1;grid-row:2 / span 2;width:58px;height:58px;flex-basis:58px;margin:0;}
 .cards > .listening > div:nth-child(2){grid-column:2;grid-row:2 / span 2;}
-.cards > .listening .card-status{left:auto;right:26px;bottom:28px;}
+.cards > .listening .card-status{left:auto;right:28px;bottom:28px;}
 
 /* When the challenge is gone, the archive becomes a calm vertical sequence. */
 .cards.reflowed{grid-template-columns:1fr;}
@@ -1105,7 +1105,7 @@ button:hover {
 .cards.reflowed > .scenario .card-icon{grid-column:1;grid-row:2 / span 2;margin:0;width:52px;height:52px;align-self:start;}
 .cards.reflowed > .scenario h2{grid-column:2;grid-row:2;margin:0 0 7px;line-height:1.25;}
 .cards.reflowed > .scenario p{grid-column:2;grid-row:3;margin:0 0 42px;max-width:760px;line-height:1.75;}
-.cards.reflowed > .scenario .card-status{left:auto;right:26px;bottom:24px;max-width:calc(100% - 56px);white-space:nowrap;}
+.cards.reflowed > .scenario .card-status{left:auto;right:28px;bottom:24px;max-width:calc(100% - 56px);white-space:nowrap;}
 @media(max-width:700px){
   .cards.reflowed > .scenario{display:block;min-height:220px;padding:28px;}
   .cards.reflowed > .scenario .card-number{margin-bottom:18px;}
@@ -1160,7 +1160,7 @@ button:hover {
 .voice-symbol::before{
     content:"";
     position:absolute;
-    inset:7px;
+    inset:9px;
     border:1px solid rgba(220,230,238,.24);
     border-radius:50%;
     opacity:0;
@@ -1169,7 +1169,7 @@ button:hover {
 }
 .voice-symbol .lock-icon{
     width:38px !important;
-    height:29px !important;
+    height:28px !important;
     position:relative;
     z-index:2;
     margin:auto;
@@ -1181,7 +1181,7 @@ button:hover {
 }
 .voice-symbol .shackle-open{
     opacity:0;
-    transform:rotate(-48deg);
+    transform:rotate(-42deg);
 }
 .voice-symbol .shackle-closed{
     opacity:1;
@@ -1189,7 +1189,7 @@ button:hover {
 }
 .voice-symbol .lock-icon.is-open .shackle-open{
     opacity:1;
-    transform:rotate(-48deg);
+    transform:rotate(-42deg);
 }
 .voice-symbol .lock-icon.is-open .shackle-closed{
     opacity:0;
@@ -1199,10 +1199,10 @@ button:hover {
     transition:opacity .45s ease, filter .45s ease;
 }
 .unlocking .voice-symbol::before{
-    animation:unlockHalo 1.55s cubic-bezier(.2,.72,.2,1) both;
+    animation:unlockHalo 1.75s cubic-bezier(.2,.72,.2,1) both;
 }
 .unlocking .voice-symbol .audio-waves{
-    animation:audioPulse 1.2s ease .15s 2;
+    animation:audioPulse 1.35s ease .15s 2;
 }
 .unlocking .voice-symbol{
     border-color:rgba(220,230,238,.42);
@@ -1211,7 +1211,7 @@ button:hover {
 .voice-access-flash{
     position:absolute;
     top:20px;
-    right:26px;
+    right:28px;
     display:flex;
     align-items:center;
     gap:9px;
@@ -1704,10 +1704,10 @@ function getLockIcon(open=false){
           </linearGradient>
         </defs>
         <g class="audio-waves" stroke="currentColor" stroke-linecap="round" fill="none">
-          <path d="M15 18a12 12 0 0 0 0 20" stroke-width="2.1" opacity=".78"/>
-          <path d="M9.5 13.5a18.5 18.5 0 0 0 0 29" stroke-width="1.05" opacity=".34"/>
-          <path d="M67 18a12 12 0 0 1 0 20" stroke-width="2.1" opacity=".78"/>
-          <path d="M72.5 13.5a18.5 18.5 0 0 1 0 29" stroke-width="1.05" opacity=".34"/>
+          <path d="M12 18a12 12 0 0 0 0 20" stroke-width="2.1" opacity=".78"/>
+          <path d="M6.5 13.5a18.5 18.5 0 0 0 0 29" stroke-width="1.05" opacity=".34"/>
+          <path d="M64 18a12 12 0 0 1 0 20" stroke-width="2.1" opacity=".78"/>
+          <path d="M69.5 13.5a18.5 18.5 0 0 1 0 29" stroke-width="1.05" opacity=".34"/>
         </g>
         <g class="lock-body">
           <path class="lock-shackle shackle-closed" d="M32.6 20V15.6a8.4 8.4 0 0 1 16.8 0V20" />
