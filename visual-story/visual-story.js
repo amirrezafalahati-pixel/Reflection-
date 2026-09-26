@@ -24,7 +24,22 @@ const pages = Array.from({ length: TOTAL }, (_, index) => {
   return {
     number,
     base: `visual-story/pages/page-${padded}`,
-    image: `visual-story/pages/page-${padded}.jpg`
+    image: `visual-story/pages/page-${padded}.jpg`,
+    note: [
+      "آغاز داستان با یک سکوت است؛ چهار نگاه متفاوت، پیش از آنکه پاسخی داشته باشند، باید مسئله را ببینند.",
+      "نخستین نتیجه با انتظار جور درنمی‌آید. خطا اینجا پایان راه نیست؛ نشانه‌ای است برای بازگشت و بررسی دوباره.",
+      "چهار زاویه کنار هم قرار می‌گیرند: منطق، جست‌وجوی معنا، تجربه و نقدِ خودِ پرسش.",
+      "ماشین در مرکز است، اما مسئله فقط رمزگشایی نیست؛ پرسش این است که چه چیزی را واقعاً می‌توان سنجید؟",
+      "اندازه‌گیری اطلاعات می‌دهد، اما اطلاعات به‌تنهایی معنا را تضمین نمی‌کند.",
+      "وقتی فرض اولیه دوباره بررسی می‌شود، مسیر حل مسئله هم تغییر می‌کند.",
+      "اختلاف دیدگاه‌ها مانع کار نیست؛ اگر درست شنیده شوند، خودِ روشِ فکر کردن را اصلاح می‌کنند.",
+      "یک نتیجه درست لزوماً به معنای یک تفسیر درست نیست؛ باید خودِ فرض را هم زیر سؤال برد.",
+      "نقد از بیرون آسان‌تر است؛ لحظه مهم‌تر وقتی است که مشاهده‌گر، روش خودش را هم وارد بررسی کند.",
+      "شاید بخشی از واقعیت همیشه بیرون از قاب بماند؛ دیدنِ آنچه دیده نشده، مرحله بعدی مشاهده است.",
+      "دستگاه چیزی را نشان می‌دهد، اما هنوز معلوم نیست این نشانه دقیقاً چه معنایی دارد.",
+      "پرسش از پاسخ مهم‌تر می‌شود؛ آنچه پنهان است شاید در زبان، در ذهن، یا در خودِ روشِ جست‌وجو باشد.",
+      "تصویر تمام می‌شود، اما مسئله حل نشده باقی می‌ماند: رمز چیست، و چه کسی در حال رمزگشاییِ چه کسی است؟"
+    ][index]
   };
 });
 
@@ -81,13 +96,12 @@ function createFrame(page) {
 
   wrap.appendChild(image);
 
-  /*
-    Optional caption:
-    Add a caption here later without changing the image itself.
-    For now we keep the visual story clean.
-  */
+  const caption = document.createElement("p");
+  caption.className = "story-frame-caption";
+  caption.textContent = page.note;
+  caption.hidden = true;
 
-  frame.append(head, wrap);
+  frame.append(head, wrap, caption);
   return frame;
 }
 
@@ -229,14 +243,47 @@ function setupLightbox() {
   });
 }
 
+
+function setupNotesToggle() {
+  const toggle = document.getElementById("notesToggle");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", () => {
+    const enabled = document.body.classList.toggle("notes-open");
+    toggle.setAttribute("aria-pressed", String(enabled));
+    toggle.setAttribute("aria-label", enabled ? "Hide reading notes" : "Show reading notes");
+    document.querySelectorAll(".story-frame-caption").forEach(caption => {
+      caption.hidden = !enabled;
+    });
+  });
+}
+
+function scrollToEnd() {
+  const ending = document.getElementById("storyEnding");
+  if (ending) {
+    ending.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
 /* Initial render */
 render();
 observeFrames();
 setupLightbox();
+setupNotesToggle();
 
 window.addEventListener("scroll", updateProgress, { passive: true });
 window.addEventListener("resize", updateProgress);
 
 topButton.addEventListener("click", scrollToTop);
+
+const endButton = document.getElementById("endButton");
+if (endButton) endButton.addEventListener("click", scrollToEnd);
+
+// Home / End make the reader feel natural on desktop without changing the visual UI.
+document.addEventListener("keydown", event => {
+  if (event.target && ["INPUT", "TEXTAREA", "SELECT"].includes(event.target.tagName)) return;
+  if (event.key === "Home") { event.preventDefault(); scrollToTop(); }
+  if (event.key === "End") { event.preventDefault(); scrollToEnd(); }
+});
 
 updateProgress();
