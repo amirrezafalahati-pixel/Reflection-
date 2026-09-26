@@ -22,79 +22,79 @@ const pages = [
     number: 1,
     base: "visual-story/pages/page-01",
     image: "visual-story/pages/page-01.jpg",
-    note: "«فراتر از آنچه می‌بینیم» از همین‌جا آغاز می‌شود: دیدن، پایانِ جست‌وجو نیست؛ آغازِ آن است."
+    note: "پیش از آغاز روایت، عنوان یک هشدار است: دیدن، همیشه به معنای فهمیدن نیست."
   },
   {
     number: 2,
     base: "visual-story/pages/page-02",
     image: "visual-story/pages/page-02.jpg",
-    note: "هر چیزی که می‌بینیم، از زاویه‌ای دیده می‌شود؛ و گاهی آنچه از دست می‌رود، مهم‌تر از آن چیزی است که در قاب مانده است."
+    note: "این صفحه کنار هم گذاشتنِ نگاه‌های متفاوت را پیشنهاد می‌کند؛ شاید نخستین قدمِ فهمیدن، دقیق‌تر دیدن باشد."
   },
   {
     number: 3,
     base: "visual-story/pages/page-03",
     image: "visual-story/pages/page-03.jpg",
-    note: "چهار نگاه، یک مسئله؛ حقیقت شاید نه در یکی از آن‌ها، بلکه در گفت‌وگوی میان آن‌ها آشکار شود."
+    note: "چهار چهره، چهار شیوهٔ نزدیک‌شدن به یک مسئله‌اند: منطق، جست‌وجو، معنا و نقادی؛ هیچ‌کدام به‌تنهایی تمام تصویر نیستند."
   },
   {
     number: 4,
     base: "visual-story/pages/page-04",
     image: "visual-story/pages/page-04.jpg",
-    note: "وقتی مسئله مشترک می‌شود، پاسخ دیگر فقط حاصلِ اندازه‌گیری نیست؛ حاصلِ شیوهٔ تفسیر آن نیز هست."
+    note: "وقتی مسئله میان چند نگاه تقسیم می‌شود، پاسخ دیگر فقط از دستگاه نمی‌آید؛ از گفت‌وگو هم ساخته می‌شود."
   },
   {
     number: 5,
     base: "visual-story/pages/page-05",
     image: "visual-story/pages/page-05.jpg",
-    note: "دستگاه پاسخ می‌دهد؛ اما پاسخ، بدون پرسشِ درست، هنوز معنا ندارد."
+    note: "دستگاه اندازه می‌گیرد؛ اما اندازه‌گیری همیشه بخشی از واقعیت را انتخاب می‌کند، نه تمام آن را."
   },
   {
     number: 6,
     base: "visual-story/pages/page-06",
-    image: "visual-story/pages/page-06.png",
-    note: "وقتی نتیجه با انتظار نمی‌خواند، نخستین پرسش شاید دربارهٔ نتیجه نباشد؛ دربارهٔ انتظاری باشد که از پیش ساخته‌ایم."
+    image: "visual-story/pages/page-06.jpg",
+    note: "وقتی نتیجه با انتظار نمی‌خواند، خطا تنها یک پاسخِ اشتباه نیست؛ فرصتی است برای بازبینیِ خودِ انتظار."
   },
   {
     number: 7,
     base: "visual-story/pages/page-07",
-    image: "visual-story/pages/page-07.png",
-    note: "پیش از اصلاح پاسخ، گاهی باید خودِ پرسش را اصلاح کرد؛ چون مسئلهٔ نادرست، پاسخ درست هم نمی‌سازد."
+    image: "visual-story/pages/page-07.jpg",
+    note: "پیش از اصلاح پاسخ، باید پرسید: آیا مسئله را از ابتدا درست صورت‌بندی کرده‌ایم؟"
   },
   {
     number: 8,
     base: "visual-story/pages/page-08",
     image: "visual-story/pages/page-08.jpg",
-    note: "شک، فقط تردید در نتیجه نیست؛ گاهی جرئتِ دوباره پرسیدنِ چیزی است که بدیهی گرفته‌ایم."
+    note: "ذهن نقاد فقط نتیجه را نمی‌آزماید؛ پیش‌فرضی را هم که نتیجه بر آن بنا شده، به پرسش می‌کشد."
   },
   {
     number: 9,
     base: "visual-story/pages/page-09",
     image: "visual-story/pages/page-09.jpg",
-    note: "کم‌کردنِ خطا کافی نیست؛ باید دید چه چیزی را از ابتدا در تعریفِ مسئله نادیده گرفته‌ایم."
+    note: "بازآزماییِ یک نتیجه، تنها تکرار آزمایش نیست؛ فاصله‌گرفتن از برداشتی است که به آن عادت کرده‌ایم."
   },
   {
     number: 10,
     base: "visual-story/pages/page-10",
-    image: "visual-story/pages/page-10.png",
-    note: "آنچه آشکار است، همیشه مهم‌ترین چیز نیست؛ نگاه نقادانه گاهی به دنبالِ غایبِ قاب می‌گردد."
+    image: "visual-story/pages/page-10.jpg",
+    note: "در اینجا ناظر هم وارد معما می‌شود؛ گاهی آنچه مسیر پاسخ را تغییر می‌دهد، خودِ زاویهٔ نگاه ماست."
   },
   {
     number: 11,
     base: "visual-story/pages/page-11",
-    image: "visual-story/pages/page-11.png",
-    note: "ناآشنا بودنِ یک نشانه، دلیلِ بی‌معنا بودنش نیست؛ شاید هنوز زبانِ خواندنش را پیدا نکرده‌ایم."
+    image: "visual-story/pages/page-11.jpg",
+    note: "ناشناخته‌بودنِ یک نشانه، دلیلِ بی‌معنا بودنش نیست؛ شاید هنوز زبانِ خواندنش را پیدا نکرده‌ایم."
   },
   {
     number: 12,
     base: "visual-story/pages/page-12",
     image: "visual-story/pages/page-12.jpg",
-    note: "همهٔ معنا در اندازه‌گیری نمی‌گنجد؛ بعضی پرسش‌ها درست از جایی آغاز می‌شوند که اندازه‌گیری پایان می‌گیرد."
+    note: "پرسش از نشانه فراتر می‌رود: اگر زبان پرده‌ای بر معنا باشد، برای دیدنِ پشت آن به چه چیزی نیاز داریم؟"
   },
   {
     number: 13,
     base: "visual-story/pages/page-13",
     image: "visual-story/pages/page-13.jpg",
-    note: "پاسخ شاید پایانِ راه نباشد؛ گاهی پرسشِ درست، چیزی است که باید با خودمان از این تصویر بیرون ببریم."
+    note: "داستان با پاسخ تمام نمی‌شود؛ با یک پرسش می‌ماند: از آنچه دیدیم، چه چیز هنوز از نگاه ما پنهان است؟"
   }
 ];
 
@@ -119,23 +119,22 @@ function createFrame(page) {
 
   const image = document.createElement("img");
   image.className = "story-image";
-  image.src = `${page.image}?v=6`;
+  const cacheVersion = "v6";
+  const jpgSrc = `${page.base}.jpg?${cacheVersion}`;
+  const pngSrc = `${page.base}.png?${cacheVersion}`;
+  image.src = jpgSrc;
   image.alt = `Beyond What We See — frame ${page.number}`;
-  image.loading = page.number === 1 ? "eager" : "lazy";
+  image.loading = page.number <= 2 ? "eager" : "lazy";
   image.decoding = "async";
   image.draggable = false;
 
   let triedPng = false;
 
   image.addEventListener("error", () => {
-    /*
-      The current archive contains both JPG and PNG frames.
-      Try the alternate extension automatically before reporting
-      a missing frame. This also makes future image replacement easier.
-    */
-    if (!triedPng && image.src.toLowerCase().endsWith(".jpg")) {
+    // JPG is the canonical archive format; PNG remains a safety fallback.
+    if (!triedPng) {
       triedPng = true;
-      image.src = `${page.base}.png?v=6`;
+      image.src = pngSrc;
       return;
     }
 
@@ -143,7 +142,7 @@ function createFrame(page) {
     wrap.innerHTML = `
       <div class="story-error">
         <strong>FRAME ${String(page.number).padStart(2, "0")} NOT FOUND</strong>
-        <div>The image could not be loaded as JPG or PNG.</div>
+        <div>The image could not be loaded from the archive.</div>
         <code>${page.base}.jpg</code>
       </div>
     `;
